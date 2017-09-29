@@ -124,12 +124,12 @@ XML;
         $prefix = $this->config['prefix'];
 
         $service_url = $url."?client_key=".$client_key."&api_key=".$api_key."&number=".$this->destino."&device_uuid=".$device_uuid;
-        
+
         $http = curl_init($service_url);
 
         curl_setopt($http, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($http, CURLOPT_TIMEOUT,6);
-	    curl_setopt($http, CURLOPT_CONNECTTIMEOUT, 6);
+	      curl_setopt($http, CURLOPT_CONNECTTIMEOUT, 6);
         $status = curl_getinfo($http, CURLINFO_HTTP_CODE);
 
         curl_setopt($http, CURLOPT_RETURNTRANSFER,1);
@@ -145,17 +145,17 @@ XML;
 
         if(strlen($cache['phone']) > 3){
             //exists
-            $insert = false; 
+            $insert = false;
             $log->info("Portabilidade -> Número ".$this->destino." já existente no cache");
         }else{
             $log->info("Portabilidade -> Número ".$cache['phone']." não existente no cache");
             $insert = true;
         }
-        
+
         switch ($httpcode) {
             case 200:
                 $log->info("Portabilidade -> Encontrado operadora -> ".$http_response);
-                
+
                 if($insert){
                     //insert cache
                     $log->info("Portabilidade -> Inserindo número ".$http_response." no cache");
@@ -165,7 +165,7 @@ XML;
                     $log->info("Portabilidade -> Atualizando número ".$http_response." no cache");
                     $update_data = array('phone' => $http_response);
                     $db->update("portability_cache", $update_data, "phone like '%{$this->destino}'");
-                } 
+                }
                 $asterisk->exec_goto('default',$http_response,1);
                 break;
             case 401:
@@ -197,13 +197,22 @@ XML;
                     $log->info("Portabilidade -> Completando chamada pelo número salvo no cache");
                     $asterisk->exec_goto('default',$cache['phone'],1);
                 }else{
-                    $asterisk->stream_file('portabilityError');
-                    $asterisk->hangup();
+                    if($type == 'audio'){
+                        $log->info("Portabilidade -> Número não encontrado na base da Portabilidade");
+                        $asterisk->stream_file('portabilityError');
+                        $asterisk->hangup();
+                    }else{
+                        $rest = substr($http_response,0,5);
+                        $number = substr($http_response,5);
+                        $log->info("Portabilidade -> Número não encontrado -> ".$http_response);
+                        $log->info("Portabilidade -> Rescrevendo número com valor do prefixo informado na ação -> ".$prefix.$number);
+                        $asterisk->exec_goto('default',$prefix.$number,1);
+                    }
                 }
                 break;
         }
 
     }
 
-    
+
 }
