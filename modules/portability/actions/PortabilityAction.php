@@ -124,12 +124,12 @@ XML;
         $prefix = $this->config['prefix'];
 
         $service_url = $url."?client_key=".$client_key."&api_key=".$api_key."&number=".$this->destino."&device_uuid=".$device_uuid;
-
+        
         $http = curl_init($service_url);
 
         curl_setopt($http, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($http, CURLOPT_TIMEOUT,3);
-	    curl_setopt($http, CURLOPT_CONNECTTIMEOUT, 3);
+        curl_setopt($http, CURLOPT_TIMEOUT,6);
+	    curl_setopt($http, CURLOPT_CONNECTTIMEOUT, 6);
         $status = curl_getinfo($http, CURLINFO_HTTP_CODE);
 
         curl_setopt($http, CURLOPT_RETURNTRANSFER,1);
@@ -159,16 +159,12 @@ XML;
                 if($insert){
                     //insert cache
                     $log->info("Portabilidade -> Inserindo número ".$http_response." no cache");
-                    $sql = "INSERT INTO `portability_cache` (phone) VALUES ({$http_response})";
-                    $stmt = $db->query($sql);
-                    $stmt = $db->prepare($sql);
-                    $stmt->execute();
+                    $insert_data = array('phone' => $http_response);
+                    $db->insert('portability_cache', $insert_data);
                 }else{
                     $log->info("Portabilidade -> Atualizando número ".$http_response." no cache");
-                    $sql = "UPDATE `portability_cache` SET `phone` = '$http_response' WHERE phone like '%{$this->destino}'";
-                    $stmt = $db->query($sql);
-                    $stmt = $db->prepare($sql);
-                    $stmt->execute();
+                    $update_data = array('phone' => $http_response);
+                    $db->update("portability_cache", $update_data, "phone like '%{$this->destino}'");
                 } 
                 $asterisk->exec_goto('default',$http_response,1);
                 break;
