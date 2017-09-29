@@ -106,6 +106,7 @@ XML;
     public function execute($asterisk, $request) {
 
         $log = Zend_Registry::get('log');
+        $db  = Zend_Registry::get('db');
 
         $configuration = Snep_Register_Manager::get();
         if(!$configuration){
@@ -128,7 +129,7 @@ XML;
 
         curl_setopt($http, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($http, CURLOPT_TIMEOUT,3);
-	      curl_setopt($http, CURLOPT_CONNECTTIMEOUT, 3);
+	    curl_setopt($http, CURLOPT_CONNECTTIMEOUT, 3);
         $status = curl_getinfo($http, CURLINFO_HTTP_CODE);
 
         curl_setopt($http, CURLOPT_RETURNTRANSFER,1);
@@ -138,9 +139,37 @@ XML;
 
         curl_close($http);
 
+        $select = "SELECT * FROM `portability_cache` WHERE phone like '%{$this->destino}'";
+        $stmt = $db->query($select);
+        $cache = $stmt->fetch();
+
+        if(strlen($cache['phone']) > 3){
+            //exists
+            $insert = false; 
+            $log->info("Portabilidade -> Número ".$this->destino." já existente no cache");
+        }else{
+            $log->info("Portabilidade -> Número ".$cache['phone']." não existente no cache");
+            $insert = true;
+        }
+        
         switch ($httpcode) {
             case 200:
                 $log->info("Portabilidade -> Encontrado operadora -> ".$http_response);
+                
+                if($insert){
+                    //insert cache
+                    $log->info("Portabilidade -> Inserindo número ".$http_response." no cache");
+                    $sql = "INSERT INTO `portability_cache` (phone) VALUES ({$http_response})";
+                    $stmt = $db->query($sql);
+                    $stmt = $db->prepare($sql);
+                    $stmt->execute();
+                }else{
+                    $log->info("Portabilidade -> Atualizando número ".$http_response." no cache");
+                    $sql = "UPDATE `portability_cache` SET `phone` = '$http_response' WHERE phone like '%{$this->destino}'";
+                    $stmt = $db->query($sql);
+                    $stmt = $db->prepare($sql);
+                    $stmt->execute();
+                } 
                 $asterisk->exec_goto('default',$http_response,1);
                 break;
             case 401:
@@ -168,10 +197,17 @@ XML;
                 break;
             default:
                 $log->info("Portabilidade -> Houve algum erro durante o processo");
-                $asterisk->stream_file('portabilityError');
-                $asterisk->hangup();
+                if(strlen($cache['phone']) > 3){
+                    $log->info("Portabilidade -> Completando chamada pelo número salvo no cache");
+                    $asterisk->exec_goto('default',$cache['phone'],1);
+                }else{
+                    $asterisk->stream_file('portabilityError');
+                    $asterisk->hangup();
+                }
                 break;
         }
 
     }
+
+    
 }
