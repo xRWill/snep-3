@@ -47,7 +47,10 @@ class SystemstatusController extends Zend_Controller_Action {
 
         $db = Zend_Registry::get('db');
 
-        $tdmboards = $this->CloudNotice();
+        if(!$_SESSION['cloud_noticed']){
+          $tdmboards = $this->CloudNotice();
+          $_SESSION['cloud_noticed'] = true;
+        }
 
     		$serverport = $_SERVER['SERVER_PORT'] ;
     		$linfoData = new Zend_Http_Client('http://localhost:'.$serverport . str_replace("/index.php", "", $this->getFrontController()->getBaseUrl()) . '/lib/linfo/index.php?out=xml');

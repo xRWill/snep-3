@@ -29,11 +29,11 @@ var pathName = loc.pathname.substring(0, loc.pathname.indexOf('index.php'));
 var servicesState = 0;
 
 function servicesSlider(){
-   
+
     var right = jQuery('#statusbar');
     var opened = jQuery(window).width() - jQuery(right).width() + 20;
     var closed = jQuery(window).width() - 50;
-    
+
     if (servicesState == 1){
         servicesRefresh();
         right.stop().animate({'left': opened}, 400);
@@ -49,7 +49,7 @@ function servicesRefresh(){
     });
 }
 
-function servicesReposition(){    
+function servicesReposition(){
     var left = jQuery(window).width() - 50;
     var statusbar = jQuery('#statusbar');
     statusbar.css({'left': left});
@@ -75,7 +75,7 @@ jQuery(document).ready(function(){
 jQuery(document).ready(servicesRefresh);
 jQuery(document).ready(servicesReposition);
 jQuery(window).resize(servicesReposition);
-system_status_interval = setInterval(servicesRefresh, 30000); // That's 30 seconds
+system_status_interval = setInterval(servicesRefresh, 300000); // That's 5 minutes
 
 /*end of services footer*/
 
@@ -102,7 +102,7 @@ jQuery(document).ready(function(e) {
         jQuery(this).before('<a href="javascript:void(0)" class="check_a" id="check_a_'+ name +'"><img class="checkbox_" id="check_img_'+ name +'"/></a>');
         var div = jQuery('#check_img_'+name, jQuery(this).parent());
         var a = jQuery('#check_a_'+name, jQuery(this).parent());
-        
+
         if(jQuery(this).attr('checked')) {
             //div.attr('src', imgtrue);
 
@@ -135,13 +135,13 @@ jQuery(document).ready(function(e) {
         jQuery(".multiselect").css({'width': 710, 'height': 200}).multiselect({sortable: false, searchable: true});
         jQuery(".bigMultiselect").css({'width': 710, 'height': 400}).multiselect({sortable: false, searchable: true}).addClass('multiselect');
     }
-    
+
     //Select limit page
     jQuery('.barTop .html form #campo').change(function(){jQuery('.barTop .html form #submit').click();});
 });
 
 function changeNewCheck(check, value){
-    
+
     if(value && check.attr('src') == imgfalse) check.click();
     else if(!value && check.attr('src') == imgtrue) check.click();
 }
@@ -152,7 +152,7 @@ jQuery(document).ready(function(){
     jQuery('.maskCode').setMask('maskCode');
     jQuery('.maskDate').setMask('maskDate');
     jQuery('.maskTime').setMask('maskTime');
-}); 
+});
 
 //Keyfilters
 jQuery(document).ready(function(){
@@ -165,7 +165,7 @@ jQuery(document).ready(function(){
 */
 //subform
 function subForm(select, values){
-    
+
     var elements = jQuery(".subform");
     select = jQuery("#"+select);
     var actual = select.val();
@@ -173,7 +173,7 @@ function subForm(select, values){
     select.change(function(){
         var ia = 0, ip = 0;
         for(var i in values)if(values[i] != null){
-            if(values[i] == select.val()) ip = i; 
+            if(values[i] == select.val()) ip = i;
             else if(values[i] == actual) ia = i;
         }
         elements.eq(ia).slideUp(400, function(){elements.eq(ip).slideDown(600);});
@@ -207,11 +207,10 @@ jQuery(document).ready(function(){
     jQuery('#content td .download').attr('title', "Download");
     jQuery('#content td .permissao').attr('title', "Permissão");
     jQuery('#content td .vinculos').attr('title', "Vínculos");
-    
-    
+
+
 });
 
 jQuery(window).load(function(){jQuery("#preload").fadeOut(500);});
 jQuery(window).unload(function(){jQuery("#preload").fadeIn(500);});
 jQuery(window).submit(function(){jQuery("#preload").fadeIn(500);});
-
