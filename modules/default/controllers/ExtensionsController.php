@@ -368,7 +368,8 @@ class ExtensionsController extends Zend_Controller_Action {
                 $this->view->dtmfinfo = "checked";
               }
 
-              $codecsDefault = array("ulaw","alaw","ilbc","g729","gsm","h264","h263","h263p","all");
+              // $codecsDefault = array("ulaw","alaw","ilbc","g729","gsm","h264","h263","h263p","all");
+              $codecsDefault = PBX_Interfaces::getCodecs();
               $codecs = explode(";", $exten['allow']);
 
               $codec1 = "";
@@ -445,15 +446,7 @@ class ExtensionsController extends Zend_Controller_Action {
               $postData = $this->_request->getParams();
 
               $postData["exten"] = $this->_request->getParam("id");
-              $postData['name'] = $nameValue[0]."<".$postData['exten'].">";
-              // increment in callerid "Name <exten>"
-
-              // $nameValue = explode("<", $postData['name']);
-              // if(count($nameValue) <= 1){
-              //     $postData['name'] = $postData['name'];
-              // }else{
-              //     $postData['name'] = $nameValue[0]."<".$postData['exten'].">";
-              // };
+              $postData['name'] = $postData['name']."<".$postData['exten'].">";
 
 
               $ret = $this->execAdd($postData, true);
