@@ -118,8 +118,10 @@ class Snep_SoundFiles_Manager {
 
         try {
             $db->commit();
+            return true;
         } catch (Exception $e) {
             $db->rollBack();
+            return false;
         }
     }
 
@@ -612,7 +614,7 @@ class Snep_SoundFiles_Manager {
      * @return booolean
      */
     public function checkType($extension) {
-        if($extension != "wav"  && $extension != "gsm") {
+        if(strtolower($extension) != "wav"  && strtolower($extension) != "gsm") {
             return false ;
          } else {
             return true ;
@@ -631,5 +633,5 @@ class Snep_SoundFiles_Manager {
 
         return str_replace($invalid, $valid, $name);
     }
-    
+
 }
