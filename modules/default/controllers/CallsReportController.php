@@ -438,6 +438,7 @@ class CallsReportController extends Zend_Controller_Action {
                   if($type != 'graphic'){
 
                     if($row->quantity == 0){
+                      Zend_Debug::Dump($row);exit;
                       $this->view->error_message = $this->view->translate("No entries found.");
                       $this->renderScript('error/sneperror.phtml');
                     }else{
@@ -496,24 +497,26 @@ class CallsReportController extends Zend_Controller_Action {
                 // substr -> retry limit
                 $stmt = $db->query(substr($_SESSION[$user['name']]['select'], 0, -11));
 
-                $header = array($this->view->translate('Code Tag'),
-                $this->view->translate('Type Tag'),
-                $this->view->translate('Name Tag'),
-                $this->view->translate('Day'),
-                $this->view->translate('Date'),
-                $this->view->translate('Source'),
-                $this->view->translate('Destiny'),
-                $this->view->translate('Call Status'),
-                $this->view->translate('Duration (seconds)'),
-                $this->view->translate('Conversation (seconds)'),
-                $this->view->translate('Tag'),
-                $this->view->translate('Userfield'),
-                $this->view->translate('Context'),
-                $this->view->translate('Amaflags'),
-                $this->view->translate('Code unique'),
-                $this->view->translate('Calldate'),
-                $this->view->translate('Channel'),
-                $this->view->translate('Rate'));
+                $header = array(
+                  $this->view->translate('Day'),
+                  $this->view->translate('Date'),
+                  $this->view->translate('Source'),
+                  $this->view->translate('Destiny'),
+                  $this->view->translate('Call Status'),
+                  $this->view->translate('Duration (seconds)'),
+                  $this->view->translate('Conversation (seconds)'),
+                  $this->view->translate('Tag'),
+                  $this->view->translate('Userfield'),
+                  $this->view->translate('Context'),
+                  $this->view->translate('Amaflags'),
+                  $this->view->translate('Code unique'),
+                  $this->view->translate('Calldate'),
+                  $this->view->translate('Channel'),
+                  $this->view->translate('Code Tag'),
+                  $this->view->translate('Type Tag'),
+                  $this->view->translate('Name Tag'),
+                  $this->view->translate('Rate')
+                );
 
                 $output = implode(";", $header) . "\n";
 

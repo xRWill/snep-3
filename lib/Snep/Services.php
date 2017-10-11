@@ -45,7 +45,12 @@ class Snep_Services {
 
         $config = Zend_Registry::get('config');
 
-        $url = $_SERVER["SERVER_ADDR"].":".$_SERVER["SERVER_PORT"]."/snep/modules/default/api/?service=".$service;
+        if($_SERVER["SERVER_ADDR"] == '::1'){
+          $server = "localhost";
+        }else{
+          $server = $_SERVER["SERVER_ADDR"];
+        }
+        $url = "http://".$server.":".$_SERVER["SERVER_PORT"]."/snep/modules/default/api/?service=".$service;
         //$url = '127.0.0.1/snep/modules/default/api/?service='.$service;
 
         return $url;
