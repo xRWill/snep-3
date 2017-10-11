@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-18 12:57-0300\n"
+"POT-Creation-Date: 2017-10-10 23:29-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,7 +117,7 @@ msgstr ""
 msgid ". Please contact the administrator."
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:469
+#: ../modules/default/controllers/CallsReportController.php:470
 #: ../modules/default/controllers/ExportDataController.php:68
 #: ../modules/default/controllers/ExportDataController.php:91
 #: ../modules/default/controllers/ExportDataController.php:131
@@ -141,8 +141,11 @@ msgstr ""
 #: /home/douglas/Dropbox/Development/snep-3/modules/ivr/info.xml
 #: /home/douglas/Dropbox/Development/snep-3/modules/billing/info.xml
 #: /home/douglas/Dropbox/Development/snep-3/modules/loguser/info.xml
-#: /home/douglas/Dropbox/Development/snep-3/modules/portability/info.xml
 msgid "1.0"
+msgstr ""
+
+#: /home/douglas/Dropbox/Development/snep-3/modules/portability/info.xml
+msgid "1.1"
 msgstr ""
 
 #: /home/douglas/Dropbox/Development/snep-3/modules/default/forms/route.xml
@@ -336,7 +339,7 @@ msgstr ""
 msgid "Add Multiple"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:855
+#: ../modules/default/controllers/ExtensionsController.php:848
 msgid "Add Multiples Extensions"
 msgstr ""
 
@@ -526,11 +529,15 @@ msgstr ""
 msgid "Allow Viewing"
 msgstr ""
 
+#: ../modules/ivr/actions/IVR.php:90
+msgid "Allow forward to an Extension"
+msgstr ""
+
 #: ../modules/default/actions/DiscarRamal.php:184
 msgid "Allow voicemail"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:512
+#: ../modules/default/controllers/CallsReportController.php:511
 msgid "Amaflags"
 msgstr ""
 
@@ -684,10 +691,10 @@ msgstr ""
 #: ../modules/default/views/scripts/trunks/asterisk-error.phtml:17
 #: ../modules/default/views/scripts/register/index.phtml:55
 #: ../modules/default/views/scripts/error/sneperror.phtml:48
-#: ../modules/default/controllers/ExtensionsController.php:698
-#: ../modules/default/controllers/ExtensionsController.php:737
-#: ../modules/default/controllers/ExtensionsController.php:805
-#: ../modules/default/controllers/ExtensionsController.php:834
+#: ../modules/default/controllers/ExtensionsController.php:691
+#: ../modules/default/controllers/ExtensionsController.php:730
+#: ../modules/default/controllers/ExtensionsController.php:798
+#: ../modules/default/controllers/ExtensionsController.php:827
 #: ../modules/loguser/views/scripts/loguser/view.phtml:53
 msgid "Back"
 msgstr ""
@@ -868,7 +875,7 @@ msgid "Call Recording Configuration"
 msgstr ""
 
 #: ../modules/default/views/scripts/khomp-links/view.phtml:55
-#: ../modules/default/controllers/CallsReportController.php:506
+#: ../modules/default/controllers/CallsReportController.php:505
 msgid "Call Status"
 msgstr ""
 
@@ -904,7 +911,7 @@ msgstr ""
 msgid "Callback Module"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:514
+#: ../modules/default/controllers/CallsReportController.php:513
 msgid "Calldate"
 msgstr ""
 
@@ -932,7 +939,7 @@ msgstr ""
 #: ../modules/default/controllers/CallsReportController.php:55
 #: ../modules/default/controllers/CallsReportController.php:327
 #: ../modules/default/controllers/CallsReportController.php:395
-#: ../modules/default/controllers/CallsReportController.php:489
+#: ../modules/default/controllers/CallsReportController.php:490
 #: /home/douglas/Dropbox/Development/snep-3/modules/default/resources.xml
 #: /home/douglas/Dropbox/Development/snep-3/configs/dashboard.xml
 msgid "Calls"
@@ -1045,7 +1052,7 @@ msgstr ""
 #: ../modules/default/views/scripts/extensions/addedit.phtml:263
 #: ../modules/default/views/scripts/khomp-links/view.phtml:53
 #: ../modules/default/views/scripts/ip-status/index.phtml:60
-#: ../modules/default/controllers/CallsReportController.php:515
+#: ../modules/default/controllers/CallsReportController.php:514
 #: ../modules/default/controllers/TrunksController.php:82
 msgid "Channel"
 msgstr ""
@@ -1107,7 +1114,7 @@ msgstr ""
 msgid "Class"
 msgstr ""
 
-#: ../modules/default/views/scripts/notifications/index.phtml:55
+#: ../modules/default/views/scripts/notifications/index.phtml:60
 msgid "Click to visualize"
 msgstr ""
 
@@ -1148,7 +1155,7 @@ msgstr ""
 msgid "Code Area"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:499
+#: ../modules/default/controllers/CallsReportController.php:515
 msgid "Code Tag"
 msgstr ""
 
@@ -1168,7 +1175,7 @@ msgstr ""
 msgid "Code sent to your email"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:513
+#: ../modules/default/controllers/CallsReportController.php:512
 msgid "Code unique"
 msgstr ""
 
@@ -1275,7 +1282,7 @@ msgid "Contains"
 msgstr ""
 
 #: ../modules/default/actions/GoContext.php:92
-#: ../modules/default/controllers/CallsReportController.php:511
+#: ../modules/default/controllers/CallsReportController.php:510
 msgid "Context"
 msgstr ""
 
@@ -1287,7 +1294,7 @@ msgstr ""
 msgid "Conversation"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:508
+#: ../modules/default/controllers/CallsReportController.php:507
 msgid "Conversation (seconds)"
 msgstr ""
 
@@ -1334,8 +1341,8 @@ msgstr ""
 msgid "Cut on pipe '|'"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:736
-#: ../modules/default/controllers/ExtensionsController.php:833
+#: ../modules/default/controllers/ExtensionsController.php:729
+#: ../modules/default/controllers/ExtensionsController.php:826
 msgid "DB Delete Error: "
 msgstr ""
 
@@ -1415,7 +1422,7 @@ msgstr ""
 #: ../modules/default/views/scripts/services-report/view.phtml:36
 #: ../modules/default/views/scripts/notifications/index.phtml:36
 #: ../modules/default/views/scripts/calls-report/view.phtml:220
-#: ../modules/default/controllers/CallsReportController.php:503
+#: ../modules/default/controllers/CallsReportController.php:502
 #: ../modules/default/controllers/ServicesReportController.php:207
 msgid "Date"
 msgstr ""
@@ -1437,7 +1444,7 @@ msgid "Dates Alias"
 msgstr ""
 
 #: ../modules/default/views/scripts/trunks/addedit.phtml:446
-#: ../modules/default/controllers/CallsReportController.php:502
+#: ../modules/default/controllers/CallsReportController.php:501
 msgid "Day"
 msgstr ""
 
@@ -1529,7 +1536,7 @@ msgstr ""
 #: ../modules/default/views/scripts/sound-files/index.phtml:100
 #: ../modules/default/views/scripts/extensions-groups/index.phtml:54
 #: ../modules/default/views/scripts/contact-groups/index.phtml:58
-#: ../modules/default/views/scripts/notifications/index.phtml:57
+#: ../modules/default/views/scripts/notifications/index.phtml:62
 #: ../modules/default/views/scripts/trunks/index.phtml:73
 #: ../modules/default/views/scripts/route/index.phtml:127
 #: ../modules/default/views/scripts/cost-center/index.phtml:65
@@ -1537,8 +1544,8 @@ msgstr ""
 #: ../modules/default/views/scripts/remove/remove.phtml:24
 #: ../modules/default/controllers/DatesAliasController.php:162
 #: ../modules/default/controllers/CostCenterController.php:187
-#: ../modules/default/controllers/SoundFilesController.php:275
-#: ../modules/default/controllers/ExtensionsController.php:683
+#: ../modules/default/controllers/SoundFilesController.php:286
+#: ../modules/default/controllers/ExtensionsController.php:676
 #: ../modules/default/controllers/ProfilesController.php:213
 #: ../modules/default/controllers/PickupGroupsController.php:217
 #: ../modules/default/controllers/RouteController.php:656
@@ -1573,7 +1580,7 @@ msgstr ""
 msgid "Delete Extension Group."
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:704
+#: ../modules/default/controllers/ExtensionsController.php:697
 msgid "Delete Extension."
 msgstr ""
 
@@ -1581,7 +1588,7 @@ msgstr ""
 msgid "Delete File"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:754
+#: ../modules/default/controllers/ExtensionsController.php:747
 msgid "Delete Multiples"
 msgstr ""
 
@@ -1609,7 +1616,7 @@ msgstr ""
 msgid "Delete Sound Files"
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:280
+#: ../modules/default/controllers/SoundFilesController.php:291
 msgid "Delete Sound Files."
 msgstr ""
 
@@ -1687,7 +1694,7 @@ msgstr ""
 #: ../modules/default/views/scripts/simulator/index.phtml:110
 #: ../modules/default/views/scripts/route/index.phtml:96
 #: ../modules/default/views/scripts/route/elements/dst.phtml:3
-#: ../modules/default/controllers/CallsReportController.php:505
+#: ../modules/default/controllers/CallsReportController.php:504
 #: ../modules/default/controllers/RankingReportController.php:199
 msgid "Destiny"
 msgstr ""
@@ -1862,7 +1869,7 @@ msgstr ""
 msgid "Duration (in seconds)"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:507
+#: ../modules/default/controllers/CallsReportController.php:506
 msgid "Duration (seconds)"
 msgstr ""
 
@@ -1892,7 +1899,7 @@ msgstr ""
 #: ../modules/default/views/scripts/users/index.phtml:69
 #: ../modules/default/controllers/DatesAliasController.php:113
 #: ../modules/default/controllers/CostCenterController.php:128
-#: ../modules/default/controllers/SoundFilesController.php:187
+#: ../modules/default/controllers/SoundFilesController.php:195
 #: ../modules/default/controllers/ExtensionsController.php:211
 #: ../modules/default/controllers/ProfilesController.php:136
 #: ../modules/default/controllers/PickupGroupsController.php:137
@@ -2015,7 +2022,7 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:467
+#: ../modules/default/controllers/CallsReportController.php:468
 #: ../modules/default/controllers/ExportDataController.php:67
 #: ../modules/default/controllers/ExportDataController.php:90
 #: ../modules/default/controllers/ExportDataController.php:130
@@ -2118,7 +2125,7 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:490
+#: ../modules/default/controllers/CallsReportController.php:491
 #: ../modules/default/controllers/ServicesReportController.php:199
 #: ../modules/default/controllers/RankingReportController.php:184
 #: /home/douglas/Dropbox/Development/snep-3/configs/titleOptions.xml
@@ -2195,14 +2202,14 @@ msgstr ""
 #: ../modules/default/views/scripts/services-report/view.phtml:35
 #: ../modules/default/views/scripts/ip-status/index.phtml:58
 #: ../modules/default/views/scripts/route/add_edit.phtml:73
-#: ../modules/default/controllers/ExtensionsController.php:800
+#: ../modules/default/controllers/ExtensionsController.php:793
 #: ../modules/default/controllers/RouteController.php:64
 #: ../lib/PBX/Rule/ActionConfig.php:158
 msgid "Extension"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:894
-#: ../modules/default/controllers/ExtensionsController.php:919
+#: ../modules/default/controllers/ExtensionsController.php:887
+#: ../modules/default/controllers/ExtensionsController.php:912
 msgid "Extension "
 msgstr ""
 
@@ -2226,7 +2233,7 @@ msgstr ""
 msgid "Extension PHP"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:496
+#: ../modules/default/controllers/ExtensionsController.php:489
 msgid "Extension already taken. Please, choose another denomination."
 msgstr ""
 
@@ -2241,9 +2248,9 @@ msgstr ""
 #: ../modules/default/controllers/ExtensionsController.php:88
 #: ../modules/default/controllers/ExtensionsController.php:108
 #: ../modules/default/controllers/ExtensionsController.php:210
-#: ../modules/default/controllers/ExtensionsController.php:682
-#: ../modules/default/controllers/ExtensionsController.php:753
-#: ../modules/default/controllers/ExtensionsController.php:854
+#: ../modules/default/controllers/ExtensionsController.php:675
+#: ../modules/default/controllers/ExtensionsController.php:746
+#: ../modules/default/controllers/ExtensionsController.php:847
 #: /home/douglas/Dropbox/Development/snep-3/modules/default/resources.xml
 #: /home/douglas/Dropbox/Development/snep-3/configs/dashboard.xml
 msgid "Extensions"
@@ -2322,11 +2329,11 @@ msgid "File does not have editing permission"
 msgstr ""
 
 #: ../modules/default/controllers/SoundFilesController.php:121
-#: ../modules/default/controllers/SoundFilesController.php:222
+#: ../modules/default/controllers/SoundFilesController.php:230
 msgid "File extesion is invalid."
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:308
+#: ../modules/default/controllers/SoundFilesController.php:322
 msgid "File not found."
 msgstr ""
 
@@ -2525,7 +2532,7 @@ msgstr ""
 msgid "Hour"
 msgstr ""
 
-#: ../modules/ivr/actions/IVR.php:93
+#: ../modules/ivr/actions/IVR.php:95
 msgid "How many loops"
 msgstr ""
 
@@ -2577,7 +2584,7 @@ msgstr ""
 msgid "IVR Module for SNEP"
 msgstr ""
 
-#: ../modules/ivr/actions/IVR.php:89
+#: ../modules/ivr/actions/IVR.php:91
 msgid "IVR Prefix String - used to identify the next steps on IVR process"
 msgstr ""
 
@@ -2589,7 +2596,7 @@ msgstr ""
 msgid "Identifier"
 msgstr ""
 
-#: ../modules/ivr/actions/IVR.php:92
+#: ../modules/ivr/actions/IVR.php:94
 msgid "If Digits is wrong, go to action ID"
 msgstr ""
 
@@ -2719,7 +2726,7 @@ msgstr ""
 msgid "Invalid File"
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:168
+#: ../modules/default/controllers/SoundFilesController.php:176
 msgid "Invalid format"
 msgstr ""
 
@@ -2936,7 +2943,7 @@ msgstr ""
 msgid "Memory Usage"
 msgstr ""
 
-#: ../modules/ivr/actions/IVR.php:87
+#: ../modules/ivr/actions/IVR.php:88
 msgid "Menu Audio File"
 msgstr ""
 
@@ -3126,7 +3133,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:501
+#: ../modules/default/controllers/CallsReportController.php:517
 msgid "Name Tag"
 msgstr ""
 
@@ -3159,10 +3166,6 @@ msgstr ""
 
 #: ../modules/default/controllers/NewversionController.php:36
 msgid "New Version Updates"
-msgstr ""
-
-#: ../modules/default/controllers/SoundFilesController.php:161
-msgid "New sound file added"
 msgstr ""
 
 #: ../modules/default/views/scripts/tdm-links/index.phtml:56
@@ -3233,8 +3236,8 @@ msgstr ""
 msgid "No entries found!"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:441
-#: ../modules/default/controllers/CallsReportController.php:460
+#: ../modules/default/controllers/CallsReportController.php:442
+#: ../modules/default/controllers/CallsReportController.php:461
 msgid "No entries found."
 msgstr ""
 
@@ -3269,7 +3272,7 @@ msgstr ""
 msgid "No queues available"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:547
+#: ../modules/default/controllers/CallsReportController.php:550
 #: ../modules/default/controllers/ExportDataController.php:165
 #: ../modules/default/controllers/ServicesReportController.php:242
 #: ../modules/default/controllers/RankingReportController.php:235
@@ -3874,7 +3877,7 @@ msgstr ""
 msgid "Queues"
 msgstr ""
 
-#: ../modules/loguser/controllers/LoguserController.php:46
+#: ../modules/loguser/controllers/LoguserController.php:47
 msgid "Queues Actions"
 msgstr ""
 
@@ -3901,7 +3904,7 @@ msgstr ""
 msgid "Ranking Type"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:516
+#: ../modules/default/controllers/CallsReportController.php:518
 msgid "Rate"
 msgstr ""
 
@@ -4065,7 +4068,7 @@ msgstr ""
 #: ../modules/default/controllers/CallsReportController.php:54
 #: ../modules/default/controllers/CallsReportController.php:326
 #: ../modules/default/controllers/CallsReportController.php:394
-#: ../modules/default/controllers/CallsReportController.php:488
+#: ../modules/default/controllers/CallsReportController.php:489
 #: ../modules/default/controllers/ExportDataController.php:49
 #: ../modules/default/controllers/ExportDataController.php:111
 #: ../modules/default/controllers/ServicesReportController.php:49
@@ -4232,7 +4235,7 @@ msgid "Rua dos Cisnes, 541 "
 msgstr ""
 
 #: ../modules/default/actions/DiscarTronco.php:374
-#: ../modules/default/controllers/ExtensionsController.php:801
+#: ../modules/default/controllers/ExtensionsController.php:794
 msgid "Rule"
 msgstr ""
 
@@ -4378,11 +4381,11 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:556
+#: ../modules/default/controllers/ExtensionsController.php:549
 msgid "Select a Khomp board from the list"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:559
+#: ../modules/default/controllers/ExtensionsController.php:552
 msgid "Select a Khomp channel from the list"
 msgstr ""
 
@@ -4668,16 +4671,13 @@ msgstr ""
 
 #: ../modules/default/controllers/SoundFilesController.php:51
 #: ../modules/default/controllers/SoundFilesController.php:86
-#: ../modules/default/controllers/SoundFilesController.php:186
-#: ../modules/default/controllers/SoundFilesController.php:274
-#: ../modules/default/controllers/SoundFilesController.php:346
+#: ../modules/default/controllers/SoundFilesController.php:194
+#: ../modules/default/controllers/SoundFilesController.php:285
+#: ../modules/default/controllers/SoundFilesController.php:360
+#: ../modules/loguser/controllers/LoguserController.php:46
 #: /home/douglas/Dropbox/Development/snep-3/modules/default/resources.xml
 #: /home/douglas/Dropbox/Development/snep-3/configs/dashboard.xml
 msgid "Sound Files"
-msgstr ""
-
-#: ../modules/default/controllers/SoundFilesController.php:258
-msgid "Sound file updated"
 msgstr ""
 
 #: ../modules/default/views/scripts/simulator/index.phtml:50
@@ -4688,7 +4688,7 @@ msgstr ""
 #: ../modules/default/views/scripts/calls-report/view.phtml:42
 #: ../modules/default/views/scripts/calls-report/index.phtml:58
 #: ../modules/default/actions/DiscarTronco.php:379
-#: ../modules/default/controllers/CallsReportController.php:504
+#: ../modules/default/controllers/CallsReportController.php:503
 #: ../modules/default/controllers/RankingReportController.php:198
 msgid "Source"
 msgstr ""
@@ -4825,7 +4825,7 @@ msgstr ""
 msgid "Swap Memory"
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:347
+#: ../modules/default/controllers/SoundFilesController.php:361
 msgid "Synchronization of sound files "
 msgstr ""
 
@@ -4906,7 +4906,7 @@ msgstr ""
 #: ../modules/default/views/scripts/calls-report/view.phtml:47
 #: ../modules/default/views/scripts/calls-report/view.phtml:197
 #: ../modules/default/views/scripts/calls-report/index.phtml:201
-#: ../modules/default/controllers/CallsReportController.php:509
+#: ../modules/default/controllers/CallsReportController.php:508
 #: ../modules/default/controllers/CostCenterController.php:50
 #: ../modules/default/controllers/CostCenterController.php:82
 #: ../modules/default/controllers/CostCenterController.php:127
@@ -4955,6 +4955,10 @@ msgstr ""
 
 #: /home/douglas/Dropbox/Development/snep-3/modules/default/forms/route.xml
 msgid "Text"
+msgstr ""
+
+#: ../modules/default/controllers/SoundFilesController.php:126
+msgid "The 'sox' package is not installed!"
 msgstr ""
 
 #: ../modules/billing/controllers/BillingController.php:96
@@ -5076,11 +5080,11 @@ msgstr ""
 msgid "The extension is required"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:705
+#: ../modules/default/controllers/ExtensionsController.php:698
 msgid "The extension will be deleted. After that, you have no way get it back."
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:126
+#: ../modules/default/controllers/SoundFilesController.php:131
 #, php-format
 msgid "The file %s already exists in directory."
 msgstr ""
@@ -5107,19 +5111,19 @@ msgstr ""
 msgid "The first think you need is Add your Extensions and their Groups."
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:797
+#: ../modules/default/controllers/ExtensionsController.php:790
 msgid ""
 "The following extensions are in use in routes, modify them prior to remove "
 "this extension"
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:405
+#: ../modules/default/controllers/SoundFilesController.php:419
 msgid ""
 "The following files do not exist in the directory and will be excluded from "
 "the database."
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:412
+#: ../modules/default/controllers/SoundFilesController.php:426
 msgid ""
 "The following files were found in the directory and will be registered in "
 "the database."
@@ -5129,7 +5133,7 @@ msgstr ""
 msgid "The following members make use of this queue, remove before deleting:"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:693
+#: ../modules/default/controllers/ExtensionsController.php:686
 msgid ""
 "The following routes use this extension, modify them prior to remove this "
 "extension"
@@ -5241,7 +5245,7 @@ msgstr ""
 msgid "The route will be deleted. After that, you have no way get it back."
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:281
+#: ../modules/default/controllers/SoundFilesController.php:292
 msgid ""
 "The sound files will be deleted. After that, you have no way get it back."
 msgstr ""
@@ -5487,7 +5491,7 @@ msgstr ""
 msgid "Type Call"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:500
+#: ../modules/default/controllers/CallsReportController.php:516
 msgid "Type Tag"
 msgstr ""
 
@@ -5511,16 +5515,16 @@ msgstr ""
 msgid "UUID do Snep"
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:303
+#: ../modules/default/controllers/SoundFilesController.php:317
 msgid "Unable to remove file"
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:331
+#: ../modules/default/controllers/SoundFilesController.php:345
 msgid "Unable to restore file"
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:132
-#: ../modules/default/controllers/SoundFilesController.php:228
+#: ../modules/default/controllers/SoundFilesController.php:137
+#: ../modules/default/controllers/SoundFilesController.php:236
 msgid "Unable to upload file."
 msgstr ""
 
@@ -5632,7 +5636,7 @@ msgstr ""
 msgid "User permission"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:510
+#: ../modules/default/controllers/CallsReportController.php:509
 msgid "Userfield"
 msgstr ""
 
@@ -5706,15 +5710,15 @@ msgstr ""
 msgid "Voicemail"
 msgstr ""
 
-#: ../modules/ivr/actions/IVR.php:90
+#: ../modules/ivr/actions/IVR.php:92
 msgid "Wait for how long - in seconds"
 msgstr ""
 
-#: ../modules/ivr/actions/IVR.php:88
+#: ../modules/ivr/actions/IVR.php:89
 msgid "Wait for user input"
 msgstr ""
 
-#: ../modules/ivr/actions/IVR.php:91
+#: ../modules/ivr/actions/IVR.php:93
 msgid "Wait for which digits - split by \",\""
 msgstr ""
 
@@ -5996,7 +6000,7 @@ msgstr ""
 msgid "Your email address must be in the format of name@domain.com"
 msgstr ""
 
-#: ../modules/default/controllers/SoundFilesController.php:416
+#: ../modules/default/controllers/SoundFilesController.php:430
 msgid "Your files are synchronized"
 msgstr ""
 
@@ -6026,7 +6030,7 @@ msgstr ""
 msgid "action-configs/index"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:540
+#: ../modules/default/controllers/CallsReportController.php:543
 msgid "calls"
 msgstr ""
 
