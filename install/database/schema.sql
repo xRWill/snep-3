@@ -230,6 +230,7 @@ CREATE TABLE IF NOT EXISTS `peers` (
   `lastms` int(11) NOT NULL,
   `callbackextension` VARCHAR(250) default NULL,
   `useragent` VARCHAR(250) default NULL,
+  `blf` VARCHAR(3) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `name_2` (`name`),

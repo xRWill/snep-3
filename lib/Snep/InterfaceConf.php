@@ -42,12 +42,16 @@ class Snep_InterfaceConf {
 
             $extenFileConf = "$asteriskDirectory/snep/snep-$tech.conf";
             $trunkFileConf = "$asteriskDirectory/snep/snep-$tech-trunks.conf";
+            $hintFileConf = "$asteriskDirectory/snep/snep-$tech-hints.conf";
 
             if (!is_writable($extenFileConf)) {
                 throw new PBX_Exception_IO($view->translate("Failed to open file %s with write permission.", $extenFileConf));
             }
             if (!is_writable($trunkFileConf)) {
                 throw new PBX_Exception_IO($view->translate("Failed to open file %s with write permission.", $trunkFileConf));
+            }
+            if (file_exists($hintFileConf) && !is_writable($hintFileConf)) {
+                throw new PBX_Exception_IO($view->translate("Failed to open file %s with write permission.", $hintFileConf));
             }
             /* clean snep-sip.conf file */
             file_put_contents($extenFileConf, '');
@@ -70,6 +74,7 @@ class Snep_InterfaceConf {
             $peer_data = $db->query($sql)->fetchAll();
 
             $peers = "\n";
+            $peers_hint = "\n[hints]\n";
             $trunk_config = "\n";
 
             if (count($peer_data) > 0) {
@@ -186,6 +191,10 @@ class Snep_InterfaceConf {
                         $peers .= 'call-limit=' . $peer['call-limit'] . "\n";
                         $peers .= 'directmedia=' . $peer['directmedia'] . "\n";
                         $peers .= "\n";
+
+                        if($peer['blf'] == 'yes'){
+                          $peers_hint .= "exten => {$peer['name']},hint,{$peer['canal']}\n";
+                        }
                     }
                 }
             }
@@ -196,11 +205,14 @@ class Snep_InterfaceConf {
             $content = $header . $peers;
 
             file_put_contents($extenFileConf, $content);
+
+            file_put_contents($hintFileConf, $peers_hint);
         }
 
         // Forcing asterisk to reload the configs
         $asteriskAmi = PBX_Asterisk_AMI::getInstance();
         $asteriskAmi->Command("sip reload");
+        $asteriskAmi->Command("dialplan reload");
         $asteriskAmi->Command("iax2 reload");
     }
 

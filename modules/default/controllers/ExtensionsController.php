@@ -151,7 +151,9 @@ class ExtensionsController extends Zend_Controller_Action {
           $this->view->directmedianonat = "checked";
           $this->view->typeFriend = "checked";
           $this->view->dtmfrf = "checked";
-          $this->view->nat_no = 'checked' ;
+          $this->view->nat_force_rport = 'checked' ;
+          $this->view->nat_comedia = 'checked' ;
+          $this->view->blf = '';
           $extension = array("name" => "",
           "callerid" => "",
           "secret" => "",
@@ -308,6 +310,9 @@ class ExtensionsController extends Zend_Controller_Action {
                 $this->view->dtmfinband = "checked";
               }else{
                 $this->view->dtmfinfo = "checked";
+              }
+              if($exten['blf'] == "yes"){
+                $this->view->blf = "checked";
               }
 
               $array_nat = explode(",",$exten['nat']);
@@ -504,7 +509,7 @@ class ExtensionsController extends Zend_Controller_Action {
 
             $secret = (isset($formData["password"]))? $formData["password"]: "";
 
-
+            $blf = (isset($formData["blf"]))? $formData["blf"]: "";
             $dtmfmode = (isset($formData["dtmf"]))? $formData["dtmf"]: "";
             $directmedia = $formData["directmedia"];
             $callLimit = $formData["calllimit"];
@@ -591,7 +596,27 @@ class ExtensionsController extends Zend_Controller_Action {
               $advCtrlType = 'N';
             }
 
-            $defFielsExten = array("accountcode" => "''", "amaflags" => "''", "defaultip" => "''", "host" => "'dynamic'", "insecure" => "''", "language" => "'pt_BR'", "deny" => "''", "permit" => "''", "mask" => "''", "port" => "''", "restrictcid" => "''", "rtptimeout" => "''", "rtpholdtimeout" => "''", "musiconhold" => "'cliente'", "regseconds" => 0, "ipaddr" => "''", "regexten" => "''", "setvar" => "''", "disallow" => "'all'");
+            $defFielsExten = array(
+              "accountcode" => "''",
+              "amaflags" => "''",
+              "defaultip" => "''",
+              "host" => "'dynamic'",
+              "insecure" => "''",
+              "language" => "'pt_BR'",
+              "deny" => "''",
+              "permit" => "''",
+              "mask" => "''",
+              "port" => "''",
+              "restrictcid" => "''",
+              "rtptimeout" => "''",
+              "rtpholdtimeout" => "''",
+              "musiconhold" => "'cliente'",
+              "regseconds" => 0,
+              "ipaddr" => "''",
+              "regexten" => "''",
+              "setvar" => "''",
+              "disallow" => "'all'"
+            );
 
             $sqlFieldsExten = $sqlDefaultValues = "";
             foreach ($defFielsExten as $key => $value) {
@@ -618,7 +643,7 @@ class ExtensionsController extends Zend_Controller_Action {
               $sql.= "usa_vc='$advVoiceMail',pickupgroup=$extenPickGrp,callgroup='$extenPickGrp',";
               $sql.= "nat='$nat',canal='$channel', authenticate=$advPadLock, ";
               $sql.= "`directmedia`='$directmedia',";
-              $sql.= "time_total=$advTimeTotal, time_chargeby='$advCtrlType', cancallforward='$advCancallforward'";
+              $sql.= "time_total=$advTimeTotal, time_chargeby='$advCtrlType', cancallforward='$advCancallforward', blf='$blf'";
               $sql.= "  WHERE id=$idExten";
             } else {
               $sql = "INSERT INTO peers (";
@@ -627,14 +652,14 @@ class ExtensionsController extends Zend_Controller_Action {
               $sql.= "dtmfmode,email,`call-limit`,incominglimit,";
               $sql.= "outgoinglimit, usa_vc, pickupgroup, canal,nat,peer_type, authenticate,";
               $sql.= "trunk, callgroup, time_total, cancallforward, directmedia, ";
-              $sql.= "time_chargeby " . $sqlFieldsExten;
+              $sql.= "time_chargeby, blf " . $sqlFieldsExten;
               $sql.= ") values (";
               $sql.= "'$exten','$extenPass','$extenName','$context','$exten','$qualify',";
               $sql.= "'$secret','$type','$allow','$exten','$fullcontact',";
               $sql.= "'$dtmfmode','$advEmail','$callLimit','1',";
               $sql.= "'1', '$advVoiceMail', $extenPickGrp ,'$channel','$nat', '$peerType',$advPadLock,";
               $sql.= "'no','$extenPickGrp', $advTimeTotal, '$advCancallforward', '$directmedia', ";
-              $sql.= "'$advCtrlType' " . $sqlDefaultValues;
+              $sql.= "'$advCtrlType', '$blf' " . $sqlDefaultValues;
               $sql.= ")";
             }
 
