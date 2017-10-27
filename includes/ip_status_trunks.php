@@ -44,6 +44,7 @@ foreach ($data as $tronco) {
 }
 
 foreach ($troncos as $key => $val) {    
+    $ami = new AMI ();
     $troncos[$key]['status'] = "N.D.";
     $troncos[$key]['latencia'] = "N.D.";
     
