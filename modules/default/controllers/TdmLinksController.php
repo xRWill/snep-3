@@ -88,7 +88,7 @@ class TdmLinksController extends Zend_Controller_Action {
             }
           }
 
-          $this->view->boards['khomp'] = $boards;
+          $this->view->boards = $boards;
         }
 
 
