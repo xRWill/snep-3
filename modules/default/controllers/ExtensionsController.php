@@ -135,7 +135,7 @@ class ExtensionsController extends Zend_Controller_Action {
           if ($khompInfo->hasWorkingBoards()) {
             foreach ($khompInfo->boardInfo() as $board) {
               if (preg_match("/FXS/", $board['model'])) {
-                $channels = range(0, $board['channels']);
+                $channels = range(0, $board['channels']-1);
                 foreach($channels as $key => $chan){
                   $boardList['b'.$board['id'].'c'.$chan] =  $board['model'] . ' - b' .$board['id'].'c'.$chan;
                 }
@@ -409,7 +409,7 @@ class ExtensionsController extends Zend_Controller_Action {
 
                   if (preg_match("/FXS/", $board['model'])) {
 
-                    $channels = range(0, $board['channels']);
+                    $channels = range(0, $board['channels']-1);
 
                     foreach($channels as $key => $chan){
 
