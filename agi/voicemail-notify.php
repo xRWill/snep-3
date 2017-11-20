@@ -80,7 +80,7 @@ if(isset($mailbox['email'])){
     'message' => $msg_content,
     'subject' => $i18n->translate("A new voicemail message"),
     'to' => $mailbox['email'],
-    'from' => 'SNEP PBX <voicemail>',
+    'from' => $config->system->mail,
     'attachment' => $myAudio
   );
   $mail = Snep_Sendmail::sendEmail($mail_msg);

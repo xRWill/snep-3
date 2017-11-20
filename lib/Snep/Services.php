@@ -50,6 +50,7 @@ class Snep_Services {
         }else{
           $server = $_SERVER["SERVER_ADDR"];
         }
+
         $url = "http://".$server.":".$_SERVER["SERVER_PORT"]."/snep/modules/default/api/?service=".$service;
         //$url = '127.0.0.1/snep/modules/default/api/?service='.$service;
 

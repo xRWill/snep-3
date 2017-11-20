@@ -36,6 +36,7 @@ class Snep_Sendmail {
      */
     public static function sendEmail($message) {
 
+        $log = Zend_Registry::get('log');
         $config_smtp = array(
                     'auth' => 'login',
                     'port' => Snep_ModuleSettings_Manager::getConfig("smtp_port")['config_value'],
@@ -52,13 +53,13 @@ class Snep_Sendmail {
         $config = Zend_Registry::get('config');
         $mail = new Zend_Mail("utf8");
         $mail->setBodyHtml( $message['message'] )
-                    ->setFrom( "{$message['from']}" )
+                    ->setFrom($message['from'], "SNEP PBX" )
                     ->setSubject( $message['subject'] );
 
         $email = explode(",", $message['to']);
         foreach($email as $mail_address) {
-            $mail_address = preg_replace('/\s+/', '', $mail_address);
-            $mail->addTo( $mail_address );
+            $mail_add = preg_replace('/\s+/', '', $mail_address);
+            $mail->addTo( $mail_add );
         }
         if($message['attachment']){
           $at = new Zend_Mime_Part(fopen($message['attachment'], 'r'));

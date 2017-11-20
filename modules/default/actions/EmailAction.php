@@ -98,6 +98,7 @@ XML;
      */
     public function execute($asterisk, $request) {
         $log = Zend_Registry::get('log');
+        $config = Zend_Registry::get('config');
         $i18n = $this->i18n;
 
         $view = new Zend_View();
@@ -114,13 +115,13 @@ XML;
 
         $message = array(
           "message" => $msg_content,
-          "from" => "SNEP PBX",
+          "from" => $config->system->mail,
           "to" => $this->config['to'],
           "subject" => $this->config['subject']
         );
 
 
-        $log->info("Sending email to " . $this->config['to']);
+        $log->info("Sending email to [" . $this->config['to'] . "] from [{$config->system->mail}]");
 
         $mail = Snep_Sendmail::sendEmail($message);
     }

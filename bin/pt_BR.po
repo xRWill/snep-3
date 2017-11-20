@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snep-3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-10 23:29-0300\n"
+"POT-Creation-Date: 2017-11-16 10:03-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Douglas Conrad <douglas.conrad@opens.com.br>\n"
 "Language-Team: \n"
@@ -16,14 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
-
-#: ../modules/default/actions/DiscarTronco.php:85
-msgid ""
-"\tThis warning is being delivered to you because Snep detected the usage of a "
-"trunk marked with your email.\n"
-msgstr ""
-"\tEste aviso esta sendo enviado para você porque o Snep detectou o uso de um "
-"tronco marcado com seu e-mail.\n"
 
 #: ../modules/default/views/scripts/cost-center/index.phtml:19
 msgid ""
@@ -72,7 +64,7 @@ msgstr ""
 "complexas como fabricantes de hardware utilizados, quantidade de ramais e "
 "filas que você utiliza."
 
-#: ../modules/default/actions/DiscarTronco.php:398
+#: ../modules/default/actions/DiscarTronco.php:404
 msgid ""
 "\n"
 "There were a previous call attempt"
@@ -127,7 +119,7 @@ msgstr "em"
 msgid ". Please contact the administrator."
 msgstr ". Entre em contato com o administrador do sistema."
 
-#: ../modules/default/controllers/CallsReportController.php:470
+#: ../modules/default/controllers/CallsReportController.php:469
 #: ../modules/default/controllers/ExportDataController.php:68
 #: ../modules/default/controllers/ExportDataController.php:91
 #: ../modules/default/controllers/ExportDataController.php:131
@@ -353,7 +345,7 @@ msgstr "Adicionar Arquivo"
 msgid "Add Multiple"
 msgstr "Adicionar Múltiplos"
 
-#: ../modules/default/controllers/ExtensionsController.php:848
+#: ../modules/default/controllers/ExtensionsController.php:873
 msgid "Add Multiples Extensions"
 msgstr "Adicionar Múltiplos Ramais"
 
@@ -497,17 +489,17 @@ msgstr "Agente:"
 msgid "Alert"
 msgstr "Alerta"
 
-#: ../modules/default/actions/DiscarTronco.php:143
+#: ../modules/default/actions/DiscarTronco.php:149
 msgid "Alert email"
 msgstr "Email de alerta"
 
 #: ../modules/default/views/scripts/action-configs/edit.phtml:24
-#: ../modules/default/actions/DiscarTronco.php:221
+#: ../modules/default/actions/DiscarTronco.php:227
 msgid "Alert repetition rate"
 msgstr "Taxa de repetição de Alerta"
 
 #: ../modules/default/views/scripts/action-configs/edit.phtml:31
-#: ../modules/default/actions/DiscarTronco.php:222
+#: ../modules/default/actions/DiscarTronco.php:228
 msgid "Alert sound"
 msgstr "Som de alerta"
 
@@ -551,7 +543,7 @@ msgstr "Permitir direcionamento para um Ramal"
 msgid "Allow voicemail"
 msgstr "Permitir voicemail"
 
-#: ../modules/default/controllers/CallsReportController.php:511
+#: ../modules/default/controllers/CallsReportController.php:510
 msgid "Amaflags"
 msgstr "Amaflags"
 
@@ -707,10 +699,10 @@ msgstr "Ocupada"
 #: ../modules/default/views/scripts/trunks/asterisk-error.phtml:17
 #: ../modules/default/views/scripts/register/index.phtml:55
 #: ../modules/default/views/scripts/error/sneperror.phtml:48
-#: ../modules/default/controllers/ExtensionsController.php:691
-#: ../modules/default/controllers/ExtensionsController.php:730
-#: ../modules/default/controllers/ExtensionsController.php:798
-#: ../modules/default/controllers/ExtensionsController.php:827
+#: ../modules/default/controllers/ExtensionsController.php:716
+#: ../modules/default/controllers/ExtensionsController.php:755
+#: ../modules/default/controllers/ExtensionsController.php:823
+#: ../modules/default/controllers/ExtensionsController.php:852
 #: ../modules/loguser/views/scripts/loguser/view.phtml:53
 msgid "Back"
 msgstr "Voltar"
@@ -862,17 +854,17 @@ msgid "Cached"
 msgstr "Em cache"
 
 #: ../modules/default/views/scripts/voicemail/new_message.phtml:212
-#: ../modules/default/views/scripts/route/email_message.phtml:212
-#: ../modules/default/actions/DiscarTronco.php:376
+#: ../modules/default/views/scripts/route/email_message.phtml:213
+#: ../modules/default/actions/DiscarTronco.php:382
 msgid "Call Date"
 msgstr "Data da Ligação"
 
-#: ../modules/default/actions/DiscarTronco.php:139
+#: ../modules/default/actions/DiscarTronco.php:145
 msgid "Call Duration Limit"
 msgstr "Limite de Duração da Chamada"
 
 #: ../modules/default/views/scripts/voicemail/new_message.phtml:209
-#: ../modules/default/views/scripts/route/email_message.phtml:209
+#: ../modules/default/views/scripts/route/email_message.phtml:210
 msgid "Call Informations"
 msgstr "Informações da Ligação"
 
@@ -894,11 +886,11 @@ msgid "Call Recording Configuration"
 msgstr "Configuração de Gravação "
 
 #: ../modules/default/views/scripts/khomp-links/view.phtml:55
-#: ../modules/default/controllers/CallsReportController.php:505
+#: ../modules/default/controllers/CallsReportController.php:504
 msgid "Call Status"
 msgstr "Status da Ligação"
 
-#: ../modules/default/actions/DiscarTronco.php:375
+#: ../modules/default/actions/DiscarTronco.php:381
 msgid "Call Time"
 msgstr "Tempo de Ligação"
 
@@ -918,7 +910,7 @@ msgstr "Data da chamada"
 msgid "Call distribution strategy"
 msgstr "Estratégia de distribuição das chamadas"
 
-#: ../modules/default/actions/DiscarTronco.php:381
+#: ../modules/default/actions/DiscarTronco.php:387
 msgid "Call status"
 msgstr "Status da Ligação"
 
@@ -930,7 +922,7 @@ msgstr ""
 msgid "Callback Module"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:513
+#: ../modules/default/controllers/CallsReportController.php:512
 msgid "Calldate"
 msgstr "Data das ligações"
 
@@ -939,7 +931,7 @@ msgid "Caller ID"
 msgstr "Nome"
 
 #: ../modules/default/views/scripts/voicemail/new_message.phtml:216
-#: ../modules/default/views/scripts/route/email_message.phtml:216
+#: ../modules/default/views/scripts/route/email_message.phtml:217
 msgid "Caller Number"
 msgstr "Número do Chamador"
 
@@ -958,7 +950,7 @@ msgstr "Nome"
 #: ../modules/default/controllers/CallsReportController.php:55
 #: ../modules/default/controllers/CallsReportController.php:327
 #: ../modules/default/controllers/CallsReportController.php:395
-#: ../modules/default/controllers/CallsReportController.php:490
+#: ../modules/default/controllers/CallsReportController.php:489
 #: /home/douglas/Dropbox/Development/snep-3/modules/default/resources.xml
 #: /home/douglas/Dropbox/Development/snep-3/configs/dashboard.xml
 msgid "Calls"
@@ -998,7 +990,7 @@ msgstr "Chamadas completadas"
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:203
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:22
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:49
-#: ../modules/default/views/scripts/extensions/addedit.phtml:434
+#: ../modules/default/views/scripts/extensions/addedit.phtml:445
 #: ../modules/default/views/scripts/khomp-links/index.phtml:66
 #: ../modules/default/views/scripts/dates-alias/addedit.phtml:98
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:74
@@ -1076,7 +1068,7 @@ msgstr "Changelog e Como fazer para atualizar"
 #: ../modules/default/views/scripts/extensions/addedit.phtml:263
 #: ../modules/default/views/scripts/khomp-links/view.phtml:53
 #: ../modules/default/views/scripts/ip-status/index.phtml:60
-#: ../modules/default/controllers/CallsReportController.php:514
+#: ../modules/default/controllers/CallsReportController.php:513
 #: ../modules/default/controllers/TrunksController.php:82
 msgid "Channel"
 msgstr "Canal"
@@ -1179,7 +1171,7 @@ msgstr "Código"
 msgid "Code Area"
 msgstr "Código de Área"
 
-#: ../modules/default/controllers/CallsReportController.php:515
+#: ../modules/default/controllers/CallsReportController.php:514
 msgid "Code Tag"
 msgstr "Código da Tag"
 
@@ -1199,7 +1191,7 @@ msgstr "Código inválido"
 msgid "Code sent to your email"
 msgstr "Código enviado para o seu e-mail"
 
-#: ../modules/default/controllers/CallsReportController.php:512
+#: ../modules/default/controllers/CallsReportController.php:511
 msgid "Code unique"
 msgstr "Código Único"
 
@@ -1306,7 +1298,7 @@ msgid "Contains"
 msgstr "Contem"
 
 #: ../modules/default/actions/GoContext.php:92
-#: ../modules/default/controllers/CallsReportController.php:510
+#: ../modules/default/controllers/CallsReportController.php:509
 msgid "Context"
 msgstr "Contexto"
 
@@ -1318,7 +1310,7 @@ msgstr "Contraste"
 msgid "Conversation"
 msgstr "Conversação"
 
-#: ../modules/default/controllers/CallsReportController.php:507
+#: ../modules/default/controllers/CallsReportController.php:506
 msgid "Conversation (seconds)"
 msgstr "Conversação (segundos)"
 
@@ -1365,8 +1357,8 @@ msgstr "Cortar"
 msgid "Cut on pipe '|'"
 msgstr "Cortar no pipe '|'"
 
-#: ../modules/default/controllers/ExtensionsController.php:729
-#: ../modules/default/controllers/ExtensionsController.php:826
+#: ../modules/default/controllers/ExtensionsController.php:754
+#: ../modules/default/controllers/ExtensionsController.php:851
 msgid "DB Delete Error: "
 msgstr "Erro ao apagar do DB: "
 
@@ -1446,7 +1438,7 @@ msgstr "Usuário da base de dados"
 #: ../modules/default/views/scripts/services-report/view.phtml:36
 #: ../modules/default/views/scripts/notifications/index.phtml:36
 #: ../modules/default/views/scripts/calls-report/view.phtml:220
-#: ../modules/default/controllers/CallsReportController.php:502
+#: ../modules/default/controllers/CallsReportController.php:501
 #: ../modules/default/controllers/ServicesReportController.php:207
 msgid "Date"
 msgstr "Data"
@@ -1468,7 +1460,7 @@ msgid "Dates Alias"
 msgstr "Alias de Datas"
 
 #: ../modules/default/views/scripts/trunks/addedit.phtml:446
-#: ../modules/default/controllers/CallsReportController.php:501
+#: ../modules/default/controllers/CallsReportController.php:500
 msgid "Day"
 msgstr "Dia"
 
@@ -1569,7 +1561,7 @@ msgstr "Controle de Qualidade"
 #: ../modules/default/controllers/DatesAliasController.php:162
 #: ../modules/default/controllers/CostCenterController.php:187
 #: ../modules/default/controllers/SoundFilesController.php:286
-#: ../modules/default/controllers/ExtensionsController.php:676
+#: ../modules/default/controllers/ExtensionsController.php:701
 #: ../modules/default/controllers/ProfilesController.php:213
 #: ../modules/default/controllers/PickupGroupsController.php:217
 #: ../modules/default/controllers/RouteController.php:656
@@ -1604,7 +1596,7 @@ msgstr "Deletar Alias de Expressão Regular"
 msgid "Delete Extension Group."
 msgstr "Deletar Grupo de Ramais."
 
-#: ../modules/default/controllers/ExtensionsController.php:697
+#: ../modules/default/controllers/ExtensionsController.php:722
 msgid "Delete Extension."
 msgstr "Deletar Ramal"
 
@@ -1612,7 +1604,7 @@ msgstr "Deletar Ramal"
 msgid "Delete File"
 msgstr "Deletar Arquivo"
 
-#: ../modules/default/controllers/ExtensionsController.php:747
+#: ../modules/default/controllers/ExtensionsController.php:772
 msgid "Delete Multiples"
 msgstr "Deletar Múltiplos"
 
@@ -1693,7 +1685,7 @@ msgstr "Descrição"
 #: ../modules/default/views/scripts/ranking-report/view.phtml:43
 #: ../modules/default/views/scripts/calls-report/view.phtml:43
 #: ../modules/default/views/scripts/calls-report/index.phtml:117
-#: ../modules/default/actions/DiscarTronco.php:380
+#: ../modules/default/actions/DiscarTronco.php:386
 msgid "Destination"
 msgstr "Destino"
 
@@ -1706,7 +1698,7 @@ msgid "Destination Group"
 msgstr "Grupo Destino"
 
 #: ../modules/default/views/scripts/voicemail/new_message.phtml:224
-#: ../modules/default/views/scripts/route/email_message.phtml:220
+#: ../modules/default/views/scripts/route/email_message.phtml:221
 msgid "Destination Number"
 msgstr "Número de Destino"
 
@@ -1718,7 +1710,7 @@ msgstr "Destino"
 #: ../modules/default/views/scripts/simulator/index.phtml:110
 #: ../modules/default/views/scripts/route/index.phtml:96
 #: ../modules/default/views/scripts/route/elements/dst.phtml:3
-#: ../modules/default/controllers/CallsReportController.php:504
+#: ../modules/default/controllers/CallsReportController.php:503
 #: ../modules/default/controllers/RankingReportController.php:199
 msgid "Destiny"
 msgstr "Destino"
@@ -1746,7 +1738,7 @@ msgstr "Detalhes"
 msgid "Dial Extension"
 msgstr "Discar para Ramal"
 
-#: ../modules/default/actions/DiscarTronco.php:141
+#: ../modules/default/actions/DiscarTronco.php:147
 #: ../modules/default/actions/DiscarRamal.php:188
 msgid "Dial Flags"
 msgstr "Flags de discagem"
@@ -1756,7 +1748,7 @@ msgid "Dial Method"
 msgstr "Método de Discagem"
 
 #: ../modules/default/views/scripts/action-configs/edit.phtml:7
-#: ../modules/default/actions/DiscarTronco.php:138
+#: ../modules/default/actions/DiscarTronco.php:144
 #: ../modules/default/actions/DiscarRamal.php:186
 msgid "Dial Timeout"
 msgstr "Tempo Limite de Discagem"
@@ -1777,7 +1769,7 @@ msgstr "Discar para Ramal"
 msgid "Dial through Trunk "
 msgstr "Discar através do Tronco"
 
-#: ../modules/default/actions/DiscarTronco.php:119
+#: ../modules/default/actions/DiscarTronco.php:125
 msgid "Dial to a Trunk"
 msgstr "Discar através do Tronco"
 
@@ -1896,7 +1888,7 @@ msgstr "Duração"
 msgid "Duration (in seconds)"
 msgstr "Duração (em segundos)"
 
-#: ../modules/default/controllers/CallsReportController.php:506
+#: ../modules/default/controllers/CallsReportController.php:505
 msgid "Duration (seconds)"
 msgstr "Duração (segundos)"
 
@@ -1928,7 +1920,7 @@ msgstr ""
 #: ../modules/default/controllers/DatesAliasController.php:113
 #: ../modules/default/controllers/CostCenterController.php:128
 #: ../modules/default/controllers/SoundFilesController.php:195
-#: ../modules/default/controllers/ExtensionsController.php:211
+#: ../modules/default/controllers/ExtensionsController.php:213
 #: ../modules/default/controllers/ProfilesController.php:136
 #: ../modules/default/controllers/PickupGroupsController.php:137
 #: ../modules/default/controllers/RouteController.php:313
@@ -1973,6 +1965,10 @@ msgstr "E-mail"
 msgid "Email address"
 msgstr "Endereço de E-mail"
 
+#: ../modules/default/views/scripts/extensions/addedit.phtml:388
+msgid "Enable Busy Notification(BLF)"
+msgstr ""
+
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:122
 #: ../modules/default/views/scripts/extensions/addedit.phtml:179
 #: ../modules/default/views/scripts/extensions/addedit.phtml:183
@@ -1994,6 +1990,7 @@ msgstr "Ativar Gravação"
 #: ../modules/default/views/scripts/extensions/addedit.phtml:353
 #: ../modules/default/views/scripts/extensions/addedit.phtml:378
 #: ../modules/default/views/scripts/extensions/addedit.phtml:380
+#: ../modules/default/views/scripts/extensions/addedit.phtml:392
 #: ../modules/default/views/scripts/trunks/addedit.phtml:197
 #: ../modules/default/views/scripts/trunks/addedit.phtml:379
 #: ../modules/default/views/scripts/trunks/addedit.phtml:391
@@ -2052,7 +2049,7 @@ msgstr "Error:"
 msgid "Error"
 msgstr "Erro"
 
-#: ../modules/default/controllers/CallsReportController.php:468
+#: ../modules/default/controllers/CallsReportController.php:467
 #: ../modules/default/controllers/ExportDataController.php:67
 #: ../modules/default/controllers/ExportDataController.php:90
 #: ../modules/default/controllers/ExportDataController.php:130
@@ -2155,7 +2152,7 @@ msgstr "Modo de exibição:"
 msgid "Export"
 msgstr "Exportar"
 
-#: ../modules/default/controllers/CallsReportController.php:491
+#: ../modules/default/controllers/CallsReportController.php:490
 #: ../modules/default/controllers/ServicesReportController.php:199
 #: ../modules/default/controllers/RankingReportController.php:184
 #: /home/douglas/Dropbox/Development/snep-3/configs/titleOptions.xml
@@ -2232,14 +2229,14 @@ msgstr "Aliasse de Expressão Regular"
 #: ../modules/default/views/scripts/services-report/view.phtml:35
 #: ../modules/default/views/scripts/ip-status/index.phtml:58
 #: ../modules/default/views/scripts/route/add_edit.phtml:73
-#: ../modules/default/controllers/ExtensionsController.php:793
+#: ../modules/default/controllers/ExtensionsController.php:818
 #: ../modules/default/controllers/RouteController.php:64
 #: ../lib/PBX/Rule/ActionConfig.php:158
 msgid "Extension"
 msgstr "Ramal"
 
-#: ../modules/default/controllers/ExtensionsController.php:887
 #: ../modules/default/controllers/ExtensionsController.php:912
+#: ../modules/default/controllers/ExtensionsController.php:937
 msgid "Extension "
 msgstr "Ramal"
 
@@ -2263,7 +2260,7 @@ msgstr "Mapeamento de Ramais"
 msgid "Extension PHP"
 msgstr "Ramal"
 
-#: ../modules/default/controllers/ExtensionsController.php:489
+#: ../modules/default/controllers/ExtensionsController.php:494
 msgid "Extension already taken. Please, choose another denomination."
 msgstr "Ramal já cadastrado. Por favor, escolha outra denominação de ramal."
 
@@ -2277,10 +2274,10 @@ msgstr "Ramal:"
 #: ../modules/default/views/scripts/ip-status/index.phtml:47
 #: ../modules/default/controllers/ExtensionsController.php:88
 #: ../modules/default/controllers/ExtensionsController.php:108
-#: ../modules/default/controllers/ExtensionsController.php:210
-#: ../modules/default/controllers/ExtensionsController.php:675
-#: ../modules/default/controllers/ExtensionsController.php:746
-#: ../modules/default/controllers/ExtensionsController.php:847
+#: ../modules/default/controllers/ExtensionsController.php:212
+#: ../modules/default/controllers/ExtensionsController.php:700
+#: ../modules/default/controllers/ExtensionsController.php:771
+#: ../modules/default/controllers/ExtensionsController.php:872
 #: /home/douglas/Dropbox/Development/snep-3/modules/default/resources.xml
 #: /home/douglas/Dropbox/Development/snep-3/configs/dashboard.xml
 msgid "Extensions"
@@ -2329,7 +2326,8 @@ msgstr "Falha"
 msgid "Failed"
 msgstr "Falhada"
 
-#: ../lib/Snep/InterfaceConf.php:47 ../lib/Snep/InterfaceConf.php:50
+#: ../lib/Snep/InterfaceConf.php:48 ../lib/Snep/InterfaceConf.php:51
+#: ../lib/Snep/InterfaceConf.php:54
 #, php-format
 msgid "Failed to open file %s with write permission."
 msgstr "Falha ao abrir arquivo %s com permissão de escrita."
@@ -2826,7 +2824,7 @@ msgstr "Sobrenome"
 msgid "Last Update"
 msgstr "Última Atualização"
 
-#: ../modules/default/actions/DiscarTronco.php:399
+#: ../modules/default/actions/DiscarTronco.php:405
 msgid "Last call to"
 msgstr "Ultima ligação para"
 
@@ -3169,7 +3167,7 @@ msgstr "Não atendida"
 msgid "Name"
 msgstr "Nome"
 
-#: ../modules/default/controllers/CallsReportController.php:517
+#: ../modules/default/controllers/CallsReportController.php:516
 msgid "Name Tag"
 msgstr "Nome da Tag"
 
@@ -3272,8 +3270,8 @@ msgstr "Nenhum registo encontrado!"
 msgid "No entries found!"
 msgstr "Nenhum registo encontrado!"
 
-#: ../modules/default/controllers/CallsReportController.php:442
-#: ../modules/default/controllers/CallsReportController.php:461
+#: ../modules/default/controllers/CallsReportController.php:441
+#: ../modules/default/controllers/CallsReportController.php:460
 msgid "No entries found."
 msgstr "Nenhum registro encontrado."
 
@@ -3308,7 +3306,7 @@ msgstr "Nenhum módulo instalado."
 msgid "No queues available"
 msgstr "Nenhuma fila cadastrada"
 
-#: ../modules/default/controllers/CallsReportController.php:550
+#: ../modules/default/controllers/CallsReportController.php:549
 #: ../modules/default/controllers/ExportDataController.php:165
 #: ../modules/default/controllers/ServicesReportController.php:242
 #: ../modules/default/controllers/RankingReportController.php:235
@@ -3372,8 +3370,8 @@ msgid "Number of Lines"
 msgstr "Número de Linhas"
 
 #: ../modules/default/views/scripts/contacts/addedit.phtml:243
-#: ../modules/default/views/scripts/extensions/addedit.phtml:499
-#: ../modules/default/views/scripts/extensions/addedit.phtml:505
+#: ../modules/default/views/scripts/extensions/addedit.phtml:510
+#: ../modules/default/views/scripts/extensions/addedit.phtml:516
 msgid "Numbers only please"
 msgstr "Apenas Números"
 
@@ -3381,7 +3379,7 @@ msgstr "Apenas Números"
 msgid "Numbers separated by ( . ). EX: 5.04"
 msgstr "Números separados por ( . ). EX: 5.04"
 
-#: ../modules/default/actions/DiscarTronco.php:142
+#: ../modules/default/actions/DiscarTronco.php:148
 msgid "Ommit origin (only for Khomp KGSM)"
 msgstr "Omitir origem (somente para Khomp KGSM)"
 
@@ -3452,11 +3450,11 @@ msgstr "Ordem"
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: ../modules/default/actions/DiscarTronco.php:378
+#: ../modules/default/actions/DiscarTronco.php:384
 msgid "Original Destination"
 msgstr "Destino Original"
 
-#: ../modules/default/actions/DiscarTronco.php:377
+#: ../modules/default/actions/DiscarTronco.php:383
 msgid "Original Source"
 msgstr "Origem Original"
 
@@ -3675,9 +3673,9 @@ msgstr "Por favor, informe um valor entre 1 e 9."
 #: ../modules/default/views/scripts/contacts/addedit.phtml:241
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:232
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:71
-#: ../modules/default/views/scripts/extensions/addedit.phtml:497
-#: ../modules/default/views/scripts/extensions/addedit.phtml:503
-#: ../modules/default/views/scripts/extensions/addedit.phtml:515
+#: ../modules/default/views/scripts/extensions/addedit.phtml:508
+#: ../modules/default/views/scripts/extensions/addedit.phtml:514
+#: ../modules/default/views/scripts/extensions/addedit.phtml:526
 #: ../modules/default/views/scripts/dates-alias/addedit.phtml:131
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:102
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:77
@@ -3742,9 +3740,9 @@ msgstr "Por favor, somente letras."
 #: ../modules/default/views/scripts/profiles/addedit.phtml:68
 #: ../modules/default/views/scripts/contacts/addedit.phtml:233
 #: ../modules/default/views/scripts/contacts/addedit.phtml:242
-#: ../modules/default/views/scripts/extensions/addedit.phtml:498
-#: ../modules/default/views/scripts/extensions/addedit.phtml:504
-#: ../modules/default/views/scripts/extensions/addedit.phtml:516
+#: ../modules/default/views/scripts/extensions/addedit.phtml:509
+#: ../modules/default/views/scripts/extensions/addedit.phtml:515
+#: ../modules/default/views/scripts/extensions/addedit.phtml:527
 #: ../modules/default/views/scripts/dates-alias/addedit.phtml:132
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:103
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:78
@@ -3942,7 +3940,7 @@ msgstr "Opções de Ranking"
 msgid "Ranking Type"
 msgstr "Tipo do Ranking"
 
-#: ../modules/default/controllers/CallsReportController.php:518
+#: ../modules/default/controllers/CallsReportController.php:517
 msgid "Rate"
 msgstr "Tarifa"
 
@@ -4106,7 +4104,7 @@ msgstr "Reportar membro como ocupado quando estiver em ligação"
 #: ../modules/default/controllers/CallsReportController.php:54
 #: ../modules/default/controllers/CallsReportController.php:326
 #: ../modules/default/controllers/CallsReportController.php:394
-#: ../modules/default/controllers/CallsReportController.php:489
+#: ../modules/default/controllers/CallsReportController.php:488
 #: ../modules/default/controllers/ExportDataController.php:49
 #: ../modules/default/controllers/ExportDataController.php:111
 #: ../modules/default/controllers/ServicesReportController.php:49
@@ -4272,8 +4270,8 @@ msgstr "Regras de Negócio"
 msgid "Rua dos Cisnes, 541 "
 msgstr "Rua dos Cisnes, 541 "
 
-#: ../modules/default/actions/DiscarTronco.php:374
-#: ../modules/default/controllers/ExtensionsController.php:794
+#: ../modules/default/actions/DiscarTronco.php:380
+#: ../modules/default/controllers/ExtensionsController.php:819
 msgid "Rule"
 msgstr "Regra"
 
@@ -4357,7 +4355,7 @@ msgstr "Sabado"
 #: ../modules/default/views/scripts/contacts/import.phtml:99
 #: ../modules/default/views/scripts/contacts/addedit.phtml:162
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:201
-#: ../modules/default/views/scripts/extensions/addedit.phtml:432
+#: ../modules/default/views/scripts/extensions/addedit.phtml:443
 #: ../modules/default/views/scripts/dates-alias/addedit.phtml:96
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:72
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:46
@@ -4411,7 +4409,7 @@ msgid "Search for a available agent (roundrobin)"
 msgstr "Buscar um agente disponí­vel (roundrobin)"
 
 #: ../modules/default/views/scripts/action-configs/edit.phtml:17
-#: ../modules/default/actions/DiscarTronco.php:219
+#: ../modules/default/actions/DiscarTronco.php:225
 msgid "Seconds left to alert"
 msgstr "Tempo restante para alerta"
 
@@ -4419,11 +4417,11 @@ msgstr "Tempo restante para alerta"
 msgid "Select"
 msgstr "Selecionar"
 
-#: ../modules/default/controllers/ExtensionsController.php:549
+#: ../modules/default/controllers/ExtensionsController.php:554
 msgid "Select a Khomp board from the list"
 msgstr "Selecione uma placa da lista"
 
-#: ../modules/default/controllers/ExtensionsController.php:552
+#: ../modules/default/controllers/ExtensionsController.php:557
 msgid "Select a Khomp channel from the list"
 msgstr "Selecione um canal da lista"
 
@@ -4725,8 +4723,8 @@ msgstr "Arquivos de Som"
 #: ../modules/default/views/scripts/route/elements/src.phtml:3
 #: ../modules/default/views/scripts/calls-report/view.phtml:42
 #: ../modules/default/views/scripts/calls-report/index.phtml:58
-#: ../modules/default/actions/DiscarTronco.php:379
-#: ../modules/default/controllers/CallsReportController.php:503
+#: ../modules/default/actions/DiscarTronco.php:385
+#: ../modules/default/controllers/CallsReportController.php:502
 #: ../modules/default/controllers/RankingReportController.php:198
 msgid "Source"
 msgstr "Origem"
@@ -4840,7 +4838,7 @@ msgstr "Status da Chamada"
 msgid "Status by Period"
 msgstr "Dados Por Perí­odo"
 
-#: ../modules/default/actions/DiscarTronco.php:400
+#: ../modules/default/actions/DiscarTronco.php:406
 msgid "Status of last call"
 msgstr "Status da ultima chamada"
 
@@ -4951,7 +4949,7 @@ msgstr "Tabela"
 #: ../modules/default/views/scripts/calls-report/view.phtml:47
 #: ../modules/default/views/scripts/calls-report/view.phtml:197
 #: ../modules/default/views/scripts/calls-report/index.phtml:201
-#: ../modules/default/controllers/CallsReportController.php:508
+#: ../modules/default/controllers/CallsReportController.php:507
 #: ../modules/default/controllers/CostCenterController.php:50
 #: ../modules/default/controllers/CostCenterController.php:82
 #: ../modules/default/controllers/CostCenterController.php:127
@@ -5034,7 +5032,7 @@ msgstr "A Operadora será removida. Depois daqui, você não poderá voltar atr�
 msgid "The board is required"
 msgstr "A placa é obrigatória"
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:511
+#: ../modules/default/views/scripts/extensions/addedit.phtml:522
 msgid "The channel is required"
 msgstr "O canal é obrigatório"
 
@@ -5081,7 +5079,7 @@ msgstr "A descrição é obrigatória"
 msgid "The directory name is required"
 msgstr "O nome do diretório é obrigatário"
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:519
+#: ../modules/default/views/scripts/extensions/addedit.phtml:530
 #: ../modules/default/views/scripts/users/addedit.phtml:121
 #: ../modules/default/views/scripts/register/index.phtml:95
 msgid "The e-mail is required"
@@ -5109,7 +5107,7 @@ msgstr ""
 "la."
 
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:228
-#: ../modules/default/views/scripts/extensions/addedit.phtml:493
+#: ../modules/default/views/scripts/extensions/addedit.phtml:504
 msgid "The extension group is required"
 msgstr "O grupo de ramal é obrigatório"
 
@@ -5125,11 +5123,11 @@ msgid "The extension group will be deleted. Are you sure?."
 msgstr "O grupo de ramais será apagado. Deseja continuar?"
 
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:231
-#: ../modules/default/views/scripts/extensions/addedit.phtml:496
+#: ../modules/default/views/scripts/extensions/addedit.phtml:507
 msgid "The extension is required"
 msgstr "O ramal é obrigatário"
 
-#: ../modules/default/controllers/ExtensionsController.php:698
+#: ../modules/default/controllers/ExtensionsController.php:723
 msgid "The extension will be deleted. After that, you have no way get it back."
 msgstr "O ramal será excluí­do. Depois disso, você não tem como recuperá-lo."
 
@@ -5162,7 +5160,7 @@ msgstr "O nome é obrigatório"
 msgid "The first think you need is Add your Extensions and their Groups."
 msgstr "A Primeira coisa que você precisa é Adicionar seus Ramais e seus Grupos."
 
-#: ../modules/default/controllers/ExtensionsController.php:790
+#: ../modules/default/controllers/ExtensionsController.php:815
 msgid ""
 "The following extensions are in use in routes, modify them prior to remove "
 "this extension"
@@ -5190,7 +5188,7 @@ msgstr ""
 msgid "The following members make use of this queue, remove before deleting:"
 msgstr "Os seguintes membros fazem uso dessa fila, retire antes de excluir:"
 
-#: ../modules/default/controllers/ExtensionsController.php:686
+#: ../modules/default/controllers/ExtensionsController.php:711
 msgid ""
 "The following routes use this extension, modify them prior to remove this "
 "extension"
@@ -5238,7 +5236,7 @@ msgstr "O campo name é necessário."
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:88
 #: ../modules/default/views/scripts/profiles/addedit.phtml:66
 #: ../modules/default/views/scripts/contacts/addedit.phtml:231
-#: ../modules/default/views/scripts/extensions/addedit.phtml:514
+#: ../modules/default/views/scripts/extensions/addedit.phtml:525
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:101
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:107
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:73
@@ -5264,7 +5262,7 @@ msgstr "A página que você está procurando não foi encontrada ou não existe.
 #: ../modules/default/views/layouts/register.phtml:338
 #: ../modules/default/views/layouts/register.phtml:389
 #: ../modules/default/views/layouts/loginregister.phtml:87
-#: ../modules/default/views/scripts/extensions/addedit.phtml:502
+#: ../modules/default/views/scripts/extensions/addedit.phtml:513
 #: ../modules/default/views/scripts/users/addedit.phtml:116
 #: ../modules/default/views/scripts/register/index.phtml:90
 msgid "The password is required"
@@ -5318,7 +5316,7 @@ msgid "The time range need to be in the formats: HH:MM-HH:MM"
 msgstr "A faixa de horário precisa estar no formato:  HH:MM-HH:MM"
 
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:236
-#: ../modules/default/views/scripts/extensions/addedit.phtml:508
+#: ../modules/default/views/scripts/extensions/addedit.phtml:519
 msgid "The trunk is required"
 msgstr "O tronco é obrigatório"
 
@@ -5405,6 +5403,14 @@ msgid ""
 msgstr ""
 "Este módulo faz a tarifação de ligações, colocando preços baseado no Troncos "
 "utilizados e tempo."
+
+#: ../modules/default/actions/DiscarTronco.php:82
+msgid ""
+"This warning is being delivered to you because Snep detected the usage of a "
+"trunk marked with your email.<br>"
+msgstr ""
+"Este é um aviso entregue à você porque o SNEP detectou o uso de um Tronco "
+"marcado com seu email.<br>"
 
 #: ../modules/callback/actions/CallbackAction.php:66
 msgid ""
@@ -5571,7 +5577,7 @@ msgstr "Tipo"
 msgid "Type Call"
 msgstr "Tipo de Chamada"
 
-#: ../modules/default/controllers/CallsReportController.php:516
+#: ../modules/default/controllers/CallsReportController.php:515
 msgid "Type Tag"
 msgstr "Tipo da Tag"
 
@@ -5716,7 +5722,7 @@ msgstr "Usuário ou senha inválido"
 msgid "User permission"
 msgstr "Permissão do usuário"
 
-#: ../modules/default/controllers/CallsReportController.php:509
+#: ../modules/default/controllers/CallsReportController.php:508
 msgid "Userfield"
 msgstr "Userfield"
 
@@ -6123,7 +6129,7 @@ msgstr "Seu Snep não possui módulos adicionais"
 msgid "Your browser does not support the audio element."
 msgstr "Seu navegador não suporta o elemento de áudio."
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:520
+#: ../modules/default/views/scripts/extensions/addedit.phtml:531
 #: ../modules/default/views/scripts/users/addedit.phtml:122
 #: ../modules/default/views/scripts/register/index.phtml:96
 #: ../modules/default/views/scripts/parameters/index.phtml:338
@@ -6148,7 +6154,7 @@ msgstr "CEP"
 msgid "Zipcode invalid"
 msgstr "CEP inválido"
 
-#: ../modules/default/actions/DiscarTronco.php:82
+#: ../modules/default/actions/DiscarTronco.php:79
 msgid "[snep] Warning of trunk usage"
 msgstr "[snep] Aviso de uso do tronco"
 
@@ -6160,7 +6166,7 @@ msgstr "_csv_"
 msgid "action-configs/index"
 msgstr "action-configs/index"
 
-#: ../modules/default/controllers/CallsReportController.php:543
+#: ../modules/default/controllers/CallsReportController.php:542
 msgid "calls"
 msgstr "chamadas"
 
@@ -6267,8 +6273,8 @@ msgstr "import_icon.png"
 #: ../modules/default/views/scripts/action-configs/edit.phtml:19
 #: ../modules/default/views/scripts/action-configs/edit.phtml:26
 #: ../modules/default/views/scripts/action-configs/edit.phtml:33
-#: ../modules/default/actions/DiscarTronco.php:140
-#: ../modules/default/actions/DiscarTronco.php:220
+#: ../modules/default/actions/DiscarTronco.php:146
+#: ../modules/default/actions/DiscarTronco.php:226
 msgid "in milliseconds"
 msgstr "em milisegundos"
 
@@ -6571,6 +6577,13 @@ msgstr "www.sneplivre.com.br"
 #: /home/douglas/Dropbox/Development/snep-3/modules/portability/info.xml
 msgid "www.sneppbx.com"
 msgstr ""
+
+#~ msgid ""
+#~ "\tThis warning is being delivered to you because Snep detected the usage of "
+#~ "a trunk marked with your email.\n"
+#~ msgstr ""
+#~ "\tEste aviso esta sendo enviado para você porque o Snep detectou o uso de "
+#~ "um tronco marcado com seu e-mail.\n"
 
 #~ msgid "New sound file added"
 #~ msgstr "Novo Arquivos de Som adicionado"

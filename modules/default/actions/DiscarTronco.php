@@ -66,32 +66,36 @@ class DiscarTronco extends PBX_Rule_Action {
   private function sendMailAlert($addresses, $informations) {
     $log = Zend_Registry::get('log');
     $config = Zend_Registry::get('config');
-    $mail = new Zend_Mail('UTF-8');
 
-    $mail->setFrom($config->system->mail, 'SNEP PBX');
+    $message = array(
+      "from" => $config->system->mail,
+      "to" => implode(',',$addresses)
+    );
 
-    if(is_array($addresses)) {
-      foreach ($addresses as $address) {
-        $mail->addTo(trim($address));
-      }
-    }
-    else {
-      $mail->addTo($addresses);
-    }
+    $view = new Zend_View();
+    $view->setScriptPath(APPLICATION_PATH . '/modules/default/views/scripts/route');
 
-    $mail->setSubject($this->i18n->translate('[snep] Warning of trunk usage'));
+    $message['subject'] = $this->i18n->translate('[snep] Warning of trunk usage');
 
-    $tronco = PBX_Trunks::get($this->config['tronco']);
-    $msg = $this->i18n->translate("\tThis warning is being delivered to you because Snep detected the usage of a trunk marked with your email.\n");
-    $msg .= $this->i18n->translate("Warning to trunk $tronco, the following information where gathered by the system:\n");
+    // $tronco = PBX_Trunks::get($this->config['tronco']);
+    $msg = $this->i18n->translate("This warning is being delivered to you because Snep detected the usage of a trunk marked with your email.<br>");
+    $msg .= "<b>" . $this->i18n->translate("Rule");
+    $msg .= ":</b> {$informations['rule']}<br>";
+    $msg .= "<b>" . $this->i18n->translate("Call Status");
+    $msg .= ":</b> {$informations['callstatus']}<br>";
 
-    foreach ($informations as $info => $message) {
-      $msg .= "$info: $message\n";
-    }
+    $view->content = $msg;
+    $view->call = array(
+      'source' => $informations['from'],
+      'destination' => $informations['to'],
+      'calldate' => $informations['calldate'] . ' - ' . $informations['calltime']
+    );
 
-    $mail->setBodyText($msg);
-    $log->info("Sending email to '{$this->config['alertEmail']}'");
-    $mail->send();
+    $msg_content = $view->render('email_message.phtml');
+
+    $message['message'] = $msg_content;
+    $log->info("Sending email to [{$message['to']}] from [{$message['from']}]");
+    Snep_Sendmail::sendEmail($message);
   }
 
   /**
@@ -371,14 +375,14 @@ XML;
       // Enviar email de alerta.
       if(isset($this->config['alertEmail']) && $this->config['alertEmail'] != "") {
         $informations = array(
-          $trs->translate('Rule')             => $this->getRule(),
-          $trs->translate('Call Time')        => date('H:i'),
-          $trs->translate('Call Date')        => date('d/m/Y'),
-          $trs->translate('Original Source')  => $request->getOriginalCallerid(),
-          $trs->translate('Original Destination') => $request->getOriginalExtension(),
-          $trs->translate('Source')           => $request->origem,
-          $trs->translate('Destination')      => $request->destino,
-          $trs->translate('Call status')      => $dialstatus['data']
+          "rule"             => $this->getRule(),
+          "calltime"        => date('H:i'),
+          "calldate"        => date('d/m/Y'),
+          "orig_source"  => $request->getOriginalCallerid(),
+          "orig_destination" => $request->getOriginalExtension(),
+          "from"           => $request->origem,
+          "to"      => $request->destino,
+          "callstatus"      => $dialstatus['data']
         );
 
         if($lastdialstatus != "") {

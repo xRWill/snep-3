@@ -438,7 +438,6 @@ class CallsReportController extends Zend_Controller_Action {
                   if($type != 'graphic'){
 
                     if($row->quantity == 0){
-                      Zend_Debug::Dump($row);exit;
                       $this->view->error_message = $this->view->translate("No entries found.");
                       $this->renderScript('error/sneperror.phtml');
                     }else{
