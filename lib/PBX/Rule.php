@@ -540,9 +540,9 @@ class PBX_Rule {
               $to_execute = false;
             } catch (PBX_Rule_Action_Exception_GoTo $goto) {
               $priority = $goto->getIndex() - 1;
-              $log->info("Deviating to action {$goto->getIndex()}.");
+              $log->info("Forwarding to action {$goto->getIndex()}.");
             } catch (Exception $ex) {
-              $log->crit("Failure on execute action $priority-" . get_class($acao) . " of rule $this->id-$this");
+              $log->crit("Failure on execute action $priority -" . get_class($acao) . " of rule $this->id-$this");
               $log->crit($ex);
             }
 

@@ -40,7 +40,7 @@ class ActionLoop extends PBX_Rule_Action {
      * @var int loop count
      */
     private $count;
-    
+
     /**
      * @var Internacionalization
      */
@@ -103,7 +103,7 @@ class ActionLoop extends PBX_Rule_Action {
     <int>
         <label>$lbl_actionindex</label>
         <id>actionindex</id>
-        <default>0</default>
+        <default>1</default>
         $actionindex
     </int>
 </params>
@@ -112,7 +112,7 @@ XML;
 
     /**
      * Execute the action
-     * 
+     *
      * @param Asterisk_AGI $asterisk
      * @param Asterisk_AGI_Request $request
      */
