@@ -322,7 +322,7 @@ class ExtensionsController extends Zend_Controller_Action {
               }
 
 
-              //$codecsDefault = array("ulaw","alaw","ilbc","g729","gsm","h264","h263","h263p","all");
+              $codecsDefault = array("ulaw","alaw","ilbc","g729","gsm","h264","h263","h263p","all");
               $codecsDefault = PBX_Interfaces::getCodecs();
 
               $codecs = explode(";", $exten['allow']);
@@ -338,9 +338,11 @@ class ExtensionsController extends Zend_Controller_Action {
 
               }
 
+
               $this->view->codec1 = $codec1;
               $this->view->codec2 = $codec2;
               $this->view->codec3 = $codec3;
+
 
               break;
 
@@ -382,9 +384,9 @@ class ExtensionsController extends Zend_Controller_Action {
               $codec3 = "";
               foreach($codecsDefault as $key => $value){
 
-                $codec1 .= ($value == $codecs[0]) ? '<option value="'.$value.'" selected>'.$value.'</option>\n' : '<option value="'.$value.'">'.$value.'</option>\n';
-                $codec2 .= ($value == $codecs[1]) ? '<option value="'.$value.'" selected>'.$value.'</option>\n' : '<option value="'.$value.'">'.$value.'</option>\n';
-                $codec3 .= ($value == $codecs[2]) ? '<option value="'.$value.'" selected>'.$value.'</option>\n' : '<option value="'.$value.'">'.$value.'</option>\n';
+                  $codec1 .= ($value['format'] == $codecs[0]) ? '<option value="'.$value['format'].'" selected>'.$value['type'].' - '.$value['format'].'</option>\n' : '<option value="'.$value['format'].'">'.$value['type'].' - '.$value['format'].'</option>\n';
+                  $codec2 .= ($value['format'] == $codecs[1]) ? '<option value="'.$value['format'].'" selected>'.$value['type'].' - '.$value['format'].'</option>\n' : '<option value="'.$value['format'].'">'.$value['type'].' - '.$value['format'].'</option>\n';
+                  $codec3 .= ($value['format'] == $codecs[2]) ? '<option value="'.$value['format'].'" selected>'.$value['type'].' - '.$value['format'].'</option>\n' : '<option value="'.$value['format'].'">'.$value['type'].' - '.$value['format'].'</option>\n';
 
               }
 
