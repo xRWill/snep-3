@@ -35,7 +35,7 @@ INSERT INTO `expr_alias` VALUES (4,'Celular LDN');
 --
 -- Default values expression alias
 --
-INSERT INTO `expr_alias_expression` VALUES (1,'[2-5]XXXXXXX'),(2,'[6-9]XXXXXXX'),(2,'9[6-9]XXXXXXX'),(3,'0|XX[2-5]XXXXXXX'),(3,'XX[2-5]XXXXXXX'),(3,'0XX|XX[2-5]XXXXXXX'),(4,'0|XX[6-9]XXXXXXX'),(4,'0XX|XX[6-9]XXXXXXX'),(4,'0|XX9[4-9]XXXXXXX'),(4,'XX9[4-9]XXXXXXX'),(4,'0XX|XX9[4-9]XXXXXXX');
+INSERT INTO `expr_alias_expression` VALUES (1,'[2-5]XXXXXXX'),(2,'9XXXXXXXX'),(3,'0|XX[2-5]XXXXXXX'),(3,'0XX|XX[2-5]XXXXXXX'),(4,'XX9XXXXXXXX'),(4,'0|XX9XXXXXXXX'),(4,'0XX|XX9XXXXXXXX');
 
 --
 -- Default group extension
