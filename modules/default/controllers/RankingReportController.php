@@ -75,17 +75,20 @@ class RankingReportController extends Zend_Controller_Action {
 
         $formData = $this->_request->getParams();
 
+        $dateForm = explode(" - ", $formData["period"]);
+        $param = Snep_Reports::fmt_date($dateForm[0],$dateForm[1]);
+
         $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
                             $this->view->translate("Reports"),
                             $this->view->translate("Ranking"),
-                            $formData['init_day'] . ' - ' . $formData['till_day']));
+                            $dateForm[0] . ' - ' . $dateForm[1]));
 
         // Check Bond
         $auth = Zend_Auth::getInstance();
         $username = $auth->getIdentity();
         $user = Snep_Users_Manager::getName($username);
 
-        $param = Snep_Reports::fmt_date($formData['init_day'],$formData['till_day']);
+        
 
         // Binds
         if($user['id'] != '1'){

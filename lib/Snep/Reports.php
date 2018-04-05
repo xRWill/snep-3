@@ -44,6 +44,7 @@ class Snep_Reports {
      * @return <array> $pagesvalue
      */
     public function createPages($page,$line_limit,$cont = null){
+        // page = 1 e line_limit = 50;
 
         $numbpagenext = $page;
         $numbpageprev = $page;
@@ -52,15 +53,10 @@ class Snep_Reports {
         if($numbpagenext == ceil($cont / $line_limit)){
             $numbpagenext = ceil($cont / $line_limit) -1;
         }else{
-
             while($numbpagenext % 5 != 0){
                 $numbpagenext++;
             }
         }
-
-        // if($numbpagenext > ceil($cont / $line_limit)){ 
-        //     $numbpagenext = ceil($cont / $line_limit) -1;
-        // }
         
         if($numbpageprev % 5 != 0){
             if($numbpageprev < 5){

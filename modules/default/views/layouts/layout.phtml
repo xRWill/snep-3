@@ -14,13 +14,16 @@ if($controller != 'auth'){
     $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/validate/jquery.validate.js');
     $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/validate/validate-snep.js');
     $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/validate/jquery.maskedinput.js');
+    $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/daterangepicker/moment.js');
+    $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/daterangepicker/daterangepicker.js');
 
     // Guide Help
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/introjs.css');
     $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/intro.js');
-
+    
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/bootstrap.min.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/metisMenu.min.css');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/includes/javascript/daterangepicker/daterangepicker.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/snep.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/morris.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/font-awesome.min.css');

@@ -38,7 +38,8 @@ header('Cache-Control: max-age=0' );
           <table class="table demo table-hover" data-filter="#filter" data-page-size="<?php echo $this->lineNumber?>">
             <thead>
               <tr>
-                <th><?php echo $this->translate("Call date") ?></th>
+                <th class="text-center">#</th>
+                <th class="text-center"><?php echo $this->translate("Call date") ?></th>
                 <th class="text-center"><?php echo $this->translate("Source") ?></th>
                 <th class="text-center"><?php echo $this->translate("Destination") ?></th>
                 <th class="text-center"><?php echo $this->translate("Status") ?></th>
@@ -61,9 +62,11 @@ header('Cache-Control: max-age=0' );
               <tbody>
                 <?php
                 $contline = ($this->page * $this->lineNumber - $this->lineNumber+1);
+               
                 foreach( $this->call_list as $id => $callsList ): ?>
                 <?php if($id != "status" && $id != "totals" && $id != 'report_type'){ ?>
                   <tr>
+                    <td class="text-center"><?php echo $contline ?></td>
                     <td class="text-center"><?php echo $callsList->dia; ?></td>
                     <td class="text-center">
                       <?php if(!$this->replace){

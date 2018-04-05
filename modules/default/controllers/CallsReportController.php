@@ -97,7 +97,9 @@ class CallsReportController extends Zend_Controller_Action {
         $line_limit = $this->view->lineNumber;
         $locale = false;
         $type = 'preview';
-
+        
+        $dateForm = explode(" - ", $formData["period"]);
+        
         // Check Bond
         $auth = Zend_Auth::getInstance();
         $username = $auth->getIdentity();
@@ -106,7 +108,7 @@ class CallsReportController extends Zend_Controller_Action {
         // Primary select
         if(!isset($formData['page'])){
 
-          $param = Snep_Reports::fmt_date($formData['initDay'],$formData['finalDay']);
+          $param = Snep_Reports::fmt_date($dateForm[0],$dateForm[1]);
 
           // Binds
           if($user['id'] != '1'){
@@ -249,6 +251,7 @@ class CallsReportController extends Zend_Controller_Action {
 
           // Pagination
           $pagesValue = Snep_Reports::createPages(1, $line_limit);
+          
           $this->view->pageprev = $pagesValue['pageprev'];
           $this->view->pagenext = $pagesValue['pagenext'];
           $this->view->page = 1;
@@ -325,7 +328,8 @@ class CallsReportController extends Zend_Controller_Action {
                 $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
                   $this->view->translate("Reports"),
                   $this->view->translate("Calls"),
-                  $this->view->translate("Analytic")));
+                  $this->view->translate("Analytic"),
+                  $dateForm[0] . ' - ' . $dateForm[1]));
 
                   $listItems = array();
                   $format = new Formata;
@@ -393,7 +397,8 @@ class CallsReportController extends Zend_Controller_Action {
                   $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
                     $this->view->translate("Reports"),
                     $this->view->translate("Calls"),
-                    $this->view->translate("Synthetic")));
+                    $this->view->translate("Synthetic"),
+                    $dateForm[0] . ' - ' . $dateForm[1]));
 
 
                     // Calcule ccustos

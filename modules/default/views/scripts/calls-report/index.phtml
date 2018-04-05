@@ -26,31 +26,16 @@
             <legend><?php echo $this->translate("Period");?></legend>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("From");?></label>
+                <label class="col-sm-3 control-label"><?php echo $this->translate("Period");?></label>
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <input type='text' class="snep-datetimepicker form-control" id='initDay' name="initDay" required/>
+                        <input type='text' class="form-control" id="daterange-btn" name="period" required readonly/>
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("To");?></label>
-                <div class="col-sm-4">
-                    <div class="input-group">
-                        <input type='text' class="snep-datetimepicker form-control" id='finalDay' name="finalDay" required/>
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </fieldset>
 
         <fieldset>
@@ -310,23 +295,29 @@
 <script type="text/javascript">
 
 jQuery.noConflict();
-jQuery(function () {
 
-    jQuery('#initDay,#finalDay').datetimepicker({
-        locale: "<?php echo $this->datepicker_locale; ?>",
-        sideBySide: true,
-        showClear: true,
-        showClose: true
-    });
-
-    jQuery("#initDay").on("dp.change",function (e) {
-        jQuery('#finalDay').data("DateTimePicker").minDate(e.date);
-    });
-
-    jQuery("#finalDay").on("dp.change",function (e) {
-        jQuery('#initDay').data("DateTimePicker").maxDate(e.date);
-    });
-});
+//Date range as a button
+jQuery('#daterange-btn').daterangepicker(
+    {
+      ranges: {
+        '<?php echo $this->translate("Today");?>': [moment(), moment()],
+        '<?php echo $this->translate("Yesterday");?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 7 Days");?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 15 Days");?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 30 Days");?>': [moment().subtract(29, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("This Month");?>': [moment().startOf('month'), moment().endOf('month')],
+        '<?php echo $this->translate("Last Month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      },
+      startDate: moment().format('DD/MM/YYYY 00:00'),
+      endDate:  moment().format('DD/MM/YYYY 23:59'),
+      timePicker: true,
+      timePickerIncrement: 1,
+      timePicker24Hour: true,
+    },
+    function (start, end) {
+      jQuery('#daterange-btn span').html(start.format('DD/MM/YYYY HH:mm') + ' - ' + end.format('DD/MM/YYYY HH:mm'));
+    }
+);
 
 function checksrc(value){
 
