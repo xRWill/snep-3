@@ -1,0 +1,132 @@
+<?php
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/datatables/media/css/dataTables.bootstrap.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/datatables/resources/syntax/shCore.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/datatables/media/css/buttons.dataTables.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/datatables/resources/demo.css");
+$this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/snep.js");
+$this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/registrations.js');
+$this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeItem.js');
+?>
+
+<script src="/snep/includes/javascript/datatables/media/js/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/media/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/resources/syntax/shCore.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/resources/demo.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/datatables.net-buttons/js/dataTables.buttons.min.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/media/js/jszip.min.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/pdfmake/pdfmake.min.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/pdfmake/vfs_fonts.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/datatables.net-buttons/js/buttons.html5.min.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/jquery.bootpag.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/simpleplayer.js" type="text/javascript"></script>
+
+<div class="row">
+  <div class="tab-content">
+    <div class="tab-pane active" id="demo">
+      <table class="table table-striped" id="analytic">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center"><?php echo $this->translate("Call date") ?></th>
+            <th class="text-center"><?php echo $this->translate("Source") ?></th>
+            <th class="text-center"><?php echo $this->translate("Destination") ?></th>
+            <th class="text-center"><?php echo $this->translate("Status") ?></th>
+            <th class="text-center"><?php echo $this->translate("Duration") ?></th>
+            <th class="text-center"><?php echo $this->translate("Conversation") ?></th>
+            <th class="text-center"><?php echo $this->translate("Tag") ?></th>
+            <?php if ($this->locale) {?>
+              <th class="text-center"><?php echo $this->translate("Location"); ?></th>
+            <?php }?>
+            <?php if ($this->record) {?>
+              <th class="text-center" data-sort-ignore="true"><?php echo $this->translate("Call Record") ?></th>
+            <?php }?>
+            <?php if ($this->bill) {?>
+              <th class="text-center" data-sort-ignore="true"><?php echo $this->translate("Billing") ?></th>
+            <?php }?>
+          </tr>
+        </thead>
+        <tbody class="table-data">
+          <?php $cont = 1;
+          foreach ($this->call_list as $id => $callsList): ?>
+            <tr>
+              <td class="text-center"><?php echo $cont; ?></td>
+              <td class="text-center"><?php echo $callsList['dia']; ?></td>
+              <td class="text-center">
+                <?php if (!$callsList['src_name']) {echo $this->format->fmt_telefone(array("a" => $callsList['src']));} else {echo $callsList['src_name'];}?>
+              </td>
+              <td class="text-center">
+                <?php if (!$callsList['dst_name']) {echo $this->format->fmt_telefone(array("a" => $callsList['dst']));} else {echo $callsList['dst_name'];}?>
+              </td>
+              <td class="text-center"><h4><span class="<?php echo $callsList['class']; ?>"><?php echo $this->translate($callsList['disposition']); ?></span></h4></td>
+              <td class="text-center"><?php echo $this->format->fmt_segundos(array("a" => $callsList['duration'], "b" => 'hms')); ?></td>
+              <td class="text-center"><?php echo $this->format->fmt_segundos(array("a" => $callsList['billsec'], "b" => 'hms')); ?></td>
+              <td class="text-center"><?php echo $callsList['nome']; ?></td>
+              <?php if ($this->locale) {?><td class="text-center"><?php echo $callsList['city']; ?></td><?php }?>
+              <?php if ($this->record) {?>
+                <?php if ($callsList['userfield'] != "" && $callsList['file_path'] != false){ ?>
+                  <td class="text-center">
+                    <audio  class="player" src='<?php echo $callsList->file_path ?>' type="audio/x-wav"  title="<?php echo $this->translate('Listen');?>" preload="none">
+                      <?php echo $this->translate('Your browser does not support the audio element.') ?>
+                    </audio>
+                    <a class="btn btn-down" href="<?php echo $callsList->file_name; ?>" download="<?php echo $callsList->userfield . ".wav"; ?>" role="button" title="Download">
+                      <span class="glyphicon glyphicon-download"></span>
+                    </a>
+                  </td>
+                <?php }else{ ?>
+                  <td  class="text-center"><span class="sn-sound-off snep-list-sounds"></span></td>
+                <?php } ?>
+              <?php }?>
+              <?php if ($this->bill) {?>
+                <td class="text-center"><?php echo $callsList['price']; ?></td>
+              <?php }?>
+            </tr>
+          <?php $cont++ ?>
+          <?php endforeach?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> <!-- /.row -->
+
+<script type="text/javascript">
+
+jQuery.noConflict();
+
+jQuery(document).ready(function() {
+  jQuery('#analytic').dataTable( {
+    "pageLength": <?php echo $this->lineNumber ?>,
+    "columnDefs": [
+      { "orderable": false, "targets": 7 }
+    ],
+    "oLanguage": {
+      "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
+    },
+    dom: 'Bfrtip',
+    buttons: [
+      {
+        extend: 'excelHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - <?php echo $this->exportName ?>"
+      },
+      {
+        extend: 'csvHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - <?php echo $this->exportName ?>"
+      },
+      {
+        extend: 'pdfHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - <?php echo $this->exportName ?>"
+      }
+    ]
+  });
+});
+
+jQuery(document).ready(function() {
+  var settings = {
+    progressbarWidth: '60px',
+    progressbarHeight: '5px',
+    progressbarColor: '#959595',
+    progressbarBGColor: '#ebecee',
+    defaultVolume: 0.8
+  };
+  jQuery(".player").player(settings);
+});
+</script>

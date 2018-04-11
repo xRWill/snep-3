@@ -1,339 +1,302 @@
-<?php
-    $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-datetimepicker.css" );
-?>
-<script src="/snep/includes/javascript/moment-with-locales.min.js" type="text/javascript" ></script>
-<script src="/snep/includes/javascript/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 <div class="row">
-    <div class="tab-content">
-            <div class="tab-pane active" id="demo">
-                <?php if($this->key){ ?>
-                    <div class="snep-body-top-buttons">
-                        <div class="snep-body-search">
-                            <?php if($this->key){
-                                echo "";
-                                ?>
-                                <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard');?>"></a>
-                            <?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="demo">
+      <?php if ($this->key) {?>
+        <div class="snep-body-top-buttons">
+          <div class="snep-body-search">
+            <?php if ($this->key) { echo "";?>
+              <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard'); ?>"></a>
+            <?php }?>
+          </div>
         </div>
+      <?php }?>
     </div>
-    <form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 0px;" action="<?php echo $this->url(array("controller" => "calls-report", "action" => "index"), null, true); ?>" METHOD="post">
+  </div>
+</div>
 
-        <fieldset>
-            <legend><?php echo $this->translate("Period");?></legend>
+<form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 0px;" action="<?php echo $this->url(array("controller" => "calls-report", "action" => "index"), null, true); ?>" METHOD="post">
+  
+  <fieldset>
+    <legend><?php echo $this->translate("Type"); ?></legend>
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Report Type") ?></label>
+      <div class="col-sm-3">
+        <select class="form-control" name="report_type">
+          <option value="analytic"><?php echo $this->translate("Analytic"); ?></option>
+          <option value="synthetic"><?php echo $this->translate("Synthetic");?></option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Period");?></label>
-                <div class="col-sm-4">
-                    <div class="input-group">
-                        <input type='text' class="form-control" id="daterange-btn" name="period" required readonly/>
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </fieldset>
-
-        <fieldset>
-
-            <legend><?php echo $this->translate("Source");?></legend>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Contact Groups");?></label>
-                <div class="col-sm-4">
-                    <select class="form-control" name="selectContactGroupSrc" id="selectContactGroupSrc">
-                        <?php foreach($this->contact_groups as $key => $group){ ?>
-                            <option value="<?php echo $group['id'];?>"><?php echo $group['name']?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Contacts");?></label>
-                <div class="col-sm-4">
-                    <select class="form-control" name="selectContactSrc" id="selectContactSrc">
-                        <?php foreach($this->contacts as $key => $contact){ ?>
-                            <option value="<?php echo $contact['id'];?>"><?php echo $contact['name']?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Source Group");?></label>
-                <div class="col-sm-4">
-                    <select class="form-control" name="selectSrc" id="selectSrc" onChange="checksrc(this.value);">
-                        <?php foreach($this->groups as $key => $group){ ?>
-                            <option value="<?php echo $group['id'];?>"><?php echo $group['name']?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Source Extensions");?></label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="groupSrc" id="groupSrc" placeholder='<?php echo $this->translate("Separated by a comma")?>' />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Option")?></label>
-                <div class="col-sm-6">
-                    <label class="radio-inline">
-                        <input type="radio" name="order_src" id="equal" value="equal" checked ><?php echo $this->translate("Equal");?>
-                    </label>
-
-                    <label class="radio-inline">
-                        <input type="radio" name="order_src" id="contain" value="contain"><?php echo $this->translate("Contains");?>
-                    </label>
-                </div>
-            </div>
-
-        </fielset>
-
-        <fieldset>
-
-            <legend><?php echo $this->translate("Destination");?></legend>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Contact Groups");?></label>
-                <div class="col-sm-4">
-                    <select class="form-control" name="selectContactGroupDst" id="selectContactGroupDst">
-                        <?php foreach($this->contact_groups as $key => $group){ ?>
-                            <option value="<?php echo $group['id'];?>"><?php echo $group['name']?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Contacts");?></label>
-                <div class="col-sm-4">
-                    <select class="form-control" name="selectContactDst" id="selectContactDst">
-                        <?php foreach($this->contacts as $key => $contact){ ?>
-                            <option value="<?php echo $contact['id'];?>"><?php echo $contact['name']?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Destination Group");?></label>
-                <div class="col-sm-4">
-                    <select class="form-control" name="selectDst" id="selectDst" onChange="checkdst(this.value);">
-                        <?php foreach($this->groups as $key => $group){ ?>
-                            <option value="<?php echo $group['id'];?>"><?php echo $group['name']?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Destination Extensions");?></label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="groupDst" id="groupDst" placeholder='<?php echo $this->translate("Separated by a comma")?>' />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Option")?></label>
-                <div class="col-sm-6">
-                    <label class="radio-inline">
-                        <input type="radio" name="order_dst" id="equal" value="equal" checked><?php echo $this->translate("Equal");?>
-                    </label>
-
-                    <label class="radio-inline">
-                        <input type="radio" name="order_dst" id="contain" value="contain"><?php echo $this->translate("Contains");?>
-                    </label>
-                </div>
-            </div>
-
-
-        </fielset>
-
-        <fieldset>
-
-            <legend><?php echo $this->translate("Additional filters");?></legend>
-
-
-             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Status")?></label>
-                <div class="col-sm-6">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="ANSWERED" id="ANSWERED" checked/><?php echo $this->translate("Answered")?>
-                        </label>
-                        <label>
-                            <input type="checkbox" name="NOANSWER" id="NOANSWER" checked/><?php echo $this->translate("Not Answered")?>
-                        </label>
-                        <label>
-                            <input type="checkbox" name="BUSY" id="BUSY" checked/><?php echo $this->translate("Busy")?>
-                        </label>
-                        <label>
-                            <input type="checkbox" name="FAILED" id="FAILED" checked/><?php echo $this->translate("Failed")?>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Tag");?></label>
-                <div class="col-sm-4">
-                    <select multiple class="form-control" name="costs_center[]" id="costs_center[]">
-                        <?php foreach($this->costs as $key => $cost){?>
-                        <option value='<?php echo $cost['codigo']?>'><?php echo $cost['tipo'].': ' .$cost['codigo'].' - '.$cost['nome'];?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Minimum Call Time");?></label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="duration_init" id="duration_init" placeholder='<?php echo $this->translate("In seconds")?>' />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Maximum Call Time");?></label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="duration_end" placeholder='<?php echo $this->translate("In seconds")?>' />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Caller location")?></label>
-                <div class="col-sm-6">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="locale" id="locale" />
-                            <?php echo $this->translate("Enabled")?>
-                            &nbsp;&nbsp;&nbsp;
-                            <small>
-                                <span style="color: red"><?php echo "( ". $this->translate("If enabled the query will be slower")." )"; ?></span>
-                            </small>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Caller record")?></label>
-                <div class="col-sm-6">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="record" id="record" />
-                            <?php echo $this->translate("Enabled")?>
-                            &nbsp;&nbsp;&nbsp;
-                            <small>
-                                <span style="color: red"><?php echo "( ". $this->translate("If enabled the query will be slower")." )"; ?></span>
-                            </small>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Replace number by contact name/extension")?></label>
-                <div class="col-sm-6">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="replace" id="replace" />
-                            <?php echo $this->translate("Enabled")?>
-                            &nbsp;&nbsp;&nbsp;
-                            <small>
-                                <span style="color: red"><?php echo "( ". $this->translate("If enabled the query will be slower")." )"; ?></span>
-                            </small>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Report Type")?></label>
-                <div class="col-sm-6">
-                    <label class="radio-inline">
-                        <input type="radio" name="report_type" id="analytic" value="analytic" checked><?php echo $this->translate("Analytic");?>
-                    </label>
-
-                    <label class="radio-inline">
-                        <input type="radio" name="report_type" id="synthetic" value="synthetic"><?php echo $this->translate("Synthetic");?>
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Preview")?></label>
-                <div class="col-sm-6">
-                    <label class="radio-inline">
-                        <input type="radio" name="preview" id="screen" value="screen" checked><?php echo $this->translate("Screen");?>
-                    </label>
-
-                    <label class="radio-inline">
-                        <input type="radio" name="preview" id="graphic" value="graphic"><?php echo $this->translate("Graphic");?>
-                    </label>
-                </div>
-
-            </div>
-
-        </fieldset>
-        <div class="snep-body-footer-buttons">
-           <button type="submit" class="btn btn-add" name="showreport" value="showreport"><?php echo $this->translate("Show Report");?></button>
+  <fieldset>
+    <legend><?php echo $this->translate("Period"); ?></legend>
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Period"); ?></label>
+      <div class="col-sm-3">
+        <div class="input-group">
+          <input type='text' class="form-control" id="daterange-btn" name="period" required readonly/>
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </div>
         </div>
-        <br />
-    </form>
-</div> <!-- /.row -->
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><?php echo $this->translate("Source"); ?></legend>
+    <?php if (count($this->contact_groups)>0) {?>
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Contact Groups"); ?></label>
+          <div class="col-sm-3">
+          <select class="form-control" name="selectContactGroupSrc" id="selectContactGroupSrc">
+            <?php foreach ($this->contact_groups as $key => $group) {?>
+              <option value="<?php echo $group['id']; ?>"><?php echo $group['name'] ?></option>
+            <?php }?>
+          </select>
+        </div>
+      </div>
+    <?php }?>
+
+    <?php if (count($this->contacts)>1) {?>
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Contacts"); ?></label>
+        <div class="col-sm-3">
+          <select class="form-control" name="selectContactSrc" id="selectContactSrc">
+            <?php foreach ($this->contacts as $key => $contact) {?>
+              <option value="<?php echo $contact['id']; ?>"><?php echo $contact['name'] ?></option>
+            <?php }?>
+          </select>
+        </div>
+      </div>
+    <?php }?>
+
+    <?php if (count($this->groups)>0) {?>
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Source Group"); ?></label>
+        <div class="col-sm-3">
+          <select class="form-control" name="selectSrc" id="selectSrc" onChange="checksrc(this.value);">
+            <?php foreach ($this->groups as $key => $group) {?>
+              <option value="<?php echo $group['id']; ?>"><?php echo $group['name'] ?></option>
+            <?php }?>
+          </select>
+        </div>
+      </div>
+    <?php }?>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Source Extensions"); ?></label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" name="groupSrc" id="groupSrc" placeholder='<?php echo $this->translate("Separated by a comma") ?>' />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Option") ?></label>
+      <div class="col-sm-3">
+        <label class="radio-inline">
+          <input type="radio" name="order_src" id="equal" value="equal" checked ><?php echo $this->translate("Equal"); ?>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="order_src" id="contain" value="contain"><?php echo $this->translate("Contains"); ?>
+        </label>
+      </div>
+    </div>
+  </fielset>
+
+  <fieldset>
+    <legend><?php echo $this->translate("Destination"); ?></legend>
+      <?php if (count($this->contact_groups)>0) {?>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Contact Groups"); ?></label>
+          <div class="col-sm-3">
+            <select class="form-control" name="selectContactGroupDst" id="selectContactGroupDst">
+              <?php foreach ($this->contact_groups as $key => $group) {?>
+                <option value="<?php echo $group['id']; ?>"><?php echo $group['name'] ?></option>
+              <?php }?>
+            </select>
+          </div>
+        </div>
+      <?php }?>
+
+      <?php if (count($this->contacts)>1) {?>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Contacts"); ?></label>
+          <div class="col-sm-3">
+            <select class="form-control" name="selectContactDst" id="selectContactDst">
+              <?php foreach ($this->contacts as $key => $contact) {?>
+                <option value="<?php echo $contact['id']; ?>"><?php echo $contact['name'] ?></option>
+              <?php }?>
+            </select>
+          </div>
+        </div>
+      <?php }?>
+
+      <?php if (count($this->groups)>0) {?>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Destination Group"); ?></label>
+          <div class="col-sm-3">
+            <select class="form-control" name="selectDst" id="selectDst" onChange="checkdst(this.value);">
+              <?php foreach ($this->groups as $key => $group) {?>
+                <option value="<?php echo $group['id']; ?>"><?php echo $group['name'] ?></option>
+              <?php }?>
+            </select>
+          </div>
+        </div>
+      <?php }?>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Destination Extensions"); ?></label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" name="groupDst" id="groupDst" placeholder='<?php echo $this->translate("Separated by a comma") ?>' />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Option") ?></label>
+        <div class="col-sm-6">
+          <label class="radio-inline">
+            <input type="radio" name="order_dst" id="equal" value="equal" checked><?php echo $this->translate("Equal"); ?>
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="order_dst" id="contain" value="contain"><?php echo $this->translate("Contains"); ?>
+          </label>
+        </div>
+      </div>
+    </fielset>
+
+    <fieldset>
+      <legend><?php echo $this->translate("Additional filters"); ?></legend>
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Status") ?></label>
+        <div class="col-sm-6">
+          <div class="checkbox">
+            <label><input type="checkbox" name="ANSWERED" id="ANSWERED" checked/><?php echo $this->translate("Answered") ?></label>
+            <label><input type="checkbox" name="NOANSWER" id="NOANSWER" checked/><?php echo $this->translate("Not Answered") ?></label>
+            <label><input type="checkbox" name="BUSY" id="BUSY" checked/><?php echo $this->translate("Busy") ?></label>
+            <label><input type="checkbox" name="FAILED" id="FAILED" checked/><?php echo $this->translate("Failed") ?></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Tag"); ?></label>
+        <div class="col-sm-3">
+          <select multiple class="form-control" name="costs_center[]" id="costs_center[]">
+            <?php foreach ($this->costs as $key => $cost) {?>
+              <option value='<?php echo $cost['codigo'] ?>'><?php echo $cost['tipo'] . ': ' . $cost['codigo'] . ' - ' . $cost['nome']; ?></option>
+            <?php }?>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Minimum Call Time"); ?></label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control" name="duration_init" id="duration_init" placeholder='<?php echo $this->translate("In seconds") ?>' />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Maximum Call Time"); ?></label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control" name="duration_end" placeholder='<?php echo $this->translate("In seconds") ?>' />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Caller location") ?></label>
+        <div class="col-sm-6">
+          <div class="checkbox">
+            <label><input type="checkbox" name="locale" id="locale" />
+              <?php echo $this->translate("Enabled") ?>
+              <small><span style="color: red"><?php echo "( " . $this->translate("If enabled the query will be slower") . " )"; ?></span></small>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Caller record") ?></label>
+        <div class="col-sm-6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="record" id="record" />
+              <?php echo $this->translate("Enabled") ?>
+              <small><span style="color: red"><?php echo "( " . $this->translate("If enabled the query will be slower") . " )"; ?></span></small>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->translate("Replace number by contact name/extension") ?></label>
+        <div class="col-sm-6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="replace" id="replace" />
+              <?php echo $this->translate("Enabled") ?>
+              <small><span style="color: red"><?php echo "( " . $this->translate("If enabled the query will be slower") . " )"; ?></span></small>
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+  <div class="snep-body-footer-buttons">
+    <button type="submit" class="btn btn-add" name="showreport" value="showreport"><?php echo $this->translate("Show Report"); ?></button>
+  </div>
+</form>
+</div>
 
 <script type="text/javascript">
 
 jQuery.noConflict();
-
 //Date range as a button
-jQuery('#daterange-btn').daterangepicker(
-    {
-      ranges: {
-        '<?php echo $this->translate("Today");?>': [moment(), moment()],
-        '<?php echo $this->translate("Yesterday");?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 7 Days");?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 15 Days");?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 30 Days");?>': [moment().subtract(29, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("This Month");?>': [moment().startOf('month'), moment().endOf('month')],
-        '<?php echo $this->translate("Last Month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-      },
-      startDate: moment().format('DD/MM/YYYY 00:00'),
-      endDate:  moment().format('DD/MM/YYYY 23:59'),
-      timePicker: true,
-      timePickerIncrement: 1,
-      timePicker24Hour: true,
-    },
-    function (start, end) {
-      jQuery('#daterange-btn span').html(start.format('DD/MM/YYYY HH:mm') + ' - ' + end.format('DD/MM/YYYY HH:mm'));
-    }
+startDate = '<?php echo $this->startDate ?>'
+if(!startDate){
+  startDate = moment().format('DD/MM/YYYY 00:00');
+}
+endDate = '<?php echo $this->endDate ?>'
+if(!endDate){
+  endDate = moment().format('DD/MM/YYYY 23:59');
+}
+
+jQuery('#daterange-btn').daterangepicker({
+  ranges: {
+    '<?php echo $this->translate("Today"); ?>': [moment(), moment()],
+    '<?php echo $this->translate("Yesterday"); ?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
+    '<?php echo $this->translate("Last 7 Days"); ?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+    '<?php echo $this->translate("Last 15 Days"); ?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+    '<?php echo $this->translate("Last 30 Days"); ?>': [moment().subtract(29, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+    '<?php echo $this->translate("This Month"); ?>': [moment().startOf('month'), moment().endOf('month')],
+    '<?php echo $this->translate("Last Month"); ?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+  },
+  startDate: startDate,
+  endDate:  endDate,
+  timePicker: true,
+  timePickerIncrement: 1,
+  timePicker24Hour: true,
+  },
+  function (start, end) {
+    jQuery('#daterange-btn span').html(start.format('DD/MM/YYYY HH:mm') + ' - ' + end.format('DD/MM/YYYY HH:mm'));
+  }
 );
 
 function checksrc(value){
-
-    if(value != 0){
-        document.getElementById("groupSrc").setAttribute("disabled", true);
-    }else{
-        document.getElementById("groupSrc").removeAttribute("disabled");
-    }
+  if(value != 0){
+    document.getElementById("groupSrc").setAttribute("disabled", true);
+  }else{
+    document.getElementById("groupSrc").removeAttribute("disabled");
+  }
 }
 
 function checkdst(value){
-
-    if(value != 0){
-        document.getElementById("groupDst").setAttribute("disabled", true);
-    }else{
-        document.getElementById("groupDst").removeAttribute("disabled");
-    }
+  if(value != 0){
+    document.getElementById("groupDst").setAttribute("disabled", true);
+  }else{
+    document.getElementById("groupDst").removeAttribute("disabled");
+  }
 }
 </script>

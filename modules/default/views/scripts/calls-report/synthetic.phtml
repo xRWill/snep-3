@@ -1,0 +1,218 @@
+<?php
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/datatables/media/css/dataTables.bootstrap.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/datatables/resources/syntax/shCore.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/datatables/media/css/buttons.dataTables.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/datatables/resources/demo.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/includes/javascript/morris.js-0.5.1/morris.css");
+$this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/snep.js");
+$this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/registrations.js');
+$this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeItem.js');
+?>
+
+<script src="/snep/includes/javascript/datatables/media/js/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/media/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/resources/syntax/shCore.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/resources/demo.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/datatables.net-buttons/js/dataTables.buttons.min.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/media/js/jszip.min.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/pdfmake/pdfmake.min.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/pdfmake/vfs_fonts.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/datatables/datatables.net-buttons/js/buttons.html5.min.js" type="text/javascript"></script>
+<script src="/snep/includes/javascript/morris.js-0.5.1/raphael-min.js"></script>
+<script src="/snep/includes/javascript/morris.js-0.5.1/morris.min.js"></script>
+
+<div class="row"> 
+
+  <div class="col-sm-7">
+    <div id="graphic-status-call" class="text-center" style="height: 200px;"></div>
+  </div>
+  <div class="col-sm-5">
+    <div id="graphic-type-call" class="text-center" style="height: 200px;"></div>
+  </div>
+  
+  <div class="col-sm-7">
+    <fieldset>
+      <legend><?php echo $this->translate("Status Call") ?></legend>
+      <div class="panel panel-default">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th data-sort-ignore="true" class="text-center" ><?php echo $this->translate("Answered") ?></th>
+              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Not Answered") ?></th>
+              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Busy") ?></th>
+              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Failed") ?></th>
+              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Totals") ?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><?php echo $this->totals['answer']; ?></td>
+              <td class="text-center"><?php echo $this->totals['noanswer']; ?></td>
+              <td class="text-center"><?php echo $this->totals['busy']; ?></td>
+              <td class="text-center"><?php echo $this->totals['failed']; ?></td>
+              <td class="text-center"><?php echo $this->totals['totals']; ?></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="col-sm-5">
+    <fieldset>
+      <legend><?php echo $this->translate("Type Call") ?></legend>
+      <div class="panel panel-default">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Incoming") ?></th>
+              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Outgoing") ?></th>
+              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Other") ?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"><?php echo $this->typeCall['incoming']; ?></td>
+              <td class="text-center"><?php echo $this->typeCall['outgoing']; ?></td>
+              <td class="text-center"><?php echo $this->typeCall['other']; ?></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </fieldset>
+  </div> 
+
+  <div class="col-sm-8">
+    <fieldset>
+      <legend><?php echo $this->translate("Status by Period") ?></legend>
+      <div class="panel panel-default"><br>
+        <table class="table table-striped" id="statusbyperiod">
+          <thead>
+            <tr>
+              <th class="text-center"><?php echo $this->translate("Date") ?></th>
+              <th class="text-center" data-type="numeric"><?php echo $this->translate("Answered") ?></th>
+              <th class="text-center" data-type="numeric"><?php echo $this->translate("Not Answered") ?></th>
+              <th class="text-center" data-type="numeric"><?php echo $this->translate("Busy") ?></th>
+              <th class="text-center" data-type="numeric"><?php echo $this->translate("Failed") ?></th>
+              <th class="text-center" data-type="numeric"><?php echo $this->translate("Totals") ?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($this->calldate as $date => $value) {?>
+              <tr>
+                <td class="text-center"><?php echo $date; ?></td>
+                <td class="text-center"><?php echo $value['answer']; ?></td>
+                <td class="text-center"><?php echo $value['noanswer']; ?></td>
+                <td class="text-center"><?php echo $value['busy'] ?></td>
+                <td class="text-center"><?php echo $value['failed'] ?></td>
+                <td class="text-center"><?php echo $value['totals'] ?></td>
+              </tr>
+            <?php }?>
+          </tbody>
+        </table>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="col-sm-4">
+    <fieldset>
+      <legend><?php echo $this->translate("Tag") ?></legend>
+      <div class="panel panel-default"><br>
+        <table class="table table-striped" id="tag">
+          <thead>
+            <tr>
+              <th ><?php echo $this->translate("Tag") ?></th>
+              <th class="text-center" data-type="numeric"><?php echo $this->translate("Quantity") ?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($this->ccustos as $key => $value) {?>
+              <tr>
+                <td ><?php echo $value['name']; ?></td>
+                <td class="text-center"><?php echo $value['cont']; ?></td>
+              </tr>
+              <?php }?>
+            </tbody>
+          </table>
+      </div>
+    </fieldset>
+  </div>
+
+</div> 
+
+<script type="text/javascript">
+
+jQuery.noConflict();
+
+var statusCall = Morris.Donut({
+  element: "graphic-status-call",
+  hideHover: 'always',
+  resize: true,
+  data: [
+      {label: '<?php echo $this->translate("Answered") ?>', value: <?php echo $this->totals['answer']; ?> }, 
+      {label: '<?php echo $this->translate("Not Answered") ?>', value: <?php echo $this->totals['noanswer']; ?> }, 
+      {label: '<?php echo $this->translate("Busy") ?>', value: <?php echo $this->totals['busy']; ?> },
+      {label: '<?php echo $this->translate("Failed") ?>', value: <?php echo $this->totals['failed']; ?> }
+  ],
+  colors: ['#5cb85c', '#d9534f', '#f0ad4e', '#777']
+});
+
+var typeCall = Morris.Donut({
+  element: "graphic-type-call",
+  hideHover: 'always',
+  resize: true,
+  data: [
+      {label: '<?php echo $this->translate("Incoming") ?>', value: <?php echo $this->typeCall['incoming']; ?> }, 
+      {label: '<?php echo $this->translate("Outgoing") ?>', value: <?php echo $this->typeCall['outgoing']; ?> }, 
+      {label: '<?php echo $this->translate("Other") ?>', value: <?php echo $this->typeCall['other']; ?> }
+  ],
+  colors: ['#5cb85c', '#d9534f', '#f0ad4e']
+});
+
+jQuery(document).ready(function() {
+  jQuery('#statusbyperiod').dataTable( {
+    "pageLength": <?php echo $this->lineNumber ?>,
+    "oLanguage": {
+      "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
+    },
+    dom: 'Bfrtip',
+    buttons: [
+      {
+        extend: 'excelHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - Chamadas por Período - <?php echo $this->exportName ?>"
+      },
+      {
+        extend: 'csvHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - Chamadas por Período - <?php echo $this->exportName ?>"
+      },
+      {
+        extend: 'pdfHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - Chamadas por Período - <?php echo $this->exportName ?>"
+      }
+    ]
+  });
+
+  jQuery('#tag').dataTable( {
+    "pageLength": <?php echo $this->lineNumber ?>,
+    "oLanguage": {
+      "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
+    },
+    dom: 'Bfrtip',
+    buttons: [
+      {
+        extend: 'excelHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - Chamadas por TAG - <?php echo $this->exportName ?>"
+      },
+      {
+        extend: 'csvHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - Chamadas por TAG - <?php echo $this->exportName ?>"
+      },
+      {
+        extend: 'pdfHtml5',
+        title : "SNEP - Relatório de Chamadas do Período - Chamadas por TAG - <?php echo $this->exportName ?>"
+      }
+    ]
+  });
+});
+
+</script>

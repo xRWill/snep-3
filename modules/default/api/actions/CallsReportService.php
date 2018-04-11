@@ -19,7 +19,6 @@
 
 require_once '../../../includes/functions.php';
 
-
 /**
 * Calls Report Service
 *
@@ -58,8 +57,6 @@ class CallsReportService implements SnepService {
         (isset($exceptionsAll)) ? $exceptionsAll .= "'".$value."'," : $exceptionsAll = "'".$value."',";
       }
       $exceptions = substr($exceptionsAll, 0,-1);
-      //$where_exceptions = " AND (src IN (".$exceptions.") OR dst IN (".$exceptions."))";
-
     }
 
     // Binds
