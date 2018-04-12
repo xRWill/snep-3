@@ -31,6 +31,7 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
             <th class="text-center"><?php echo $this->translate("Source") ?></th>
             <th class="text-center"><?php echo $this->translate("Destination") ?></th>
             <th class="text-center"><?php echo $this->translate("Status") ?></th>
+            <th class="text-center"><?php echo $this->translate("Queue") ?></th>
             <th class="text-center"><?php echo $this->translate("Duration") ?></th>
             <th class="text-center"><?php echo $this->translate("Conversation") ?></th>
             <th class="text-center"><?php echo $this->translate("Tag") ?></th>
@@ -58,17 +59,24 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
                 <?php if (!$callsList['dst_name']) {echo $this->format->fmt_telefone(array("a" => $callsList['dst']));} else {echo $callsList['dst_name'];}?>
               </td>
               <td class="text-center"><h4><span class="<?php echo $callsList['class']; ?>"><?php echo $this->translate($callsList['disposition']); ?></span></h4></td>
+              <td class="text-center"><h4>
+                  <?php if (isset($callsList['wasQueue'])) {?>
+                    <span class="label label-success" title="Ligação de Fila"><?php echo $this->translate("Yes") ?></span>
+                  <?php }else{?>
+                    <span class="label label-danger" title="Ligação de Fila"><?php echo $this->translate("No") ?></span>
+                  <?php }?>
+              </h4></td>
               <td class="text-center"><?php echo $this->format->fmt_segundos(array("a" => $callsList['duration'], "b" => 'hms')); ?></td>
               <td class="text-center"><?php echo $this->format->fmt_segundos(array("a" => $callsList['billsec'], "b" => 'hms')); ?></td>
               <td class="text-center"><?php echo $callsList['nome']; ?></td>
               <?php if ($this->locale) {?><td class="text-center"><?php echo $callsList['city']; ?></td><?php }?>
               <?php if ($this->record) {?>
-                <?php if ($callsList['userfield'] != "" && $callsList['file_path'] != false){ ?>
+                <?php if ($callsList['file_path'] != false){ ?>
                   <td class="text-center">
-                    <audio  class="player" src='<?php echo $callsList->file_path ?>' type="audio/x-wav"  title="<?php echo $this->translate('Listen');?>" preload="none">
+                    <audio  class="player" src='<?php echo $callsList['file_path'] ?>' type="audio/x-wav"  title="<?php echo $this->translate('Listen');?>" preload="none">
                       <?php echo $this->translate('Your browser does not support the audio element.') ?>
                     </audio>
-                    <a class="btn btn-down" href="<?php echo $callsList->file_name; ?>" download="<?php echo $callsList->userfield . ".wav"; ?>" role="button" title="Download">
+                    <a class="btn btn-down" href="<?php echo $callsList['file_name']; ?>" download="<?php echo $callsList['userfield'] . ".wav"; ?>" role="button" title="Download">
                       <span class="glyphicon glyphicon-download"></span>
                     </a>
                   </td>

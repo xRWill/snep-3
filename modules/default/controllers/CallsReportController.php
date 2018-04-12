@@ -345,7 +345,7 @@ class CallsReportController extends Zend_Controller_Action
 
         // SQL
         $select = "SELECT date_format(cdr.calldate,'%d/%m/%Y') AS key_dia, date_format(cdr.calldate,'%d/%m/%Y %H:%i:%s') AS dia, ";
-        $select .= "cdr.src, cdr.dst, cdr.disposition, cdr.duration, cdr.billsec, cdr.accountcode,";
+        $select .= "cdr.src, cdr.dst, cdr.disposition, cdr.duration, cdr.billsec, cdr.lastapp, cdr.accountcode,";
         $select .= "cdr.userfield, cdr.dcontext, cdr.amaflags, cdr.uniqueid, cdr.calldate, cdr.dstchannel";
         $select .= ",ccustos.codigo,ccustos.tipo,ccustos.nome";
         if ($filter['rate']) {
@@ -368,14 +368,17 @@ class CallsReportController extends Zend_Controller_Action
         $select .= (isset($ramaisdst)) ? $ramaisdst : '';
         $select .= (isset($where_binds)) ? $where_binds : '';
         $select .= $where_prefix;
-        $select .= " GROUP BY userfield ORDER BY calldate, userfield ";
+        //$select .= " GROUP BY userfield ORDER BY calldate, userfield ";
+        $select .= " ORDER BY calldate, userfield ";
 
         $stmt = $db->query($select);
         $cont = count($stmt);
         while ($dado = $stmt->fetch()) {
+            
             $row[] = $dado;
+            
         }
-
+        
         return $row;
 
     }
@@ -384,6 +387,7 @@ class CallsReportController extends Zend_Controller_Action
     {
 
         $format = new Formata;
+        $db = Zend_registry::get('db');
         $dateForm = explode(" - ", $filter["period"]);
         
         $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
@@ -409,11 +413,12 @@ class CallsReportController extends Zend_Controller_Action
         if (isset($filter['replace'])) {
             $replace = true;
         }
-
+        
         if ($replace) {
             $select_contacts = "SELECT `c`.id,`c`.name, `p`.`phone` FROM `contacts_names` AS `c` INNER JOIN `contacts_phone` AS `p` ON c.id = p.contact_id";
             $stmt = $db->query($select_contacts);
             $allContacts = $stmt->fetchAll();
+            
             $select_peers = "SELECT name,callerid FROM `peers` WHERE peer_type = 'R'";
             $stmt = $db->query($select_peers);
             $allPeers = $stmt->fetchAll();
@@ -427,19 +432,26 @@ class CallsReportController extends Zend_Controller_Action
         }
 
         foreach ($row as $key => $value) {
-            if (!$result_data[$value['uniqueid']]['disposition']) {
-                $result_data[$value['uniqueid']]["disposition"] = $value["disposition"];
-            }
+            
+            //if (!$result_data[$value['uniqueid']]['disposition']) {
+            $result_data[$value['uniqueid']]["disposition"] = $value["disposition"];  
+            //}
             if ($result_data[$value['uniqueid']]['dia'] == null) {
                 $result_data[$value['uniqueid']]['dia'] = $value["dia"];
             }
             if ($result_data[$value['uniqueid']]['billsec'] === null) {
                 $result_data[$value['uniqueid']]['billsec'] = 0;
             }
+
+            if($value['lastapp'] == 'Queue'){
+              $result_data[$value['uniqueid']]["wasQueue"] = true;
+            }
+
             switch ($value['disposition']) {
                 case 'ANSWERED':
                     $result_data[$value['uniqueid']]['billsec'] = $result_data[$value['uniqueid']]['billsec'] + $value['billsec'];
                     $result_data[$value['uniqueid']]["disposition"] = $value["disposition"];
+                    $result_data[$value['uniqueid']]["wasAttended"] = true;
                     $result_data[$value['uniqueid']]["class"] = "label label-success";
                     break;
                 case 'NO ANSWER':
@@ -451,6 +463,13 @@ class CallsReportController extends Zend_Controller_Action
                 default:
                     $result_data[$value['uniqueid']]["class"] = "label label-default";
                     break;
+            }
+
+            // treatment when no answer on first
+            if($result_data[$value['uniqueid']]["wasAttended"]){
+              $result_data[$value['uniqueid']]["disposition"] = 'ANSWERED';
+              $result_data[$value['uniqueid']]["class"] = "label label-success";
+
             }
 
             if ($locale_call) {
@@ -510,7 +529,7 @@ class CallsReportController extends Zend_Controller_Action
         if (class_exists("Billing_Manager")) {
             $this->view->bill = true;
         }
-
+        
         $this->view->call_list = $result_data;
         $this->view->format = $format;
         $this->view->locale = $locale_call;
