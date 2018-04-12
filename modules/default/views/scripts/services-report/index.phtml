@@ -1,138 +1,109 @@
-<?php
-    $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-datetimepicker.css" );
-?>
-<script src="/snep/includes/javascript/moment-with-locales.min.js" type="text/javascript" ></script>
-<script src="/snep/includes/javascript/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-<div class="row">
 
-    <div class="tab-content">
-            <div class="tab-pane active" id="demo">
-                <?php if($this->key){ ?>
-                    <div class="snep-body-top-buttons">
-                        <div class="snep-body-search">
-                            <?php if($this->key){ 
-                                echo ""; 
-                                ?>
-                                <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard');?>"></a>  
-                            <?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
+<div class="row">
+  <div class="tab-content">
+    <div class="tab-pane active" id="demo">
+      <?php if ($this->key) {?>
+        <div class="snep-body-top-buttons">
+          <div class="snep-body-search">
+            <?php if ($this->key) { echo ""; ?>
+              <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard'); ?>"></a>
+            <?php }?>
+          </div>
         </div>
+      <?php }?>
+    </div>
+  </div>
+</div>
+
+<form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 0px;" action="<?php echo $this->url(array("controller" => "new-report", "action" => "index"), null, true); ?>" METHOD="post">
+
+  <fieldset>
+    <legend><?php echo $this->translate("Period"); ?></legend>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><?php echo $this->translate("Period"); ?></label>
+      <div class="col-sm-3">
+        <div class='input-group'>
+          <input type='text' class="snep-datetimepicker form-control" id="daterange-btn" name="period" required readonly/>
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><?php echo $this->translate("Extensions"); ?></legend>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><?php echo $this->translate("Group"); ?></label>
+      <div class="col-sm-4">
+        <select class="form-control" name="group_select" id="group_select" onChange="checkgroup(this.value);">
+          <?php foreach ($this->group as $key => $group) {?>
+            <option value="<?php echo $group['id']; ?>"><?php echo $group['name']; ?></option>
+          <?php }?>
+        </select>
+      </div>
     </div>
 
-    <form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 0px;" action="<?php echo $this->url(array("controller" => "services-report", "action" => "index"), null, true); ?>" METHOD="post">
-        
-        <fieldset>
-            <legend><?php echo $this->translate("Period");?></legend>
-            
-            <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $this->translate("Period");?></label>
-                <div class="col-sm-3">
-                    <div class='input-group'>
-                        <input type='text' class="snep-datetimepicker form-control" id="daterange-btn" name="period" required readonly/>
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </fieldset>
-        
-        <fieldset>
-            <legend><?php echo $this->translate("Extensions");?></legend>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><?php echo $this->translate("Extensions"); ?></label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" name="exten_select" id="exten_select" placeholder='<?php echo $this->translate("Separated by a comma") ?>' />
+      </div>
+    </div>
+  </fieldset>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $this->translate("Group");?></label>
-                <div class="col-sm-4">
-                    <select class="form-control" name="group_select" id="group_select" onChange="checkgroup(this.value);">
-                        <?php 
-                        foreach($this->group as $key => $group){ ?>
-                            <option value="<?php echo $group['id'];?>"><?php echo $group['name'];?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div> 
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $this->translate("Extensions");?></label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" name="exten_select" id="exten_select" placeholder='<?php echo $this->translate("Separated by a comma")?>' />
-                </div>
-            </div>   
-
-
-        </fieldset>
-        
-        <fieldset>
-            
-            <legend><?php echo $this->translate("Services");?></legend>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $this->translate("Choose the services")?></label>
-                <div class="col-sm-10">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="serv_select[SIGAME]" id="serv_select[SIGAME]" checked/><?php echo $this->translate("SIGAME")?>
-                        </label>
-			&nbsp;&nbsp;
-                        <label>
-                            <input type="checkbox" name="serv_select[DND]" id="serv_select[DND]" checked/><?php echo $this->translate("DND")?>
-                        </label>
-			&nbsp;&nbsp;
-                        <label>
-                            <input type="checkbox" name="serv_select[LOCK]" id="serv_select[LOCK]" checked/><?php echo $this->translate("Lock")?>
-                        </label>
-			&nbsp;&nbsp;
-                        <label>
-                            <input type="checkbox" name="serv_select[SPY]" id="serv_select[SPY]" checked/><?php echo $this->translate("Spy")?>
-                        </label>
-			&nbsp;&nbsp;
-                        <label>
-                            <input type="checkbox" name="serv_select[REDIAL]" id="serv_select[REDIAL]" checked/><?php echo $this->translate("Redial")?>
-                        </label>
-			&nbsp;&nbsp;
-                        <label>
-                            <input type="checkbox" name="serv_select[WHOAMI]" id="serv_select[WHOAMI]" checked/><?php echo $this->translate("WhoAmI")?>
-                        </label>
-			&nbsp;&nbsp;
-                        <label>
-                            <input type="checkbox" name="serv_select[REC]" id="serv_select[REC]" checked/><?php echo $this->translate("Record")?>
-                        </label>
-			&nbsp;&nbsp;
-                        <label>
-                            <input type="checkbox" name="serv_select[RECPLAY]" id="serv_select[RECPLAY]" checked/><?php echo $this->translate("Record Play")?>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </fielset>
-
-         <div class="snep-body-footer-buttons">
-            <button type="submit" class="btn btn-add" name="showreport" value="showreport"><?php echo $this->translate("Show Report");?></button>
+  <fieldset>
+    <legend><?php echo $this->translate("Services"); ?></legend>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><?php echo $this->translate("Choose the services") ?></label>
+      <div class="col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox" name="serv_select[SIGAME]" id="serv_select[SIGAME]" checked/><?php echo $this->translate("SIGAME") ?></label>&nbsp;&nbsp;
+          <label><input type="checkbox" name="serv_select[DND]" id="serv_select[DND]" checked/><?php echo $this->translate("DND") ?></label>&nbsp;&nbsp;
+          <label><input type="checkbox" name="serv_select[LOCK]" id="serv_select[LOCK]" checked/><?php echo $this->translate("Lock") ?></label>&nbsp;&nbsp;
+          <label><input type="checkbox" name="serv_select[SPY]" id="serv_select[SPY]" checked/><?php echo $this->translate("Spy") ?></label>&nbsp;&nbsp;
+          <label><input type="checkbox" name="serv_select[REDIAL]" id="serv_select[REDIAL]" checked/><?php echo $this->translate("Redial") ?></label>&nbsp;&nbsp;
+          <label><input type="checkbox" name="serv_select[WHOAMI]" id="serv_select[WHOAMI]" checked/><?php echo $this->translate("WhoAmI") ?></label>&nbsp;&nbsp;
+          <label><input type="checkbox" name="serv_select[REC]" id="serv_select[REC]" checked/><?php echo $this->translate("Record") ?></label>&nbsp;&nbsp;
+          <label><input type="checkbox" name="serv_select[RECPLAY]" id="serv_select[RECPLAY]" checked/><?php echo $this->translate("Record Play") ?></label>
         </div>
-        <br />
-    </form>
+      </div>
+    </div>
+  </fielset>
+
+  <div class="snep-body-footer-buttons">
+    <button type="submit" class="btn btn-add" name="showreport" value="showreport"><?php echo $this->translate("Show Report"); ?></button>
+  </div><br>
+</form>
 </div>
 
 <script type="text/javascript">
 
 jQuery.noConflict();
+//Date range as a button
+startDate = '<?php echo $this->startDate ?>'
+if(!startDate){
+  startDate = moment().format('DD/MM/YYYY 00:00');
+}
+endDate = '<?php echo $this->endDate ?>'
+if(!endDate){
+  endDate = moment().format('DD/MM/YYYY 23:59');
+}
+
 jQuery('#daterange-btn').daterangepicker(
     {
       ranges: {
-        '<?php echo $this->translate("Today");?>': [moment(), moment()],
-        '<?php echo $this->translate("Yesterday");?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 7 Days");?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 15 Days");?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 30 Days");?>': [moment().subtract(29, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("This Month");?>': [moment().startOf('month'), moment().endOf('month')],
-        '<?php echo $this->translate("Last Month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        '<?php echo $this->translate("Today"); ?>': [moment(), moment()],
+        '<?php echo $this->translate("Yesterday"); ?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 7 Days"); ?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 15 Days"); ?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 30 Days"); ?>': [moment().subtract(29, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("This Month"); ?>': [moment().startOf('month'), moment().endOf('month')],
+        '<?php echo $this->translate("Last Month"); ?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
       },
-      startDate: moment().format('DD/MM/YYYY 00:00'),
-      endDate:  moment().format('DD/MM/YYYY 23:59'),
+      startDate: startDate,
+      endDate:  endDate,
       timePicker: true,
       timePickerIncrement: 1,
       timePicker24Hour: true,
@@ -141,14 +112,4 @@ jQuery('#daterange-btn').daterangepicker(
       jQuery('#daterange-btn span').html(start.format('DD/MM/YYYY HH:mm') + ' - ' + end.format('DD/MM/YYYY HH:mm'));
     }
 );
-
-function checkgroup(value){
-    
-    if(value != 0){   
-        document.getElementById("exten_select").setAttribute("disabled", true);
-    }else{
-        document.getElementById("exten_select").removeAttribute("disabled");
-    }
-}
-
 </script>

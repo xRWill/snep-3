@@ -95,9 +95,6 @@ jQuery.noConflict();
 jQuery(document).ready(function() {
   jQuery('#analytic').dataTable( {
     "pageLength": <?php echo $this->lineNumber ?>,
-    "columnDefs": [
-      { "orderable": false, "targets": 7 }
-    ],
     "oLanguage": {
       "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
     },
