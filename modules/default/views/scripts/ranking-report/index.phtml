@@ -1,142 +1,125 @@
-<?php
-    $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-datetimepicker.css" );
-    $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap.min.css" );
-?>
-<script src="/snep/includes/javascript/moment-with-locales.min.js" type="text/javascript" ></script>
-<script src="/snep/includes/javascript/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-
 <div class="row">
-
-    <div class="tab-content">
-            <div class="tab-pane active" id="demo">
-                <?php if($this->key){ ?>
-                    <div class="snep-body-top-buttons">
-                        <div class="snep-body-search">
-                            <?php if($this->key){
-                                echo "";
-                                ?>
-                                <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard');?>"></a>
-                            <?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="demo">
+      <?php if ($this->key) {?>
+        <div class="snep-body-top-buttons">
+          <div class="snep-body-search">
+            <?php if ($this->key) { echo ""; ?>
+              <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard'); ?>"></a>
+            <?php }?>
+          </div>
         </div>
+      <?php }?>
+    </div>
+  </div>
+</div>
+
+<form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 00px;" action="<?php echo $this->url(array("controller" => "ranking-report", "action" => "index"), null, true); ?>" METHOD="post">
+
+  <fieldset>
+    <legend><?php echo $this->translate("Period"); ?></legend>
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Period"); ?></label>
+      <div class="col-sm-3">
+        <div class='input-group'>
+          <input type='text' class="snep-datetimepicker form-control" id="daterange-btn" name="period" required readonly/>
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><?php echo $this->translate("Type"); ?></legend>
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Type"); ?></label>
+      <div class="col-sm-3">
+        <select class="form-control" name="type" id="type">
+          <option value="num"><?php echo $this->translate("Quantity"); ?></option>
+          <option value="time"><?php echo $this->translate("Time"); ?></option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><?php echo $this->translate("Ranking Options"); ?></legend>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Show top by source ranking"); ?></label>
+      <div class="col-sm-2">
+        <select class="form-control" name="showsource" id="showsource">
+          <?php
+          for ($cont = 5; $cont <= 20; $cont += 5) {?>
+            <option><?php echo $cont ?></option>
+          <?php }?>
+        </select>
+      </div>
     </div>
 
-    <form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 00px;" action="<?php echo $this->url(array("controller" => "ranking-report", "action" => "index"), null, true); ?>" METHOD="post">
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Show top by destiny"); ?></label>
+      <div class="col-sm-2">
+        <select class="form-control" name="showdestiny" id="showdestiny">
+          <?php
+          for ($cont = 5; $cont <= 20; $cont += 5) {?>
+            <option><?php echo $cont ?></option>
+          <?php }?>
+        </select>
+      </div>
+    </div>
 
-        <fieldset>
-            <legend><?php echo $this->translate("Period");?></legend>
+    <div class="form-group">
+      <label class="col-sm-3 control-label"><?php echo $this->translate("Replace number by contact name/extension") ?></label>
+      <div class="col-sm-4">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="replace" id="replace" />
+            <?php echo $this->translate("Enabled") ?>
+            &nbsp;&nbsp;&nbsp;
+            <small>
+              <span style="color: red"><?php echo "( " . $this->translate("If enabled the query will be slower") . " )"; ?></span>
+            </small>
+          </label>
+        </div>
+      </div>
+    </div>
 
-            <div class="form-group">
-                <label class="col-sm-4 control-label"><?php echo $this->translate("Period");?></label>
-                <div class="col-sm-3">
-                    <div class='input-group'>
-                        <input type='text' class="snep-datetimepicker form-control" id="daterange-btn" name="period" required readonly/>
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </fieldset>
-
-        <fieldset>
-
-            <legend><?php echo $this->translate("Ranking Options");?></legend>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label"><?php echo $this->translate("Ranking Type")?></label>
-                <div class="col-sm-4">
-                    <label class="radio-inline">
-                        <input type="radio" name="type" id="num" value="num" checked><?php echo $this->translate("Quantity");?>
-                    </label>
-
-                    <label class="radio-inline">
-                        <input type="radio" name="type" id="time" value="time"><?php echo $this->translate("Time");?>
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label"><?php echo $this->translate("Show top by source ranking");?></label>
-                <div class="col-sm-1">
-                    <select class="form-control" name="showsource" id="showsource">
-                        <?php
-                        for($cont=5; $cont<=20;$cont += 5){ ?>
-                            <option><?php echo $cont?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label"><?php echo $this->translate("Show top by destiny");?></label>
-                <div class="col-sm-1">
-                    <select class="form-control" name="showdestiny" id="showdestiny">
-                        <?php
-                        for($cont=5; $cont<=20;$cont += 5){ ?>
-                            <option><?php echo $cont?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label"><?php echo $this->translate("Replace number by contact name/extension")?></label>
-                <div class="col-sm-5">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="replace" id="replace" />
-                            <?php echo $this->translate("Enabled")?>
-                            &nbsp;&nbsp;&nbsp;
-                            <small>
-                                <span style="color: red"><?php echo "( ". $this->translate("If enabled the query will be slower")." )"; ?></span>
-                            </small>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-            <label class="col-sm-4 control-label"><?php echo $this->translate("Report Type")?></label>
-            <div class="col-sm-4">
-                <label class="radio-inline">
-                    <input type="radio" name="out_type" id="lst" value="lst" checked><?php echo $this->translate("Screen");?>
-                </label>
-
-                <label class="radio-inline">
-                    <input type="radio" name="out_type" id="csv" value="csv"><?php echo $this->translate("CSV");?>
-                </label>
-            </div>
-            <br /><br />
-            <div class="snep-body-footer-buttons">
-                    <button type="submit" class="btn btn-add" name="showreport" value="showreport"><?php echo $this->translate("Show Report");?></button>
-            </div>
-
-        </fieldset>
-
-    </form>
+    <div class="snep-body-footer-buttons">
+      <button type="submit" class="btn btn-add" name="showreport" value="showreport"><?php echo $this->translate("Show Report"); ?></button>
+    </div>
+  </fieldset>
+</form>
 </div>
 
 <script type="text/javascript">
 
 jQuery.noConflict();
+//Date range as a button
+startDate = '<?php echo $this->startDate ?>'
+if(!startDate){
+  startDate = moment().format('DD/MM/YYYY 00:00');
+}
+endDate = '<?php echo $this->endDate ?>'
+if(!endDate){
+  endDate = moment().format('DD/MM/YYYY 23:59');
+}
+
 jQuery('#daterange-btn').daterangepicker(
     {
       ranges: {
-        '<?php echo $this->translate("Today");?>': [moment(), moment()],
-        '<?php echo $this->translate("Yesterday");?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 7 Days");?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 15 Days");?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("Last 30 Days");?>': [moment().subtract(29, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
-        '<?php echo $this->translate("This Month");?>': [moment().startOf('month'), moment().endOf('month')],
-        '<?php echo $this->translate("Last Month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        '<?php echo $this->translate("Today"); ?>': [moment(), moment()],
+        '<?php echo $this->translate("Yesterday"); ?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 7 Days"); ?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 15 Days"); ?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 30 Days"); ?>': [moment().subtract(29, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("This Month"); ?>': [moment().startOf('month'), moment().endOf('month')],
+        '<?php echo $this->translate("Last Month"); ?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
       },
-      startDate: moment().format('DD/MM/YYYY 00:00'),
-      endDate:  moment().format('DD/MM/YYYY 23:59'),
+      startDate: startDate,
+      endDate:  endDate,
       timePicker: true,
       timePickerIncrement: 1,
       timePicker24Hour: true,

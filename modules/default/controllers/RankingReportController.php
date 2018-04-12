@@ -16,6 +16,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with SNEP.  If not, see <http://www.gnu.org/licenses/>.
  */
+include "includes/functions.php";
 
 /**
  * Ranking Report Controller
@@ -25,7 +26,8 @@
  * @copyright Copyright (c) 2015 OpenS Tecnologia
  * @author    Opens Tecnologia <desenvolvimento@opens.com.br>
  */
-class RankingReportController extends Zend_Controller_Action {
+class RankingReportController extends Zend_Controller_Action
+{
 
     /**
      * @var Zend_Form
@@ -35,7 +37,8 @@ class RankingReportController extends Zend_Controller_Action {
     /**
      * Initial settings of the class
      */
-    public function init() {
+    public function init()
+    {
 
         $this->view->baseUrl = Zend_Controller_Front::getInstance()->getBaseUrl();
         $this->view->key = Snep_Dashboard_Manager::getKey(
@@ -44,24 +47,34 @@ class RankingReportController extends Zend_Controller_Action {
             Zend_Controller_Front::getInstance()->getRequest()->getActionName());
     }
 
-
     /**
      * indexAction
      */
-    public function indexAction() {
+    public function indexAction()
+    {
 
-        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
-                    $this->view->translate("Call Rankings")));
+        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array($this->view->translate("Call Rankings")));
 
         $config = Zend_Registry::get('config');
 
         $locale = Snep_Locale::getInstance()->getLocale();
-        $this->view->datepicker_locale =  Snep_Locale::getDatePickerLocale($locale) ;
+        $this->view->datepicker_locale = Snep_Locale::getDatePickerLocale($locale);
+
+        $auth = Zend_Auth::getInstance();
+        $username = $auth->getIdentity();
+        $user = Snep_Users_Manager::getName($username);
+        if ($_SESSION[$user['name']]['period']) {
+            $dateForm = explode(" - ", $_SESSION[$user['name']]['period']);
+            $date = Snep_Reports::fmt_date($dateForm[0], $dateForm[1]);
+            $this->view->startDate = $dateForm[0];
+            $this->view->endDate = $dateForm[1];
+        } else {
+            $this->view->startDate = false;
+            $this->view->endDate = false;
+        }
 
         if ($this->_request->getPost()) {
-
             $this->viewAction();
-
         }
 
     }
@@ -69,179 +82,392 @@ class RankingReportController extends Zend_Controller_Action {
     /**
      * viewAction - View report services
      */
-    public function viewAction() {
+    public function viewAction()
+    {
 
         $this->view->url = $this->getFrontController()->getBaseUrl() . '/' . $this->getRequest()->getControllerName();
 
-        $formData = $this->_request->getParams();
+        $filter = $this->_request->getParams();
 
-        $dateForm = explode(" - ", $formData["period"]);
-        $param = Snep_Reports::fmt_date($dateForm[0],$dateForm[1]);
+        $dateForm = explode(" - ", $filter["period"]);
+        $date = Snep_Reports::fmt_date($dateForm[0], $dateForm[1]);
 
-        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
-                            $this->view->translate("Reports"),
-                            $this->view->translate("Ranking"),
-                            $dateForm[0] . ' - ' . $dateForm[1]));
+        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array($this->view->translate("Reports"), $this->view->translate("Ranking"), $dateForm[0] . ' - ' . $dateForm[1]));
 
         // Check Bond
         $auth = Zend_Auth::getInstance();
         $username = $auth->getIdentity();
         $user = Snep_Users_Manager::getName($username);
-
-        
+        $_SESSION[$user['name']]['period'] = $filter["period"];
 
         // Binds
-        if($user['id'] != '1'){
+        if ($user['id'] != '1') {
 
             $binds = Snep_Binds_Manager::getBond($user['id']);
 
-            if($binds){
+            if ($binds) {
                 $clausule = $binds[0]["type"];
-                $clausulepeer ='';
-                foreach($binds as $key => $value){
-                    $clausulepeer .= $value['peer_name'].'_';
+                $clausulepeer = '';
+                foreach ($binds as $key => $value) {
+                    $clausulepeer .= $value['peer_name'] . '_';
                 }
 
-                $param['clausule'] = $clausule;
-                $param['clausulepeer'] = substr($clausulepeer, 0,-1);
+                $filter['clausule'] = $clausule;
+                $filter['clausulepeer'] = substr($clausulepeer, 0, -1);
             }
         }
 
-        $param['type'] = $formData['type'];
-        $param['showsource'] = $formData['showsource'];
-        $param['showdestiny'] = $formData['showdestiny'];
-        $out_type = $formData['out_type'];
+        $filter['type'] = $filter['type'];
+        $filter['showsource'] = $filter['showsource'];
+        $filter['showdestiny'] = $filter['showdestiny'];
+        $out_type = $filter['out_type'];
 
         $replace = false;
-        if(isset($formData['replace'])){
-          $param['replace'] = true;
-          $replace = true;
+        if (isset($filter['replace'])) {
+            $filter['replace'] = true;
+            $replace = true;
         }
 
-        $service = 'RankingReport';
-        $url = Snep_Services::getPathService($service);
+        $data = $this->getData($filter);
 
-        $link = "";
-        foreach($param as $key => $value){
-            $link .= '&'.$key.'='.$value;
+        $this->view->rank = $data['quantity'];
+        $this->view->totals = (array) $data['totals'];
+        $this->view->type = $data['type'];
+        $this->renderScript('ranking-report/view.phtml');
+
+    }
+
+    public function getData($filter)
+    {
+
+        $dateForm = explode(" - ", $filter["period"]);
+
+        $date = Snep_Reports::fmt_date($dateForm[0], $dateForm[1]);
+        $start_date = $date['start_date'] . " " . $date['start_hour'];
+        $end_date = $date['end_date'] . " " . $date['end_hour'];
+
+        $showsource = $filter['showsource'];
+        $showdestiny = $filter['showdestiny'];
+        $rankType = $filter['type'];
+
+        // Check Bon
+        $db = Zend_registry::get('db');
+        $auth = Zend_Auth::getInstance();
+        $username = $auth->getIdentity();
+        $user = Snep_Users_Manager::getName($username);
+        $format = new Formata;
+
+        // Binds
+        if (isset($filter['clausulepeer']) && isset($filter['clausule'])) {
+
+            $clausulepeer = explode("_", $filter['clausulepeer']);
+            $where_binds = '';
+
+            foreach ($clausulepeer as $key => $value) {
+                $where_binds .= $value . ",";
+            }
+            $where_binds = substr($where_binds, 0, -1);
+
+            // Not permission
+            if ($filter['clausule'] == 'nobound') {
+                $where_binds = " AND (src NOT IN (" . $where_binds . ") AND dst NOT IN (" . $where_binds . "))";
+            } else {
+                $where_binds = " AND (src IN (" . $where_binds . ") OR dst IN (" . $where_binds . "))";
+            }
         }
 
-        $service_url = $url.$link;
+        $prefix_inout = $config->ambiente->prefix_inout;
 
-        $this->view->service_url = $service_url;
+        /* Where Prefix Login/Logout */
+        $where_prefix = "";
+        if (strlen($prefix_inout) > 3) {
+            $cond_pio = "";
+            $array_prefixo = explode(";", $prefix_inout);
+            foreach ($array_prefixo as $valor) {
+                $par = explode("/", $valor);
+                $pio_in = $par[0];
+                if (!empty($par[1])) {
+                    $pio_out = $par[1];
+                }
+                $t_pio_in = strlen($pio_in);
+                $t_pio_out = strlen($pio_out);
+                $cond_pio .= " substr(dst,1,$t_pio_in) != '$pio_in' ";
+                if (!$pio_out == '') {
+                    $cond_pio .= " AND substr(dst,1,$t_pio_out) != '$pio_out' ";
+                }
+                $cond_pio .= " AND ";
+            }
+            if ($cond_pio != "") {
+                $where_prefix .= " AND ( " . substr($cond_pio, 0, strlen($cond_pio) - 4) . " ) ";
+            }
 
-        $http = curl_init($service_url);
-        $status = curl_getinfo($http, CURLINFO_HTTP_CODE);
+        }
 
-        curl_setopt($http, CURLOPT_RETURNTRANSFER,1);
-        curl_setopt($http, CURLOPT_HTTPAUTH, CURLAUTH_BASIC ) ;
-        $digest = Snep_Usuario::decrypt($_SESSION['http_authorization'], $_SESSION['ENCRYPTION_KEY']);
-        curl_setopt($http, CURLOPT_USERPWD, "$digest");
+        $condDstExp = $where_exceptions = "";
 
-        $http_response = curl_exec($http);
-        $httpcode = curl_getinfo($http, CURLINFO_HTTP_CODE);
+        $where_exceptions .= " AND ( locate('ZOMBIE',channel) = 0 ) ";
 
-        curl_close($http);
+        $select = "SELECT cdr.src, cdr.dst, cdr.disposition, cdr.duration, cdr.billsec, cdr.userfield, cdr.uniqueid ";
+        $select .= " FROM cdr JOIN peers on cdr.src = peers.name WHERE";
+        $select .= " ( calldate >= '$start_date' AND calldate <= '$end_date')";
+        $select .= isset($where_binds) ? $where_binds : '';
+        $select .= isset($where_prefix) ? $where_prefix : '';
+        $select .= isset($where_exceptions) ? $where_exceptions : '';
+        $select .= " ORDER BY calldate,userfield,cdr.amaflags";
 
-        switch ($httpcode) {
-            case 200:
+        $userfield = "XXXXXXXXX";
+        $flag_ini = true;
+        $dados = array();
 
-                $data = json_decode($http_response);
+        foreach ($db->query($select) as $row) {
+            /* userfield equals */
+            if ($userfield != $row['userfield']) {
+                if ($flag_ini) {
+                    $result[$row['uniqueid']] = $row;
+                    $userfield = $row['userfield'];
+                    $flag_ini = false;
+                    continue;
+                }
+            } else {
+                $result[$row['uniqueid']] = $row;
+                continue;
+            }
 
-                if($data->status == 'empty'){
-                    $this->view->error_message = $this->view->translate("No entries found");
-                    $this->renderScript('error/sneperror.phtml');
-                }else{
+            foreach ($result as $val) {
 
-                    $this->view->rank = $data->quantity;
-                    $this->view->totals = (array) $data->totals;
+                $src = $val['src'];
 
-                    $this->view->type = $data->type;
+                $dst = $val['dst'];
 
-                    if($out_type == 'lst'){
-                        $this->renderScript('ranking-report/view.phtml');
-                    }else{
-                        $this->csvAction();
+                if (!isset($dados[$src][$dst])) {
+                    $dados[$src][$dst]["QA"] = 0;
+                    $dados[$src][$dst]["QN"] = 0;
+                    $dados[$src][$dst]["QT"] = 0;
+                    $dados[$src][$dst]["TA"] = 0;
+                    $dados[$src][$dst]["TN"] = 0;
+                    $dados[$src][$dst]["TT"] = 0;
+                    $totais_q[$src] = 0;
+                    $totais_t[$src] = 0;
+                }
+
+                switch ($val['disposition']) {
+                    case "ANSWERED":
+                        $dados[$src][$dst]["QA"]++;
+                        $dados[$src][$dst]["TA"] += $val['duration'];
+                        break;
+                    default:
+                        $dados[$src][$dst]["QN"]++;
+                        $dados[$src][$dst]["TN"] += $val['duration'];
+                        break;
+                }
+
+                (isset($dados[$src][$dst]["QT"])) ? $dados[$src][$dst]["QT"]++ : $dados[$src][$dst]["QT"] = 0;
+                (isset($dados[$src][$dst]["TT"])) ? $dados[$src][$dst]["TT"] += $val['duration'] : $dados[$src][$dst]["TT"] = 0;
+                $totais_q[$src]++;
+                $totais_t[$src] += $val['duration'];
+            }
+            unset($result);
+            $result[$row['uniqueid']] = $row;
+            $userfield = $row['userfield'];
+        }
+
+        // no entries
+        if (empty($dados)) {
+            $this->view->error_message = $this->view->translate("No entries found.");
+            $this->view->error_title = $this->view->translate("Alert");
+            $this->renderScript('error/sneperror.phtml');
+        } else {
+
+            /* possible last call */
+            foreach ($result as $val) {
+                $src = $val['src'];
+                $dst = $val['dst'];
+                if (!isset($dados[$src][$dst])) {
+                    $dados[$src][$dst]["QA"] = 0;
+                    $dados[$src][$dst]["QN"] = 0;
+                    $dados[$src][$dst]["QT"] = 0;
+                    $dados[$src][$dst]["TA"] = 0;
+                    $dados[$src][$dst]["TN"] = 0;
+                    $dados[$src][$dst]["TT"] = 0;
+                    $totais_q[$src] = 0;
+                    $totais_t[$src] = 0;
+                }
+                switch ($val['disposition']) {
+                    case "ANSWERED":
+
+                        $dados[$src][$dst]["QA"]++;
+                        $dados[$src][$dst]["TA"] += $val['duration'];
+                        break;
+                    default:
+                        $dados[$src][$dst]["QN"]++;
+                        $dados[$src][$dst]["TN"] += $val['duration'];
+                        break;
+                }
+
+                (isset($dados[$src][$dst]["QT"])) ? $dados[$src][$dst]["QT"]++ : $dados[$src][$dst]["QT"] = 0;
+                (isset($dados[$src][$dst]["TT"])) ? $dados[$src][$dst]["TT"] += $val['duration'] : $dados[$src][$dst]["TT"] = 0;
+                $totais_q[$src]++;
+                $totais_t[$src] += $val['duration'];
+            }
+
+            arsort($totais_q);
+            arsort($totais_t);
+
+            $array = array_chunk($totais_q, $showsource, true);
+            $array_rank = $array[0];
+
+            // ordered quantity by destination
+            foreach ($array_rank as $phone => $tot) {
+                foreach ($dados as $key => $values) {
+
+                    if ($phone == $key) {
+
+                        foreach ($values as $destiny => $value) {
+
+                            if ($rankType == "num") {
+                                $arr[$phone][$destiny] = $value['QT'];
+                                arsort($arr[$phone]);
+                            } else {
+                                $arr[$phone][$destiny] = $value['TT'];
+                                arsort($arr[$phone]);
+                            }
+                        }
                     }
                 }
 
-            break;
-            default:
-                $erro = $this->view->translate("Error "). $httpcode;
-                $erro .= $this->view->translate(". Please contact your system administrator");
-                $this->view->error_message = $erro;
-                $this->renderScript('error/sneperror.phtml');
-            break;
+                $arr = array_chunk($arr[$phone], $showdestiny, true);
+                $value_array[$phone] = $arr[0];
 
-        }
-    }
+            }
 
-    /**
-     * csvAction - Export CSV
-     */
-    public function csvAction() {
+            // ordered array as quantity
+            foreach ($value_array as $phone => $value) {
 
-        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
-                    $this->view->translate("Reports"),
-                    $this->view->translate("Ranking"),
-                    $this->view->translate("Export CSV")));
+                // Totals
+                if (!isset($totals[$phone])) {
+                    $totals[$phone] = 0;
+                }
 
+                // Totals
+                if (!isset($rank_totals[$phone])) {
+                    $rank_totals[$phone] = 0;
+                }
 
-        $ranking = (array)$this->view->rank;
-        $this->view->quant = count($ranking);
+                foreach ($dados as $key => $dado) {
+                    if ($phone == $key) {
+                        foreach ($value as $destiny => $x) {
+                            foreach ($dado as $dst => $val) {
+                                if ($destiny == $dst) {
+                                    $rank_final[$phone][$destiny] = $val;
 
-        // input hidden
-        $rank = htmlentities(json_encode($ranking));
-        $this->view->ranking = $rank;
+                                    if ($rankType == "num") {
+                                        $totals[$phone] += $val['QT'];
+                                        $rank_totals[$phone] += $val['QT'];
+                                    } else {
+                                        $totals[$phone] += $val['TT'];
+                                        $rank_totals[$phone] += $val['TT'];
+                                    }
 
-        if (isset($_POST['submit'])) {
-
-            $ranking = json_decode($_POST['ranking']);
-
-            $header = array($this->view->translate('Source'),
-                            $this->view->translate('Destiny'),
-                            $this->view->translate('Q. Answered'),
-                            $this->view->translate('Q. No Answer'),
-                            $this->view->translate('Q. Total'),
-                            $this->view->translate('T. Answered'),
-                            $this->view->translate('T. No Answer'),
-                            $this->view->translate('T. Total'));
-
-            $output = implode(",", $header) . "\n";
-
-            foreach($ranking as $source => $data){
-                foreach($data as $destiny => $values){
-
-                $values = (array)$values;
-                $output .= $source.','.$destiny.','.$values['QA'].','.$values['QN'].','.$values['QT'].','.$values['TA'].','.$values['TN'].','.$values['TT'];
-                $output .= "\n";
-
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
-            if ($output) {
+            // ordered array associative
+            array_multisort($totals, $rank_final);
 
-                $this->_helper->layout->disableLayout();
-                $this->_helper->viewRenderer->setNoRender();
+            //format hh:mm:ss
+            foreach ($rank_final as $key => $dado) {
+                foreach ($dado as $x => $value) {
 
+                    if (isset($value['TA'])) {
+                        $rank_final[$key][$x]['TA'] = $format->fmt_segundos(array("a" => $value['TA'], "b" => 'hms'));
+                    } else {
+                        $rank_final[$key][$x]['TA'] = "00:00:00";
+                    }
 
-                $csvData = $output;
+                    if (isset($param['TN'])) {
+                        $rank_final[$key][$x]['TN'] = $format->fmt_segundos(array("a" => $value['TN'], "b" => 'hms'));
+                    } else {
+                        $rank_final[$key][$x]['TN'] = "00:00:00";
+                    }
 
-                $dateNow = new Zend_Date();
-                $fileName = $this->view->translate('ranking').'_csv_' . $dateNow->toString("dd-MM-yyyy_hh'h'mm'm'") . '.csv';
-
-                header('Content-type: application/octet-stream');
-                header('Content-Disposition: attachment; filename="' . $fileName . '"');
-                echo $csvData;
-
-            } else {
-                $this->view->error = $this->view->translate("No records found.");
-                $this->renderScript('error/sneperror.phtml');
+                    if (isset($value['TT'])) {
+                        $rank_final[$key][$x]['TT'] = $format->fmt_segundos(array("a" => $value['TT'], "b" => 'hms'));
+                    } else {
+                        $rank_final[$key][$x]['TT'] = "00:00:00";
+                    }
+                }
             }
-        } else {
 
-            $this->view->title = "Export";
-            $this->render('export');
+            // ordered key and value
+            arsort($rank_totals);
+            $cont = 0;
+            $rankfinal = array_reverse($rank_final);
+
+            if ($rankType != "num") {
+                foreach ($rank_totals as $key => $value) {
+                    $rank_totals[$key] = $format->fmt_segundos(array("a" => $value, "b" => 'hms'));
+                }
+            }
+
+            foreach ($rank_totals as $x => $value) {
+
+                $rank[$x] = $rankfinal[$cont];
+                $cont++;
+            }
+
+            $replace = false;
+            if (isset($_GET['replace'])) {
+                $replace = true;
+            }
+
+            if ($replace) {
+                $select_contacts = "SELECT `c`.id,`c`.name, `p`.`phone` FROM `contacts_names` AS `c` INNER JOIN `contacts_phone` AS `p` ON c.id = p.contact_id";
+                $stmt = $db->query($select_contacts);
+                $allContacts = $stmt->fetchAll();
+                $select_peers = "SELECT name,callerid FROM `peers` WHERE peer_type = 'R'";
+                $stmt = $db->query($select_peers);
+                $allPeers = $stmt->fetchAll();
+
+                foreach ($allContacts as $key => $value) {
+                    $contacts[$value['phone']] = $value['name'];
+                }
+                foreach ($allPeers as $key => $value) {
+                    $contacts[$value['name']] = $value['callerid'];
+                }
+
+                foreach ($rank as $n => $numbers) {
+
+                    if ($contacts[$n]) {
+
+                        $rank[$contacts[$n] . ' ->' . $n] = $rank[$n];
+                        unset($rank[$n]);
+                    } else {
+                        $val = $rank[$n];
+                        unset($rank[$n]);
+                        $rank[$n . ' ->' . $n] = $val;
+                    }
+                }
+
+                foreach ($rank as $n => $numbers) {
+                    foreach ($numbers as $dst => $value) {
+                        if ($contacts[$dst]) {
+                            $rank[$n][$contacts[$dst]] = $rank[$n][$dst];
+                            unset($rank[$n][$dst]);
+                        } else {
+                            $val = $rank[$n][$dst];
+                            unset($rank[$n][$dst]);
+                            $rank[$n][$dst] = $val;
+
+                        }
+                    }
+                }
+            }
+            return array("quantity" => $rank, "type" => $rankType, "totals" => $rank_totals);
+
         }
 
     }

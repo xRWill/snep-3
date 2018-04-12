@@ -1,7 +1,7 @@
 <?php
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/footable.core.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/footable-demos.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap-glyphicons.css" );
+$this->headLink()->appendStylesheet($this->baseUrl() . "/css/footable/footable.core.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/css/footable/footable-demos.css");
+$this->headLink()->appendStylesheet($this->baseUrl() . "/css/footable/bootstrap-glyphicons.css");
 ?>
 <script src="/snep/includes/javascript/footable/footable.js" type="text/javascript"></script>
 <script src="/snep/includes/javascript/footable/footable.sort.js" type="text/javascript"></script>
@@ -14,7 +14,7 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap
     <div class="tab-pane active" id="demo">
 
       <?php $count = 1;
-      foreach ($this->rank as $source => $numCal) { ?>
+foreach ($this->rank as $source => $numCal) {?>
         <table class="table demo table-hover" data-filter="#filter">
           <thead>
             <tr>
@@ -22,17 +22,17 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap
                 <strong><h3>
                   <div>
                     <?php
-                    echo $count . $this->translate(". Source: ") . $source;
+echo $count . $this->translate(". Source: ") . $source;
 
-                    foreach($this->totals as $src => $value){
-                      $src2 = explode("->",$source);
-                      if(count($src2) > 1){
-                        $source = $src2[1];
-                      }
-                      if($source == $src){
-                        echo '&nbsp;&nbsp;&nbsp;&nbsp;Total: <span class="textocampos">[' . $value . ']</span>';
-                      }
-                    }?>
+    foreach ($this->totals as $src => $value) {
+        $src2 = explode("->", $source);
+        if (count($src2) > 1) {
+            $source = $src2[1];
+        }
+        if ($source == $src) {
+            echo '&nbsp;&nbsp;&nbsp;&nbsp;Total: <span class="textocampos">[' . $value . ']</span>';
+        }
+    } ?>
                   </div>
                 </h3></strong>
               </td>
@@ -52,37 +52,37 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap
             <tbody>
 
               <?php
-              $count2 = 1;
+$count2 = 1;
 
-              foreach ($numCal as $caller => $dest) { ?>
+    foreach ($numCal as $caller => $dest) {?>
                 <tr>
                   <td class="text-center"><?php echo $count2 ?></td>
                   <td class="text-center"><?php echo $caller ?></td>
 
-                  <?php if ($this->type == 'num'){ ?>
-                    <td class="text-center"><?php echo ((isset($dest->QA)) ? $dest->QA : 0) ?></td>
-                    <td class="text-center"><?php echo ((isset($dest->QN)) ?$dest->QN : 0) ?></td>
-                    <td class="text-center"><strong><?php echo ((isset($dest->QT)) ? $dest->QT : 0) ?><strong></td>
-                    <td class="text-center"><?php echo ((isset($dest->TA)) ? $dest->TA : 0) ?></td>
-                    <td class="text-center"><?php echo ((isset($dest->TN)) ? $dest->TN : 0) ?></td>
-                    <td class="text-center"><?php echo ((isset($dest->TT)) ? $dest->TT : 0) ?></td>
-                  <?php }else{ ?>
-                    <td class="text-center"><?php echo ((isset($dest->TA)) ? $dest->TA : 0) ?></td>
-                    <td class="text-center"><?php echo ((isset($dest->TN)) ? $dest->TN : 0) ?></td>
-                    <td class="text-center"><strong><?php echo ((isset($dest->TT)) ? $dest->TT : 0) ?></strong></td>
-                    <td class="text-center"><?php echo ((isset($dest->QA)) ? $dest->QA : 0) ?></td>
-                    <td class="text-center"><?php echo ((isset($dest->QN)) ? $dest->QN : 0) ?></td>
-                    <td class="text-center"><?php echo ((isset($dest->QT)) ? $dest->QT : 0) ?></td>
+                  <?php if ($this->type == 'num') {?>
+                    <td class="text-center"><?php echo ((isset($dest['QA'])) ? $dest['QA'] : 0) ?></td>
+                    <td class="text-center"><?php echo ((isset($dest['QN'])) ? $dest['QN'] : 0) ?></td>
+                    <td class="text-center"><strong><?php echo ((isset($dest['QT'])) ? $dest['QT'] : 0) ?><strong></td>
+                    <td class="text-center"><?php echo ((isset($dest['TA'])) ? $dest['TA'] : 0) ?></td>
+                    <td class="text-center"><?php echo ((isset($dest['TN'])) ? $dest['TN'] : 0) ?></td>
+                    <td class="text-center"><?php echo ((isset($dest['TT'])) ? $dest['TT'] : 0) ?></td>
+                  <?php } else {?>
+                    <td class="text-center"><?php echo ((isset($dest['TA'])) ? $dest['TA'] : 0) ?></td>
+                    <td class="text-center"><?php echo ((isset($dest['TN'])) ? $dest['TN'] : 0) ?></td>
+                    <td class="text-center"><strong><?php echo ((isset($dest['TT'])) ? $dest['TT'] : 0) ?></strong></td>
+                    <td class="text-center"><?php echo ((isset($dest['QA'])) ? $dest['QA'] : 0) ?></td>
+                    <td class="text-center"><?php echo ((isset($dest['QN'])) ? $dest['QN'] : 0) ?></td>
+                    <td class="text-center"><?php echo ((isset($dest['QT'])) ? $dest['QT'] : 0) ?></td>
                   <?php }
-                  $count2++; ?>
+        $count2++;?>
                 </tr>
               <?php }
-              $count++; ?>
+    $count++;?>
 
             </tbody>
           </table><br>
 
-        <?php } ?>
+        <?php }?>
       </div>
     </div>
   </div>
