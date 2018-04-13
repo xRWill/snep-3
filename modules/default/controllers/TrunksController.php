@@ -110,7 +110,7 @@ class TrunksController extends Zend_Controller_Action {
     }
 
     foreach ($trunks as $id => $val) {
-
+      
       $trunks[$id]['saldo'] = null;
 
       if (!is_null($val['time_total'] )) {
@@ -120,8 +120,8 @@ class TrunksController extends Zend_Controller_Action {
         $callDay = substr($call, 8, 2);
 
         $sale = 0;
-        $val['time_total'] = $val['time_total']*60;
-
+        $val['time_total'] = $val['time_total']*60; // converter minutos for seconds
+        
         switch ($val['time_chargeby']) {
           case 'Y':
           if ($callYear == date('Y')) {
@@ -149,10 +149,15 @@ class TrunksController extends Zend_Controller_Action {
 
           break;
         }
+        //Zend_Debug::Dump($sale);exit;
+        
+
+        //$trunks[$id]['saldo'] = date('i:s',mktime(0,0,$sale,15,03,2013)); //Convert secons in mm:ss
+
         if($sale < 0){
-          $trunks[$id]['saldo'] = gmdate("H:i:s", 0);
+          $trunks[$id]['saldo'] = 0;
         }else{
-          $trunks[$id]['saldo'] = gmdate("H:i:s", $sale);
+          $trunks[$id]['saldo'] = round($sale/60); // converter seconds for minutos
         }
       }
     }

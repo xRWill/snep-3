@@ -43,7 +43,7 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap
                                 <th><?php echo $this->translate('Name');?></th>
                                 <th class="text-center"><?php echo $this->translate('Type');?></th>
                                 <th class="text-center"><?php echo $this->translate('Interface Type');?></th>
-                                <th class="text-center"><?php echo $this->translate('Time Credit (h:m:s)');?></th>
+                                <th class="text-center"><?php echo $this->translate('Time Credit (minutes)');?></th>
                                 <th class="text-center" colspan="2" data-sort-ignore="true"><?php echo $this->translate('Actions');?></th>
                             </tr>
                         </thead>
@@ -61,7 +61,7 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap
                                     <td class="text-center">
                                         <?php if ($trunk['saldo']) : ?>
                                              <span style='color:#888'>
-                                                <?php echo $trunk['saldo']  ?>
+                                                <?php echo $trunk['saldo']  ?> <?php echo $this->translate('minutes') ?>
                                              </span>
                                         <?php else :  ?>
                                             <?php echo $this->translate('Not configured') ?>
