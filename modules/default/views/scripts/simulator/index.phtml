@@ -109,8 +109,7 @@
                             <li><strong><?php echo $this->translate('Source') ?>:</strong> <?php echo $this->input['caller'] ?></li>
                             <li><strong><?php echo $this->translate('Destiny') ?>:</strong> <?php echo $this->input['dst']  ?></li>
                             <li><strong><?php echo $this->translate('Hour') ?>:</strong> <?php echo $this->input['time'] ?></li>
-                            <li><strong><?php echo $this->translate('Week Day') ?>:</strong> <?php echo $this->input['day'] ?></li>
-                            <li><strong><?php echo $this->translate('Date') ?>:</strong> <?php echo $this->input['date'] ?></li>
+                            <li><strong><?php echo $this->translate('Date') ?>:</strong> <?php echo date('d/m/Y', strtotime($this->input['date'])) ?></li>
                         </ul>
                     </td>
                 </tr>
@@ -132,6 +131,11 @@
                                     <li class="caller"><?php echo $this->translate('Source: %s', $value['caller']);?></li>
                                     <li class="dst"><?php echo $this->translate('Destiny: %s', $value['dst']);?></li>
                                     <li class="valid"><?php echo $this->translate('Validity: %s', $value['valid']);?></li>
+                                    <li class="valid">
+                                        <?php foreach ($value['days'] as $key => $day) {
+                                            echo $day." "; 
+                                        }?>
+                                    </li>
                                 </ul>
                             <li>
                                 <?php } ?>
@@ -165,9 +169,9 @@ jQuery.noConflict();
 jQuery(function () {
 
     jQuery('#ruleDay').datetimepicker({
-        locale: "<?php echo $this->datepicker_locale; ?>",
+        locale: 'pt-BR',
         sideBySide: true,
-        format: 'YYYY-MM-DD HH:mm ddd',
+        format: 'YYYY-MM-DD HH:mm',
         showClear: true,
         showClose: true
     });

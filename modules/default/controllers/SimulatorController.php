@@ -106,7 +106,7 @@ class SimulatorController extends Zend_Controller_Action {
             if ($time) {
                 $dialplan->setTime($time);
             }
-
+            
             if($day){
                 $dialplan->setDay($day);
             }
@@ -123,19 +123,22 @@ class SimulatorController extends Zend_Controller_Action {
             }
 
             if (count($dialplan->getMatches()) > 0) {
-                $found = false;
+                $firstTorun = false;
                 foreach ($dialplan->getMatches() as $index => $rule) {
-
-                    if ($dialplan->getLastRule()) {
-                        $state = "torun";
-                        $found = true;
-                    } else if ($found) {
-                        $state = "ignored";
-                    } else if (!$rule->isActive()){
+                    
+                    $state = "outdated";
+                    if ($dialplan->getLastRule()) {                      
+                        if(!$firstTorun){
+                            $firstTorun = true;  
+                            $state = "torun";
+                        }else{
+                            $state = "ignored";
+                        }   
+                    } 
+                    
+                    if (!$rule->isActive()) {
                         $state = "inactive";
-                    } else {
-                        $state = "outdated";
-                    }
+                    }                     
 
                     $actions = array();
 
@@ -178,7 +181,7 @@ class SimulatorController extends Zend_Controller_Action {
                         $dsts[] = trim(implode(":", $dst), ':');
                     }
                     $dsts = implode(",", $dsts);
-
+                    
                     $result[$index] = array(
                         "id" => $rule->getId(),
                         "state" => $state,
@@ -186,11 +189,12 @@ class SimulatorController extends Zend_Controller_Action {
                         "dst" => $dsts,
                         "desc" => $rule->getDesc(),
                         "valid" => join(";", $rule->getValidTimeList()),
+                        "days" => $rule->getValidWeekDays(),
                         "actions" => $actions);
                 }
-
+                
                 if($date == NULL){
-                    $date = $this->view->translate("Current Day");
+                    $date = date("Y-m-d");
                 }else{
                     $table = array('mon'=> $this->view->translate('Monday'),
                                'tue'=> $this->view->translate('Tuesday'),
@@ -199,18 +203,50 @@ class SimulatorController extends Zend_Controller_Action {
                                'fri'=> $this->view->translate('Friday'),
                                'sat'=> $this->view->translate('Saturday'),
                                'sun'=> $this->view->translate('Sunday'));
-
+                    
                     $date = strtr($date, $table);
                 }
-
+                                
+                $time = $dialplan->getLastExecutionTime();
+                
                 $input = array(
                   "caller" => $caller,
                   "dst" => $extension,
-                  "time" => $dialplan->getLastExecutionTime(),
+                  "time" => $time,
                   "date" => $date,
                   "day" => $day
                 );
+                
+                // validate days in week
+                foreach ($result as $key => $value) {
+                    
+                    $dayofweek = date('D', strtotime($date));
+                    $date = strtolower($dayofweek);             
+                    $valid = explode("-",$value["valid"]);
+                    
+                    if(($time >= $valid[0] && $time <= $valid[1]) && $value["state"] == "torun"){
+                        if(!in_array($date, $value["days"])){
+                            $result[$key]["state"] = "outdated";
+                        }                        
+                    }else{
+                        if($value["state"] == "torun"){
+                            $result[$key]["state"] = "outdated";
+                        }
+                    }                    
 
+                    $table = array('mon'=> $this->view->translate('Monday'),
+                               'tue'=> $this->view->translate('Tuesday'),
+                               'wed'=> $this->view->translate('Wednesday'),
+                               'thu'=> $this->view->translate('Thursday'),
+                               'fri'=> $this->view->translate('Friday'),
+                               'sat'=> $this->view->translate('Saturday'),
+                               'sun'=> $this->view->translate('Sunday'));
+
+                    foreach ($value["days"] as $x => $day) {
+                        $result[$key]["days"][$x] = $table[$day];
+                    }
+                }
+                
                 $this->view->input = $input;
                 $this->view->result = $result;
             }

@@ -18,6 +18,7 @@
  *
  *  CSS File for rule simulator (modules/default/views/scripts/simulator)
  */
+
 .error {
   background-color: #ffeded;
   border: 1px solid red;
@@ -25,13 +26,14 @@
 }
 
 form {
-    text-align: center;
-    padding: 5px;
+  text-align: center;
+  padding: 5px;
 }
 
 label {
-    margin: 0px 5px;
+  margin: 0px 5px;
 }
+
 
 /**
  * Estilos para a lista de regras
@@ -53,15 +55,17 @@ label {
   margin: 0px !important;
 }
 
-#results, #results ul {
+#results,
+#results ul {
   list-style: none;
   padding: 0px;
   margin: 0px;
 }
 
 .rule {
-   padding: 20px 10px;
+  padding: 20px 10px;
 }
+
 
 /**
  * Tipos de regra
@@ -70,24 +74,36 @@ label {
 .ignored {
   color: #b3b3b3;
   background-color: #f2f2f2;
+  border: 1px solid #ddd;
   border-left: 10px solid #CCBABB;
+  border-radius: 20px;
+  margin-bottom: 2px;
 }
 
 .inactive {
   color: #585858;
   background-color: #F3E2A9;
+  border: 1px solid #ddd;
   border-left: 10px solid #FF8000;
+  border-radius: 20px;
+  margin-bottom: 2px;
 }
 
 .torun {
   background-color: #CBFFCB;
+  border: 1px solid #ddd;
   border-left: 10px solid #8BE98A;
+  border-radius: 20px;
+  margin-bottom: 2px;
 }
 
 .outdated {
   color: #b3b3b3;
   background-color: #ffeded;
+  border: 1px solid #ddd;
   border-left: 10px solid #F46770;
+  border-radius: 20px;
+  margin-bottom: 2px;
 }
 
 .outdated .valid {
@@ -111,23 +127,24 @@ label {
 }
 
 .deny {
-    font-weight: bold;
-    color: red;
+  font-weight: bold;
+  color: red;
 }
+
 
 /**
  * Regras para a lista de legendas
  */
 
 #legenda {
-    list-style: none;
-    text-align: center;
-    margin: 0px;
-    padding: 10px;
+  list-style: none;
+  text-align: center;
+  margin: 0px;
+  padding: 10px;
 }
 
 #legenda li {
-    color: #000 !important;
-    display: inline;
-    padding: 5px;
+  color: #000 !important;
+  display: inline;
+  padding: 5px;
 }
