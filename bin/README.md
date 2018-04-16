@@ -35,5 +35,7 @@ Irá abrir uma caixa para seleção de um arquivo, então selecione o arquivo **
 6) Procure a palavra que deseja realizar a tradução, selecione e preencha sua tradução na segunda caixa de texto. Após realizar todas as alterações desejadas, salve as mudanças do arquivo.
 
 7) Copie os arquivos `messages.mo`, `pt_BR.mo` e `es.mo` para o diretório `/var/www/html/snep/lang/`
+
 8) Renomeie o arquivo `messages.mo` para `en.mo`;
+
 9) Verifique suas alterações na Interface!
