@@ -86,15 +86,9 @@ class DatesAliasController extends Zend_Controller_Action {
             //Zend_Debug::Dump($_POST);exit;
             try {
                 $id = PBX_DatesAliases::add($_POST);
-                //log-user
-                if (class_exists("Loguser_Manager")) {
-                    $loguser = array(
-                      'table' => 'date_alias',
-                      'registerid' => $id,
-                      'description' => "Added New Date Alias - $id - {$_POST['name']}"
-                    );
-                    Snep_LogUser::log("add", $loguser);
-                }
+
+                //audit
+                Snep_Audit_Manager::SaveLog("Added", 'date_alias', $id, $this->view->translate("Date Alias") . " {$id} " . $_POST['name']);
                 $this->_redirect($this->getRequest()->getControllerName());
             } catch (Exception $ex) {
                 $this->view->error_message = $ex->getMessage();
@@ -131,15 +125,9 @@ class DatesAliasController extends Zend_Controller_Action {
         if ($this->getRequest()->isPost()) {
           try {
               PBX_DatesAliases::update($_POST);
-              //log-user
-              if (class_exists("Loguser_Manager")) {
-                  $loguser = array(
-                    'table' => 'date_alias',
-                    'registerid' => $id,
-                    'description' => "Edited Date Alias $id - {$_POST['name']}"
-                  );
-                  Snep_LogUser::log("update", $loguser);
-              }
+
+              //audit
+              Snep_Audit_Manager::SaveLog("Updated", 'date_alias', $id, $this->view->translate("Date Alias") . " {$id} " . $_POST['name']);
               $this->_redirect($this->getRequest()->getControllerName());
           } catch (Exception $ex) {
               $this->view->error_message = $ex->getMessage();
@@ -185,15 +173,9 @@ class DatesAliasController extends Zend_Controller_Action {
 
                 $result = PBX_DatesAliases::get($id);
                 PBX_DatesAliases::delete($_POST['id']);
-                //log-user
-                if (class_exists("Loguser_Manager")) {
-                    $loguser = array(
-                      'table' => 'date_alias',
-                      'registerid' => $id,
-                      'description' => "Deleted Date Alias $id - {$result[0]['name']}"
-                    );
-                    Snep_LogUser::log("delete", $loguser);
-                }
+
+                //audit
+                Snep_Audit_Manager::SaveLog("Deleted", 'date_alias', $id, $this->view->translate("Date Alias") . " {$id} " . $result[0]['name']);
                 $this->_redirect($this->getRequest()->getControllerName());
 
             }

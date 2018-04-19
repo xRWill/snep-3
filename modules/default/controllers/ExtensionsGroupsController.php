@@ -124,6 +124,10 @@ class ExtensionsGroupsController extends Zend_Controller_Action {
                         Snep_ExtensionsGroups_Manager::addExtensionsGroup($extensionsGroup);
                     }
                 }
+
+                //audit
+                Snep_Audit_Manager::SaveLog("Added", 'core_groups', $groupId, $this->view->translate("Extensions Group") . " {$groupId} " . $dados['name']);
+
                 $this->_redirect($this->getRequest()->getControllerName());
             }
         }
@@ -215,6 +219,9 @@ class ExtensionsGroupsController extends Zend_Controller_Action {
                     Snep_ExtensionsGroups_Manager::updateExtensionsGroup($id, $old_members,$new_members);
 
                 }
+
+                //audit
+                Snep_Audit_Manager::SaveLog("Updated", 'core_groups', $dados['id'], $this->view->translate("Extensions Group") . " {$dados['id']} " . $dados['name']);
                 $this->_redirect($this->getRequest()->getControllerName());
             }
         }
@@ -263,8 +270,11 @@ class ExtensionsGroupsController extends Zend_Controller_Action {
                 foreach($extensions_all as $key => $value){
                     Snep_ExtensionsGroups_Manager::deleteGroupExtensions(array('peer_id' => $value,  'group_id' => $id));
                 }
+                $dados = Snep_ExtensionsGroups_Manager::get($id);
                 Snep_ExtensionsGroups_Manager::delete($id);
 
+                //audit
+                Snep_Audit_Manager::SaveLog("Deleted", 'core_groups', $id, $this->view->translate("Extensions Group") . " {$id} " . $dados['name']);
                 $this->_redirect($this->getRequest()->getControllerName());
             }
         }
@@ -303,13 +313,8 @@ class ExtensionsGroupsController extends Zend_Controller_Action {
         if ($this->_request->getPost()) {
 
             $dados = $this->_request->getParams();
-
             $extensions_all  = Snep_ExtensionsGroups_Manager::getExtensionsGroup($dados['group_id']);
-
             $extensions_uniq = Snep_ExtensionsGroups_Manager::getExtensionsOnlyGroup($dados['group_id']);
-
-
-
 
             foreach($extensions_uniq as $key => $value){
                 Snep_ExtensionsGroups_Manager::addExtensionsGroup(array('peer_id' => $value, 'group_id' => $dados['new_group']));
@@ -317,11 +322,12 @@ class ExtensionsGroupsController extends Zend_Controller_Action {
             foreach($extensions_all as $key => $value){
                 Snep_ExtensionsGroups_Manager::deleteGroupExtensions(array('peer_id' => $value,  'group_id' => $dados['group_id']));
             }
+
+            $dados = Snep_ExtensionsGroups_Manager::get($id);
             Snep_ExtensionsGroups_Manager::delete($dados['group_id']);
-
-
-           
-
+            
+            //audit
+            Snep_Audit_Manager::SaveLog("Deleted", 'core_groups', $id, $this->view->translate("Extensions Group") . " {$id} " . $dados['name']);
             $this->_redirect($this->getRequest()->getControllerName());
         }
 

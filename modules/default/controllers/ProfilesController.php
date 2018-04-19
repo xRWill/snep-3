@@ -99,7 +99,7 @@ class ProfilesController extends Zend_Controller_Action {
         if ($this->_request->getPost()) {
 
             $dados = $this->_request->getParams();
-
+            
             $newId = Snep_Profiles_Manager::getName($dados['name']);
 
             if (count($newId) > 1) {
@@ -119,6 +119,10 @@ class ProfilesController extends Zend_Controller_Action {
                         $this->view->users = Snep_Users_Manager::addProfileByName($data);
                     }
                 }
+
+                //audit
+                Snep_Audit_Manager::SaveLog("Added", 'profiles', $dados['id'], $this->view->translate("Profile") . " {$dados['id']} " . $dados['name']);
+                    
 
                 $this->_redirect($this->getRequest()->getControllerName() . "/permission/id/$lastId?action=add");
             }
@@ -196,6 +200,9 @@ class ProfilesController extends Zend_Controller_Action {
                     }
                 }
 
+                //audit
+                Snep_Audit_Manager::SaveLog("Updated", 'profiles', $data['id'], $this->view->translate("Profile") . " {$data['id']} " . $dados['name']);
+                   
                 $this->_redirect($this->getRequest()->getControllerName());
             }
 
@@ -222,6 +229,7 @@ class ProfilesController extends Zend_Controller_Action {
         if ($this->_request->getPost()) {
         
             $members = Snep_Profiles_Manager::getUsersProfiles($_POST['id']);
+            $profile = Snep_Profiles_Manager::get($_POST['id']);
 
             // migra membros para o profile default
             foreach ($members as $item => $member) {
@@ -230,6 +238,10 @@ class ProfilesController extends Zend_Controller_Action {
 
             Snep_Profiles_Manager::removePermission($_POST['id']);
             Snep_Profiles_Manager::remove($_POST['id']);
+
+            //audit
+            Snep_Audit_Manager::SaveLog("Deleted", 'profiles', $_POST['id'], $this->view->translate("Profile") . " {$_POST['id']} " . $profile['name']);
+                   
             $this->_redirect($this->getRequest()->getControllerName());
         }
     }

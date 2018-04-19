@@ -254,15 +254,10 @@ class TrunksController extends Zend_Controller_Action {
           $db->rollBack();
           throw $ex;
         }
-        //log-user
-        if (class_exists("Loguser_Manager")) {
-            $data = array(
-              'table' => 'trunks',
-              'registerid' => $id,
-              'description' => "Added Trunk $id - {$_POST['callerid']}"
-            );
-            Snep_LogUser::log("add", $data);
-        }
+        
+        // audit
+        Snep_Audit_Manager::SaveLog("Added", 'trunks', $id, $this->view->translate("Trunk") . " {$id} ". $_POST['callerid']);
+        
         Snep_InterfaceConf::loadConfFromDb();
         $this->_redirect("trunks");
       }
@@ -415,15 +410,9 @@ class TrunksController extends Zend_Controller_Action {
             $db->rollBack();
             throw $ex;
           }
-          //log-user
-          if (class_exists("Loguser_Manager")) {
-              $data = array(
-                'table' => 'trunks',
-                'registerid' => $idTrunk,
-                'description' => "Edited Trunk $idTrunk - {$_POST['callerid']}"
-              );
-              Snep_LogUser::log("update", $data);
-          }
+          //audit
+          Snep_Audit_Manager::SaveLog("Updated", 'trunks', $idTrunk, $this->view->translate("Trunk") . " {$idTrunk} ". $_POST['callerid']);
+          
           Snep_InterfaceConf::loadConfFromDb();
           $this->_redirect("trunks");
         }
@@ -479,16 +468,9 @@ class TrunksController extends Zend_Controller_Action {
 
         if ($this->_request->getPost()) {
 
-          //log-user
-          if (class_exists("Loguser_Manager")) {
-              $loguser = Snep_Trunks_Manager::get($id);
-              $data = array(
-                'table' => 'trunks',
-                'registerid' => $id,
-                'description' => "Deleted Trunk $id - {$loguser['callerid']}"
-              );
-              Snep_LogUser::log("delete", $data);
-          }
+          //audit
+          $loguser = Snep_Trunks_Manager::get($id);
+          Snep_Audit_Manager::SaveLog("Deleted", 'trunks', $id, $this->view->translate("Trunk") . " {$id} ". $loguser['callerid']);     
 
           Snep_Trunks_Manager::remove($_POST['id']);
           Snep_Trunks_Manager::removePeers($_POST['name']);

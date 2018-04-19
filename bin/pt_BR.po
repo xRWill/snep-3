@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snep-3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-13 11:01-0300\n"
+"POT-Creation-Date: 2018-04-19 17:47-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Douglas Conrad <douglas.conrad@opens.com.br>\n"
 "Language-Team: \n"
@@ -81,7 +81,7 @@ msgstr " -Kernel + Aplic."
 msgid " Subfolders not found "
 msgstr "Subpastas não encontradas"
 
-#: ../modules/default/controllers/ContactsController.php:450
+#: ../modules/default/controllers/ContactsController.php:461
 msgid " The contact "
 msgstr " O Contato"
 
@@ -105,7 +105,7 @@ msgstr " não possui permissão de leitura."
 msgid " for more information"
 msgstr "para mais informações"
 
-#: ../modules/default/controllers/ContactsController.php:450
+#: ../modules/default/controllers/ContactsController.php:461
 msgid " has the following error "
 msgstr " tem o seguinte erro"
 
@@ -139,6 +139,7 @@ msgid "1"
 msgstr "1"
 
 #: /var/www/html/snep-3/modules/loguser/info.xml
+#: /var/www/html/snep-3/modules/billing/info.xml
 msgid "1.0"
 msgstr ""
 
@@ -223,6 +224,8 @@ msgstr "Ação"
 msgid "Action index"
 msgstr "Ação"
 
+#: ../modules/billing/views/scripts/billing/index.phtml:47
+#: ../modules/billing/views/scripts/telcos/index.phtml:49
 #: ../modules/default/views/scripts/cost-center/index.phtml:49
 #: ../modules/default/views/scripts/queues/index.phtml:48
 #: ../modules/default/views/scripts/extensions/index.phtml:57
@@ -245,7 +248,7 @@ msgstr "Ação"
 msgid "Actions"
 msgstr "Ações"
 
-#: ../modules/default/views/scripts/simulator/index.phtml:123
+#: ../modules/default/views/scripts/simulator/index.phtml:122
 msgid "Actions to execute"
 msgstr "Ações para executar"
 
@@ -263,14 +266,18 @@ msgid "Active"
 msgstr "Ativo"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:30
+#: ../modules/default/views/scripts/audit/view.phtml:27
 msgid "Activity date"
 msgstr "Data da Atividade"
 
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:20
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:21
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:23
 msgid "Actual group"
 msgstr "Grupo Atual"
 
 #: ../lib/Snep/Form.php:98
+#: ../modules/billing/controllers/TelcosController.php:47
+#: ../modules/billing/controllers/BillingController.php:25
 #: ../modules/default/controllers/UsersController.php:74
 #: ../modules/default/controllers/DatesAliasController.php:74
 #: ../modules/default/controllers/ContactsController.php:91
@@ -293,6 +300,11 @@ msgstr "Adicionar"
 #: ../modules/default/views/scripts/route/elements/actions.phtml:22
 msgid "Add Action"
 msgstr "Adicionar ação"
+
+#: ../modules/billing/views/scripts/billing/index.phtml:20
+#: ../modules/billing/views/scripts/telcos/index.phtml:21
+msgid "Add Bill"
+msgstr "Adicionar Tarifa"
 
 #: ../modules/default/views/scripts/contacts/index.phtml:19
 msgid "Add Contact"
@@ -328,7 +340,7 @@ msgstr "Adicionar Arquivo"
 msgid "Add Multiple"
 msgstr "Adicionar Múltiplos"
 
-#: ../modules/default/controllers/ExtensionsController.php:875
+#: ../modules/default/controllers/ExtensionsController.php:851
 msgid "Add Multiples Extensions"
 msgstr "Adicionar Múltiplos Ramais"
 
@@ -368,6 +380,11 @@ msgstr "Adicionar Arquivos de Som"
 msgid "Add Tag"
 msgstr "Adicionar Tag"
 
+#: ../modules/billing/views/scripts/billing/index.phtml:21
+#: ../modules/billing/views/scripts/telcos/index.phtml:20
+msgid "Add Telco"
+msgstr "Adicionar Operadora"
+
 #: ../modules/default/views/scripts/trunks/index.phtml:20
 msgid "Add Trunk"
 msgstr "Adicionar Tronco"
@@ -385,6 +402,8 @@ msgid "Add page to Dashboard"
 msgstr "Adicionar página ao Dashboard"
 
 #: ../modules/loguser/views/scripts/loguser/index.phtml:15
+#: ../modules/billing/views/scripts/billing/index.phtml:25
+#: ../modules/billing/views/scripts/telcos/index.phtml:25
 #: ../modules/default/views/scripts/calls-report/index.phtml:8
 #: ../modules/default/views/scripts/cost-center/index.phtml:27
 #: ../modules/default/views/scripts/queues/index.phtml:24
@@ -411,6 +430,7 @@ msgstr "Adicionar página ao Dashboard"
 #: ../modules/default/views/scripts/pickup-groups/index.phtml:23
 #: ../modules/default/views/scripts/tdm-links/index.phtml:9
 #: ../modules/default/views/scripts/contact-groups/index.phtml:24
+#: ../modules/default/views/scripts/audit/index.phtml:15
 #: ../modules/default/views/scripts/expression-alias/index.phtml:25
 #: ../modules/default/views/scripts/dates-alias/index.phtml:25
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:43
@@ -422,13 +442,17 @@ msgstr "Adicionar a dashboard"
 msgid "Add your External Trunks to make external Calls."
 msgstr "Adicionar um Tronco Externo para fazer ligações à distância"
 
+#: ../modules/default/views/scripts/audit/view.phtml:29
+msgid "Added"
+msgstr "Adicionou"
+
 #: ../modules/default/views/scripts/calls-report/index.phtml:170
 msgid "Additional filters"
 msgstr "Filtros adicionais"
 
 #: ../modules/default/views/scripts/contacts/addedit.phtml:46
 #: ../modules/default/views/scripts/contacts/addedit.phtml:48
-#: ../modules/default/controllers/ContactsController.php:345
+#: ../modules/default/controllers/ContactsController.php:356
 #: ../modules/default/actions/EmailAction.php:66
 msgid "Address"
 msgstr "Endereço"
@@ -442,10 +466,12 @@ msgstr "Avançado"
 msgid "Advanced Configurations"
 msgstr "Configurações avançadas"
 
-#: ../modules/default/controllers/QueuesController.php:316
+#: ../modules/default/controllers/QueuesController.php:304
 msgid "Agent:"
 msgstr "Agente:"
 
+#: ../modules/billing/views/scripts/billing/index.phtml:36
+#: ../modules/billing/views/scripts/telcos/index.phtml:36
 #: ../modules/default/views/scripts/cost-center/index.phtml:37
 #: ../modules/default/views/scripts/queues/index.phtml:35
 #: ../modules/default/views/scripts/extensions/index.phtml:46
@@ -488,10 +514,11 @@ msgid "All"
 msgstr "Todos"
 
 #: ../modules/loguser/controllers/LoguserController.php:40
+#: ../modules/default/controllers/AuditController.php:54
 msgid "All Actions"
 msgstr "Todas as ações"
 
-#: ../modules/default/controllers/ContactsController.php:295
+#: ../modules/default/controllers/ContactsController.php:306
 msgid "All Groups"
 msgstr "Todos Grupos"
 
@@ -552,6 +579,10 @@ msgstr "Qualquer"
 msgid "Application"
 msgstr "Aplicação"
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:49
+msgid "Area Code"
+msgstr "Código de Área"
+
 #: ../modules/default/views/scripts/systemstatus/index.phtml:103
 msgid "Asterisk"
 msgstr "Asterisk"
@@ -604,6 +635,11 @@ msgstr "Áudio: Você é o próximo da fila"
 msgid "Audios"
 msgstr "Áudios"
 
+#: ../modules/default/controllers/AuditController.php:48
+#: /var/www/html/snep-3/modules/default/resources.xml
+msgid "Audit"
+msgstr "Auditoria"
+
 #: ../modules/default/controllers/IpStatusController.php:45
 msgid "Auth. Sent"
 msgstr "Autent. enviada"
@@ -630,11 +666,12 @@ msgid "Available"
 msgstr "Disponí­vel"
 
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:92
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:74
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:78
 msgid "Available extensions"
 msgstr "Ramais Disponí­veis"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:53
+#: ../modules/billing/views/scripts/error/sneperror.phtml:42
 #: ../modules/default/views/scripts/queues/error.phtml:16
 #: ../modules/default/views/scripts/extensions/asterisk-error.phtml:17
 #: ../modules/default/views/scripts/extensions/error.phtml:16
@@ -650,14 +687,15 @@ msgstr "Ramais Disponí­veis"
 #: ../modules/default/views/scripts/tdm-links/sneperror.phtml:45
 #: ../modules/default/views/scripts/register/index.phtml:55
 #: ../modules/default/views/scripts/contact-groups/error.phtml:16
+#: ../modules/default/views/scripts/audit/view.phtml:50
 #: ../modules/default/views/scripts/expression-alias/error.phtml:16
 #: ../modules/default/views/scripts/dates-alias/error.phtml:16
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:70
-#: ../modules/default/views/scripts/simulator/index.phtml:157
-#: ../modules/default/controllers/ExtensionsController.php:718
-#: ../modules/default/controllers/ExtensionsController.php:757
-#: ../modules/default/controllers/ExtensionsController.php:825
-#: ../modules/default/controllers/ExtensionsController.php:854
+#: ../modules/default/views/scripts/simulator/index.phtml:161
+#: ../modules/default/controllers/ExtensionsController.php:706
+#: ../modules/default/controllers/ExtensionsController.php:739
+#: ../modules/default/controllers/ExtensionsController.php:807
+#: ../modules/default/controllers/ExtensionsController.php:830
 msgid "Back"
 msgstr "Voltar"
 
@@ -673,9 +711,30 @@ msgstr "Backup"
 msgid "Backup Files Path"
 msgstr "Caminho dos Arquivos de Backup"
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:29
+#: ../modules/billing/views/scripts/billing/index.phtml:45
+msgid "Bill Type"
+msgstr "Tipo de Bilhete"
+
+#: ../modules/billing/controllers/BillingController.php:24
+#: ../modules/billing/controllers/BillingController.php:54
+#: ../modules/billing/controllers/BillingController.php:87
 #: ../modules/default/views/scripts/calls-report/analytic.phtml:45
+#: /var/www/html/snep-3/modules/billing/resources.xml
 msgid "Billing"
 msgstr "Tarifação"
+
+#: ../modules/billing/controllers/BillingController.php:12
+msgid "Billing >> Billing"
+msgstr "Tarifação >> Tarifação"
+
+#: ../modules/billing/controllers/TelcosController.php:33
+msgid "Billing >> Telcos"
+msgstr "Tarifação >> Operadoras"
+
+#: /var/www/html/snep-3/modules/billing/info.xml
+msgid "Billing Module for SNEP"
+msgstr "Modulo de Tarifação para o SNEP"
 
 #: ../modules/default/actions/Cadeado.php:85
 msgid "Block the execution of the action until password is given."
@@ -698,7 +757,7 @@ msgstr "Placas"
 
 #: ../modules/default/views/scripts/users/index.phtml:68
 #: ../modules/default/views/scripts/users/bond.phtml:16
-#: ../modules/default/controllers/UsersController.php:364
+#: ../modules/default/controllers/UsersController.php:375
 msgid "Bond"
 msgstr "Vínculo"
 
@@ -771,7 +830,7 @@ msgid "Cached"
 msgstr "Em cache"
 
 #: ../modules/default/views/scripts/route/email_message.phtml:213
-#: ../modules/default/views/scripts/voicemail/new_message.phtml:212
+#: ../modules/default/views/scripts/voicemail/new_message.phtml:202
 msgid "Call Date"
 msgstr "Data da Ligação"
 
@@ -780,7 +839,7 @@ msgid "Call Duration Limit"
 msgstr "Limite de Duração da Chamada"
 
 #: ../modules/default/views/scripts/route/email_message.phtml:210
-#: ../modules/default/views/scripts/voicemail/new_message.phtml:209
+#: ../modules/default/views/scripts/voicemail/new_message.phtml:199
 msgid "Call Informations"
 msgstr "Informações da Ligação"
 
@@ -835,7 +894,7 @@ msgid "Caller ID"
 msgstr "Nome"
 
 #: ../modules/default/views/scripts/route/email_message.phtml:217
-#: ../modules/default/views/scripts/voicemail/new_message.phtml:216
+#: ../modules/default/views/scripts/voicemail/new_message.phtml:206
 msgid "Caller Number"
 msgstr "Número do Chamador"
 
@@ -869,6 +928,9 @@ msgstr "Chamadas completadas"
 
 #: ../lib/Snep/CsvIE.php:170 ../lib/Snep/CsvIE.php:295
 #: ../lib/Snep/Form/Element/Submit.php:77
+#: ../modules/billing/views/scripts/remove/remove.phtml:19
+#: ../modules/billing/views/scripts/billing/addedit.phtml:64
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:38
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:51
 #: ../modules/default/views/scripts/queues/addedit.phtml:254
 #: ../modules/default/views/scripts/queues/members.phtml:26
@@ -900,7 +962,7 @@ msgstr "Chamadas completadas"
 #: ../modules/default/views/scripts/cnl/index.phtml:44
 #: ../modules/default/views/scripts/khomp-links/index.phtml:66
 #: ../modules/default/views/scripts/trunks/addedit.phtml:458
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:35
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:39
 #: ../modules/default/views/scripts/tdm-links/index.phtml:66
 #: ../modules/default/views/scripts/contact-groups/migration.phtml:47
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:34
@@ -914,41 +976,43 @@ msgstr "Chamadas completadas"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../modules/default/controllers/ContactGroupsController.php:210
+#: ../modules/default/controllers/ContactGroupsController.php:216
 msgid "Cannot remove. The following routes are using this contact group: "
 msgstr ""
 "Não é possí­vel remover. As seguintes rotas estão usando este grupo de "
 "contatos:"
 
-#: ../modules/default/controllers/DatesAliasController.php:170
+#: ../modules/default/controllers/DatesAliasController.php:158
 msgid "Cannot remove. The following routes are using this dates alias: "
 msgstr ""
 "Não foi possível remover. As seguintes rotas estão usando este alias de data:"
 
-#: ../modules/default/controllers/ExpressionAliasController.php:218
+#: ../modules/default/controllers/ExpressionAliasController.php:203
 msgid "Cannot remove. The following routes are using this expression alias: "
 msgstr ""
 "Não é possível apagar. As seguinte rotas estão utilizando esta alias de "
 "expressão:"
 
-#: ../modules/default/controllers/ExtensionsGroupsController.php:240
+#: ../modules/default/controllers/ExtensionsGroupsController.php:247
 msgid "Cannot remove. The following routes are using this extensions group: "
 msgstr ""
 "Não é possível apagar. As seguinte rotas estão utilizando o grupo de ramal:"
 
-#: ../modules/default/controllers/QueuesController.php:327
+#: ../modules/default/controllers/QueuesController.php:315
 msgid "Cannot remove. The following routes are using this queues: "
 msgstr "Não é possível apagar. As seguinte rotas estão utilizando esta fila: "
 
-#: ../modules/default/controllers/TrunksController.php:466
+#: ../modules/default/controllers/TrunksController.php:455
 msgid "Cannot remove. The following routes are using this trunk: "
 msgstr "Não é possível apagar. As seguinte rotas estão utilizando este tronco:"
 
 #: ../modules/loguser/views/scripts/loguser/index.phtml:58
+#: ../modules/default/views/scripts/audit/index.phtml:43
 msgid "Category"
 msgstr "Categoria"
 
 #: ../modules/loguser/views/scripts/loguser/index.phtml:61
+#: ../modules/default/views/scripts/audit/index.phtml:46
 msgid "Category Groups"
 msgstr "Grupo de Categorias"
 
@@ -1048,6 +1112,7 @@ msgstr "Informações do Cloud Server"
 msgid "Cnl Update"
 msgstr "Atualizar CNL"
 
+#: ../modules/billing/views/scripts/telcos/index.phtml:43
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:10
 #: ../modules/default/views/scripts/cost-center/index.phtml:45
 #: ../modules/default/views/scripts/contacts/addedit.phtml:10
@@ -1063,6 +1128,10 @@ msgstr "Atualizar CNL"
 #: ../modules/default/views/scripts/dates-alias/index.phtml:40
 msgid "Code"
 msgstr "Código"
+
+#: ../modules/billing/views/scripts/billing/index.phtml:43
+msgid "Code Area"
+msgstr "Código de Área"
 
 #: ../modules/default/controllers/ContactsController.php:122
 msgid "Code already exists"
@@ -1148,12 +1217,18 @@ msgstr "Parabéns"
 msgid "Constant technological innovation"
 msgstr "Constante inovação tecnológica"
 
+#: ../modules/default/controllers/ContactsController.php:145
+#: ../modules/default/controllers/ContactsController.php:239
+#: ../modules/default/controllers/ContactsController.php:270
+msgid "Contact"
+msgstr "Contato"
+
 #: ../modules/default/views/scripts/route/add_edit.phtml:71
 #: ../modules/default/controllers/ContactGroupsController.php:51
 #: ../modules/default/controllers/ContactGroupsController.php:70
-#: ../modules/default/controllers/ContactGroupsController.php:126
-#: ../modules/default/controllers/ContactGroupsController.php:199
-#: ../modules/default/controllers/ContactGroupsController.php:249
+#: ../modules/default/controllers/ContactGroupsController.php:129
+#: ../modules/default/controllers/ContactGroupsController.php:205
+#: ../modules/default/controllers/ContactGroupsController.php:260
 #: ../modules/default/controllers/RouteController.php:66
 msgid "Contact Group"
 msgstr "Grupos de Contatos"
@@ -1169,13 +1244,28 @@ msgstr "Grupos de Contatos"
 #: ../modules/default/views/scripts/calls-report/index.phtml:125
 #: ../modules/default/controllers/ContactsController.php:56
 #: ../modules/default/controllers/ContactsController.php:90
-#: ../modules/default/controllers/ContactsController.php:157
-#: ../modules/default/controllers/ContactsController.php:246
-#: ../modules/default/controllers/ContactsController.php:311
+#: ../modules/default/controllers/ContactsController.php:160
+#: ../modules/default/controllers/ContactsController.php:252
+#: ../modules/default/controllers/ContactsController.php:322
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Contacts"
 msgstr "Contatos"
+
+#: ../modules/default/controllers/AuditController.php:56
+msgid "Contacts Actions"
+msgstr "Ações de Contatos"
+
+#: ../modules/default/controllers/ContactGroupsController.php:116
+#: ../modules/default/controllers/ContactGroupsController.php:175
+#: ../modules/default/controllers/ContactGroupsController.php:245
+#: ../modules/default/controllers/ContactGroupsController.php:314
+msgid "Contacts Group"
+msgstr "Grupos de Contatos"
+
+#: ../modules/default/controllers/AuditController.php:57
+msgid "Contacts Group Actions"
+msgstr "Ações de Grupos de Contatos"
 
 #: ../modules/default/views/scripts/calls-report/index.phtml:102
 #: ../modules/default/views/scripts/calls-report/index.phtml:163
@@ -1199,7 +1289,7 @@ msgstr "Conversação"
 msgid "Converte to GSM"
 msgstr "Converter para GSM"
 
-#: ../modules/default/controllers/RouteController.php:419
+#: ../modules/default/controllers/RouteController.php:398
 #, php-format
 msgid "Copy of %s"
 msgstr "Copia de %s"
@@ -1219,11 +1309,7 @@ msgstr "País"
 #: ../modules/default/views/scripts/profiles/index.phtml:40
 #: ../modules/default/views/scripts/users/index.phtml:42
 msgid "Created"
-msgstr "Criado em"
-
-#: ../modules/default/controllers/SimulatorController.php:193
-msgid "Current Day"
-msgstr "Dia Atual"
+msgstr "Criou"
 
 #: ../modules/default/actions/Rewrite.php:91
 msgid "Cut"
@@ -1233,8 +1319,8 @@ msgstr "Cortar"
 msgid "Cut on pipe '|'"
 msgstr "Cortar no pipe '|'"
 
-#: ../modules/default/controllers/ExtensionsController.php:756
-#: ../modules/default/controllers/ExtensionsController.php:853
+#: ../modules/default/controllers/ExtensionsController.php:738
+#: ../modules/default/controllers/ExtensionsController.php:829
 msgid "DB Delete Error: "
 msgstr "Erro ao apagar do DB: "
 
@@ -1313,7 +1399,7 @@ msgstr "Usuário da base de dados"
 #: ../modules/default/views/scripts/dates-alias/addedit.phtml:29
 #: ../modules/default/views/scripts/dates-alias/addedit.phtml:60
 #: ../modules/default/views/scripts/dates-alias/addedit.phtml:160
-#: ../modules/default/views/scripts/simulator/index.phtml:113
+#: ../modules/default/views/scripts/simulator/index.phtml:112
 msgid "Date"
 msgstr "Data"
 
@@ -1321,14 +1407,20 @@ msgstr "Data"
 msgid "Date (YYYY-MM-DD)"
 msgstr "Data (YYYY-MM-DD)"
 
+#: ../modules/default/controllers/DatesAliasController.php:91
+#: ../modules/default/controllers/DatesAliasController.php:130
+#: ../modules/default/controllers/DatesAliasController.php:178
+msgid "Date Alias"
+msgstr "Alias de Datas"
+
 #: ../modules/default/views/scripts/simulator/index.phtml:91
 msgid "Date and Time"
 msgstr "Data e Hora"
 
 #: ../modules/default/controllers/DatesAliasController.php:51
 #: ../modules/default/controllers/DatesAliasController.php:73
-#: ../modules/default/controllers/DatesAliasController.php:112
-#: ../modules/default/controllers/DatesAliasController.php:161
+#: ../modules/default/controllers/DatesAliasController.php:106
+#: ../modules/default/controllers/DatesAliasController.php:149
 #: /var/www/html/snep-3/modules/default/resources.xml
 msgid "Dates Alias"
 msgstr "Alias de Datas"
@@ -1357,6 +1449,16 @@ msgstr "Configuração Padrão"
 msgid "Default E-mail"
 msgstr "E-mail Padrão"
 
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:18
+#: ../modules/billing/views/scripts/telcos/index.phtml:46
+msgid "Default Land Line Price"
+msgstr "Preço padrão para Ligações Fixo"
+
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:12
+#: ../modules/billing/views/scripts/telcos/index.phtml:45
+msgid "Default Mobile Price"
+msgstr "Preço padrão para ligações móveis"
+
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Default Settings"
 msgstr "Configuração Padrão"
@@ -1381,7 +1483,7 @@ msgstr "Valor padrão para o Controle de Qualidade"
 msgid "Define Tag"
 msgstr "Definir Tag"
 
-#: ../modules/default/controllers/SimulatorController.php:145
+#: ../modules/default/controllers/SimulatorController.php:148
 msgid "Define Tag to "
 msgstr "Definir Tag para"
 
@@ -1397,6 +1499,9 @@ msgstr "Define o número de dí­gitos par ao cadastro de um ramal"
 msgid "Delay Qualification"
 msgstr "Controle de Qualidade"
 
+#: ../modules/billing/views/scripts/remove/remove.phtml:17
+#: ../modules/billing/views/scripts/billing/index.phtml:62
+#: ../modules/billing/views/scripts/telcos/index.phtml:66
 #: ../modules/default/views/scripts/cost-center/index.phtml:65
 #: ../modules/default/views/scripts/queues/index.phtml:70
 #: ../modules/default/views/scripts/extensions/index.phtml:76
@@ -1418,45 +1523,45 @@ msgstr "Controle de Qualidade"
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:86
 #: ../modules/default/views/scripts/music-on-hold/removefile.phtml:13
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:55
-#: ../modules/default/controllers/UsersController.php:189
-#: ../modules/default/controllers/DatesAliasController.php:162
-#: ../modules/default/controllers/ContactsController.php:247
-#: ../modules/default/controllers/ExtensionsGroupsController.php:231
-#: ../modules/default/controllers/ExtensionsController.php:703
-#: ../modules/default/controllers/CostCenterController.php:187
+#: ../modules/default/controllers/UsersController.php:196
+#: ../modules/default/controllers/DatesAliasController.php:150
+#: ../modules/default/controllers/ContactsController.php:253
+#: ../modules/default/controllers/ExtensionsGroupsController.php:238
+#: ../modules/default/controllers/ExtensionsController.php:691
+#: ../modules/default/controllers/CostCenterController.php:163
 #: ../modules/default/controllers/NotificationsController.php:103
-#: ../modules/default/controllers/QueuesController.php:292
-#: ../modules/default/controllers/ExpressionAliasController.php:210
-#: ../modules/default/controllers/ContactGroupsController.php:200
-#: ../modules/default/controllers/ProfilesController.php:213
-#: ../modules/default/controllers/SoundFilesController.php:286
-#: ../modules/default/controllers/PickupGroupsController.php:217
-#: ../modules/default/controllers/RouteController.php:656
-#: ../modules/default/controllers/TrunksController.php:438
+#: ../modules/default/controllers/QueuesController.php:280
+#: ../modules/default/controllers/ExpressionAliasController.php:195
+#: ../modules/default/controllers/ContactGroupsController.php:206
+#: ../modules/default/controllers/ProfilesController.php:220
+#: ../modules/default/controllers/SoundFilesController.php:270
+#: ../modules/default/controllers/PickupGroupsController.php:216
+#: ../modules/default/controllers/RouteController.php:635
+#: ../modules/default/controllers/TrunksController.php:427
 msgid "Delete"
 msgstr "Apagar"
 
-#: ../modules/default/controllers/ContactsController.php:252
+#: ../modules/default/controllers/ContactsController.php:258
 msgid "Delete Contact."
 msgstr "Deletar Contato"
 
-#: ../modules/default/controllers/ContactGroupsController.php:228
+#: ../modules/default/controllers/ContactGroupsController.php:234
 msgid "Delete Contacts Group."
 msgstr "Deletar Grupo de Contato"
 
-#: ../modules/default/controllers/DatesAliasController.php:179
+#: ../modules/default/controllers/DatesAliasController.php:167
 msgid "Delete Dates Alias."
 msgstr "Remover Alias de Datas"
 
-#: ../modules/default/controllers/ExpressionAliasController.php:227
+#: ../modules/default/controllers/ExpressionAliasController.php:212
 msgid "Delete Expression Alias."
 msgstr "Deletar Alias de Expressão Regular"
 
-#: ../modules/default/controllers/ExtensionsGroupsController.php:255
+#: ../modules/default/controllers/ExtensionsGroupsController.php:262
 msgid "Delete Extension Group."
 msgstr "Deletar Grupo de Ramais."
 
-#: ../modules/default/controllers/ExtensionsController.php:724
+#: ../modules/default/controllers/ExtensionsController.php:712
 msgid "Delete Extension."
 msgstr "Deletar Ramal"
 
@@ -1464,7 +1569,7 @@ msgstr "Deletar Ramal"
 msgid "Delete File"
 msgstr "Deletar Arquivo"
 
-#: ../modules/default/controllers/ExtensionsController.php:774
+#: ../modules/default/controllers/ExtensionsController.php:756
 msgid "Delete Multiples"
 msgstr "Deletar Múltiplos"
 
@@ -1472,19 +1577,19 @@ msgstr "Deletar Múltiplos"
 msgid "Delete Notification."
 msgstr "Apagar Notificação."
 
-#: ../modules/default/controllers/PickupGroupsController.php:222
+#: ../modules/default/controllers/PickupGroupsController.php:221
 msgid "Delete Pickup Group."
 msgstr "Deletar Grupo de Captura"
 
-#: ../modules/default/controllers/ProfilesController.php:217
+#: ../modules/default/controllers/ProfilesController.php:224
 msgid "Delete Profile."
 msgstr "Deletar Perfil."
 
-#: ../modules/default/controllers/QueuesController.php:338
+#: ../modules/default/controllers/QueuesController.php:326
 msgid "Delete Queue."
 msgstr "Deletar Fila."
 
-#: ../modules/default/controllers/RouteController.php:661
+#: ../modules/default/controllers/RouteController.php:640
 msgid "Delete Routes."
 msgstr "Deletar Regras."
 
@@ -1492,7 +1597,7 @@ msgstr "Deletar Regras."
 msgid "Delete Sound Files"
 msgstr "Deletar Arquivos de Som"
 
-#: ../modules/default/controllers/SoundFilesController.php:291
+#: ../modules/default/controllers/SoundFilesController.php:275
 msgid "Delete Sound Files."
 msgstr "Deletar Arquivos de Som."
 
@@ -1500,21 +1605,33 @@ msgstr "Deletar Arquivos de Som."
 msgid "Delete Sound Files?"
 msgstr "Apagar Arquivos de Som?"
 
-#: ../modules/default/controllers/CostCenterController.php:201
+#: ../modules/default/controllers/CostCenterController.php:177
 msgid "Delete Tag."
 msgstr "Apagar Tag"
 
-#: ../modules/default/controllers/TrunksController.php:475
+#: ../modules/default/controllers/TrunksController.php:464
 msgid "Delete Trunk."
 msgstr "Deletar Tronco."
 
-#: ../modules/default/controllers/UsersController.php:194
+#: ../modules/default/controllers/UsersController.php:201
 msgid "Delete User."
 msgstr "Deletar Usuário."
+
+#: ../modules/billing/controllers/BillingController.php:95
+msgid "Delete a Bill"
+msgstr "Remover uma Tarifa"
+
+#: ../modules/billing/controllers/TelcosController.php:112
+msgid "Delete a Telco"
+msgstr "Remover uma Operadora"
 
 #: ../modules/default/controllers/MusicOnHoldController.php:363
 msgid "Delete music on hold file: "
 msgstr "Remover arquivo de música em espera:"
+
+#: ../modules/default/views/scripts/audit/view.phtml:30
+msgid "Deleted"
+msgstr "Deletou"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:35
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:24
@@ -1525,6 +1642,7 @@ msgstr "Remover arquivo de música em espera:"
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:24
 #: ../modules/default/views/scripts/sound-files/index.phtml:50
 #: ../modules/default/views/scripts/action-configs/index.phtml:36
+#: ../modules/default/views/scripts/audit/view.phtml:32
 #: ../modules/default/views/scripts/music-on-hold/addfile.phtml:39
 #: ../modules/default/views/scripts/music-on-hold/addfile.phtml:41
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:26
@@ -1549,7 +1667,7 @@ msgid "Destination Group"
 msgstr "Grupo Destino"
 
 #: ../modules/default/views/scripts/route/email_message.phtml:221
-#: ../modules/default/views/scripts/voicemail/new_message.phtml:224
+#: ../modules/default/views/scripts/voicemail/new_message.phtml:214
 msgid "Destination Number"
 msgstr "Número de Destino"
 
@@ -1574,10 +1692,14 @@ msgstr ""
 "Ele pode ser um Tronco, um Callerid(Contato), um Ramal or qualquer outra "
 "opção na Lista."
 
-#: ../modules/default/views/scripts/simulator/index.phtml:133
+#: ../modules/default/views/scripts/simulator/index.phtml:132
 #, php-format
 msgid "Destiny: %s"
 msgstr "Destino: %s"
+
+#: ../modules/billing/views/scripts/billing/addedit.phtml:47
+msgid "Details"
+msgstr "Detalhes"
 
 #: ../modules/default/actions/DiscarRamal.php:124
 msgid "Dial Extension"
@@ -1610,7 +1732,7 @@ msgstr "Discar para um ramal registrado no SNEP"
 msgid "Dial extension"
 msgstr "Discar para Ramal"
 
-#: ../modules/default/controllers/SimulatorController.php:148
+#: ../modules/default/controllers/SimulatorController.php:151
 msgid "Dial through Trunk "
 msgstr "Discar através do Tronco"
 
@@ -1622,7 +1744,7 @@ msgstr "Discar através do Tronco"
 msgid "Dial to a snep extension."
 msgstr "Discar para um ramal snep."
 
-#: ../modules/default/controllers/SimulatorController.php:158
+#: ../modules/default/controllers/SimulatorController.php:161
 #, php-format
 msgid "Dial to extension %s"
 msgstr "Discar para o ramal  %s"
@@ -1650,7 +1772,7 @@ msgstr "Dina Jumann [ dina.jumann@opens.com.br ] - Web designer "
 msgid "Direct Media"
 msgstr "Direct Media"
 
-#: ../modules/default/controllers/SimulatorController.php:163
+#: ../modules/default/controllers/SimulatorController.php:166
 #, php-format
 msgid "Direct to queue %s"
 msgstr "Direcionar para fila %s"
@@ -1674,7 +1796,7 @@ msgstr "Nome da pasta"
 msgid "Disabled"
 msgstr "Desativado"
 
-#: ../modules/default/controllers/ContactsController.php:343
+#: ../modules/default/controllers/ContactsController.php:354
 msgid "Discard"
 msgstr "Descartar"
 
@@ -1721,15 +1843,19 @@ msgid "Download"
 msgstr "Download"
 
 #: ../modules/default/views/scripts/route/index.phtml:118
-#: ../modules/default/controllers/RouteController.php:378
+#: ../modules/default/controllers/RouteController.php:364
 msgid "Duplicate"
 msgstr "Duplicar"
+
+#: ../modules/default/controllers/AuditController.php:123
+msgid "Duplicated"
+msgstr "Duplicou"
 
 #: ../modules/default/views/scripts/calls-report/analytic.phtml:35
 msgid "Duration"
 msgstr "Duração"
 
-#: ../modules/default/views/scripts/voicemail/new_message.phtml:228
+#: ../modules/default/views/scripts/voicemail/new_message.phtml:218
 msgid "Duration (in seconds)"
 msgstr "Duração (em segundos)"
 
@@ -1738,6 +1864,10 @@ msgid "E-mail address. Split with ',' to use more than one email address."
 msgstr ""
 "Endereço de email: Separe com ',' para usar mais de um endereço de email."
 
+#: ../modules/billing/views/scripts/billing/index.phtml:60
+#: ../modules/billing/views/scripts/telcos/index.phtml:64
+#: ../modules/billing/controllers/TelcosController.php:75
+#: ../modules/billing/controllers/BillingController.php:55
 #: ../modules/default/views/scripts/cost-center/index.phtml:64
 #: ../modules/default/views/scripts/queues/index.phtml:67
 #: ../modules/default/views/scripts/extensions/index.phtml:74
@@ -1754,22 +1884,22 @@ msgstr ""
 #: ../modules/default/views/scripts/dates-alias/index.phtml:53
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:83
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:53
-#: ../modules/default/controllers/UsersController.php:121
-#: ../modules/default/controllers/DatesAliasController.php:113
-#: ../modules/default/controllers/ContactsController.php:158
-#: ../modules/default/controllers/ExtensionsGroupsController.php:140
-#: ../modules/default/controllers/ExtensionsController.php:213
-#: ../modules/default/controllers/CostCenterController.php:128
-#: ../modules/default/controllers/QueuesController.php:185
-#: ../modules/default/controllers/ExpressionAliasController.php:138
+#: ../modules/default/controllers/UsersController.php:124
+#: ../modules/default/controllers/DatesAliasController.php:107
+#: ../modules/default/controllers/ContactsController.php:161
+#: ../modules/default/controllers/ExtensionsGroupsController.php:144
+#: ../modules/default/controllers/ExtensionsController.php:207
+#: ../modules/default/controllers/CostCenterController.php:121
+#: ../modules/default/controllers/QueuesController.php:178
+#: ../modules/default/controllers/ExpressionAliasController.php:131
 #: ../modules/default/controllers/MusicOnHoldController.php:157
-#: ../modules/default/controllers/ContactGroupsController.php:127
-#: ../modules/default/controllers/ProfilesController.php:136
+#: ../modules/default/controllers/ContactGroupsController.php:130
+#: ../modules/default/controllers/ProfilesController.php:140
 #: ../modules/default/controllers/IndexController.php:280
-#: ../modules/default/controllers/SoundFilesController.php:195
+#: ../modules/default/controllers/SoundFilesController.php:187
 #: ../modules/default/controllers/ActionConfigsController.php:107
-#: ../modules/default/controllers/PickupGroupsController.php:137
-#: ../modules/default/controllers/RouteController.php:313
+#: ../modules/default/controllers/PickupGroupsController.php:133
+#: ../modules/default/controllers/RouteController.php:306
 #: /var/www/html/snep-3/configs/titleOptions.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Edit"
@@ -1783,7 +1913,7 @@ msgstr "Editar Dashboard"
 msgid "Edit File"
 msgstr "Editar Arquivo"
 
-#: ../modules/default/controllers/TrunksController.php:283
+#: ../modules/default/controllers/TrunksController.php:278
 msgid "Edit trunk"
 msgstr "Editar Tronco "
 
@@ -1879,6 +2009,7 @@ msgstr "Igualmente (rrmemory)"
 msgid "Erro: "
 msgstr "Error:"
 
+#: ../modules/billing/views/scripts/error/sneperror.phtml:16
 #: ../modules/default/views/scripts/error/sneperror.phtml:16
 #: ../modules/default/views/scripts/tdm-links/sneperror.phtml:16
 #: ../modules/default/controllers/ErrorController.php:57
@@ -2025,17 +2156,22 @@ msgstr "Expressão"
 #: ../modules/default/views/scripts/route/add_edit.phtml:76
 #: ../modules/default/controllers/ExpressionAliasController.php:51
 #: ../modules/default/controllers/ExpressionAliasController.php:73
-#: ../modules/default/controllers/ExpressionAliasController.php:137
-#: ../modules/default/controllers/ExpressionAliasController.php:209
+#: ../modules/default/controllers/ExpressionAliasController.php:113
+#: ../modules/default/controllers/ExpressionAliasController.php:130
+#: ../modules/default/controllers/ExpressionAliasController.php:175
+#: ../modules/default/controllers/ExpressionAliasController.php:194
+#: ../modules/default/controllers/ExpressionAliasController.php:222
 #: /var/www/html/snep-3/modules/default/resources.xml
 msgid "Expression Alias"
 msgstr "Alias de Expressão Regular"
 
 #: ../modules/loguser/controllers/LoguserController.php:44
+#: ../modules/default/controllers/AuditController.php:66
 msgid "Expression Alias Actions"
 msgstr "Ações de Expressões Regulares"
 
 #: ../modules/loguser/controllers/LoguserController.php:45
+#: ../modules/default/controllers/AuditController.php:67
 msgid "Expression Alias Dates"
 msgstr "Alias de Datas"
 
@@ -2053,13 +2189,19 @@ msgstr "Aliasse de Expressão Regular"
 #: ../modules/default/views/scripts/route/add_edit.phtml:73
 #: ../modules/default/views/scripts/services-report/view.phtml:25
 #: ../modules/default/views/scripts/simulator/index.phtml:52
-#: ../modules/default/controllers/ExtensionsController.php:820
+#: ../modules/default/controllers/ExtensionsController.php:186
+#: ../modules/default/controllers/ExtensionsController.php:457
+#: ../modules/default/controllers/ExtensionsController.php:728
+#: ../modules/default/controllers/ExtensionsController.php:802
+#: ../modules/default/controllers/ExtensionsController.php:821
+#: ../modules/default/controllers/ExtensionsController.php:898
+#: ../modules/default/controllers/ExtensionsController.php:930
 #: ../modules/default/controllers/RouteController.php:64
 msgid "Extension"
 msgstr "Ramal"
 
-#: ../modules/default/controllers/ExtensionsController.php:914
-#: ../modules/default/controllers/ExtensionsController.php:939
+#: ../modules/default/controllers/ExtensionsController.php:890
+#: ../modules/default/controllers/ExtensionsController.php:918
 msgid "Extension "
 msgstr "Ramal"
 
@@ -2083,11 +2225,11 @@ msgstr "Mapeamento de Ramais"
 msgid "Extension PHP"
 msgstr "Ramal"
 
-#: ../modules/default/controllers/ExtensionsController.php:496
+#: ../modules/default/controllers/ExtensionsController.php:484
 msgid "Extension already taken. Please, choose another denomination."
 msgstr "Ramal já cadastrado. Por favor, escolha outra denominação de ramal."
 
-#: ../modules/default/controllers/QueuesController.php:309
+#: ../modules/default/controllers/QueuesController.php:297
 msgid "Extension:"
 msgstr "Ramal:"
 
@@ -2097,27 +2239,36 @@ msgstr "Ramal:"
 #: ../modules/default/views/scripts/services-report/index.phtml:49
 #: ../modules/default/controllers/ExtensionsController.php:88
 #: ../modules/default/controllers/ExtensionsController.php:108
-#: ../modules/default/controllers/ExtensionsController.php:212
-#: ../modules/default/controllers/ExtensionsController.php:702
-#: ../modules/default/controllers/ExtensionsController.php:773
-#: ../modules/default/controllers/ExtensionsController.php:874
+#: ../modules/default/controllers/ExtensionsController.php:206
+#: ../modules/default/controllers/ExtensionsController.php:690
+#: ../modules/default/controllers/ExtensionsController.php:755
+#: ../modules/default/controllers/ExtensionsController.php:850
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Extensions"
 msgstr "Ramais"
 
 #: ../modules/loguser/controllers/LoguserController.php:43
+#: ../modules/default/controllers/AuditController.php:59
 msgid "Extensions Actions"
 msgstr "Ações de Ramais"
 
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:16
 #: ../modules/default/views/scripts/extensions/addedit.phtml:45
 #: ../modules/default/controllers/ExtensionsGroupsController.php:73
-#: ../modules/default/controllers/ExtensionsGroupsController.php:139
-#: ../modules/default/controllers/ExtensionsGroupsController.php:230
-#: ../modules/default/controllers/ExtensionsGroupsController.php:279
+#: ../modules/default/controllers/ExtensionsGroupsController.php:129
+#: ../modules/default/controllers/ExtensionsGroupsController.php:143
+#: ../modules/default/controllers/ExtensionsGroupsController.php:224
+#: ../modules/default/controllers/ExtensionsGroupsController.php:237
+#: ../modules/default/controllers/ExtensionsGroupsController.php:277
+#: ../modules/default/controllers/ExtensionsGroupsController.php:289
+#: ../modules/default/controllers/ExtensionsGroupsController.php:330
 msgid "Extensions Group"
 msgstr "Grupo de Ramais"
+
+#: ../modules/default/controllers/AuditController.php:60
+msgid "Extensions Group Actions"
+msgstr "Ações de Grupo de Ramais"
 
 #: ../modules/default/controllers/ExtensionsGroupsController.php:49
 msgid "Extensions Groups"
@@ -2149,7 +2300,7 @@ msgstr "Falhada"
 msgid "Failed to open file %s with write permission."
 msgstr "Falha ao abrir arquivo %s com permissão de escrita."
 
-#: ../modules/default/controllers/SimulatorController.php:160
+#: ../modules/default/controllers/SimulatorController.php:163
 msgid "Failure on trial to dial extension %: non existent extension"
 msgstr "Falha na tentativa de discar para ramal %: ramal não existente"
 
@@ -2174,11 +2325,11 @@ msgid "File does not have editing permission"
 msgstr "Arquivo não possui permissão de escrita"
 
 #: ../modules/default/controllers/SoundFilesController.php:121
-#: ../modules/default/controllers/SoundFilesController.php:230
+#: ../modules/default/controllers/SoundFilesController.php:222
 msgid "File extesion is invalid."
 msgstr "Extensão do arquivo inválido"
 
-#: ../modules/default/controllers/SoundFilesController.php:322
+#: ../modules/default/controllers/SoundFilesController.php:300
 msgid "File not found."
 msgstr "Arquivo não encontrado"
 
@@ -2252,6 +2403,10 @@ msgstr "Forçar Autenticação Reversa"
 msgid "Format for the recorded files (wav, wav49)"
 msgstr "Formato para os arquivos gravados (wav, wav49)"
 
+#: ../modules/billing/views/scripts/telcos/index.phtml:48
+msgid "Fractionation"
+msgstr "Fracionamento"
+
 #: ../modules/default/views/scripts/systemstatus/index.phtml:160
 #: ../modules/default/views/scripts/systemstatus/index.phtml:308
 #: ../modules/default/controllers/KhompLinksController.php:77
@@ -2266,7 +2421,8 @@ msgstr "Formato para os arquivos gravados (wav, wav49)"
 msgid "Free"
 msgstr "Livre"
 
-#: ../modules/default/controllers/SimulatorController.php:199
+#: ../modules/default/controllers/SimulatorController.php:203
+#: ../modules/default/controllers/SimulatorController.php:241
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Friday"
 msgstr "Sexta-Feira"
@@ -2400,6 +2556,7 @@ msgstr "Expressão de Identificação"
 #: ../modules/default/views/scripts/ip-status/index.phtml:61
 #: ../modules/default/views/scripts/ip-status/index.phtml:108
 #: ../modules/default/views/scripts/trunks/index.phtml:58
+#: ../modules/default/views/scripts/audit/view.phtml:28
 msgid "IP"
 msgstr "IP"
 
@@ -2433,7 +2590,7 @@ msgid "Import"
 msgstr "Importar "
 
 #: ../modules/default/views/scripts/contacts/index.phtml:24
-#: ../modules/default/controllers/ContactsController.php:312
+#: ../modules/default/controllers/ContactsController.php:323
 msgid "Import CSV"
 msgstr "Importar CSV"
 
@@ -2446,7 +2603,7 @@ msgid "In group"
 msgstr "No grupo"
 
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:91
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:73
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:77
 msgid "In group extensions"
 msgstr "Ramais do Grupo"
 
@@ -2546,7 +2703,7 @@ msgstr "Erro Do Servidor Interno. Por favor, tente mais tarde"
 msgid "Invalid File"
 msgstr "Arquivo Inválido"
 
-#: ../modules/default/controllers/SoundFilesController.php:176
+#: ../modules/default/controllers/SoundFilesController.php:168
 msgid "Invalid format"
 msgstr "Formato Inválido"
 
@@ -2604,24 +2761,28 @@ msgstr "Krecord"
 #: ../modules/default/views/scripts/calls-report/index.phtml:272
 #: ../modules/default/views/scripts/ranking-report/index.phtml:116
 #: ../modules/default/views/scripts/services-report/index.phtml:100
+#: ../modules/default/views/scripts/audit/index.phtml:83
 msgid "Last 15 Days"
 msgstr "Últimos 15 dias"
 
 #: ../modules/default/views/scripts/calls-report/index.phtml:273
 #: ../modules/default/views/scripts/ranking-report/index.phtml:117
 #: ../modules/default/views/scripts/services-report/index.phtml:101
+#: ../modules/default/views/scripts/audit/index.phtml:84
 msgid "Last 30 Days"
 msgstr "Últimos 30 dias"
 
 #: ../modules/default/views/scripts/calls-report/index.phtml:271
 #: ../modules/default/views/scripts/ranking-report/index.phtml:115
 #: ../modules/default/views/scripts/services-report/index.phtml:99
+#: ../modules/default/views/scripts/audit/index.phtml:82
 msgid "Last 7 Days"
 msgstr "Últimos 7 dias"
 
 #: ../modules/default/views/scripts/calls-report/index.phtml:275
 #: ../modules/default/views/scripts/ranking-report/index.phtml:119
 #: ../modules/default/views/scripts/services-report/index.phtml:103
+#: ../modules/default/views/scripts/audit/index.phtml:86
 msgid "Last Month"
 msgstr "Último Mês"
 
@@ -2745,7 +2906,7 @@ msgstr "Logs"
 msgid "Loop"
 msgstr "Loop"
 
-#: ../modules/default/views/scripts/voicemail/new_message.phtml:220
+#: ../modules/default/views/scripts/voicemail/new_message.phtml:210
 msgid "Mailbox"
 msgstr "Caixa Postal"
 
@@ -2753,7 +2914,7 @@ msgstr "Caixa Postal"
 msgid "Make a Callback to the caller number."
 msgstr "Faz uma ligação de retorno para o número chamador."
 
-#: ../modules/default/controllers/ContactsController.php:156
+#: ../modules/default/controllers/ContactsController.php:159
 #: /var/www/html/snep-3/modules/default/resources.xml
 msgid "Manage"
 msgstr "Cadastros"
@@ -2783,7 +2944,7 @@ msgstr "Número máximo de ligações esperando na fila"
 #: ../modules/default/views/scripts/queues/index.phtml:64
 #: ../modules/default/views/scripts/ip-status/index.phtml:159
 #: ../modules/default/views/scripts/profiles/addedit.phtml:18
-#: ../modules/default/controllers/QueuesController.php:379
+#: ../modules/default/controllers/QueuesController.php:360
 msgid "Members"
 msgstr "Membros"
 
@@ -2795,8 +2956,8 @@ msgstr "Uso da Memória"
 msgid "Message"
 msgstr "Mensagem"
 
-#: ../modules/default/controllers/ExtensionsGroupsController.php:280
-#: ../modules/default/controllers/ContactGroupsController.php:250
+#: ../modules/default/controllers/ExtensionsGroupsController.php:290
+#: ../modules/default/controllers/ContactGroupsController.php:261
 msgid "Migrate"
 msgstr "Migrar "
 
@@ -2858,7 +3019,8 @@ msgstr "Configuração de Módulos"
 msgid "Modules"
 msgstr "Módulos"
 
-#: ../modules/default/controllers/SimulatorController.php:195
+#: ../modules/default/controllers/SimulatorController.php:199
+#: ../modules/default/controllers/SimulatorController.php:237
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Monday"
 msgstr "Segunda-feira"
@@ -2928,6 +3090,8 @@ msgstr "NAT"
 msgid "NAT Optimization"
 msgstr "NAT"
 
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:6
+#: ../modules/billing/views/scripts/telcos/index.phtml:44
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:17
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:19
 #: ../modules/default/views/scripts/cost-center/index.phtml:46
@@ -2967,26 +3131,26 @@ msgstr "NAT"
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:25
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:58
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:37
-#: ../modules/default/controllers/ContactsController.php:344
+#: ../modules/default/controllers/ContactsController.php:355
 msgid "Name"
 msgstr "Nome"
 
 #: ../modules/default/controllers/UsersController.php:92
 #: ../modules/default/controllers/ExtensionsGroupsController.php:108
-#: ../modules/default/controllers/ExtensionsGroupsController.php:197
+#: ../modules/default/controllers/ExtensionsGroupsController.php:201
 #: ../modules/default/controllers/QueuesController.php:151
-#: ../modules/default/controllers/ContactGroupsController.php:103
-#: ../modules/default/controllers/ContactGroupsController.php:162
+#: ../modules/default/controllers/ContactGroupsController.php:102
+#: ../modules/default/controllers/ContactGroupsController.php:165
 #: ../modules/default/controllers/ProfilesController.php:106
-#: ../modules/default/controllers/ProfilesController.php:176
+#: ../modules/default/controllers/ProfilesController.php:180
 #: ../modules/default/controllers/PickupGroupsController.php:96
-#: ../modules/default/controllers/PickupGroupsController.php:179
+#: ../modules/default/controllers/PickupGroupsController.php:175
 #: ../modules/default/controllers/TrunksController.php:231
-#: ../modules/default/controllers/TrunksController.php:397
+#: ../modules/default/controllers/TrunksController.php:392
 msgid "Name already exists."
 msgstr "Nome já existe."
 
-#: ../modules/default/controllers/ContactsController.php:397
+#: ../modules/default/controllers/ContactsController.php:408
 msgid "Name and phone number are required"
 msgstr "O nome e telefone são obrigatórios"
 
@@ -3075,6 +3239,10 @@ msgstr "Nenhum campo foi informado."
 #: ../modules/default/views/scripts/sound-files/index.phtml:94
 msgid "No files to restore"
 msgstr "Não há arquivos para restaurar"
+
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:23
+msgid "No group"
+msgstr "Nenhum grupo"
 
 #: ../modules/default/controllers/ContactsController.php:116
 msgid "No group selected"
@@ -3213,6 +3381,7 @@ msgstr "Opens Tecnologia "
 
 #: /var/www/html/snep-3/modules/callback/info.xml
 #: /var/www/html/snep-3/modules/loguser/info.xml
+#: /var/www/html/snep-3/modules/billing/info.xml
 msgid "Opens Tecnology"
 msgstr "Opens Tecnologia"
 
@@ -3363,6 +3532,8 @@ msgstr "Ramais no grupo"
 #: ../modules/default/views/scripts/logs/index.phtml:39
 #: ../modules/default/views/scripts/services-report/index.phtml:21
 #: ../modules/default/views/scripts/services-report/index.phtml:23
+#: ../modules/default/views/scripts/audit/index.phtml:26
+#: ../modules/default/views/scripts/audit/index.phtml:28
 msgid "Period"
 msgstr "Perí­odo"
 
@@ -3372,8 +3543,8 @@ msgstr "Período:"
 
 #: ../modules/default/views/scripts/profiles/index.phtml:63
 #: ../modules/default/views/scripts/users/index.phtml:67
-#: ../modules/default/controllers/UsersController.php:217
-#: ../modules/default/controllers/ProfilesController.php:243
+#: ../modules/default/controllers/UsersController.php:228
+#: ../modules/default/controllers/ProfilesController.php:255
 msgid "Permission"
 msgstr "Permissões"
 
@@ -3381,23 +3552,30 @@ msgstr "Permissões"
 #: ../modules/default/views/scripts/contacts/addedit.phtml:132
 #: ../modules/default/views/scripts/contacts/addedit.phtml:187
 #: ../modules/default/views/scripts/contacts/index.phtml:50
-#: ../modules/default/controllers/ContactsController.php:347
+#: ../modules/default/controllers/ContactsController.php:358
 msgid "Phone"
 msgstr "Telefone"
 
-#: ../modules/default/controllers/ContactsController.php:426
+#: ../modules/default/controllers/ContactsController.php:437
 msgid "Phone invalid"
 msgstr "Telefone inválido"
 
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:31
 #: ../modules/default/views/scripts/extensions/addedit.phtml:62
-#: ../modules/default/controllers/PickupGroupsController.php:216
+#: ../modules/default/controllers/PickupGroupsController.php:118
+#: ../modules/default/controllers/PickupGroupsController.php:199
+#: ../modules/default/controllers/PickupGroupsController.php:215
+#: ../modules/default/controllers/PickupGroupsController.php:239
 msgid "Pickup Group"
 msgstr "Grupos de Captura"
 
+#: ../modules/default/controllers/AuditController.php:61
+msgid "Pickup Group Actions"
+msgstr "Ações de Grupo de Captura"
+
 #: ../modules/default/controllers/PickupGroupsController.php:52
 #: ../modules/default/controllers/PickupGroupsController.php:66
-#: ../modules/default/controllers/PickupGroupsController.php:136
+#: ../modules/default/controllers/PickupGroupsController.php:132
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Pickup Groups"
@@ -3431,6 +3609,8 @@ msgstr "Por favor, insira um e-mail."
 msgid "Please enter a value between 1 and 9."
 msgstr "Por favor, informe um valor entre 1 e 9."
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:88
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:62
 #: ../modules/default/views/layouts/register.phtml:339
 #: ../modules/default/views/layouts/register.phtml:386
 #: ../modules/default/views/layouts/register.phtml:390
@@ -3455,7 +3635,7 @@ msgstr "Por favor, informe um valor entre 1 e 9."
 #: ../modules/default/views/scripts/parameters/index.phtml:320
 #: ../modules/default/views/scripts/parameters/index.phtml:326
 #: ../modules/default/views/scripts/trunks/addedit.phtml:582
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:56
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:60
 #: ../modules/default/views/scripts/register/index.phtml:85
 #: ../modules/default/views/scripts/register/index.phtml:91
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:58
@@ -3479,9 +3659,11 @@ msgstr "Por favor, insira pelo menos {0} caracteres."
 msgid "Please enter letters and numbers only"
 msgstr "Por favor, insira somente letras e números"
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:90
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:64
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:76
 #: ../modules/default/views/scripts/parameters/index.phtml:322
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:58
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:62
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:60
 msgid "Please enter letters and numbers only."
 msgstr "Por favor, insira somente letras e números"
@@ -3496,6 +3678,8 @@ msgstr "Por favor, insira somente letras"
 msgid "Please enter letters only."
 msgstr "Por favor, somente letras."
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:89
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:63
 #: ../modules/default/views/layouts/register.phtml:340
 #: ../modules/default/views/layouts/register.phtml:344
 #: ../modules/default/views/layouts/register.phtml:350
@@ -3518,7 +3702,7 @@ msgstr "Por favor, somente letras."
 #: ../modules/default/views/scripts/parameters/index.phtml:321
 #: ../modules/default/views/scripts/parameters/index.phtml:327
 #: ../modules/default/views/scripts/trunks/addedit.phtml:583
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:57
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:61
 #: ../modules/default/views/scripts/register/index.phtml:86
 #: ../modules/default/views/scripts/register/index.phtml:92
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:59
@@ -3577,6 +3761,11 @@ msgstr "Distribuido por"
 msgid "Prefix to handling invalid numbers"
 msgstr "Prefixo para tratar números inválidos"
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:55
+#: ../modules/billing/views/scripts/billing/index.phtml:46
+msgid "Price"
+msgstr "Preço"
+
 #: ../modules/default/views/scripts/route/index.phtml:94
 msgid "Prio"
 msgstr "Prio"
@@ -3587,18 +3776,25 @@ msgstr "Prioridade"
 
 #: ../modules/default/views/scripts/users/addedit.phtml:48
 #: ../modules/default/views/scripts/users/index.phtml:44
-#: ../modules/default/controllers/ProfilesController.php:242
+#: ../modules/default/controllers/ProfilesController.php:124
+#: ../modules/default/controllers/ProfilesController.php:204
+#: ../modules/default/controllers/ProfilesController.php:243
+#: ../modules/default/controllers/ProfilesController.php:254
 msgid "Profile"
 msgstr "Perfil"
 
 #: ../modules/default/controllers/ProfilesController.php:51
 #: ../modules/default/controllers/ProfilesController.php:71
-#: ../modules/default/controllers/ProfilesController.php:135
-#: ../modules/default/controllers/ProfilesController.php:212
+#: ../modules/default/controllers/ProfilesController.php:139
+#: ../modules/default/controllers/ProfilesController.php:219
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Profiles"
 msgstr "Perfis"
+
+#: ../modules/default/controllers/AuditController.php:63
+msgid "Profiles Actions"
+msgstr "Ações de Perfis"
 
 #: ../modules/default/controllers/CnlController.php:181
 msgid ""
@@ -3625,7 +3821,8 @@ msgstr "Quantidade"
 
 #: ../lib/PBX/Rule/ActionConfig.php:268
 #: ../modules/default/views/scripts/calls-report/analytic.phtml:34
-#: ../modules/default/controllers/QueuesController.php:291
+#: ../modules/default/controllers/QueuesController.php:265
+#: ../modules/default/controllers/QueuesController.php:279
 msgid "Queue"
 msgstr "Fila"
 
@@ -3656,14 +3853,17 @@ msgstr "Visualização das Filas"
 #: ../modules/default/views/scripts/ip-status/index.phtml:146
 #: ../modules/default/controllers/QueuesController.php:69
 #: ../modules/default/controllers/QueuesController.php:93
-#: ../modules/default/controllers/QueuesController.php:184
-#: ../modules/default/controllers/QueuesController.php:378
+#: ../modules/default/controllers/QueuesController.php:160
+#: ../modules/default/controllers/QueuesController.php:177
+#: ../modules/default/controllers/QueuesController.php:344
+#: ../modules/default/controllers/QueuesController.php:359
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Queues"
 msgstr "Filas"
 
 #: ../modules/loguser/controllers/LoguserController.php:47
+#: ../modules/default/controllers/AuditController.php:58
 msgid "Queues Actions"
 msgstr "Ações de Filas"
 
@@ -3684,6 +3884,10 @@ msgstr "Classificação"
 #: ../modules/default/views/scripts/ranking-report/index.phtml:48
 msgid "Ranking Options"
 msgstr "Opções de Ranking"
+
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:30
+msgid "Rate Fractionation (in seconds)"
+msgstr "Fracionamento (em segundos)"
 
 #: ../lib/Snep/Notifications.php:60
 msgid "Read All Messages"
@@ -3734,7 +3938,7 @@ msgstr "Redifinição de Senha - SNEP"
 msgid "Redial"
 msgstr "Rediscar"
 
-#: ../modules/default/controllers/SimulatorController.php:167
+#: ../modules/default/controllers/SimulatorController.php:170
 #, php-format
 msgid "Redirect to context %s"
 msgstr "Redirecionar para contexto %s"
@@ -3776,6 +3980,8 @@ msgid "Remote Host"
 msgstr "Host Remoto"
 
 #: ../lib/Snep/Form.php:105
+#: ../modules/billing/controllers/TelcosController.php:105
+#: ../modules/billing/controllers/BillingController.php:88
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:47
 #: ../modules/default/views/scripts/contacts/select-multi-remove.phtml:53
 #: ../modules/default/controllers/MusicOnHoldController.php:208
@@ -3855,12 +4061,12 @@ msgstr "Pedir Senha"
 msgid "Request Sent"
 msgstr "Requisição enviada"
 
-#: ../modules/default/controllers/SimulatorController.php:165
+#: ../modules/default/controllers/SimulatorController.php:168
 msgid "Request password"
 msgstr "Pedir Senha"
 
 #: ../modules/default/controllers/ExpressionAliasController.php:103
-#: ../modules/default/controllers/ExpressionAliasController.php:173
+#: ../modules/default/controllers/ExpressionAliasController.php:166
 msgid "Required value"
 msgstr "Valor obrigatório"
 
@@ -3973,15 +4179,16 @@ msgstr "Chamando"
 #: ../modules/default/controllers/SimulatorController.php:51
 #: ../modules/default/controllers/RouteController.php:106
 #: ../modules/default/controllers/RouteController.php:244
-#: ../modules/default/controllers/RouteController.php:312
-#: ../modules/default/controllers/RouteController.php:377
-#: ../modules/default/controllers/RouteController.php:655
+#: ../modules/default/controllers/RouteController.php:305
+#: ../modules/default/controllers/RouteController.php:363
+#: ../modules/default/controllers/RouteController.php:634
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Routes"
 msgstr "Rotas"
 
 #: ../modules/loguser/controllers/LoguserController.php:42
+#: ../modules/default/controllers/AuditController.php:65
 msgid "Routes Actions"
 msgstr "Ações de Rotas"
 
@@ -4001,28 +4208,32 @@ msgstr "Regras de Negócio"
 msgid "Rua dos Cisnes, 541 "
 msgstr "Rua dos Cisnes, 541 "
 
-#: ../modules/default/controllers/ExtensionsController.php:821
+#: ../modules/default/controllers/ExtensionsController.php:803
+#: ../modules/default/controllers/RouteController.php:264
+#: ../modules/default/controllers/RouteController.php:321
+#: ../modules/default/controllers/RouteController.php:380
+#: ../modules/default/controllers/RouteController.php:652
 #: ../modules/default/actions/DiscarTronco.php:82
 msgid "Rule"
 msgstr "Regra"
 
-#: ../modules/default/views/scripts/simulator/index.phtml:148
+#: ../modules/default/views/scripts/simulator/index.phtml:152
 msgid "Rule Inactive"
 msgstr "Regra Inativa"
 
-#: ../modules/default/views/scripts/simulator/index.phtml:147
+#: ../modules/default/views/scripts/simulator/index.phtml:151
 msgid "Rule ignored by priority"
 msgstr "Regra ignorada por prioridade"
 
-#: ../modules/default/views/scripts/simulator/index.phtml:146
+#: ../modules/default/views/scripts/simulator/index.phtml:150
 msgid "Rule invalid because of date and time"
 msgstr "Regra inválida por causa da data e horário"
 
-#: ../modules/default/views/scripts/simulator/index.phtml:145
+#: ../modules/default/views/scripts/simulator/index.phtml:149
 msgid "Rule that will be executed"
 msgstr "Regra que será executada"
 
-#: ../modules/default/views/scripts/simulator/index.phtml:131
+#: ../modules/default/views/scripts/simulator/index.phtml:130
 #, php-format
 msgid "Rule: %s %s"
 msgstr "Regra: %s %s"
@@ -4061,12 +4272,15 @@ msgstr "Versão do SNEP"
 msgid "Same on both servers"
 msgstr "O mesmo em ambos os servidores"
 
-#: ../modules/default/controllers/SimulatorController.php:200
+#: ../modules/default/controllers/SimulatorController.php:204
+#: ../modules/default/controllers/SimulatorController.php:242
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Saturday"
 msgstr "Sabado"
 
 #: ../lib/Snep/Form.php:58
+#: ../modules/billing/views/scripts/billing/addedit.phtml:62
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:36
 #: ../modules/default/views/scripts/auth/recuperation.phtml:35
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:49
 #: ../modules/default/views/scripts/queues/addedit.phtml:252
@@ -4090,7 +4304,7 @@ msgstr "Sabado"
 #: ../modules/default/views/scripts/module-settings/index.phtml:186
 #: ../modules/default/views/scripts/conference-rooms/index.phtml:105
 #: ../modules/default/views/scripts/trunks/addedit.phtml:456
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:33
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:37
 #: ../modules/default/views/scripts/contact-groups/migration.phtml:45
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:32
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:72
@@ -4101,6 +4315,8 @@ msgstr "Sabado"
 msgid "Save"
 msgstr "Salvar"
 
+#: ../modules/billing/views/scripts/billing/index.phtml:29
+#: ../modules/billing/views/scripts/telcos/index.phtml:29
 #: ../modules/default/views/scripts/cost-center/index.phtml:30
 #: ../modules/default/views/scripts/queues/index.phtml:28
 #: ../modules/default/views/scripts/extensions/index.phtml:39
@@ -4133,11 +4349,11 @@ msgstr "Tempo restante para alerta"
 msgid "Select"
 msgstr "Selecionar"
 
-#: ../modules/default/controllers/ExtensionsController.php:556
+#: ../modules/default/controllers/ExtensionsController.php:544
 msgid "Select a Khomp board from the list"
 msgstr "Selecione uma placa da lista"
 
-#: ../modules/default/controllers/ExtensionsController.php:559
+#: ../modules/default/controllers/ExtensionsController.php:547
 msgid "Select a Khomp channel from the list"
 msgstr "Selecione um canal da lista"
 
@@ -4153,7 +4369,7 @@ msgstr "Selecione um grupo de contatos"
 msgid "Select a contact group to remove your contacts"
 msgstr "Selecione um Grupo de Contato para remover seus contatos"
 
-#: ../modules/default/controllers/ContactsController.php:293
+#: ../modules/default/controllers/ContactsController.php:304
 msgid "Select a contact group to remove your contacts."
 msgstr "Selecione um Grupo de Contato para remover seus contatos"
 
@@ -4305,6 +4521,7 @@ msgstr "Mostrar Logs"
 #: ../modules/default/views/scripts/calls-report/index.phtml:248
 #: ../modules/default/views/scripts/ranking-report/index.phtml:91
 #: ../modules/default/views/scripts/services-report/index.phtml:76
+#: ../modules/default/views/scripts/audit/index.phtml:58
 msgid "Show Report"
 msgstr "Mostrar Relatório"
 
@@ -4330,7 +4547,7 @@ msgstr "Exibir top classificados por origem"
 #: ../modules/default/views/scripts/profiles/addedit.phtml:45
 #: ../modules/default/views/scripts/users/bond.phtml:71
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:93
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:75
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:79
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:77
 msgid "Showing all "
 msgstr "Exibir Todos"
@@ -4360,7 +4577,7 @@ msgstr "Sinal Perdido"
 msgid "Silent time before connecting the agent to a caller"
 msgstr "Tempo de descanso para o Agente antes de conectá-lo ao chamador"
 
-#: ../modules/default/views/scripts/simulator/index.phtml:155
+#: ../modules/default/views/scripts/simulator/index.phtml:159
 msgid "Simulate"
 msgstr "Simular"
 
@@ -4400,8 +4617,8 @@ msgstr "Snep/PHP Debug"
 #: ../modules/default/controllers/TdmLinksController.php:222
 #: ../modules/default/controllers/TdmLinksController.php:251
 #: ../modules/default/controllers/TrunksController.php:48
-#: ../modules/default/controllers/TrunksController.php:446
-#: ../modules/default/controllers/TrunksController.php:451
+#: ../modules/default/controllers/TrunksController.php:435
+#: ../modules/default/controllers/TrunksController.php:440
 msgid "Socket connection to the server is not available at the moment."
 msgstr "Socket de conexão para o servidor não esta disponí­vel no momento."
 
@@ -4415,6 +4632,12 @@ msgid ""
 "the system administrator and report this incident."
 msgstr "Algum erro interno ocorreu enquanto seu pedido era processado."
 
+#: ../modules/default/controllers/SoundFilesController.php:164
+#: ../modules/default/controllers/SoundFilesController.php:256
+#: ../modules/default/controllers/SoundFilesController.php:291
+msgid "Sound"
+msgstr "Som"
+
 #: ../modules/default/views/scripts/music-on-hold/addfile.phtml:24
 msgid "Sound File"
 msgstr "Arquivo de Som"
@@ -4422,9 +4645,10 @@ msgstr "Arquivo de Som"
 #: ../modules/loguser/controllers/LoguserController.php:46
 #: ../modules/default/controllers/SoundFilesController.php:51
 #: ../modules/default/controllers/SoundFilesController.php:86
-#: ../modules/default/controllers/SoundFilesController.php:194
-#: ../modules/default/controllers/SoundFilesController.php:285
-#: ../modules/default/controllers/SoundFilesController.php:360
+#: ../modules/default/controllers/SoundFilesController.php:186
+#: ../modules/default/controllers/SoundFilesController.php:269
+#: ../modules/default/controllers/SoundFilesController.php:338
+#: ../modules/default/controllers/AuditController.php:68
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Sound Files"
@@ -4459,7 +4683,7 @@ msgstr ""
 "Ela pode ser um Tronco, um Callerid(Contato), um Ramal ou qualquer outra "
 "opção na Lista."
 
-#: ../modules/default/views/scripts/simulator/index.phtml:132
+#: ../modules/default/views/scripts/simulator/index.phtml:131
 #, php-format
 msgid "Source: %s"
 msgstr "Origem: %s"
@@ -4494,6 +4718,14 @@ msgstr "Espionar"
 #: ../modules/default/views/scripts/pagination.phtml:6
 msgid "Start"
 msgstr "Iniciar"
+
+#: ../modules/billing/views/scripts/telcos/index.phtml:47
+msgid "Start Time"
+msgstr "Tempo de Arranque"
+
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:24
+msgid "Start Time Rate (in seconds)"
+msgstr "Tempo de Arranque (em segundos)"
 
 #: ../modules/default/views/scripts/contacts/addedit.phtml:55
 #: ../modules/default/views/scripts/contacts/addedit.phtml:78
@@ -4550,7 +4782,8 @@ msgstr "Assunto"
 msgid "Suffix"
 msgstr "Sufixo"
 
-#: ../modules/default/controllers/SimulatorController.php:201
+#: ../modules/default/controllers/SimulatorController.php:205
+#: ../modules/default/controllers/SimulatorController.php:243
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Sunday"
 msgstr "Domingo"
@@ -4559,7 +4792,7 @@ msgstr "Domingo"
 msgid "Swap Memory"
 msgstr "Memória Swap"
 
-#: ../modules/default/controllers/SoundFilesController.php:361
+#: ../modules/default/controllers/SoundFilesController.php:339
 msgid "Synchronization of sound files "
 msgstr "Sincronizar os arquivos de sons"
 
@@ -4620,6 +4853,7 @@ msgstr "Errors nos Links TDM"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:34
 #: ../modules/default/views/scripts/export-data/index.phtml:21
+#: ../modules/default/views/scripts/audit/view.phtml:31
 msgid "Table"
 msgstr "Tabela"
 
@@ -4631,8 +4865,11 @@ msgstr "Tabela"
 #: ../modules/default/views/scripts/conference-rooms/index.phtml:54
 #: ../modules/default/controllers/CostCenterController.php:50
 #: ../modules/default/controllers/CostCenterController.php:82
-#: ../modules/default/controllers/CostCenterController.php:127
-#: ../modules/default/controllers/CostCenterController.php:186
+#: ../modules/default/controllers/CostCenterController.php:108
+#: ../modules/default/controllers/CostCenterController.php:120
+#: ../modules/default/controllers/CostCenterController.php:149
+#: ../modules/default/controllers/CostCenterController.php:162
+#: ../modules/default/controllers/CostCenterController.php:188
 msgid "Tag"
 msgstr "Tag"
 
@@ -4640,10 +4877,17 @@ msgstr "Tag"
 msgid "Tags"
 msgstr "Tags"
 
+#: ../modules/default/controllers/AuditController.php:55
+msgid "Tags Actions"
+msgstr "Ações de Tags"
+
 #: ../modules/default/views/scripts/information/index.phtml:48
 msgid "Team"
 msgstr "Equipe"
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:6
+#: ../modules/billing/views/scripts/billing/addedit.phtml:9
+#: ../modules/billing/views/scripts/billing/index.phtml:44
 #: ../modules/default/views/scripts/trunks/addedit.phtml:23
 msgid "Telco"
 msgstr "Operadora"
@@ -4651,6 +4895,13 @@ msgstr "Operadora"
 #: ../modules/default/views/scripts/trunks/addedit.phtml:20
 msgid "Telco (used for rate the calls)"
 msgstr "Operadora (utilizado para tarifar as chamadas)"
+
+#: ../modules/billing/controllers/TelcosController.php:46
+#: ../modules/billing/controllers/TelcosController.php:74
+#: ../modules/billing/controllers/TelcosController.php:104
+#: /var/www/html/snep-3/modules/billing/resources.xml
+msgid "Telcos"
+msgstr "Operadoras"
 
 #: ../modules/default/controllers/LogsController.php:84
 msgid "Terminal"
@@ -4672,6 +4923,10 @@ msgstr "Texto"
 msgid "The 'sox' package is not installed!"
 msgstr "O pacote 'sox' não está instalado!"
 
+#: ../modules/billing/controllers/BillingController.php:96
+msgid "The Bill will be deleted. After that, you have no way get it back."
+msgstr "A Tarifa será removida. Depois daqui, você não poderá voltar atrás."
+
 #: ../modules/default/controllers/ParametersController.php:60
 msgid "The File includes/setup.conf does not have permission to be modified."
 msgstr "O arquivo includes/setup.conf não tem permissão de escrita."
@@ -4689,6 +4944,10 @@ msgstr ""
 "\\\n"
 "\tAqui você pode gerenciar estas Rotas."
 
+#: ../modules/billing/controllers/TelcosController.php:113
+msgid "The Telco will be deleted. After that, you have no way get it back."
+msgstr "A Operadora será removida. Depois daqui, você não poderá voltar atrás."
+
 #: ../modules/default/views/scripts/trunks/addedit.phtml:587
 msgid "The board is required"
 msgstr "A placa é obrigatória"
@@ -4701,23 +4960,23 @@ msgstr "O canal é obrigatório"
 msgid "The code is required"
 msgstr "O código é obrigatário"
 
-#: ../modules/default/controllers/ContactsController.php:253
+#: ../modules/default/controllers/ContactsController.php:259
 msgid "The contact will be deleted. After that, you have no way get it back."
 msgstr "O contato será excluí­do. Depois disso, você não tem como recuperá-lo."
 
-#: ../modules/default/controllers/ContactGroupsController.php:229
+#: ../modules/default/controllers/ContactGroupsController.php:235
 msgid ""
 "The contacts group will be deleted. After that, you have no way get it back."
 msgstr ""
 "O grupo de contatos será excluí­do. Depois disso, você não tem como recuperá-"
 "lo."
 
-#: ../modules/default/controllers/CostCenterController.php:202
+#: ../modules/default/controllers/CostCenterController.php:178
 msgid ""
 "The cost center will be deleted. After that, you have no way get it back."
 msgstr "A tag será excluída. Depois disso, você não tem como recuperá-la."
 
-#: ../modules/default/controllers/DatesAliasController.php:180
+#: ../modules/default/controllers/DatesAliasController.php:168
 msgid ""
 "The date alias will be deleted. After that, you have no way get it back."
 msgstr ""
@@ -4759,11 +5018,11 @@ msgstr "O e-mail é obrigatório."
 msgid "The email is required."
 msgstr "O e-mail é obrigatório."
 
-#: ../modules/default/controllers/ContactGroupsController.php:272
+#: ../modules/default/controllers/ContactGroupsController.php:283
 msgid "The excluded group has associated contacts."
 msgstr "O grupo apagado tem contatos associados."
 
-#: ../modules/default/controllers/ExpressionAliasController.php:228
+#: ../modules/default/controllers/ExpressionAliasController.php:213
 msgid ""
 "The expression alias will be deleted. After that, you have no way get it "
 "back."
@@ -4777,13 +5036,13 @@ msgid "The extension group is required"
 msgstr "O grupo de ramal é obrigatório"
 
 #: ../modules/default/views/scripts/extensions-groups/migration.phtml:10
-#: ../modules/default/controllers/ExtensionsGroupsController.php:256
+#: ../modules/default/controllers/ExtensionsGroupsController.php:263
 msgid ""
 "The extension group will be deleted. After that, you have no way get it back."
 msgstr ""
 "O grupo de ramais será excluí­do. Depois disso, você não tem como recuperá-lo."
 
-#: ../modules/default/controllers/ExtensionsGroupsController.php:252
+#: ../modules/default/controllers/ExtensionsGroupsController.php:259
 msgid "The extension group will be deleted. Are you sure?."
 msgstr "O grupo de ramais será apagado. Deseja continuar?"
 
@@ -4792,7 +5051,7 @@ msgstr "O grupo de ramais será apagado. Deseja continuar?"
 msgid "The extension is required"
 msgstr "O ramal é obrigatário"
 
-#: ../modules/default/controllers/ExtensionsController.php:725
+#: ../modules/default/controllers/ExtensionsController.php:713
 msgid "The extension will be deleted. After that, you have no way get it back."
 msgstr "O ramal será excluí­do. Depois disso, você não tem como recuperá-lo."
 
@@ -4805,7 +5064,7 @@ msgstr "O arquivo %s já existe no diretório."
 msgid "The file is required"
 msgstr "O arquivo é obrigatório"
 
-#: ../modules/default/controllers/ContactsController.php:314
+#: ../modules/default/controllers/ContactsController.php:325
 msgid ""
 "The file must be separated by commas. The columns can be associated in the "
 "next screen."
@@ -4826,7 +5085,7 @@ msgid "The first think you need is Add your Extensions and their Groups."
 msgstr ""
 "A Primeira coisa que você precisa é Adicionar seus Ramais e seus Grupos."
 
-#: ../modules/default/controllers/ExtensionsController.php:817
+#: ../modules/default/controllers/ExtensionsController.php:799
 msgid ""
 "The following extensions are in use in routes, modify them prior to remove "
 "this extension"
@@ -4834,7 +5093,7 @@ msgstr ""
 "As seguintes extensões estão em uso nesta rota, ajuste primeiro ou então "
 "remova a extensão"
 
-#: ../modules/default/controllers/SoundFilesController.php:419
+#: ../modules/default/controllers/SoundFilesController.php:397
 msgid ""
 "The following files do not exist in the directory and will be excluded from "
 "the database."
@@ -4842,7 +5101,7 @@ msgstr ""
 "Os seguintes arquivos não existem no diretório e serão excluí­dos do banco de "
 "dados."
 
-#: ../modules/default/controllers/SoundFilesController.php:426
+#: ../modules/default/controllers/SoundFilesController.php:404
 msgid ""
 "The following files were found in the directory and will be registered in "
 "the database."
@@ -4850,17 +5109,17 @@ msgstr ""
 "Os seguintes arquivos foram encontrados no diretório e serão registrados no "
 "banco de dados."
 
-#: ../modules/default/controllers/QueuesController.php:302
+#: ../modules/default/controllers/QueuesController.php:290
 msgid "The following members make use of this queue, remove before deleting:"
 msgstr "Os seguintes membros fazem uso dessa fila, retire antes de excluir:"
 
-#: ../modules/default/controllers/ExtensionsController.php:713
+#: ../modules/default/controllers/ExtensionsController.php:701
 msgid ""
 "The following routes use this extension, modify them prior to remove this "
 "extension"
 msgstr "As seguintes rotas usam este ramal, modifique elas antes de apaga-lo."
 
-#: ../modules/default/controllers/ContactGroupsController.php:224
+#: ../modules/default/controllers/ContactGroupsController.php:230
 msgid "The group will be removed. After that you can't go back."
 msgstr "O grupo será apagado. Depois disso, você não tem como recupera-lo."
 
@@ -4896,6 +5155,8 @@ msgstr ""
 msgid "The name field is required"
 msgstr "O campo name é necessário."
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:87
+#: ../modules/billing/views/scripts/telcos/addedit.phtml:61
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:85
 #: ../modules/default/views/scripts/queues/addedit.phtml:277
 #: ../modules/default/views/scripts/extensions/addedit.phtml:525
@@ -4903,7 +5164,7 @@ msgstr "O campo name é necessário."
 #: ../modules/default/views/scripts/profiles/addedit.phtml:66
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:73
 #: ../modules/default/views/scripts/trunks/addedit.phtml:581
-#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:55
+#: ../modules/default/views/scripts/pickup-groups/addedit.phtml:59
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:57
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:101
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:107
@@ -4946,18 +5207,18 @@ msgstr "O número de dí­gitos é obrigatório"
 msgid "The phone is required"
 msgstr "O telefone é obrigatório"
 
-#: ../modules/default/controllers/PickupGroupsController.php:223
+#: ../modules/default/controllers/PickupGroupsController.php:222
 msgid ""
 "The pickup group will be deleted. After that, you have no way get it back."
 msgstr ""
 "O grupo de captura será excluí­do. Depois disso, você não tem como recuperá-"
 "lo."
 
-#: ../modules/default/controllers/ProfilesController.php:218
+#: ../modules/default/controllers/ProfilesController.php:225
 msgid "The profile will be deleted. After that, you have no way get it back."
 msgstr "O perfil será excluí­do. Depois disso, você não tem como recuperá-lo."
 
-#: ../modules/default/controllers/QueuesController.php:339
+#: ../modules/default/controllers/QueuesController.php:327
 msgid "The queue will be deleted. After that, you have no way get it back."
 msgstr "A fila será excluída. Depois disso, você não tem como recuperá-la."
 
@@ -4965,11 +5226,11 @@ msgstr "A fila será excluída. Depois disso, você não tem como recuperá-la."
 msgid "The range extension is required"
 msgstr "O range de ramais é obrigatório"
 
-#: ../modules/default/controllers/RouteController.php:662
+#: ../modules/default/controllers/RouteController.php:641
 msgid "The route will be deleted. After that, you have no way get it back."
 msgstr "A rota será excluí­da. Depois disso, você não tem como recuperá-la."
 
-#: ../modules/default/controllers/SoundFilesController.php:292
+#: ../modules/default/controllers/SoundFilesController.php:276
 msgid ""
 "The sound files will be deleted. After that, you have no way get it back."
 msgstr ""
@@ -4988,7 +5249,7 @@ msgstr "A faixa de horário precisa estar no formato:  HH:MM-HH:MM"
 msgid "The trunk is required"
 msgstr "O tronco é obrigatório"
 
-#: ../modules/default/controllers/TrunksController.php:476
+#: ../modules/default/controllers/TrunksController.php:465
 msgid "The trunk will be deleted. After that, you have no way get it back."
 msgstr "O tronco será excluí­do. Depois disso, você não tem como recuperá-lo."
 
@@ -4996,7 +5257,7 @@ msgstr "O tronco será excluí­do. Depois disso, você não tem como recuperá-
 msgid "The type is required"
 msgstr "O tipo é obrigatório"
 
-#: ../modules/default/controllers/UsersController.php:195
+#: ../modules/default/controllers/UsersController.php:202
 msgid "The user will be deleted. After that, you have no way get it back."
 msgstr "O usuário será excluí­do. Depois disso, você não tem como recuperá-lo."
 
@@ -5018,7 +5279,7 @@ msgstr ""
 "este Destino."
 
 #: ../modules/default/controllers/ExpressionAliasController.php:98
-#: ../modules/default/controllers/ExpressionAliasController.php:168
+#: ../modules/default/controllers/ExpressionAliasController.php:161
 msgid ""
 "Their alias has invalid character. Accents are not allowed, empty value "
 "between the keys, blanks and special characters except( # % | . - _ )"
@@ -5031,7 +5292,7 @@ msgstr ""
 msgid "There are no extensions in the selected group"
 msgstr "Não existem ramais no grupo selecionado"
 
-#: ../modules/default/controllers/ContactsController.php:360
+#: ../modules/default/controllers/ContactsController.php:371
 msgid "There is no contacts group registered."
 msgstr "Não existem grupos de contatos registrados."
 
@@ -5046,6 +5307,7 @@ msgstr ""
 #: ../modules/default/views/scripts/calls-report/index.phtml:274
 #: ../modules/default/views/scripts/ranking-report/index.phtml:118
 #: ../modules/default/views/scripts/services-report/index.phtml:102
+#: ../modules/default/views/scripts/audit/index.phtml:85
 msgid "This Month"
 msgstr "Este Mês"
 
@@ -5072,6 +5334,13 @@ msgstr ""
 "\tVocê pode customizá-lo como quiser, adicionando, movendo ou removendo "
 "elementos."
 
+#: /var/www/html/snep-3/modules/billing/info.xml
+msgid ""
+"This module make the billing of calls putting price based on trunks and time."
+msgstr ""
+"Este módulo faz a tarifação de ligações, colocando preços baseado no Troncos "
+"utilizados e tempo."
+
 #: ../modules/default/actions/DiscarTronco.php:81
 msgid ""
 "This warning is being delivered to you because Snep detected the usage of a "
@@ -5089,7 +5358,8 @@ msgstr ""
 "chamador atender a ligação de retorno. Pode ser qualquer Destino de Rota nas "
 "Regras."
 
-#: ../modules/default/controllers/SimulatorController.php:198
+#: ../modules/default/controllers/SimulatorController.php:202
+#: ../modules/default/controllers/SimulatorController.php:240
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Thursday"
 msgstr "Quinta-feira"
@@ -5173,6 +5443,7 @@ msgstr "Para atualizar sua versão basta executar em um terminal:"
 #: ../modules/default/views/scripts/calls-report/index.phtml:269
 #: ../modules/default/views/scripts/ranking-report/index.phtml:113
 #: ../modules/default/views/scripts/services-report/index.phtml:97
+#: ../modules/default/views/scripts/audit/index.phtml:80
 msgid "Today"
 msgstr "Hoje"
 
@@ -5198,20 +5469,24 @@ msgstr "Totais"
 #: ../modules/default/views/scripts/trunks/addedit.phtml:7
 #: ../modules/default/views/scripts/simulator/index.phtml:53
 #: ../modules/default/controllers/RouteController.php:62
+#: ../modules/default/controllers/TrunksController.php:259
+#: ../modules/default/controllers/TrunksController.php:414
+#: ../modules/default/controllers/TrunksController.php:473
 msgid "Trunk"
 msgstr "Tronco"
 
 #: ../modules/default/views/scripts/ip-status/index.phtml:96
 #: ../modules/default/controllers/TrunksController.php:98
 #: ../modules/default/controllers/TrunksController.php:177
-#: ../modules/default/controllers/TrunksController.php:282
-#: ../modules/default/controllers/TrunksController.php:438
+#: ../modules/default/controllers/TrunksController.php:277
+#: ../modules/default/controllers/TrunksController.php:427
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Trunks"
 msgstr "Troncos"
 
 #: ../modules/loguser/controllers/LoguserController.php:41
+#: ../modules/default/controllers/AuditController.php:64
 msgid "Trunks Actions"
 msgstr "Ações de Troncos"
 
@@ -5219,11 +5494,13 @@ msgstr "Ações de Troncos"
 msgid "Trunks Configuration"
 msgstr "Configuração dos Troncos"
 
-#: ../modules/default/controllers/SimulatorController.php:196
+#: ../modules/default/controllers/SimulatorController.php:200
+#: ../modules/default/controllers/SimulatorController.php:238
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Tuesday"
 msgstr "Terça-feira"
 
+#: ../modules/billing/views/scripts/billing/addedit.phtml:26
 #: ../modules/default/views/scripts/calls-report/index.phtml:35
 #: ../modules/default/views/scripts/cost-center/index.phtml:47
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:47
@@ -5270,16 +5547,16 @@ msgstr "Inacessí­vel"
 msgid "UUID do Snep"
 msgstr "UUID do SNEP"
 
-#: ../modules/default/controllers/SoundFilesController.php:317
+#: ../modules/default/controllers/SoundFilesController.php:295
 msgid "Unable to remove file"
 msgstr "Não foi possí­vel remover arquivo"
 
-#: ../modules/default/controllers/SoundFilesController.php:345
+#: ../modules/default/controllers/SoundFilesController.php:323
 msgid "Unable to restore file"
 msgstr "Incapaz de restaurar o arquivo"
 
 #: ../modules/default/controllers/SoundFilesController.php:137
-#: ../modules/default/controllers/SoundFilesController.php:236
+#: ../modules/default/controllers/SoundFilesController.php:228
 msgid "Unable to upload file."
 msgstr "Não é possí­vel fazer o upload do arquivo."
 
@@ -5328,7 +5605,7 @@ msgstr "Atualizar"
 #: ../modules/default/views/scripts/profiles/index.phtml:41
 #: ../modules/default/views/scripts/users/index.phtml:43
 msgid "Updated"
-msgstr "Atualizado em"
+msgstr "Atualizou"
 
 #: ../modules/default/controllers/CnlController.php:69
 msgid "Updating CNL"
@@ -5348,6 +5625,9 @@ msgid "Used"
 msgstr "Usado"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:32
+#: ../modules/default/controllers/UsersController.php:107
+#: ../modules/default/controllers/UsersController.php:181
+#: ../modules/default/controllers/UsersController.php:216
 msgid "User"
 msgstr "Usuário"
 
@@ -5408,14 +5688,18 @@ msgstr "Usuário"
 
 #: ../modules/default/controllers/UsersController.php:53
 #: ../modules/default/controllers/UsersController.php:73
-#: ../modules/default/controllers/UsersController.php:120
-#: ../modules/default/controllers/UsersController.php:188
-#: ../modules/default/controllers/UsersController.php:216
-#: ../modules/default/controllers/UsersController.php:363
+#: ../modules/default/controllers/UsersController.php:123
+#: ../modules/default/controllers/UsersController.php:195
+#: ../modules/default/controllers/UsersController.php:227
+#: ../modules/default/controllers/UsersController.php:374
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Users"
 msgstr "Usuários"
+
+#: ../modules/default/controllers/AuditController.php:62
+msgid "Users Actions"
+msgstr "Ações de Usuários"
 
 #: ../modules/default/views/scripts/queues/addedit.phtml:194
 msgid "Users can enter the queue without Agents Present?"
@@ -5429,7 +5713,7 @@ msgstr "Datas Válidas"
 msgid "Valid Times"
 msgstr "Tempos válidos"
 
-#: ../modules/default/views/scripts/simulator/index.phtml:134
+#: ../modules/default/views/scripts/simulator/index.phtml:133
 #, php-format
 msgid "Validity: %s"
 msgstr "Validade: %s"
@@ -5485,14 +5769,11 @@ msgstr "Estamos quase terminando"
 msgid "We've sent an access code to the email:"
 msgstr "Enviamos um código de acesso ao e-mail:"
 
-#: ../modules/default/controllers/SimulatorController.php:197
+#: ../modules/default/controllers/SimulatorController.php:201
+#: ../modules/default/controllers/SimulatorController.php:239
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Wednesday"
 msgstr "Quarta-feira"
-
-#: ../modules/default/views/scripts/simulator/index.phtml:112
-msgid "Week Day"
-msgstr "Dias da Semana"
 
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Week Days"
@@ -5572,6 +5853,7 @@ msgstr "Sim"
 #: ../modules/default/views/scripts/calls-report/index.phtml:270
 #: ../modules/default/views/scripts/ranking-report/index.phtml:114
 #: ../modules/default/views/scripts/services-report/index.phtml:98
+#: ../modules/default/views/scripts/audit/index.phtml:81
 msgid "Yesterday"
 msgstr "Ontem"
 
@@ -5736,7 +6018,7 @@ msgstr "Você não possui placas Khomp configurados no sistema."
 msgid "You don't have trunks registered in your system."
 msgstr "Você não possui tronco registrados no sistema."
 
-#: ../modules/default/controllers/CostCenterController.php:195
+#: ../modules/default/controllers/CostCenterController.php:171
 msgid ""
 "You have data connections with this cost center, so this exclusion is not "
 "permitted."
@@ -5798,7 +6080,7 @@ msgstr "Seu navegador não suporta o elemento de áudio."
 msgid "Your email address must be in the format of name@domain.com"
 msgstr "O seu endereço de e-mail deve estar no formato de nome@dominio.com"
 
-#: ../modules/default/controllers/SoundFilesController.php:430
+#: ../modules/default/controllers/SoundFilesController.php:408
 msgid "Your files are synchronized"
 msgstr "Seus arquivos são sincronizados"
 
@@ -5808,11 +6090,11 @@ msgstr "O seu registo está completo, bem-vindo ao Snep."
 
 #: ../modules/default/views/scripts/contacts/addedit.phtml:98
 #: ../modules/default/views/scripts/contacts/addedit.phtml:100
-#: ../modules/default/controllers/ContactsController.php:346
+#: ../modules/default/controllers/ContactsController.php:357
 msgid "Zip Code"
 msgstr "CEP"
 
-#: ../modules/default/controllers/ContactsController.php:433
+#: ../modules/default/controllers/ContactsController.php:444
 msgid "Zipcode invalid"
 msgstr "CEP inválido"
 
@@ -6029,9 +6311,9 @@ msgstr "queues/index"
 msgid "ranking-report/index"
 msgstr "ranking-report/index"
 
-#: ../modules/default/controllers/UsersController.php:263
-#: ../modules/default/controllers/ProfilesController.php:291
-#: ../modules/default/controllers/ProfilesController.php:311
+#: ../modules/default/controllers/UsersController.php:274
+#: ../modules/default/controllers/ProfilesController.php:303
+#: ../modules/default/controllers/ProfilesController.php:323
 msgid "read"
 msgstr "Leitura"
 
@@ -6211,11 +6493,15 @@ msgstr "users/index"
 msgid "view"
 msgstr "ver"
 
-#: ../modules/default/controllers/UsersController.php:261
-#: ../modules/default/controllers/ProfilesController.php:289
-#: ../modules/default/controllers/ProfilesController.php:309
+#: ../modules/default/controllers/UsersController.php:272
+#: ../modules/default/controllers/ProfilesController.php:301
+#: ../modules/default/controllers/ProfilesController.php:321
 msgid "write"
 msgstr "Escrita"
+
+#: /var/www/html/snep-3/modules/billing/info.xml
+msgid "www.opens.com.br"
+msgstr "www.opens.com.br"
 
 #: /var/www/html/snep-3/modules/default/info.xml
 msgid "www.sneplivre.com.br"
@@ -6226,6 +6512,12 @@ msgstr "www.sneplivre.com.br"
 #: /var/www/html/snep-3/modules/portability/info.xml
 msgid "www.sneppbx.com"
 msgstr ""
+
+#~ msgid "Current Day"
+#~ msgstr "Dia Atual"
+
+#~ msgid "Week Day"
+#~ msgstr "Dias da Semana"
 
 #~ msgid "ANSWERED"
 #~ msgstr "Atendida"
@@ -6341,56 +6633,14 @@ msgstr ""
 #~ msgid "services_use"
 #~ msgstr "services_use"
 
-#~ msgid "Add Bill"
-#~ msgstr "Adicionar Tarifa"
-
-#~ msgid "Add Telco"
-#~ msgstr "Adicionar Operadora"
-
 #~ msgid "Allow forward to an Extension"
 #~ msgstr "Permitir direcionamento para um Ramal"
-
-#~ msgid "Area Code"
-#~ msgstr "Código de Área"
-
-#~ msgid "Bill Type"
-#~ msgstr "Tipo de Bilhete"
-
-#~ msgid "Billing >> Billing"
-#~ msgstr "Tarifação >> Tarifação"
-
-#~ msgid "Billing >> Telcos"
-#~ msgstr "Tarifação >> Operadoras"
-
-#~ msgid "Billing Module for SNEP"
-#~ msgstr "Modulo de Tarifação para o SNEP"
 
 #~ msgid "Call Time"
 #~ msgstr "Tempo de Ligação"
 
 #~ msgid "Call status"
 #~ msgstr "Status da Ligação"
-
-#~ msgid "Code Area"
-#~ msgstr "Código de Área"
-
-#~ msgid "Default Land Line Price"
-#~ msgstr "Preço padrão para Ligações Fixo"
-
-#~ msgid "Default Mobile Price"
-#~ msgstr "Preço padrão para ligações móveis"
-
-#~ msgid "Delete a Bill"
-#~ msgstr "Remover uma Tarifa"
-
-#~ msgid "Delete a Telco"
-#~ msgstr "Remover uma Operadora"
-
-#~ msgid "Details"
-#~ msgstr "Detalhes"
-
-#~ msgid "Fractionation"
-#~ msgstr "Fracionamento"
 
 #~ msgid "How many loops"
 #~ msgstr "Quantos loops"
@@ -6418,37 +6668,8 @@ msgstr ""
 #~ msgid "Original Source"
 #~ msgstr "Origem Original"
 
-#~ msgid "Price"
-#~ msgstr "Preço"
-
-#~ msgid "Rate Fractionation (in seconds)"
-#~ msgstr "Fracionamento (em segundos)"
-
 #~ msgid "Run an automation process defined by the administrator."
 #~ msgstr "Roda uma processo automatico definido pelo Administrador."
-
-#~ msgid "Start Time"
-#~ msgstr "Tempo de Arranque"
-
-#~ msgid "Start Time Rate (in seconds)"
-#~ msgstr "Tempo de Arranque (em segundos)"
-
-#~ msgid "Telcos"
-#~ msgstr "Operadoras"
-
-#~ msgid "The Bill will be deleted. After that, you have no way get it back."
-#~ msgstr "A Tarifa será removida. Depois daqui, você não poderá voltar atrás."
-
-#~ msgid "The Telco will be deleted. After that, you have no way get it back."
-#~ msgstr ""
-#~ "A Operadora será removida. Depois daqui, você não poderá voltar atrás."
-
-#~ msgid ""
-#~ "This module make the billing of calls putting price based on trunks and "
-#~ "time."
-#~ msgstr ""
-#~ "Este módulo faz a tarifação de ligações, colocando preços baseado no "
-#~ "Troncos utilizados e tempo."
 
 #~ msgid "Wait for how long - in seconds"
 #~ msgstr "Esperar por quanto tempo - em segundos"
@@ -6458,9 +6679,6 @@ msgstr ""
 
 #~ msgid "Wait for which digits - split by \",\""
 #~ msgstr "Esperar por quais dígitos - separados por \",\""
-
-#~ msgid "www.opens.com.br"
-#~ msgstr "www.opens.com.br"
 
 #~ msgid ""
 #~ "\tThis warning is being delivered to you because Snep detected the usage "

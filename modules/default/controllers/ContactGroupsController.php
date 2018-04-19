@@ -94,7 +94,6 @@ class ContactGroupsController extends Zend_Controller_Action {
             $form_isValid = true;
             $dados = $this->_request->getParams();
             
-
             $newId = Snep_ContactGroups_Manager::getName($dados['group']);
 
             if (count($newId) > 1) {
@@ -112,6 +111,10 @@ class ContactGroupsController extends Zend_Controller_Action {
                         Snep_ContactGroups_Manager::insertContactOnGroup($groupId, $idContact);
                     }
                 }
+
+                //audit
+                Snep_Audit_Manager::SaveLog("Added", 'contacts_group', $groupId, $this->view->translate("Contacts Group") . " {$groupId} " . $dados['group']);
+
                 $this->_redirect($this->getRequest()->getControllerName());
             }
         }
@@ -168,8 +171,11 @@ class ContactGroupsController extends Zend_Controller_Action {
                 $groupId = Snep_ContactGroups_Manager::edit(array('group' => $dados['group'], 'id' => $dados['id']));
                 $members = Snep_Contacts_Manager::getMember($dados['id']);
 
+                //audit
+                Snep_Audit_Manager::SaveLog("Updated", 'contacts_group', $groupId, $this->view->translate("Contacts Group") . " {$groupId} " . $dados['group']);
+
+
                 // remove contacts of group and insert in default group
-                
                 if ($groupContacts) {
                     foreach ($groupContacts as $id => $idContact) {
 
@@ -232,7 +238,12 @@ class ContactGroupsController extends Zend_Controller_Action {
 
             if ($this->_request->getPost()) {
                 
+                $group = Snep_ContactGroups_Manager::get($_POST['id']);
                 Snep_ContactGroups_Manager::remove($_POST['id']);
+
+                //audit
+                Snep_Audit_Manager::SaveLog("Deleted", 'contacts_group', $_POST['id'], $this->view->translate("Contacts Group") . " {$_POST['id']} " . $group['name']);
+
                 $this->_redirect('default/contact-groups/');
             }
 
@@ -297,6 +308,10 @@ class ContactGroupsController extends Zend_Controller_Action {
                 Snep_Contacts_Manager::removeGroup($contact['idGroup']);
                 Snep_ContactGroups_Manager::remove($_POST['id']);
             }
+
+            //audit
+            $group = Snep_ContactGroups_Manager::get($_POST['id']);
+            Snep_Audit_Manager::SaveLog("Deleted", 'contacts_group', $_POST['id'], $this->view->translate("Contacts Group") . " {$_POST['id']} " . $group['name']);
 
             $this->_redirect($this->getRequest()->getControllerName());
         }  

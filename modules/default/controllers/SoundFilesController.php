@@ -160,16 +160,8 @@ class SoundFilesController extends Zend_Controller_Action {
                                 'language' => $this->lang,
                                 'tipo' => 'AST'));
 
-                            //log-user
-                            if (class_exists("Loguser_Manager")) {
-                                $id = $originalName;
-                                $data = array(
-                                  'table' => 'sounds',
-                                  'registerid' => $id,
-                                  'description' => "Added Sound $id"
-                                );
-                                Snep_LogUser::log("add", $data);
-                            }
+                            //audit
+                            Snep_Audit_Manager::SaveLog("Added", 'sounds', $id, $this->view->translate("Sound") . " {$id} " . $originalName);
 
                             $this->_redirect($this->getRequest()->getControllerName());
                         } else {
@@ -259,19 +251,11 @@ class SoundFilesController extends Zend_Controller_Action {
             // Change register file
 
             Snep_SoundFiles_Manager::edit($dados);
-
-            //log-user
-            if (class_exists("Loguser_Manager")) {
-                $id = $originalName;
-                $data = array(
-                  'table' => 'sounds',
-                  'registerid' => $id,
-                  'description' => "Edited Sound $id"
-                );
-                Snep_LogUser::log("update", $data);
-            }
-
-         $this->_redirect($this->getRequest()->getControllerName());
+            
+            //audit
+            Snep_Audit_Manager::SaveLog("Updated", 'sounds', $id, $this->view->translate("Sound") ." ". $dados["arquivo"]);
+            
+            $this->_redirect($this->getRequest()->getControllerName());
         }
 
     }
@@ -303,14 +287,8 @@ class SoundFilesController extends Zend_Controller_Action {
 
                 if ($result['fullpath']) {
                     try {
-                        if (class_exists("Loguser_Manager")) {
-                          $data = array(
-                            'table' => 'sounds',
-                            'registerid' => $id,
-                            'description' => "Deleted Sound $id - {$result['fullpath']}"
-                          );
-                          Snep_LogUser::log("delete", $data);
-                        }
+                        //audit
+                        Snep_Audit_Manager::SaveLog("Deleted", 'sounds', $id, $this->view->translate("Sound") . " {$id} " . $result['fullpath']);
                         exec("rm -f {$result['fullpath']} ");
 
                     } catch (Exception $e) {

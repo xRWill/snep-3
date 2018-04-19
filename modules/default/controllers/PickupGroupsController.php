@@ -113,14 +113,10 @@ class PickupGroupsController extends Zend_Controller_Action {
                         Snep_PickupGroups_Manager::addExtensionsGroup($extensionsGroup);
                     }
                 }
-                //log-user
-                if (class_exists("Loguser_Manager")) {
-                    // $nome = $dados['name'];
-                    // Snep_LogUser::salvaLog("Adicionou Grupo de Captura", $nome, 11);
-                    // $add = Snep_ExtensionsGroups_Manager::getGroupLog($nome);
-                    // Snep_ExtensionsGroups_Manager::insertLogGroup("ADD", $add);
-                }
 
+                //audit
+                Snep_Audit_Manager::SaveLog("Added", 'grupos', $groupId, $this->view->translate("Pickup Group") . " {$groupId} " . $dados['name']);
+                    
                 $this->_redirect($this->getRequest()->getControllerName());
             }
         }
@@ -199,6 +195,9 @@ class PickupGroupsController extends Zend_Controller_Action {
                     }
                 }
 
+                //audit
+                Snep_Audit_Manager::SaveLog("Updated", 'grupos', $dados['id'], $this->view->translate("Pickup Group") . " {$dados['id']} " . $dados['name']);
+
                 $this->_redirect($this->getRequest()->getControllerName());
 
             }
@@ -232,7 +231,13 @@ class PickupGroupsController extends Zend_Controller_Action {
                 throw new Zend_Controller_Action_Exception('Page not found.', 404);
             }
 
+            $dados = Snep_PickupGroups_Manager::get($_POST['id']);
+            
             Snep_PickupGroups_Manager::delete($_POST['id']);
+
+            //audit
+            Snep_Audit_Manager::SaveLog("Deleted", 'grupos', $dados['cod_grupo'], $this->view->translate("Pickup Group") . " {$dados['cod_grupo']} " . $dados['nome']);
+
             $this->_redirect($this->getRequest()->getControllerName());
         }
     }

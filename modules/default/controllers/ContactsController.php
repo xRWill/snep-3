@@ -141,6 +141,9 @@ class ContactsController extends Zend_Controller_Action {
                     }
                 }
 
+                //audit
+                Snep_Audit_Manager::SaveLog("Added", 'contacts_names', $dados['id'], $this->view->translate("Contact") . " {$dados['id']} " . $_POST['name']);
+
                 $this->_redirect($this->getRequest()->getControllerName());
             }
         } 
@@ -231,7 +234,10 @@ class ContactsController extends Zend_Controller_Action {
                     Snep_Contacts_Manager::addNumber($id, $phone);
                 }
             }
-            
+
+            //audit
+            Snep_Audit_Manager::SaveLog("Updated", 'contacts_names', $id, $this->view->translate("Contact") . " {$id} " . $_POST['name']);
+
             $this->_redirect($this->getRequest()->getControllerName());
             
         } 
@@ -256,8 +262,13 @@ class ContactsController extends Zend_Controller_Action {
 
         if ($this->_request->getPost()) {
 
+            $contact = Snep_Contacts_Manager::get($_POST['id']);
             Snep_Contacts_Manager::removePhone($_POST['id']);
             Snep_Contacts_Manager::remove($_POST['id']);
+
+            //audit
+            Snep_Audit_Manager::SaveLog("Deleted", 'contacts_names', $_POST['id'], $this->view->translate("Contact") . " {$_POST['id']} " . $contact['name']);
+
             $this->_redirect($this->getRequest()->getControllerName());
         }
     }

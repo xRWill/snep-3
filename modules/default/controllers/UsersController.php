@@ -103,6 +103,9 @@ class UsersController extends Zend_Controller_Action {
                     }
                 }
 
+                //audit
+                Snep_Audit_Manager::SaveLog("Added", 'users', $id, $this->view->translate("User") . " {$id} " . $dados['name']);   
+
                 $this->_redirect($this->getRequest()->getControllerName());
 
             }
@@ -173,6 +176,10 @@ class UsersController extends Zend_Controller_Action {
                     Snep_Users_Manager::addQueuesPermission($id, $queue);
                 }
             }
+
+            //audit
+            Snep_Audit_Manager::SaveLog("Updated", 'users', $id, $this->view->translate("User") . " {$id} " . $dados['name']); 
+            
             $this->_redirect($this->getRequest()->getControllerName());
 
         }
@@ -198,11 +205,15 @@ class UsersController extends Zend_Controller_Action {
 
         if ($this->_request->getPost()) {
 
+            $user = Snep_Users_Manager::get($id);
             Snep_Users_Manager::removeRecovery($id);
             Snep_Users_Manager::removePermission($id);
             Snep_Users_Manager::removeQueuesPermission($id);
             Snep_Binds_Manager::removeBond($id);
             Snep_Users_Manager::remove($id);
+
+            //audit
+            Snep_Audit_Manager::SaveLog("Deleted", 'users', $id, $this->view->translate("User") . " {$id} " . $user['name']); 
             $this->_redirect($this->getRequest()->getControllerName());
         }
     }

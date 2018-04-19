@@ -24,6 +24,7 @@
         <resource id="inspector" label="System Status" font="sn-status-sistema"></resource>
         <resource id="tdm-links" label="TDM boards" font="sn-links"></resource>
         <resource id="errors-khomp" label="TDM links errors" font="sn-erros-links"></resource>
+        <resource id="audit" label="Audit" font="sn-busca"></resource>
         <resource id="logs" label="Logs" font="sn-logs"></resource>
     </group>
 

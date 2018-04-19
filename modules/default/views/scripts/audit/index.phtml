@@ -1,0 +1,99 @@
+<?php
+$this->headLink()->appendStylesheet($this->baseUrl() . "/css/bootstrap-datetimepicker.css");
+?>
+<script src="/snep/includes/javascript/moment-with-locales.min.js" type="text/javascript" ></script>
+<script src="/snep/includes/javascript/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<div class="row">
+    <div class="tab-content">
+            <div class="tab-pane active" id="demo">
+                <?php if ($this->key) {?>
+                    <div class="snep-body-top-buttons">
+                        <div class="snep-body-search">
+                            <?php if ($this->key) {
+    echo "";
+    ?>
+                                <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard'); ?>"></a>
+                            <?php }?>
+                        </div>
+                    </div>
+                <?php }?>
+            </div>
+        </div>
+    </div>
+    <form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 0px;" action="<?php echo $this->url(array("module" => "default", "controller" => "audit", "action" => "index"), null, true); ?>" METHOD="post">
+
+        <fieldset>
+            <legend><?php echo $this->translate("Period"); ?></legend>
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><?php echo $this->translate("Period"); ?></label>
+              <div class="col-sm-4">
+                <div class='input-group'>
+                  <input type='text' class="snep-datetimepicker form-control" id="daterange-btn" name="period" required readonly/>
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+
+            <legend><?php echo $this->translate("Category"); ?></legend>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label"><?php echo $this->translate("Category Groups"); ?></label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="selectAct" id="selectAct">
+                        <?php foreach ($this->groups as $key => $group) {?>
+                            <option value="<?php echo $key; ?>"><?php echo $group ?></option>
+                        <?php }?>
+                    </select>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="snep-body-footer-buttons">
+           <button type="submit" class="btn btn-add" name="showreport" value="showreport"><?php echo $this->translate("Show Report"); ?></button>
+        </div>
+        <br />
+    </form>
+</div> <!-- /.row -->
+
+<script type="text/javascript">
+
+jQuery.noConflict();
+//Date range as a button
+startDate = '<?php echo $this->startDate ?>'
+if(!startDate){
+  startDate = moment().format('DD/MM/YYYY 00:00');
+}
+endDate = '<?php echo $this->endDate ?>'
+if(!endDate){
+  endDate = moment().format('DD/MM/YYYY 23:59');
+}
+
+jQuery('#daterange-btn').daterangepicker(
+    {
+      ranges: {
+        '<?php echo $this->translate("Today"); ?>': [moment(), moment()],
+        '<?php echo $this->translate("Yesterday"); ?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 7 Days"); ?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 15 Days"); ?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("Last 30 Days"); ?>': [moment().subtract(29, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
+        '<?php echo $this->translate("This Month"); ?>': [moment().startOf('month'), moment().endOf('month')],
+        '<?php echo $this->translate("Last Month"); ?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      },
+      startDate: startDate,
+      endDate:  endDate,
+      timePicker: true,
+      timePickerIncrement: 1,
+      timePicker24Hour: true,
+    },
+    function (start, end) {
+      jQuery('#daterange-btn span').html(start.format('DD/MM/YYYY HH:mm') + ' - ' + end.format('DD/MM/YYYY HH:mm'));
+    }
+);
+
+</script>

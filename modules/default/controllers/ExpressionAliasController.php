@@ -108,16 +108,9 @@ class ExpressionAliasController extends Zend_Controller_Action {
 
                 try {
                     $id = $aliasesPersistency->register($expression);
-                    //log-user
-                    if (class_exists("Loguser_Manager")) {
-                        $data = array(
-                          'table' => 'expr_alias',
-                          'registerid' => $id,
-                          'description' => "Added Regular Express Alias $id - {$_POST['name']}"
-                        );
-                        Snep_LogUser::log('add', $data);
 
-                    }
+                    //audit
+                    Snep_Audit_Manager::SaveLog("Added", 'expr_alias', $id, $this->view->translate("Expression Alias") . " {$id} " . $_POST['name']);
                     $this->_redirect($this->getRequest()->getControllerName());
                 } catch (Exception $ex) {
                     $this->view->error_message = $ex->getMessage();
@@ -178,16 +171,8 @@ class ExpressionAliasController extends Zend_Controller_Action {
 
                 try {
                     $aliasesPersistency->update($expression);
-                    //log-user
-                    if (class_exists("Loguser_Manager")) {
-                        $data = array(
-                          'table' => 'expr_alias',
-                          'registerid' => $id,
-                          'description' => "Edited Regular Express Alias $id - {$_POST['name']}"
-                        );
-                        Snep_LogUser::log("update", $data);
-
-                    }
+                    //audit
+                    Snep_Audit_Manager::SaveLog("Updated", 'expr_alias', $id, $this->view->translate("Expression Alias") . " {$id} " . $_POST['name']);
                     $this->_redirect($this->getRequest()->getControllerName());
                 } catch (Exception $ex) {
                     $this->view->error_message = $ex->getMessage();
@@ -232,17 +217,9 @@ class ExpressionAliasController extends Zend_Controller_Action {
             if ($this->_request->getPost()) {
 
                 Snep_ExpressionAliases_Manager::delete($_POST['id']);
-                //log-user
-                if (class_exists("Loguser_Manager")) {
-                    $expr = Snep_ExpressionAliases_Manager::get($id);
-                    $data = array(
-                      'table' => 'expr_alias',
-                      'registerid' => $id,
-                      'description' => "Deleted Regular Express Alias $id - {$expr['name']}"
-                    );
-                    Snep_LogUser::log("delete", $data);
 
-                }
+                //audit
+                Snep_Audit_Manager::SaveLog("Deleted", 'expr_alias', $id, $this->view->translate("Expression Alias") . " {$id} " . $expr['name']);
                 $this->_redirect($this->getRequest()->getControllerName());
 
             }

@@ -182,15 +182,9 @@ class ExtensionsController extends Zend_Controller_Action {
             $ret = $this->execAdd($data);
 
             if (!is_string($ret)) {
-              //log-user
-              if (class_exists("Loguser_Manager")) {
-                  $data = array(
-                    'table' => 'peers',
-                    'registerid' => $data['exten'],
-                    'description' => "Added Peer {$data['name']} - {$data['exten']}"
-                  );
-                  Snep_LogUser::log("add", $data);
-              }
+              //audit
+              Snep_Audit_Manager::SaveLog("Added", 'peers', $data['exten'], $this->view->translate("Extension") . " {$data['name']} " . $data['exten']);
+              
               $this->_redirect('/extensions/');
             } else {
               $message = $ret;
@@ -459,15 +453,9 @@ class ExtensionsController extends Zend_Controller_Action {
               $ret = $this->execAdd($postData, true);
 
               if (!is_string($ret)) {
-                //log-user
-                if (class_exists("Loguser_Manager")) {
-                    $loguser = array(
-                      'table' => 'peers',
-                      'registerid' => $postData['exten'],
-                      'description' => "Edited Peer {$postData['name']} - {$postData['exten']}"
-                    );
-                    Snep_LogUser::log("update", $loguser);
-                }
+                  //audit
+                  Snep_Audit_Manager::SaveLog("Updated", 'peers', $postData['exten'], $this->view->translate("Extension") . " {$postData['name']} " . $postData['exten']);
+
                 $this->_redirect('/extensions/');
               } else {
                 $this->view->error_message = $ret;
@@ -736,15 +724,9 @@ class ExtensionsController extends Zend_Controller_Action {
                   $idExten = $result['id'];
 
                   try {
-                    //log-user
-                    if (class_exists("Loguser_Manager")) {
-                        $loguser = array(
-                          'table' => 'peers',
-                          'registerid' => $exten,
-                          'description' => "Deleted Peer {$result['name']} - {$exten}"
-                        );
-                        Snep_LogUser::log("delete", $loguser);
-                    }
+                    //audit
+                    Snep_Audit_Manager::SaveLog("Deleted", 'peers', $exten, $this->view->translate("Extension") . " {$result['name']} ". $exten);
+                    
                     Snep_Binds_Manager::removeBondByPeer($exten);
                     Snep_Extensions_Manager::remove($exten);
                     Snep_Extensions_Manager::removeVoicemail($exten);
@@ -835,15 +817,9 @@ class ExtensionsController extends Zend_Controller_Action {
                       $idExten = $result['id'];
 
                       try {
-                        //log-user
-                        if (class_exists("Loguser_Manager")) {
-                            $loguser = array(
-                              'table' => 'peers',
-                              'registerid' => $exten,
-                              'description' => "Deleted Peer {$result['name']} - {$exten}"
-                            );
-                            Snep_LogUser::log("delete", $loguser);
-                        }
+                        //audit
+                        Snep_Audit_Manager::SaveLog("Deleted", 'peers', $exten, $this->view->translate("Extension") . " {$result['name']} " . $exten);
+
                         Snep_Extensions_Manager::remove($exten);
                         Snep_Extensions_Manager::removeVoicemail($exten);
                         Snep_ExtensionsGroups_Manager::deleteExtensionGroups($idExten);
@@ -918,6 +894,9 @@ class ExtensionsController extends Zend_Controller_Action {
 
                         $ret = $this->execAdd($data);
 
+                        //audit
+                        Snep_Audit_Manager::SaveLog("Added", 'peers', $data['exten'], $this->view->translate("Extension") . " {$data['name']} " . $data['exten']);
+
                         if (is_string($ret)) {
                           $this->view->error .= $exten . " - " . $ret;
                           break;
@@ -947,15 +926,8 @@ class ExtensionsController extends Zend_Controller_Action {
                                 $this->view->error .= $i . " - " . $ret;
                                 break;
                               }
-                              //log-user
-                              if (class_exists("Loguser_Manager")) {
-                                  $loguser = array(
-                                    'table' => 'peers',
-                                    'registerid' => $data['exten'],
-                                    'description' => "Added Peer {$data['name']} - {$data['exten']}"
-                                  );
-                                  Snep_LogUser::log("update", $loguser);
-                              }
+                              //audit
+                              Snep_Audit_Manager::SaveLog("Added", 'peers', $data['exten'], $this->view->translate("Extension") . " {$data['name']} " . $data['exten']);
                               $i++;
                             }
                           }

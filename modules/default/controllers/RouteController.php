@@ -259,16 +259,9 @@ class RouteController extends Zend_Controller_Action {
 
                 PBX_Rules::register($rule);
 
-                //log-user
-                if (class_exists("Loguser_Manager")) {
-                    $id = $rule->getId();
-                    $data = array(
-                      'table' => 'regras_negocio',
-                      'registerid' => $id,
-                      'description' => "Added Rule $id - {$_POST['desc']}"
-                    );
-                    Snep_LogUser::log("add", $data);
-                }
+                //audit
+                $id = $rule->getId();
+                Snep_Audit_Manager::SaveLog("Added", 'regras_negocio', $id, $this->view->translate("Rule") . " {$id} ". $_POST['desc']);               
 
                 $this->_redirect("route");
 
@@ -324,15 +317,8 @@ class RouteController extends Zend_Controller_Action {
         if ($_POST) {
             if ($this->isValidPost()) {
 
-                //log-user
-                if (class_exists("Loguser_Manager")) {
-                  $data = array(
-                    'table' => 'regras_negocio',
-                    'registerid' => $id,
-                    'description' => "Edited Rule $id - {$_POST['desc']}"
-                  );
-                  Snep_LogUser::log("update", $data);
-                }
+                //audit
+                Snep_Audit_Manager::SaveLog("Updated", 'regras_negocio', $id, $this->view->translate("Rule") . " {$id} " . $_POST['desc']);            
 
                 $new_rule = $this->parseRuleFromPost();
                 $new_rule->setId($id);
@@ -390,17 +376,10 @@ class RouteController extends Zend_Controller_Action {
                 $new_rule->setActive($rule->isActive());
                 PBX_Rules::register($new_rule);
 
-                //log-user
-                if (class_exists("Loguser_Manager")) {
-                  $data = array(
-                    'table' => 'regras_negocio',
-                    'registerid' => $id,
-                    'description' => "Duplicated Rule $id - {$_POST['desc']}"
-                  );
-                  Snep_LogUser::log("duplicate", $data);
-                }
-
+                //audit
+                Snep_Audit_Manager::SaveLog("Duplicated", 'regras_negocio', $id, $this->view->translate("Rule") . " {$id} " . $_POST['desc']);                
                 $this->_redirect("route");
+
             } else {
                 $actions = "";
                 foreach ($this->forms as $form_id => $form) {
@@ -669,16 +648,8 @@ class RouteController extends Zend_Controller_Action {
 
             PBX_Rules::delete($_POST['id']);
 
-            //log-user
-            if (class_exists("Loguser_Manager")) {
-              $data = array(
-                'table' => 'regras_negocio',
-                'registerid' => $_POST['id'],
-                'description' => "Deleted Rule {$_POST['id']} - {$del['desc']}"
-              );
-              Snep_LogUser::log("delete", $data);
-            }
-
+            //audit
+            Snep_Audit_Manager::SaveLog("Deleted", 'regras_negocio', $_POST['id'], $this->view->translate("Rule") . " {$_POST['id']} " . $del['desc']);            
             $this->_redirect("route");
         }
     }

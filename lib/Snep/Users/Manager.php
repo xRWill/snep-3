@@ -125,6 +125,23 @@ class Snep_Users_Manager {
     }
 
     /**
+     * Method to getAll users
+     * @return <Array> $users
+     */
+    public function getAll() {
+
+        $db = Zend_Registry::get('db');
+
+        $select = $db->select()
+                ->from('users');
+
+        $stmt = $db->query($select);
+        $users = $stmt->fetchAll();
+
+        return $users;
+    }
+
+    /**
      * Method to get a user by id
      * @param <int> $id
      * @return <Array> $users
