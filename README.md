@@ -1,32 +1,40 @@
+[![N|Solid](/images/snep-logo.png)](https://snep.com.br)
+
 # O que é #
 
-SNEP is a Soft Free PBX that meet the needs for any size of Business, with features and resources that bring a communication more free, flexible and smart.
+O SNEP é um PBX Livre baseado em Software que atende as necessidades de qualquer porte de negócio, com recursos que tornam a comunicação mais livre, flexível e inteligente.
 
-Known more about the project: [SNEP](http://www.sneppbx.com/)
+Conheça mais no site do Projeto: [SNEP](http://www.snep.com.br/)
 
-# Build in a collaborative way #
+# Construido de forma colaborativa #
 
-SNEP was build with the collaboration of many developers and users and it have a active community.
+O SNEP foi construído com a colaboração de diversos desenvolvedores e usuários. E conta com uma comunidade ativa, que além de realizar correções, são os criadores da evolução da plataforma.
 
-# A Ecossystem of Opportunities #
+# Um Ecossistema de Oportunidades #
 
-Choice and foccus on your business market, that the ecossystem will do the rest for you.
+Escolha e foque no seu mercado de atuação, que o ecossistema faz o resto para você. 
+Além de um projeto de Software o SNEP se propõe à criar um ecossistema de negócios que possibilite a atuação de diferentes perfis de colaboradores: desenvolvedores, integradores , fabricantes e usuários.
 
-More than a Software Project the SNEP proposes to create a business ecosystem that allows the performance of different profiles of collaborators: developers, integrators, manufacturers and users.
+# Como usar #
 
-# How to use #
+Para instalar e utilizar o SNEP você pode seguir este manual de instalação:
+http://www.snep.com.br/download/
 
-To install and use SNEP you can follow this manual of installation:
-http://www.sneppbx.com/download/
+Para uma instalação manual a partir dos fontes, use esta documentação:
+[Instalação a partir dos fontes](http://wiki.opens.com.br/pages/viewpage.action?pageId=13631933)
 
-To manual installation, from source, use this documentation:
-[Install from source](http://wiki.opens.com.br/display/DSC/SNEP+3+Install+guide)
+# Como colaborar #
 
-# How to colaborate #
+Para colaborar com o Projeto, seja bem vindo! 
 
-Welcome to colaborate with the Project!
+Existem diferentes formas, traduzindo, reportando, corrigindo e implementando.
 
-There are differents ways, translating, reporting, fixing and implementing.
+Veja aqui detalhes de como fazer isso:
+[Como enviar suas contribuições](http://wiki.opens.com.br/pages/viewpage.action?pageId=15041384)
 
-See here some details how to do that:
-[How to send contributions](http://wiki.opens.com.br/pages/viewpage.action?pageId=15041384)
+
+**License:**
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
+
+[![N|Solid](/images/powered-opens.png)](https://snep.com.br)
