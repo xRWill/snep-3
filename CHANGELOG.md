@@ -8,11 +8,12 @@ Nesse documento é possível visualizar quais itens foram implementados em cada 
 # Tipos de desenvolvimento #
 
 Cada item adicionado na versão poderá ser um dos seguintes itens:
-| Tipo | Descrição |
-| ------ | ------ |
-| **`CORREÇÃO`** | Quando há alguma correção de algum erro encontrado no Snep |
-| **`MELHORIA`** | Quando é desenvolvida uma melhoria em uma funcionalidade do Snep |
-| **`NOVO`** | Quando há um desenvolvimento de uma nova funcionalidade no Snep |
+
+**`CORREÇÃO`**: Quando há alguma correção de algum erro encontrado no Snep.
+
+**`MELHORIA`**: Quando é desenvolvida uma melhoria em uma funcionalidade do Snep.
+
+**`NOVO`**: Quando há um desenvolvimento de uma nova funcionalidade no Snep.
 
 # Versões #
 
@@ -36,7 +37,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`MELHORIA`** - Melhoria de volume de consulta aos serviços cloud
 * **`CORRIÇÃO`** - Erro ao salvar callerid quando se edita o ramal 
 
----------------------------------
+---
 ## 3.06 ##
 
 * **`NOVO`** - Nova opção no filtro por contatos ou grupo de contatos no relatório de chamadas do período (Contribuicao: Fabio Theodoro - Ipcom).
@@ -57,7 +58,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`CORREÇÃO`** - Não estava mostrando a informação do S.O quando o sistema é baseado em RedHat.
 * **`CORREÇÃO`** - Tratamento quando ramal efetuava siga-me para ele próprio.
 
----------------------------------
+---
 ## 3.05 ##
 
 * **`CORREÇÃO`** - Problemas com menu no celular.
@@ -84,7 +85,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`CORREÇÃO`** - Desabilitado realtime no arquivo extconfig.conf - SIP peers sao usados pelo Asterisk a partir dos arquivos snep-sip.conf e snep-sip-trunks.conf
 * **`CORREÇÃO`** - Ajustes no layout e css do menu vertical
 
----------------------------------
+---
 ## 3.04 ##
 
 * **`MELHORIA`** - extensions.conf para corrigir Regex descontinuada do asterisk (de *. para _X) (Contribuição: Jean Eduardo - Datasolve Tecnologia)
@@ -102,7 +103,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`CORREÇÃO`** - Consulta de hierarquia de centro de custos no relatorio de chamadas do período
 * **`CORREÇÃO`** - Adicionado getTech e getHost para chamadas com troncos sem autenticacao ( Contribuição: Renato dos Santos)
 
----------------------------------
+---
 ## 3.03 ##
 * **`CORREÇÃO`** - problema de identificação do chamador no display de telefones IP (Heros)
 * **`NOVO`** - identificacao do modelo do aparelho autenticado (contribuição: Heros do Amaral)
@@ -112,7 +113,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`MELHORIA`** - Filas de atendimento - novo campo para identificar status do ramal
 * **`MELHORIA`** - Tela grupo de Captura - visualizar número de ramais em cada grupo
 
----------------------------------
+---
 ## 3.0, 3.01 e 3.02 ##
 
 * **`CORREÇÃO`** - Perda de autenticacao dos ramais SIP
@@ -129,7 +130,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`NOVO`** - Filtros para separar Regras de Negócio em Entradas, Saidas, Outras
 * **`MELHORIA`** - Strings de tradução pt_BR
 
----------------------------------
+---
 ## Release - betha-rc3 #
 
 * **`CORREÇÃO`** - % de uso da CPU nao esta sendo exibido
@@ -147,7 +148,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`CORREÇÃO`** - ERRO no Cadastro troncos que não obrigava a definir o tipo de tronco (peer,user,friend)
 * **`MELHORIA`** - Ajustes para remover diversos Warning e Notices do console do apache
 
----------------------------------
+---
 ## Release Betha-rc2 ##
 
 * **`MELHORIA`** - Contatos: Alterada base de leitura de cidades e estados, retirada a obrigatoriedade de cidade e estado do cadastro.
@@ -161,7 +162,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`NOVO`** - Funcionalidade: Cadastros diversos com senha - opcao para mostrar senha
 * **`MELHORIA`** - Ajustes na exibição do status do sistema / controle do temporizador para atualização do status
 
----------------------------------
+---
 ## Release Betha-rc1 ##
 
 * **`MELHORIA`** - Ajustes diversos no SQL inicial e dados iniciais
@@ -188,7 +189,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 * **`CORREÇÃO`** - Cadeado: Ao incluir senha e marcar checkbox não funciona (ERRO de AGI). Ao alterar desmarcando o checkbox e deixando somente a senha, funciona normalmente
 * **`CORREÇÃO`** - Filas: Não funciona os anuncios ao chamador (tipo: Você é o proximo a ser atendido....")
 
----------------------------------
+---
 ## Release Alpha ##
 
 * **`NOVO`** - Nova interface
