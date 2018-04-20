@@ -2,7 +2,7 @@
 
 # O que é #
 
-O SNEP é um PBX Livre baseado em Software que atende as necessidades de qualquer porte de negócio, com recursos que tornam a comunicação mais livre, flexível e inteligente.
+O `SNEP` é um **PBX Livre** baseado em Software que atende as necessidades de qualquer porte de negócio, com recursos que tornam a comunicação mais livre, flexível e inteligente.
 
 Conheça mais no site do Projeto: [SNEP](http://www.snep.com.br/)
 
@@ -33,8 +33,7 @@ Veja aqui detalhes de como fazer isso:
 [Como enviar suas contribuições](http://wiki.opens.com.br/pages/viewpage.action?pageId=15041384)
 
 
-**License:**
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 
-[![N|Solid](/images/powered-opens.png)](https://snep.com.br)
+<a href="(https://opens.com.br)"><img src="images/powered-opens.png" width="200" height="70"></a>
