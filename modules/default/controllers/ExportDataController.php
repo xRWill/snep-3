@@ -1,5 +1,4 @@
 <?php
-
 /**
  *  This file is part of SNEP.
  *
@@ -45,58 +44,23 @@ class ExportDataController extends Zend_Controller_Action {
      */
     public function indexAction() {
 
-        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
-                    $this->view->translate("Reports"),
-                    $this->view->translate("Export Report")));
+        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array($this->view->translate("Reports"),$this->view->translate("Export Data Table")));
 
-
-        // Load tables
-        $service = "CSV_GetParams";
-        $url = Snep_Services::getPathService($service);
-        $service_url = $url."&option=tables" ;
-        $result = $this->callAPI($service_url) ;
-
-        switch ($result['code']) {
-            case 200:
-                $tables = array() ;
-                foreach(json_decode($result['data']) as $key => $value) {
-                    $tables[$key] = $this->view->translate($value) ;
-                }
-                break;
-            default:
-                $erro = $this->view->translate("Error "). $result['code'];
-                $erro .= $this->view->translate(". Please contact your system administrator");
-                $this->view->error_message = $erro ;
-                $this->renderScript('error/sneperror.phtml');
-                break;
-        }
+        $tables = array('users' => $this->view->translate("Users"),
+                        'peers' => $this->view->translate("Extensions"),
+                        'ccustos' => $this->view->translate("Tags"),
+                        'trunks' => $this->view->translate("Trunks"),
+                        'queues' => $this->view->translate("Queues"));
+       
         $this->view->tables = $tables;
-        
-        // Load Fields
-        foreach ($tables as $table_key => $table_value) {
-            $service_url = $url."&option=fields&table=".$table_key ;
 
-            $result = $this->callAPI($service_url) ;
-
-            switch ($result['code']) {
-                case 200:
-                    $$table_key = array() ;
-                    $data = json_decode($result['data']) ;
-                    foreach( $data as $key => $value) {
-                        ${$table_key}[$key] = $this->view->translate($value) ;
-                    }
-                    break; 
-                default:
-                    $erro = $this->view->translate("Error "). $result['code'];
-                    $erro .= $this->view->translate(". Please contact your system administrator");
-                    $this->view->error_message = $erro ;
-                    $this->renderScript('error/sneperror.phtml');
-                    break;
-            }
-            $this->view->$table_key = $$table_key ;
-
-        }   
-            if ($this->_request->getPost()) {
+        $this->view->users = array('id' => $this->view->translate("Code"), 'name' => $this->view->translate("Name"), 'email' => "Email", 'created' => $this->view->translate("Create Date"), 'updated' => $this->view->translate("Update Date"));
+        $this->view->peers = array('name' => $this->view->translate("Extension"), 'callerid' => $this->view->translate("Name"), 'secret' => $this->view->translate("Password"), 'dtmfmode' => $this->view->translate("DTMF Mode"), 'allow' => "Codec", 'canal' => $this->view->translate("Channel"), 'nat' => "Codec", 'directmedia' => "Directmedia");
+        $this->view->ccustos = array('codigo' => $this->view->translate("Code"), 'tipo' => $this->view->translate("Type"), 'nome' => $this->view->translate("Name"), 'descricao' => $this->view->translate("Description"));
+        $this->view->queues = array('id' => $this->view->translate("Code"), 'name' => $this->view->translate("Name"), 'musiconhold' => $this->view->translate("Music on hold"));
+        $this->view->trunks = array('id' => $this->view->translate("Code"), 'callerid' => $this->view->translate("Name"), 'dtmfmode' => $this->view->translate("DTMF Mode"), 'host' => $this->view->translate("Host"), 'username' => $this->view->translate("Username"), 'secret' => $this->view->translate("Password"), 'allow' => "Codec", 'type' => $this->view->translate("Type"), 'channel' => $this->view->translate("Channel"), 'domain' => $this->view->translate("Domain"));
+   
+        if ($this->_request->getPost()) {
             $this->exportAction();            
         }
 
@@ -107,34 +71,18 @@ class ExportDataController extends Zend_Controller_Action {
      */
     public function exportAction() {
 
-        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
-                    $this->view->translate("Reports"),
-                    $this->view->translate("Export Data Table")));
+        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array($this->view->translate("Reports"),$this->view->translate("Export Data Table")));
 
         $formData = $this->_request->getPost();
-    
+            
         if ($this->_request->getParam('download')) {
-    
+            
             $table = $_SESSION['exportData']['table'];
+            $db = Zend_Registry::get('db');
 
-            $service = "CSV_ExportData";
-            $url = Snep_Services::getPathService($service);
-            $service_url = $url."&table=".$table."&fields=".$_SESSION['exportData']['coluns']."&order=".$_SESSION['exportData']['order'];
-            $result = $this->callAPI($service_url) ;
-
-            switch ($result['code']) {
-                case 200:
-                    $values = json_decode($result['data']) ; ;
-                    break; 
-                default:
-                    $erro = $this->view->translate("Error "). $result['code'];
-                    $erro .= $this->view->translate(". Please contact your system administrator");
-                    $this->view->error_message = $erro ;
-                    $this->renderScript('error/sneperror.phtml');
-                    break;
-            }
-    
-
+            $select = "SELECT " . $_SESSION['exportData']['coluns'] . " FROM " . $table . " ORDER BY " . $_SESSION['exportData']['order'];
+            $stmt = $db->query($select);
+            $values = $stmt->fetchAll();           
 
             // Varre array verificando se existe ; ou ,
             foreach($values as $key => $array){
@@ -155,7 +103,7 @@ class ExportDataController extends Zend_Controller_Action {
                 $csvData = $csv->generate($reportData['data'], $reportData['cols']);
 
                 $dateNow = new Zend_Date();
-                $fileName = $table . '_csv_' . $dateNow->toString("dd-MM-yyyy_hh'h'mm'm'") . '.csv';
+                $fileName = $this->view->translate($table) . '_csv_' . $dateNow->toString("dd-MM-yyyy_hh'h'mm'm'") . '.csv';
 
                 header('Content-type: application/octet-stream');
                 header('Content-Disposition: attachment; filename="' . $fileName . '"');
@@ -166,6 +114,7 @@ class ExportDataController extends Zend_Controller_Action {
                 $this->renderScript('error/sneperror.phtml');
             }
         } else {
+            
             // Selected columns
             $fields = "" ;
             foreach($formData['coluns'][$formData['group']] as $key => $value){
@@ -184,23 +133,4 @@ class ExportDataController extends Zend_Controller_Action {
 
    }
 
-    /**
-    * Call API
-    * @param <String> $service_url - url + parameters of API
-    * @return <Array> - data and code
-    */
-    public function callAPI($service_url) {
-
-        $http = curl_init($service_url);
-        $status = curl_getinfo($http, CURLINFO_HTTP_CODE);
-        
-        curl_setopt($http, CURLOPT_RETURNTRANSFER,1);
-        
-        $http_response = curl_exec($http);
-        $httpcode = curl_getinfo($http, CURLINFO_HTTP_CODE);
-        
-        curl_close($http);
-
-        return array('data' => $http_response, 'code' => $httpcode);
-    }
 }

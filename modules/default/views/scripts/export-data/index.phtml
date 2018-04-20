@@ -18,8 +18,8 @@
 	<form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 0px;" action="<?php echo $this->url(array("controller" => "export-data", "action" => "index"), null, true); ?>" METHOD="post">
 
 		<div class="form-group">
-            <label class="col-sm-3 control-label"><?php echo $this->translate("Table");?></label>
-            <div class="col-sm-6">
+            <label class="col-sm-4 control-label"><?php echo $this->translate("Table");?></label>
+            <div class="col-sm-4">
                 <select class="form-control" name="group" id="group" onChange="showPanel(this.value);">
                     <?php foreach($this->tables as $key => $table){ ?>
                         <option value='<?php echo $key; ?>'><?php echo $table;?></option>
@@ -27,18 +27,19 @@
                 </select>
             </div>
         </div>
+
         <!-- USERS -->
         <div id="users" >
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
+                <div class="col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <ul class="snep-exportadata">
                                 <?php foreach($this->users as $key => $user){?>
                                     <li>
                                         <span>
-                                            <input type="checkbox" name="coluns[users][<?php echo $key?>]" id="coluns[users][<?php echo $key?>]" /> - <?php echo $user;?>
+                                            <input type="checkbox" checked name="coluns[users][<?php echo $key?>]" id="coluns[users][<?php echo $key?>]" /> - <?php echo $user;?>
                                         </span>
                                     </li>
                                 <?php } ?>
@@ -49,8 +50,8 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Order by");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Order by");?></label>
+                <div class="col-sm-4">
                     <select class="form-control" name="orderby[users]" id="orderby[users]">
                         <?php foreach($this->users as $key => $user){ ?>
                             <option value='<?php echo $key; ?>'><?php echo $user;?></option>
@@ -65,14 +66,14 @@
         <!-- Peers -->
         <div id="peers" class="invisible">
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
+                <div class="col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <ul class="snep-exportadata">
                                 <?php foreach($this->peers as $key => $peer){?>
                                     <li>
-                                        <span><input name="coluns[peers][<?php echo $key?>]" id="coluns[peers][<?php echo $key?>]" type="checkbox" /> - <?php echo $peer;?></span>
+                                        <span><input name="coluns[peers][<?php echo $key?>]" id="coluns[peers][<?php echo $key?>]" type="checkbox" checked/> - <?php echo $peer;?></span>
                                     </li>
                                 <?php } ?>
 
@@ -83,8 +84,8 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Order by");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Order by");?></label>
+                <div class="col-sm-4">
                     <select class="form-control" name="orderby[peers]" id="orderby[peers]">
                         <?php foreach($this->peers as $key => $peer){ ?>
                             <option value='<?php echo $key; ?>'><?php echo $peer;?></option>
@@ -99,14 +100,14 @@
         <!-- CCUSTOS -->
         <div id="ccustos" class="invisible">
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
+                <div class="col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <ul class="snep-exportadata">
                                 <?php foreach($this->ccustos as $key => $ccusto){?>
                                     <li>
-                                        <span><input name="coluns[ccustos][<?php echo $key?>]" id="coluns[ccustos][<?php echo $key?>]" type="checkbox"/> - <?php echo $ccusto;?></span>
+                                        <span><input name="coluns[ccustos][<?php echo $key?>]" id="coluns[ccustos][<?php echo $key?>]" type="checkbox" checked/> - <?php echo $ccusto;?></span>
                                     </li>
                                 <?php } ?>
                             </ul>
@@ -116,8 +117,8 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Order by");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Order by");?></label>
+                <div class="col-sm-4">
                     <select class="form-control" name="orderby[ccustos]" id="orderby[ccustos]">
                         <?php foreach($this->ccustos as $key => $ccusto){ ?>
                             <option value='<?php echo $key; ?>'><?php echo $ccusto;?></option>
@@ -132,15 +133,15 @@
         <!-- TRUNKS -->
         <div id="trunks" class="invisible">
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
+                <div class="col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <ul class="snep-exportadata">
                                 
                                 <?php foreach($this->trunks as $key => $trunk){?>
                                     <li >
-                                        <span><input name="coluns[trunks][<?php echo $key?>]" id="coluns[trunks][<?php echo $key?>]" type="checkbox"/> - <?php echo $trunk;?></span>
+                                        <span><input name="coluns[trunks][<?php echo $key?>]" id="coluns[trunks][<?php echo $key?>]" type="checkbox" checked/> - <?php echo $trunk;?></span>
                                     </li>
                                 <?php } ?>
 
@@ -151,8 +152,8 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Order by");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Order by");?></label>
+                <div class="col-sm-4">
                     <select class="form-control" name="orderby[trunks]" id="orderby[trunks]">
                         <?php foreach($this->trunks as $key => $trunk){ ?>
                             <option value='<?php echo $key; ?>'><?php echo $trunk;?></option>
@@ -167,14 +168,14 @@
         <!-- CONTACTS -->
         <div id="contacts_names" class="invisible">
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
+                <div class="col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <ul  class="snep-exportadata">      
                                 <?php foreach($this->contacts as $key => $contact){?>
                                     <li>
-                                        <span><input name="coluns[contacts_names][<?php echo $key?>]" id="coluns[contacts][<?php echo $key?>]" type="checkbox" /> - <?php echo $contact;?></span>
+                                        <span><input name="coluns[contacts_names][<?php echo $key?>]" id="coluns[contacts][<?php echo $key?>]" type="checkbox" checked/> - <?php echo $contact;?></span>
                                     </li>
                                 <?php } ?>
 
@@ -185,8 +186,8 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Order by");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Order by");?></label>
+                <div class="col-sm-4">
                     <select class="form-control" name="orderby[contacts_names]" id="orderby[contacts_names]">
                         <?php foreach($this->contacts as $key => $contact){ ?>
                             <option value='<?php echo $key; ?>'><?php echo $contact;?></option>
@@ -201,14 +202,14 @@
         <!-- QUEUES -->
         <div id="queues" class="invisible">
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Select the columns you wish to export.");?></label>
+                <div class="col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <ul class="snep-exportadata">
                                 <?php foreach($this->queues as $key => $queue){?>
                                     <li>
-                                        <span><input name="coluns[queues][<?php echo $key?>]" id="coluns[queues][<?php echo $key?>]" type="checkbox" /> - <?php echo $queue;?></span>
+                                        <span><input name="coluns[queues][<?php echo $key?>]" id="coluns[queues][<?php echo $key?>]" type="checkbox" checked/> - <?php echo $queue;?></span>
                                     </li>
                                 <?php } ?>
                             </ul>
@@ -218,8 +219,8 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label"><?php echo $this->translate("Order by");?></label>
-                <div class="col-sm-6">
+                <label class="col-sm-4 control-label"><?php echo $this->translate("Order by");?></label>
+                <div class="col-sm-4">
                     <select class="form-control" name="orderby[queues]" id="orderby[queues]">
                         <?php foreach($this->queues as $key => $queue){ ?>
                             <option value='<?php echo $key; ?>'><?php echo $queue;?></option>
@@ -227,39 +228,35 @@
                     </select>
                 </div>
             </div>
-
         </div>
         <!-- /Queues -->
          
-        <br>
         <div class="snep-body-footer-buttons">
             <button type="submit" class="btn btn-add" name="export" value="export"><?php echo $this->translate("Export");?></button>
         </div>
-
 	</form>
 </div>
 
 <script type="text/javascript">
 
-    jQuery.noConflict();
-    function showPanel(div){
-        
-        document.getElementById("peers").className = "invisible";
-        document.getElementById("ccustos").className = "invisible";
-        document.getElementById("trunks").className = "invisible";
-        document.getElementById("contacts_names").className = "invisible";
-        document.getElementById("queues").className = "invisible";
+jQuery.noConflict();
+function showPanel(div){
+    
+    document.getElementById("peers").className = "invisible";
+    document.getElementById("ccustos").className = "invisible";
+    document.getElementById("trunks").className = "invisible";
+    document.getElementById("contacts_names").className = "invisible";
+    document.getElementById("queues").className = "invisible";
 
-        if(div){
+    if(div){
 
-            //document.getElementById('panel').className = "visible";    
-            document.getElementById(div).className = "visible";    
-            if(div != 'users'){
-                document.getElementById("users").className = "invisible";    
-            }
-        }         
-    }
-
+        //document.getElementById('panel').className = "visible";    
+        document.getElementById(div).className = "visible";    
+        if(div != 'users'){
+            document.getElementById("users").className = "invisible";    
+        }
+    }         
+}
 </script>
 
 

@@ -1,5 +1,4 @@
 <?php
-
 /**
  *  This file is part of SNEP.
  *
@@ -34,14 +33,12 @@ class AuditController extends Zend_Controller_Action {
       
         $this->view->url = $this->getFrontController()->getBaseUrl() . '/' . $this->getRequest()->getControllerName();
         $this->view->lineNumber = Zend_Registry::get('config')->ambiente->linelimit;
-
         $this->view->baseUrl = Zend_Controller_Front::getInstance()->getBaseUrl();
         $this->view->key = Snep_Dashboard_Manager::getKey(Zend_Controller_Front::getInstance()->getRequest()->getModuleName(), Zend_Controller_Front::getInstance()->getRequest()->getControllerName(), Zend_Controller_Front::getInstance()->getRequest()->getActionName());
     }
-
     
     /**
-     * indexAction - formData logs of system
+     * indexAction - audit form page
      */
     public function indexAction() {
     
@@ -84,11 +81,10 @@ class AuditController extends Zend_Controller_Action {
         if ($this->_request->getPost()) {
             $this->viewAction();
         }
-
     }
 
     /**
-    * viewAction - logs of system list
+    * viewAction - audit list page
     */
     public function viewAction(){
       
@@ -107,7 +103,6 @@ class AuditController extends Zend_Controller_Action {
       $data = Snep_Audit_Manager::getAll($start_date, $end_date, $formData['selectAct']);
 
       foreach($data as $key => $value){
-
         switch ($value['action']) {
           case 'Added':
             $data[$key]['class'] = "label label-success";

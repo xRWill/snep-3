@@ -16,6 +16,7 @@
  *  along with SNEP.  If not, see <http://www.gnu.org/licenses/>.
  */
 include "includes/functions.php";
+include $config->system->path->base . "/inspectors/Permissions.php";
 
 /**
  * Calls report Controller
@@ -36,7 +37,6 @@ class CallsReportController extends Zend_Controller_Action
 
         $this->view->url = $this->getFrontController()->getBaseUrl() . '/' . $this->getRequest()->getControllerName();
         $this->view->lineNumber = Zend_Registry::get('config')->ambiente->linelimit;
-
         $this->view->baseUrl = Zend_Controller_Front::getInstance()->getBaseUrl();
         $this->view->key = Snep_Dashboard_Manager::getKey(Zend_Controller_Front::getInstance()->getRequest()->getModuleName(), Zend_Controller_Front::getInstance()->getRequest()->getControllerName(), Zend_Controller_Front::getInstance()->getRequest()->getActionName());
     }
@@ -51,7 +51,6 @@ class CallsReportController extends Zend_Controller_Action
 
         $config = Zend_Registry::get('config');
 
-        include $config->system->path->base . "/inspectors/Permissions.php";
         $test = new Permissions();
         $response = $test->getTests();
 
@@ -91,7 +90,6 @@ class CallsReportController extends Zend_Controller_Action
 
         if ($this->_request->getPost()) {
             $formData = $this->_request->getParams();
-            
             ($formData['report_type'] == 'analytic') ? $this->getAnalytic($formData) : $this->getSynthetic($formData);
         }
     }
@@ -172,7 +170,6 @@ class CallsReportController extends Zend_Controller_Action
         }
 
         // Status call
-        // Status call
         $where_options[0] = " disposition != 'ANSWERED'";
         $where_options[1] = " disposition != 'NO ANSWER'";
         $where_options[2] = " disposition != 'BUSY'";
@@ -222,7 +219,7 @@ class CallsReportController extends Zend_Controller_Action
             $where_contactDst .= ") ";
         }
 
-        /* Busca os ramais pertencentes ao grupo de ramal de origem selecionado */
+        // Searches for extensions belonging to the selected source extension group
         $ramaissrc = $ramaisdst = "";
         if ($filter['selectSrc'] != "0") {
             $groupsrc = $filter['selectSrc'];
@@ -370,13 +367,10 @@ class CallsReportController extends Zend_Controller_Action
         $select .= $where_prefix;
         //$select .= " GROUP BY userfield ORDER BY calldate, userfield ";
         $select .= " ORDER BY calldate, userfield ";
-
         $stmt = $db->query($select);
         $cont = count($stmt);
         while ($dado = $stmt->fetch()) {
-            
             $row[] = $dado;
-            
         }
         
         return $row;
@@ -390,15 +384,10 @@ class CallsReportController extends Zend_Controller_Action
         $db = Zend_registry::get('db');
         $dateForm = explode(" - ", $filter["period"]);
         
-        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
-            $this->view->translate("Reports"),
-            $this->view->translate("Calls"),
-            $this->view->translate("Analytic"),
-            $dateForm[0] . ' - ' . $dateForm[1]));
+        $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array($this->view->translate("Reports"),$this->view->translate("Calls"),$this->view->translate("Analytic"),$dateForm[0] . ' - ' . $dateForm[1]));
         $this->view->exportName = $dateForm[0] . '_' . $dateForm[1];
 
         $row = $this->getSelect($filter);
-
         $locale_call = false;
         if (isset($filter['locale'])) {
             $locale_call = true;
@@ -469,7 +458,6 @@ class CallsReportController extends Zend_Controller_Action
             if($result_data[$value['uniqueid']]["wasAttended"]){
               $result_data[$value['uniqueid']]["disposition"] = 'ANSWERED';
               $result_data[$value['uniqueid']]["class"] = "label label-success";
-
             }
 
             if ($locale_call) {
@@ -557,7 +545,6 @@ class CallsReportController extends Zend_Controller_Action
         $totals = array('answer' => 0, 'noanswer' => 0, 'busy' => 0, 'failed' => 0, 'totals' => 0);
         $typeCall = array('incoming' => 0, 'outgoing' => 0, 'other' => 0);
         foreach ($row as $key => $value) {
-
             if (isset($ccustos[$value['accountcode']])) {
                 $ccustos[$value['accountcode']]['cont']++;
             } else {

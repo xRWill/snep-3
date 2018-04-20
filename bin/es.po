@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snep-3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 17:47-0300\n"
-"PO-Revision-Date: 2018-04-19 17:49-0300\n"
+"POT-Creation-Date: 2018-04-20 14:38-0300\n"
+"PO-Revision-Date: 2018-04-20 14:41-0300\n"
 "Last-Translator: Flavio H Somensi <flavio@opens.com.br>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -115,13 +115,6 @@ msgstr "en"
 msgid ". Please contact the administrator."
 msgstr ". Por favor, póngase en contacto con el administrador."
 
-#: ../modules/default/controllers/ExportDataController.php:68
-#: ../modules/default/controllers/ExportDataController.php:91
-#: ../modules/default/controllers/ExportDataController.php:131
-msgid ". Please contact your system administrator"
-msgstr ""
-"Error desconocido. Por favor, póngase en contacto con el administrador."
-
 #: ../modules/default/views/scripts/ranking-report/view.phtml:25
 msgid ". Source: "
 msgstr ". Fuente: "
@@ -213,6 +206,7 @@ msgstr "Acerca de"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:33
 #: ../modules/default/views/scripts/route/elements/actions.phtml:11
+#: ../modules/default/views/scripts/audit/view.phtml:30
 msgid "Action"
 msgstr "Acción"
 
@@ -438,10 +432,6 @@ msgstr "Añadir al panel"
 msgid "Add your External Trunks to make external Calls."
 msgstr "Agregue los troncos externos para realizar llamadas externas."
 
-#: ../modules/default/views/scripts/audit/view.phtml:29
-msgid "Added"
-msgstr "Sumad"
-
 #: ../modules/default/views/scripts/calls-report/index.phtml:170
 msgid "Additional filters"
 msgstr "Filtros adicionales"
@@ -482,7 +472,7 @@ msgstr "Agente:"
 #: ../modules/default/views/scripts/dates-alias/index.phtml:34
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:52
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:30
-#: ../modules/default/controllers/CallsReportController.php:629
+#: ../modules/default/controllers/CallsReportController.php:616
 #: ../modules/default/controllers/RankingReportController.php:277
 msgid "Alert"
 msgstr "Alerta"
@@ -510,7 +500,7 @@ msgid "All"
 msgstr "Todos"
 
 #: ../modules/loguser/controllers/LoguserController.php:40
-#: ../modules/default/controllers/AuditController.php:54
+#: ../modules/default/controllers/AuditController.php:51
 msgid "All Actions"
 msgstr "Todas las acciones"
 
@@ -541,7 +531,7 @@ msgstr "Permitir correo de voz"
 #: ../modules/default/views/scripts/calls-report/index.phtml:40
 #: ../modules/default/views/scripts/khomp-links/index.phtml:38
 #: ../modules/default/views/scripts/tdm-links/index.phtml:38
-#: ../modules/default/controllers/CallsReportController.php:396
+#: ../modules/default/controllers/CallsReportController.php:387
 msgid "Analytic"
 msgstr "Analítico"
 
@@ -632,7 +622,7 @@ msgstr "Audio: Tú eres el siguiente"
 msgid "Audios"
 msgstr "Audios"
 
-#: ../modules/default/controllers/AuditController.php:48
+#: ../modules/default/controllers/AuditController.php:45
 #: /var/www/html/snep-3/modules/default/resources.xml
 msgid "Audit"
 msgstr "Auditoría"
@@ -908,8 +898,8 @@ msgid "Callerid"
 msgstr "Nombre"
 
 #: ../modules/default/controllers/CallsReportController.php:50
-#: ../modules/default/controllers/CallsReportController.php:395
-#: ../modules/default/controllers/CallsReportController.php:549
+#: ../modules/default/controllers/CallsReportController.php:387
+#: ../modules/default/controllers/CallsReportController.php:537
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Calls"
@@ -1031,6 +1021,8 @@ msgstr ""
 #: ../modules/default/views/scripts/extensions/index.phtml:55
 #: ../modules/default/views/scripts/ip-status/index.phtml:60
 #: ../modules/default/views/scripts/khomp-links/view.phtml:53
+#: ../modules/default/controllers/ExportDataController.php:58
+#: ../modules/default/controllers/ExportDataController.php:61
 #: ../modules/default/controllers/TrunksController.php:82
 msgid "Channel"
 msgstr "Canal"
@@ -1125,6 +1117,10 @@ msgstr "Cnl Atualización"
 #: ../modules/default/views/scripts/contact-groups/index.phtml:37
 #: ../modules/default/views/scripts/expression-alias/index.phtml:40
 #: ../modules/default/views/scripts/dates-alias/index.phtml:40
+#: ../modules/default/controllers/ExportDataController.php:57
+#: ../modules/default/controllers/ExportDataController.php:59
+#: ../modules/default/controllers/ExportDataController.php:60
+#: ../modules/default/controllers/ExportDataController.php:61
 msgid "Code"
 msgstr "Código"
 
@@ -1251,7 +1247,7 @@ msgstr "Grupos de Contacto"
 msgid "Contacts"
 msgstr "Contactos"
 
-#: ../modules/default/controllers/AuditController.php:56
+#: ../modules/default/controllers/AuditController.php:53
 msgid "Contacts Actions"
 msgstr "Acciones del Contactos"
 
@@ -1262,7 +1258,7 @@ msgstr "Acciones del Contactos"
 msgid "Contacts Group"
 msgstr "Grupo del Contactos"
 
-#: ../modules/default/controllers/AuditController.php:57
+#: ../modules/default/controllers/AuditController.php:54
 msgid "Contacts Group Actions"
 msgstr "Acciones del Grupos de Contactos"
 
@@ -1305,6 +1301,10 @@ msgstr "Centro de Coste"
 msgid "Country"
 msgstr "País"
 
+#: ../modules/default/controllers/ExportDataController.php:57
+msgid "Create Date"
+msgstr "Fecha de creación"
+
 #: ../modules/default/views/scripts/profiles/index.phtml:40
 #: ../modules/default/views/scripts/users/index.phtml:42
 msgid "Created"
@@ -1338,6 +1338,8 @@ msgstr ""
 #: ../modules/default/views/scripts/extensions/multiadd.phtml:131
 #: ../modules/default/views/scripts/extensions/addedit.phtml:213
 #: ../modules/default/views/scripts/trunks/addedit.phtml:89
+#: ../modules/default/controllers/ExportDataController.php:58
+#: ../modules/default/controllers/ExportDataController.php:61
 msgid "DTMF Mode"
 msgstr "Modo DTMF"
 
@@ -1629,10 +1631,6 @@ msgstr "Eliminar una Telco"
 msgid "Delete music on hold file: "
 msgstr "Eliminar archivos de música de espera:"
 
-#: ../modules/default/views/scripts/audit/view.phtml:30
-msgid "Deleted"
-msgstr "Eliminou"
-
 #: ../modules/loguser/views/scripts/loguser/view.phtml:35
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:24
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:26
@@ -1648,6 +1646,7 @@ msgstr "Eliminou"
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:26
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:28
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:39
+#: ../modules/default/controllers/ExportDataController.php:59
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Description"
 msgstr "Descripción"
@@ -1831,6 +1830,7 @@ msgstr "Tiene un bucle en acciones."
 
 #: ../modules/default/views/scripts/trunks/addedit.phtml:204
 #: ../modules/default/views/scripts/trunks/addedit.phtml:206
+#: ../modules/default/controllers/ExportDataController.php:61
 msgid "Domain"
 msgstr "Dominio"
 
@@ -1847,7 +1847,7 @@ msgstr ""
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: ../modules/default/controllers/AuditController.php:123
+#: ../modules/default/controllers/AuditController.php:118
 msgid "Duplicated"
 msgstr "Duplicado"
 
@@ -2018,12 +2018,6 @@ msgstr "Erro:"
 msgid "Error"
 msgstr ""
 
-#: ../modules/default/controllers/ExportDataController.php:67
-#: ../modules/default/controllers/ExportDataController.php:90
-#: ../modules/default/controllers/ExportDataController.php:130
-msgid "Error "
-msgstr "Erro"
-
 #: ../modules/default/views/scripts/errors-khomp/index.phtml:33
 #: ../modules/default/views/scripts/errors-khomp/index.phtml:45
 msgid "Error type"
@@ -2109,7 +2103,7 @@ msgstr "Ejecutar una aplicación Asterisk."
 msgid "Exibition mode:"
 msgstr "Modo de Exposiciones:"
 
-#: ../modules/default/views/scripts/export-data/index.phtml:236
+#: ../modules/default/views/scripts/export-data/index.phtml:237
 #: /var/www/html/snep-3/configs/titleOptions.xml
 msgid "Export"
 msgstr "Exportación"
@@ -2126,7 +2120,8 @@ msgstr "Exportar contactos"
 msgid "Export Data"
 msgstr "Exportar tabla de datos"
 
-#: ../modules/default/controllers/ExportDataController.php:112
+#: ../modules/default/controllers/ExportDataController.php:47
+#: ../modules/default/controllers/ExportDataController.php:74
 #: /var/www/html/snep-3/modules/default/resources.xml
 msgid "Export Data Table"
 msgstr "Exportar tabla de datos"
@@ -2134,10 +2129,6 @@ msgstr "Exportar tabla de datos"
 #: /var/www/html/snep-3/configs/titleOptions.xml
 msgid "Export PDF"
 msgstr "Exportación PDF"
-
-#: ../modules/default/controllers/ExportDataController.php:50
-msgid "Export Report"
-msgstr "Exportar informe"
 
 #: ../modules/default/views/scripts/export-data/export.phtml:5
 msgid "Export Users"
@@ -2167,12 +2158,12 @@ msgid "Expression Alias"
 msgstr "Expresión Alias"
 
 #: ../modules/loguser/controllers/LoguserController.php:44
-#: ../modules/default/controllers/AuditController.php:66
+#: ../modules/default/controllers/AuditController.php:63
 msgid "Expression Alias Actions"
 msgstr "Acciones de Alias de Expresión"
 
 #: ../modules/loguser/controllers/LoguserController.php:45
-#: ../modules/default/controllers/AuditController.php:67
+#: ../modules/default/controllers/AuditController.php:64
 msgid "Expression Alias Dates"
 msgstr "Expresión Alias Fechas"
 
@@ -2190,6 +2181,7 @@ msgstr "Expresión Alias"
 #: ../modules/default/views/scripts/route/add_edit.phtml:73
 #: ../modules/default/views/scripts/services-report/view.phtml:25
 #: ../modules/default/views/scripts/simulator/index.phtml:52
+#: ../modules/default/controllers/ExportDataController.php:58
 #: ../modules/default/controllers/ExtensionsController.php:186
 #: ../modules/default/controllers/ExtensionsController.php:457
 #: ../modules/default/controllers/ExtensionsController.php:728
@@ -2238,6 +2230,7 @@ msgstr "Extensión"
 #: ../modules/default/views/scripts/ip-status/index.phtml:47
 #: ../modules/default/views/scripts/services-report/index.phtml:36
 #: ../modules/default/views/scripts/services-report/index.phtml:49
+#: ../modules/default/controllers/ExportDataController.php:50
 #: ../modules/default/controllers/ExtensionsController.php:88
 #: ../modules/default/controllers/ExtensionsController.php:108
 #: ../modules/default/controllers/ExtensionsController.php:206
@@ -2250,7 +2243,7 @@ msgid "Extensions"
 msgstr "Extensiones"
 
 #: ../modules/loguser/controllers/LoguserController.php:43
-#: ../modules/default/controllers/AuditController.php:59
+#: ../modules/default/controllers/AuditController.php:56
 msgid "Extensions Actions"
 msgstr "Acciones de extensiones"
 
@@ -2267,7 +2260,7 @@ msgstr "Acciones de extensiones"
 msgid "Extensions Group"
 msgstr "Grupo de Extensión"
 
-#: ../modules/default/controllers/AuditController.php:60
+#: ../modules/default/controllers/AuditController.php:57
 msgid "Extensions Group Actions"
 msgstr "Acciones de gropo de extensiones"
 
@@ -2519,6 +2512,10 @@ msgstr "Ocultar rutas está habilitado"
 #: ../modules/default/views/layouts/register.phtml:107
 msgid "High quality support"
 msgstr "Soporte de alta calidad"
+
+#: ../modules/default/controllers/ExportDataController.php:61
+msgid "Host"
+msgstr "Host"
 
 #: ../modules/default/views/scripts/parameters/index.phtml:119
 #: ../modules/default/views/scripts/parameters/index.phtml:153
@@ -3070,6 +3067,10 @@ msgstr "Sesiones Música en espera "
 msgid "Music on Hold class"
 msgstr "Clase de música en espera"
 
+#: ../modules/default/controllers/ExportDataController.php:60
+msgid "Music on hold"
+msgstr "Música en espera"
+
 #: ../modules/default/controllers/MusicOnHoldController.php:126
 msgid "Music on hold class already exists"
 msgstr "La clase de música en espera ya existe"
@@ -3133,6 +3134,11 @@ msgstr ""
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:58
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:37
 #: ../modules/default/controllers/ContactsController.php:355
+#: ../modules/default/controllers/ExportDataController.php:57
+#: ../modules/default/controllers/ExportDataController.php:58
+#: ../modules/default/controllers/ExportDataController.php:59
+#: ../modules/default/controllers/ExportDataController.php:60
+#: ../modules/default/controllers/ExportDataController.php:61
 msgid "Name"
 msgstr "Nombre"
 
@@ -3228,7 +3234,7 @@ msgstr "No se encuentran en el archivo de datos"
 msgid "No entries found!"
 msgstr "No hay entradas encontrado!"
 
-#: ../modules/default/controllers/CallsReportController.php:628
+#: ../modules/default/controllers/CallsReportController.php:615
 #: ../modules/default/controllers/RankingReportController.php:276
 msgid "No entries found."
 msgstr "No se encontraron entradas. "
@@ -3273,7 +3279,7 @@ msgid "No queues available"
 msgstr "sin cola disponible "
 
 #: ../lib/Snep/CsvIE.php:150
-#: ../modules/default/controllers/ExportDataController.php:165
+#: ../modules/default/controllers/ExportDataController.php:113
 msgid "No records found."
 msgstr "No se encontraron registros."
 
@@ -3399,12 +3405,12 @@ msgstr "Opciones a la aplicación de grabación"
 msgid "Order"
 msgstr "Orden"
 
-#: ../modules/default/views/scripts/export-data/index.phtml:52
-#: ../modules/default/views/scripts/export-data/index.phtml:86
-#: ../modules/default/views/scripts/export-data/index.phtml:119
-#: ../modules/default/views/scripts/export-data/index.phtml:154
-#: ../modules/default/views/scripts/export-data/index.phtml:188
-#: ../modules/default/views/scripts/export-data/index.phtml:221
+#: ../modules/default/views/scripts/export-data/index.phtml:53
+#: ../modules/default/views/scripts/export-data/index.phtml:87
+#: ../modules/default/views/scripts/export-data/index.phtml:120
+#: ../modules/default/views/scripts/export-data/index.phtml:155
+#: ../modules/default/views/scripts/export-data/index.phtml:189
+#: ../modules/default/views/scripts/export-data/index.phtml:222
 msgid "Order by"
 msgstr "Ordenar por"
 
@@ -3474,6 +3480,8 @@ msgstr "Socio"
 #: ../modules/default/views/scripts/parameters/index.phtml:167
 #: ../modules/default/views/scripts/trunks/addedit.phtml:131
 #: ../modules/default/views/scripts/trunks/addedit.phtml:133
+#: ../modules/default/controllers/ExportDataController.php:58
+#: ../modules/default/controllers/ExportDataController.php:61
 msgid "Password"
 msgstr "Seña"
 
@@ -3570,7 +3578,7 @@ msgstr "Teléfono inválido "
 msgid "Pickup Group"
 msgstr "Grupo de captura"
 
-#: ../modules/default/controllers/AuditController.php:61
+#: ../modules/default/controllers/AuditController.php:58
 msgid "Pickup Group Actions"
 msgstr "Grupos de captura"
 
@@ -3793,7 +3801,7 @@ msgstr "Perfil"
 msgid "Profiles"
 msgstr "Perfis"
 
-#: ../modules/default/controllers/AuditController.php:63
+#: ../modules/default/controllers/AuditController.php:60
 msgid "Profiles Actions"
 msgstr "Acciones de Perfis"
 
@@ -3854,6 +3862,7 @@ msgid "Queue visualization"
 msgstr "Visualización de Colas"
 
 #: ../modules/default/views/scripts/ip-status/index.phtml:146
+#: ../modules/default/controllers/ExportDataController.php:53
 #: ../modules/default/controllers/QueuesController.php:69
 #: ../modules/default/controllers/QueuesController.php:93
 #: ../modules/default/controllers/QueuesController.php:160
@@ -3866,7 +3875,7 @@ msgid "Queues"
 msgstr "Colas"
 
 #: ../modules/loguser/controllers/LoguserController.php:47
-#: ../modules/default/controllers/AuditController.php:58
+#: ../modules/default/controllers/AuditController.php:55
 msgid "Queues Actions"
 msgstr "Acciones de Colas"
 
@@ -4044,13 +4053,13 @@ msgstr "Tipo de informe"
 msgid "Report member as busy when in connection"
 msgstr "Reportar miembro como ocupado cuando está en conexión"
 
-#: ../modules/default/controllers/ExportDataController.php:49
-#: ../modules/default/controllers/ExportDataController.php:111
+#: ../modules/default/controllers/ExportDataController.php:47
+#: ../modules/default/controllers/ExportDataController.php:74
 #: ../modules/default/controllers/ServicesReportController.php:53
 #: ../modules/default/controllers/ServicesReportController.php:104
 #: ../modules/default/controllers/CallsReportController.php:50
-#: ../modules/default/controllers/CallsReportController.php:394
-#: ../modules/default/controllers/CallsReportController.php:548
+#: ../modules/default/controllers/CallsReportController.php:387
+#: ../modules/default/controllers/CallsReportController.php:536
 #: ../modules/default/controllers/RankingReportController.php:95
 #: /var/www/html/snep-3/modules/default/resources.xml
 msgid "Reports"
@@ -4191,7 +4200,7 @@ msgid "Routes"
 msgstr "Rutas"
 
 #: ../modules/loguser/controllers/LoguserController.php:42
-#: ../modules/default/controllers/AuditController.php:65
+#: ../modules/default/controllers/AuditController.php:62
 msgid "Routes Actions"
 msgstr "Acciones de Rutas"
 
@@ -4406,12 +4415,12 @@ msgstr "Seleccione un estado"
 msgid "Select the File"
 msgstr "Seleccione el archivo"
 
-#: ../modules/default/views/scripts/export-data/index.phtml:33
-#: ../modules/default/views/scripts/export-data/index.phtml:68
-#: ../modules/default/views/scripts/export-data/index.phtml:102
-#: ../modules/default/views/scripts/export-data/index.phtml:135
-#: ../modules/default/views/scripts/export-data/index.phtml:170
-#: ../modules/default/views/scripts/export-data/index.phtml:204
+#: ../modules/default/views/scripts/export-data/index.phtml:34
+#: ../modules/default/views/scripts/export-data/index.phtml:69
+#: ../modules/default/views/scripts/export-data/index.phtml:103
+#: ../modules/default/views/scripts/export-data/index.phtml:136
+#: ../modules/default/views/scripts/export-data/index.phtml:171
+#: ../modules/default/views/scripts/export-data/index.phtml:205
 msgid "Select the columns you wish to export."
 msgstr "Seleccione las columnas que desea exportar."
 
@@ -4655,7 +4664,7 @@ msgstr "Archivo de Sonido"
 #: ../modules/default/controllers/SoundFilesController.php:186
 #: ../modules/default/controllers/SoundFilesController.php:269
 #: ../modules/default/controllers/SoundFilesController.php:338
-#: ../modules/default/controllers/AuditController.php:68
+#: ../modules/default/controllers/AuditController.php:65
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Sound Files"
@@ -4813,7 +4822,7 @@ msgstr "Sincronizar archivos"
 #: ../modules/default/views/scripts/calls-report/index.phtml:41
 #: ../modules/default/views/scripts/khomp-links/index.phtml:42
 #: ../modules/default/views/scripts/tdm-links/index.phtml:42
-#: ../modules/default/controllers/CallsReportController.php:550
+#: ../modules/default/controllers/CallsReportController.php:538
 msgid "Synthetic"
 msgstr "Sintético"
 
@@ -4879,11 +4888,12 @@ msgstr "Mesa"
 msgid "Tag"
 msgstr "Etiqueta"
 
+#: ../modules/default/controllers/ExportDataController.php:51
 #: /var/www/html/snep-3/modules/default/resources.xml
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: ../modules/default/controllers/AuditController.php:55
+#: ../modules/default/controllers/AuditController.php:52
 msgid "Tags Actions"
 msgstr "Acciones de Tags"
 
@@ -5304,8 +5314,8 @@ msgstr ""
 "entre las teclas, espacios en blanco y caracteres especiales excepto (#% | "
 "-. _)"
 
-#: ../modules/default/controllers/CallsReportController.php:231
-#: ../modules/default/controllers/CallsReportController.php:249
+#: ../modules/default/controllers/CallsReportController.php:228
+#: ../modules/default/controllers/CallsReportController.php:246
 msgid "There are no extensions in the selected group"
 msgstr "No hay extensiones del grupo seleccionado"
 
@@ -5492,6 +5502,7 @@ msgid "Trunk"
 msgstr "Tronco"
 
 #: ../modules/default/views/scripts/ip-status/index.phtml:96
+#: ../modules/default/controllers/ExportDataController.php:52
 #: ../modules/default/controllers/TrunksController.php:98
 #: ../modules/default/controllers/TrunksController.php:177
 #: ../modules/default/controllers/TrunksController.php:277
@@ -5502,7 +5513,7 @@ msgid "Trunks"
 msgstr "Troncos"
 
 #: ../modules/loguser/controllers/LoguserController.php:41
-#: ../modules/default/controllers/AuditController.php:64
+#: ../modules/default/controllers/AuditController.php:61
 msgid "Trunks Actions"
 msgstr "Acciones de Troncales"
 
@@ -5531,6 +5542,8 @@ msgstr "Martes"
 #: ../modules/default/views/scripts/trunks/index.phtml:44
 #: ../modules/default/views/scripts/systemstatus/index.phtml:158
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:60
+#: ../modules/default/controllers/ExportDataController.php:59
+#: ../modules/default/controllers/ExportDataController.php:61
 #: /var/www/html/snep-3/modules/default/forms/route.xml
 msgid "Type"
 msgstr "Tipo"
@@ -5618,6 +5631,10 @@ msgstr "No usado"
 msgid "Update"
 msgstr "Actualizado"
 
+#: ../modules/default/controllers/ExportDataController.php:57
+msgid "Update Date"
+msgstr "Fecha de actualización"
+
 #: ../modules/default/views/scripts/profiles/index.phtml:41
 #: ../modules/default/views/scripts/users/index.phtml:43
 msgid "Updated"
@@ -5641,6 +5658,7 @@ msgid "Used"
 msgstr "Usado"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:32
+#: ../modules/default/views/scripts/audit/view.phtml:29
 #: ../modules/default/controllers/UsersController.php:107
 #: ../modules/default/controllers/UsersController.php:181
 #: ../modules/default/controllers/UsersController.php:216
@@ -5699,6 +5717,7 @@ msgstr ""
 #: ../modules/default/views/scripts/parameters/index.phtml:160
 #: ../modules/default/views/scripts/trunks/addedit.phtml:124
 #: ../modules/default/views/scripts/trunks/addedit.phtml:126
+#: ../modules/default/controllers/ExportDataController.php:61
 msgid "Username"
 msgstr "Nombre de usuario"
 
@@ -5708,12 +5727,13 @@ msgstr "Nombre de usuario"
 #: ../modules/default/controllers/UsersController.php:195
 #: ../modules/default/controllers/UsersController.php:227
 #: ../modules/default/controllers/UsersController.php:374
+#: ../modules/default/controllers/ExportDataController.php:49
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Users"
 msgstr "Usuarios"
 
-#: ../modules/default/controllers/AuditController.php:62
+#: ../modules/default/controllers/AuditController.php:59
 msgid "Users Actions"
 msgstr "Acciones de usuarios"
 
@@ -6503,7 +6523,6 @@ msgid "write"
 msgstr "escribe"
 
 #: /var/www/html/snep-3/modules/billing/info.xml
-#, fuzzy
 msgid "www.opens.com.br"
 msgstr "http://www.opens.com.br"
 
@@ -6516,6 +6535,22 @@ msgstr ""
 #: /var/www/html/snep-3/modules/portability/info.xml
 msgid "www.sneppbx.com"
 msgstr ""
+
+#~ msgid ". Please contact your system administrator"
+#~ msgstr ""
+#~ "Error desconocido. Por favor, póngase en contacto con el administrador."
+
+#~ msgid "Added"
+#~ msgstr "Sumad"
+
+#~ msgid "Deleted"
+#~ msgstr "Eliminou"
+
+#~ msgid "Error "
+#~ msgstr "Erro"
+
+#~ msgid "Export Report"
+#~ msgstr "Exportar informe"
 
 #~ msgid "Current Day"
 #~ msgstr "Día Actual"
