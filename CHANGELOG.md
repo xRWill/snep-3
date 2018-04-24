@@ -7,17 +7,19 @@ Nesse documento é possível visualizar quais itens foram implementados em cada 
 
 # Tipos de desenvolvimento #
 
-Cada item adicionado na versão poderá ser um dos seguintes itens:
+Cada item adicionado na versão poderá ser um dos seguintes tipos:
 
-**`CORREÇÃO`**: Quando há alguma correção de algum erro encontrado no Snep.
-
-**`MELHORIA`**: Quando é desenvolvida uma melhoria em uma funcionalidade do Snep.
-
-**`NOVO`**: Quando há um desenvolvimento de uma nova funcionalidade no Snep.
+| Tipo | Descrição |
+|------|-----------|
+| **`CORREÇÃO`** | Quando há alguma correção de algum erro encontrado no projeto. |
+| **`MELHORIA`** | Quando é desenvolvida uma melhoria em uma funcionalidade do projeto. |
+| **`NOVO`** | Quando há um desenvolvimento de uma nova funcionalidade no projeto. |
+---
 
 # Versões #
 
 ## 3.07 ##
+*XX de XXXXX de 2018*
 * **`NOVO`** - Funcionalidade de auditoria.
 * **`MELHORIA`** - Melhoria no simulador.
 * **`MELHORIA`** - Adicionado novos campos na fucionalidade de exportação de dados.
@@ -39,6 +41,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 
 ---
 ## 3.06 ##
+*13 de setembro de 2017*
 
 * **`NOVO`** - Nova opção no filtro por contatos ou grupo de contatos no relatório de chamadas do período (Contribuicao: Fabio Theodoro - Ipcom).
 * **`NOVO`** - Nova opção no filtro do relatórios de chamadas e ranking para troca do número pelo nome do contato ou ramal.
@@ -60,7 +63,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 
 ---
 ## 3.05 ##
-
+*04 de dezembro de 2016*
 * **`CORREÇÃO`** - Problemas com menu no celular.
 * **`NOVO`** - Escolha do Idioma na tela de Login
 * **`CORREÇÃO`** - Valor do directmedia do ramal possuia valor 'nonat' ao invés de 'no'
@@ -87,7 +90,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 
 ---
 ## 3.04 ##
-
+*18 de agosto de 2016*
 * **`MELHORIA`** - extensions.conf para corrigir Regex descontinuada do asterisk (de *. para _X) (Contribuição: Jean Eduardo - Datasolve Tecnologia)
 * **`MELHORIA`** - extensions.conf para corrigir ordem de carregamento de .conf's do snep (Contribuição: Daian Conrad - Opens Tecnologia)
 * **`MELHORIA`** - sip.conf para prevenir desconexão de ramais sip (Contribuição: Carlos Eduardo - Opens Tecnologia)
@@ -105,6 +108,7 @@ Cada item adicionado na versão poderá ser um dos seguintes itens:
 
 ---
 ## 3.03 ##
+*30 de maio de 2016*
 * **`CORREÇÃO`** - problema de identificação do chamador no display de telefones IP (Heros)
 * **`NOVO`** - identificacao do modelo do aparelho autenticado (contribuição: Heros do Amaral)
 * **`NOVO`** - controle de ramais ocupados quando fazem parte de uma fila
