@@ -1,5 +1,4 @@
-
-[![N|Solid](../images/snep-logo.png)](https://snep.com.br)
+[![N|Solid](../images/img-snep-off.png)](https://snep.com.br)
 
 # Processo de tradução do Snep
 
