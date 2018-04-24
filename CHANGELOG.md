@@ -1,4 +1,4 @@
-[![N|Solid](/images/snep-logo.png)](https://snep.com.br)
+[![N|Solid](/images/img-snep-off.png)](https://snep.com.br)
 
 # Changelog Snep #
 
@@ -203,3 +203,4 @@ Cada item adicionado na versão poderá ser um dos seguintes tipos:
 * **`MELHORIA`** - Padronização do código fonte (jQuery, Zend, Bootstrap, etc)
 * **`NOVO`** - Preparado para multi-idiomas
 * **`NOVO`** - Novo sistema para atualização do CNL (Cadastro Nacional de Localidades / Anatel)
+

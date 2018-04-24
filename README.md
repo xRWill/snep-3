@@ -1,4 +1,4 @@
-[![N|Solid](/images/snep-logo.png)](https://snep.com.br)
+[![N|Solid](/images/img-snep-off.png)](https://snep.com.br)
 
 # O que é #
 
@@ -36,6 +36,3 @@ Veja aqui detalhes de como fazer isso:
 ## [Licença](LICENSE.md) ##
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-
-----
-[![N|Solid](/images/powered-opens.png)](https://opens.com.br)
