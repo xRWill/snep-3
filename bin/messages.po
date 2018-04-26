@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-20 14:38-0300\n"
+"POT-Creation-Date: 2018-04-26 11:18-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -186,6 +186,10 @@ msgstr ""
 
 #: ../agi/voicemail-notify.php:81
 msgid "A new voicemail message"
+msgstr ""
+
+#: ../modules/default/controllers/CallsReportController.php:567
+msgid "ANSWERED"
 msgstr ""
 
 #: ../modules/default/views/scripts/register/index.phtml:40
@@ -464,7 +468,7 @@ msgstr ""
 #: ../modules/default/views/scripts/dates-alias/index.phtml:34
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:52
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:30
-#: ../modules/default/controllers/CallsReportController.php:616
+#: ../modules/default/controllers/CallsReportController.php:624
 #: ../modules/default/controllers/RankingReportController.php:277
 msgid "Alert"
 msgstr ""
@@ -644,6 +648,10 @@ msgstr ""
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:92
 #: ../modules/default/views/scripts/pickup-groups/addedit.phtml:78
 msgid "Available extensions"
+msgstr ""
+
+#: ../modules/default/controllers/CallsReportController.php:579
+msgid "BUSY"
 msgstr ""
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:53
@@ -2073,7 +2081,7 @@ msgstr ""
 msgid "Exibition mode:"
 msgstr ""
 
-#: ../modules/default/views/scripts/export-data/index.phtml:237
+#: ../modules/default/views/scripts/export-data/index.phtml:235
 #: /var/www/html/snep-3/configs/titleOptions.xml
 msgid "Export"
 msgstr ""
@@ -2240,6 +2248,10 @@ msgstr ""
 
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:37
 msgid "Extensions Range"
+msgstr ""
+
+#: ../modules/default/controllers/CallsReportController.php:585
+msgid "FAILED"
 msgstr ""
 
 #: ../modules/default/controllers/KhompLinksController.php:83
@@ -2675,7 +2687,7 @@ msgstr ""
 msgid "Invalid number handling"
 msgstr ""
 
-#: ../modules/default/api/actions/CSV_ExportDataService.php:46
+#: ../modules/default/api/actions/CSV_ExportDataService.php:45
 msgid "Invalid table name."
 msgstr ""
 
@@ -3058,6 +3070,10 @@ msgstr ""
 msgid "NAT Optimization"
 msgstr ""
 
+#: ../modules/default/controllers/CallsReportController.php:573
+msgid "NO ANSWER"
+msgstr ""
+
 #: ../modules/billing/views/scripts/telcos/addedit.phtml:6
 #: ../modules/billing/views/scripts/telcos/index.phtml:44
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:17
@@ -3200,12 +3216,12 @@ msgstr ""
 msgid "No entries found!"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:615
+#: ../modules/default/controllers/CallsReportController.php:623
 #: ../modules/default/controllers/RankingReportController.php:276
 msgid "No entries found."
 msgstr ""
 
-#: ../modules/default/api/actions/CSV_ExportDataService.php:49
+#: ../modules/default/api/actions/CSV_ExportDataService.php:48
 msgid "No fields was informed."
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snep-3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-20 14:38-0300\n"
+"POT-Creation-Date: 2018-04-26 11:18-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Douglas Conrad <douglas.conrad@opens.com.br>\n"
 "Language-Team: \n"
@@ -200,6 +200,10 @@ msgstr "Um Programa de Suporte à Negócios"
 #: ../agi/voicemail-notify.php:81
 msgid "A new voicemail message"
 msgstr "Um novo recado de voicemail"
+
+#: ../modules/default/controllers/CallsReportController.php:567
+msgid "ANSWERED"
+msgstr "Atendida"
 
 #: ../modules/default/views/scripts/register/index.phtml:40
 msgid "API Key"
@@ -477,7 +481,7 @@ msgstr "Agente:"
 #: ../modules/default/views/scripts/dates-alias/index.phtml:34
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:52
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:30
-#: ../modules/default/controllers/CallsReportController.php:616
+#: ../modules/default/controllers/CallsReportController.php:624
 #: ../modules/default/controllers/RankingReportController.php:277
 msgid "Alert"
 msgstr "Alerta"
@@ -660,6 +664,10 @@ msgstr "Disponí­vel"
 #: ../modules/default/views/scripts/pickup-groups/addedit.phtml:78
 msgid "Available extensions"
 msgstr "Ramais Disponí­veis"
+
+#: ../modules/default/controllers/CallsReportController.php:579
+msgid "BUSY"
+msgstr "Ocupada"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:53
 #: ../modules/billing/views/scripts/error/sneperror.phtml:42
@@ -2103,7 +2111,7 @@ msgstr "Executar uma aplicação Asterisk."
 msgid "Exibition mode:"
 msgstr "Modo de exibição:"
 
-#: ../modules/default/views/scripts/export-data/index.phtml:237
+#: ../modules/default/views/scripts/export-data/index.phtml:235
 #: /var/www/html/snep-3/configs/titleOptions.xml
 msgid "Export"
 msgstr "Exportar"
@@ -2271,6 +2279,10 @@ msgstr "Grupo de Ramais"
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:37
 msgid "Extensions Range"
 msgstr "Range de Ramais"
+
+#: ../modules/default/controllers/CallsReportController.php:585
+msgid "FAILED"
+msgstr "Falhou"
 
 #: ../modules/default/controllers/KhompLinksController.php:83
 #: ../modules/default/controllers/KhompLinksController.php:95
@@ -2709,7 +2721,7 @@ msgstr "Formato Inválido"
 msgid "Invalid number handling"
 msgstr "Tratamento de números inválidos"
 
-#: ../modules/default/api/actions/CSV_ExportDataService.php:46
+#: ../modules/default/api/actions/CSV_ExportDataService.php:45
 msgid "Invalid table name."
 msgstr "Nome da tabela inválida"
 
@@ -3092,6 +3104,10 @@ msgstr "NAT"
 msgid "NAT Optimization"
 msgstr "NAT"
 
+#: ../modules/default/controllers/CallsReportController.php:573
+msgid "NO ANSWER"
+msgstr "Não atendida"
+
 #: ../modules/billing/views/scripts/telcos/addedit.phtml:6
 #: ../modules/billing/views/scripts/telcos/index.phtml:44
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:17
@@ -3234,12 +3250,12 @@ msgstr "Não foram encontrados dados no arquivo"
 msgid "No entries found!"
 msgstr "Nenhum registo encontrado!"
 
-#: ../modules/default/controllers/CallsReportController.php:615
+#: ../modules/default/controllers/CallsReportController.php:623
 #: ../modules/default/controllers/RankingReportController.php:276
 msgid "No entries found."
 msgstr "Nenhum registro encontrado."
 
-#: ../modules/default/api/actions/CSV_ExportDataService.php:49
+#: ../modules/default/api/actions/CSV_ExportDataService.php:48
 msgid "No fields was informed."
 msgstr "Nenhum campo foi informado."
 
@@ -6555,17 +6571,11 @@ msgstr ""
 #~ msgid "Week Day"
 #~ msgstr "Dias da Semana"
 
-#~ msgid "ANSWERED"
-#~ msgstr "Atendida"
-
 #~ msgid "Amaflags"
 #~ msgstr "Amaflags"
 
 #~ msgid "Answer"
 #~ msgstr "Atendida"
-
-#~ msgid "BUSY"
-#~ msgstr "Ocupada"
 
 #~ msgid "By Status Call"
 #~ msgstr "Por Status da Chamada"
@@ -6596,12 +6606,6 @@ msgstr ""
 
 #~ msgid "Error generating chart. Check your connection!"
 #~ msgstr "Erro ao gerar gráfico. Verifique sua conexão!"
-
-#~ msgid "FAILED"
-#~ msgstr "Falhou"
-
-#~ msgid "NO ANSWER"
-#~ msgstr "Não atendida"
 
 #~ msgid "Name Tag"
 #~ msgstr "Nome da Tag"
