@@ -564,26 +564,18 @@ class CallsReportController extends Zend_Controller_Action
                 case 'ANSWERED':
                     $totals["answer"]++;
                     $calldate[$value['key_dia']]['answer']++;
-                    $this->view->translate("ANSWERED");
-
                     break;
                 case 'NO ANSWER':
                     $totals["noanswer"]++;
                     $calldate[$value['key_dia']]['noanswer']++;
-                    $this->view->translate("NO ANSWER");
-
                     break;
                 case 'BUSY':
                     $totals["busy"]++;
                     $calldate[$value['key_dia']]['busy']++;
-                    $this->view->translate("BUSY");
-
                     break;
                 case 'FAILED':
                     $totals["failed"]++;
                     $calldate[$value['key_dia']]['failed']++;
-                    $this->view->translate("FAILED");
-
                     break;
             }
 
