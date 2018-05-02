@@ -122,23 +122,17 @@ class CallsReportController extends Zend_Controller_Action
                 $filter['clausulepeer'] = substr($clausulepeer, 0, -1);
             }
             $exceptions = Snep_Binds_Manager::getBondException($user['id']);
+            
             if (!empty($exceptions)) {
+                $where_exceptions = "";
+
                 foreach ($exceptions as $x => $excep) {
-                    (isset($exceptionsAll)) ? $exceptionsAll .= $excep["exception"] . "_" : $exceptionsAll = $excep["exception"] . "_";
+                    $where_exceptions .= "'".$excep["exception"]."'" . ",";
                 }
-                $filter['exceptions'] = substr($exceptionsAll, 0, -1);
+                $where_exceptions = substr($where_exceptions, 0, -1);
             }
-        }
-
-        // exceptions
-        if (isset($filter['exceptions'])) {
-            $exceptions = explode("_", $filter['exceptions']);
-            foreach ($exceptions as $key => $value) {
-                (isset($exceptionsAll)) ? $exceptionsAll .= "'" . $value . "'," : $exceptionsAll = "'" . $value . "',";
-            }
-            $exceptions = substr($exceptionsAll, 0, -1);
-        }
-
+        }    
+        
         // Binds
         if (isset($filter['clausulepeer']) && isset($filter['clausule'])) {
             $clausulepeer = explode("_", $filter['clausulepeer']);
@@ -148,27 +142,28 @@ class CallsReportController extends Zend_Controller_Action
                 $where_binds .= $value . ",";
             }
             $where_binds = substr($where_binds, 0, -1);
+           
             // Not permission
             if ($filter['clausule'] == 'nobound') {
-                if (isset($exceptions)) {
-                    $where_binds = " AND (src IN (" . $exceptions . ") OR dst IN (" . $exceptions . "))" . " AND (src NOT IN (" . $where_binds . ") OR dst NOT IN (" . $where_binds . "))";
+                if (count($exceptions) >0) {
+                    $where_binds = " AND (src IN (" . $where_exceptions . ") OR dst IN (" . $where_exceptions . "))" . " AND (src NOT IN (" . $where_binds . ") OR dst NOT IN (" . $where_binds . "))";
                 } else {
                     $where_binds = " AND (src NOT IN (" . $where_binds . ") OR dst NOT IN (" . $where_binds . "))";
                 }
             } else {
-                if (isset($exceptions)) {
-                    $where_binds = " AND (src IN (" . $where_binds . "," . $exceptions . ") OR dst IN (" . $where_binds . "," . $exceptions . "))";
+                if (count($exceptions) >0) {
+                    $where_binds = " AND (src IN (" . $where_binds . "," . $where_exceptions . ") OR dst IN (" . $where_binds . "," . $where_exceptions . "))";
                 } else {
                     $where_binds = " AND (src IN (" . $where_binds . ") OR dst IN (" . $where_binds . "))";
                 }
             }
-        }
+        }    
 
         // when no exits bind and exsts only exception special
-        if (!isset($where_binds) && isset($exceptions)) {
-            $where_binds = " AND (src IN (" . $exceptions . ") OR dst IN (" . $exceptions . "))";
+        if (!isset($where_binds) && count($exceptions) >0) {
+            $where_binds = " AND (src IN (" . $where_exceptions . ") OR dst IN (" . $where_exceptions . "))";
         }
-
+        
         // Status call
         $where_options[0] = " disposition != 'ANSWERED'";
         $where_options[1] = " disposition != 'NO ANSWER'";
@@ -367,6 +362,7 @@ class CallsReportController extends Zend_Controller_Action
         $select .= $where_prefix;
         //$select .= " GROUP BY userfield ORDER BY calldate, userfield ";
         $select .= " ORDER BY calldate, userfield ";
+        
         $stmt = $db->query($select);
         $cont = count($stmt);
         while ($dado = $stmt->fetch()) {
