@@ -663,7 +663,7 @@ msgstr "Ramais Disponí­veis"
 
 #: ../modules/default/views/scripts/extensions/addedit.phtml:538
 msgid "Average"
-msgstr "Médias"
+msgstr "Média"
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:53
 #: ../modules/billing/views/scripts/error/sneperror.phtml:42

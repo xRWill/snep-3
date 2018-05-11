@@ -59,7 +59,7 @@ Cada item adicionado na versão poderá ser um dos seguintes tipos:
 
 * **`MELHORIA`** - Melhoria de volume de consulta aos serviços cloud
 
-* **`CORRIÇÃO`** - Erro ao salvar callerid quando se edita o ramal 
+* **`CORREÇÃO`** - Erro ao salvar callerid quando se edita o ramal 
 
 ---
 ## 3.06 ##
