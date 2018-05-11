@@ -2,6 +2,7 @@
 
     <form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 20px;" action="<?php echo $this->url(array("controller" => "extensions", "action" => "multiadd"), null, true); ?>" METHOD="post">
 
+        <div class="alert alert-info"><?php echo $this->translate("To ensure the security of your extensions your passwords will be created in random ways."); ?></div>
         <fieldset>
             <legend><?php echo $this->translate('Extension');?></legend>
 

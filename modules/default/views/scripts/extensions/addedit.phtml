@@ -20,581 +20,566 @@
 <script src="/snep/includes/javascript/password.js"></script>
 <div class="row">
   <section>
-    <div class="col-sm-12">
+  <div class="col-sm-12">
+    <form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 20px;" action="<?php echo $this->url(array("controller" => "extensions", "action" => $this->action), null, false); ?>"  autocomplete="off">
 
-      <form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 20px;" action="<?php echo $this->url(array("controller" => "extensions", "action" => $this->action), null, false); ?>"  autocomplete="off">
+      <fieldset>
+        <legend><?php echo $this->translate('Extension');?></legend>
 
-        <fieldset>
-          <legend><?php echo $this->translate('Extension');?></legend>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Extension");?></label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" name="exten" placeholder='<?php echo $this->translate("Only numbers")?>' value="<?php echo $this->extension['name']?>" <?php echo $this->disabled;?>>
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Name");?></label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="name" placeholder='<?php echo $this->translate("Name")?>' value="<?php echo $this->extension['callerid'];?>" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Extensions Group");?></label>
+          <div class="col-sm-6">
+            <select multiple size=3 class="form-control" name="exten_group[]" id="exten_group">
+              <?php foreach($this->extenGroups as $key => $val){
+                if(array_key_exists($val['id'], $this->extenInGroup)){?>
+                  <option value="<?php echo $val['id'];?>" selected><?php echo $val['name'];?></option>
+                <?php }else{ ?>
+                  <option  value="<?php echo $val['id']; ?>"><?php echo $val['name'];?></option>
+                <?php } ?>
+              <?php } ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Pickup Group");?></label>
+          <div class="col-sm-6">
+            <select class="form-control" name="pickup_group" id="pickup_group">
+              <?php foreach($this->pickupGroups as $key => $pickupGroup){ ?>
+                <?php if($key == $this->extension['pickupgroup']){?>
+                  <option selected><?php echo $pickupGroup;?></option>
+                <?php }else{ ?>
+                  <option ><?php echo $pickupGroup;?></option>
+                <?php } ?>
+              <?php } ?>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><?php echo $this->translate('Interface Technology');?></legend>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Type");?></label>
+          <div class="col-sm-6">
+            <?php if ($this->action === "edit") {
+              echo '<input type="hidden" name="technology" id="technology" value="'.$this->techType.'" />';
+            }?>
+
+            <select class="form-control" name="technology" id="technology" onChange="showDiv(this.value);" <?php echo $this->disabled;?> >
+              <option value="sip" <?php echo $this->sip;?>><?php echo $this->translate("SIP");?></option>
+              <option value="iax2" <?php echo $this->iax2;?>><?php echo $this->translate("IAX2");?></option>
+              <option value="khomp" <?php echo $this->khomp;?>><?php echo $this->translate("Khomp");?></option>
+              <option value="virtual" <?php echo $this->virtual;?>><?php echo $this->translate("Virtual");?></option>
+              <option value="manual" <?php echo $this->manual;?>><?php echo $this->translate("Manual");?></option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SIP/IAX -->
+        <div id="sipiax" >
           <div class="form-group">
-            <label class="col-sm-3 control-label"><?php echo $this->translate("Extension");?></label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" name="exten" placeholder='<?php echo $this->translate("Only numbers")?>' value="<?php echo $this->extension['name']?>" <?php echo $this->disabled;?>>
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Password");?></label>
+            <div class="col-sm-4">
+              <input type="password" class="form-control" name="password" id="password" placeholder="<?php echo $this->translate("For your safety, create a strong password")?>" value="<?php echo $this->extension['secret'];?>"/>
+              <div id="passwordBar" class="progress" style="display: none;">
+                <div id="passForce" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="btn btn-add" onclick="generatePass()"><?php echo $this->translate("Generate Password");?></button>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label"><?php echo $this->translate("Name");?></label>
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Simultaneous Call Limit");?></label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" name="name" placeholder='<?php echo $this->translate("Name")?>' value="<?php echo $this->extension['callerid'];?>" />
+              <input type="number" class="form-control" name="calllimit" placeholder='<?php echo $this->translate("Only numbers")?>' value="<?php echo $this->extension['call-limit']?>"/>
             </div>
           </div>
-
-          <div class="form-group">
-            <label class="col-sm-3 control-label"><?php echo $this->translate("Extensions Group");?></label>
-            <div class="col-sm-6">
-
-              <select multiple size=3 class="form-control" name="exten_group[]" id="exten_group">
-
-                <?php foreach($this->extenGroups as $key => $val){
-                  if(array_key_exists($val['id'], $this->extenInGroup)){?>
-                    <option value="<?php echo $val['id'];?>" selected><?php echo $val['name'];?></option>
-                    <?php }else{ ?>
-                      <option  value="<?php echo $val['id']; ?>"><?php echo $val['name'];?></option>
-                      <?php } ?>
-                      <?php } ?>
-                    </select>
-                  </div>
+          <div id="siponly">
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><?php echo $this->translate("NAT")?></label>
+              <div class="col-sm-7">
+                <div class="checkbox">
+                  <label><input type="checkbox" name="nat_no" <?php echo $this->nat_no;?>/> no</label>&nbsp;&nbsp;
+                  <label><input type="checkbox" name="nat_force_rport" <?php echo $this->nat_force_rport;?>/> force-rport</label>&nbsp;&nbsp;
+                  <label><input type="checkbox" name="nat_comedia" <?php echo $this->nat_comedia;?>/> comedia</label>&nbsp;&nbsp;
+                  <label><input type="checkbox" name="nat_auto_force_rport" <?php echo $this->nat_auto_force_rport;?>/> auto-force-rport</label>&nbsp;&nbsp;
+                  <label><input type="checkbox" name="nat_auto_comedia" <?php echo $this->nat_auto_comedia;?>/> auto-comedia</label>
                 </div>
-
-                <div class="form-group">
-                  <label class="col-sm-3 control-label"><?php echo $this->translate("Pickup Group");?></label>
-                  <div class="col-sm-6">
-                    <select class="form-control" name="pickup_group" id="pickup_group">
-
-                      <?php foreach($this->pickupGroups as $key => $pickupGroup){ ?>
-
-                        <?php if($key == $this->extension['pickupgroup']){?>
-                          <option selected><?php echo $pickupGroup;?></option>
-                          <?php }else{ ?>
-                            <option ><?php echo $pickupGroup;?></option>
-                            <?php } ?>
-                            <?php } ?>
-                          </select>
-                        </div>
-                      </div>
-
-                    </fieldset>
-
-                    <fieldset>
-                      <legend><?php echo $this->translate('Interface Technology');?></legend>
-
-                      <div class="form-group">
-                        <label class="col-sm-3 control-label"><?php echo $this->translate("Type");?></label>
-                        <div class="col-sm-6">
-                          <?php if ($this->action === "edit") {
-                            echo '<input type="hidden" name="technology" id="technology" value="'.$this->techType.'" />';
-                          }?>
-
-                          <select class="form-control" name="technology" id="technology" onChange="showDiv(this.value);" <?php echo $this->disabled;?> >
-
-                            <option value="sip" <?php echo $this->sip;?>><?php echo $this->translate("SIP");?></option>
-                            <option value="iax2" <?php echo $this->iax2;?>><?php echo $this->translate("IAX2");?></option>
-                            <option value="khomp" <?php echo $this->khomp;?>><?php echo $this->translate("Khomp");?></option>
-                            <option value="virtual" <?php echo $this->virtual;?>><?php echo $this->translate("Virtual");?></option>
-                            <option value="manual" <?php echo $this->manual;?>><?php echo $this->translate("Manual");?></option>
-
-                          </select>
-                        </div>
-                      </div>
-
-                      <!-- SIP/IAX -->
-                      <div id="sipiax" >
-                        <div class="form-group">
-                          <label class="col-sm-3 control-label"><?php echo $this->translate("Password");?></label>
-                          <div class="col-sm-6">
-                            <input type="password" class="form-control" name="password" id="password" placeholder='' value="<?php echo $this->extension['secret'];?>"/>
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="col-sm-3 control-label"><?php echo $this->translate("Simultaneous Call Limit");?></label>
-                          <div class="col-sm-6">
-                            <input type="text" class="form-control" name="calllimit" placeholder='<?php echo $this->translate("Only numbers")?>' value="<?php echo $this->extension['call-limit']?>"/>
-                          </div>
-                        </div>
-                        <div id="siponly">
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label"><?php echo $this->translate("NAT")?></label>
-                            <div class="col-sm-7">
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" name="nat_no" <?php echo $this->nat_no;?>/>
-                                  no
-                                </label>
-                                &nbsp;&nbsp;
-                                <label>
-                                  <input type="checkbox" name="nat_force_rport" <?php echo $this->nat_force_rport;?>/>
-                                  force-rport
-                                </label>
-                                &nbsp;&nbsp;
-                                <label>
-                                  <input type="checkbox" name="nat_comedia" <?php echo $this->nat_comedia;?>/>
-                                  comedia
-                                </label>
-                                &nbsp;&nbsp;
-                                <label>
-                                  <input type="checkbox" name="nat_auto_force_rport" <?php echo $this->nat_auto_force_rport;?>/>
-                                  auto-force-rport
-                                </label>
-                                &nbsp;&nbsp;
-                                <label >
-                                  <input type="checkbox" name="nat_auto_comedia" <?php echo $this->nat_auto_comedia;?>/>
-                                  auto-comedia
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label"><?php echo $this->translate("Direct Media")?></label>
-                            <div class="col-sm-6">
-                              <label class="radio-inline">
-                                <input type="radio" name="directmedia" id="yes" value="yes" <?php echo $this->directmediayes;?>>
-                                yes
-                              </label>
-
-                              <label class="radio-inline">
-                                <input type="radio" name="directmedia" id="no" value="no" <?php echo $this->directmedianonat;?>
-                                >
-                                no
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="directmedia" id="update" value="update" <?php echo $this->directmediaupdate;?>>
-                                update
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="directmedia" id="outgoing" value="outgoing" <?php echo $this->directmediaoutgoing;?>>
-                                outgoing
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-3 control-label"><?php echo $this->translate("Qualify")?></label>
-                          <div class="col-sm-6">
-                            <div class="checkbox">
-                              <?php if($this->extension['qualify'] === 'yes'){?>
-                                <label>
-                                  <input type="checkbox" name="qualify" id="qualify" checked/><?php echo $this->translate("Enable delay qualification")?>
-                                </label>
-                                <?php }else{?>
-                                  <label>
-                                    <input type="checkbox" name="qualify" id="qualify"/><?php echo $this->translate("Enable delay qualification")?>
-                                  </label>
-                                  <?php } ?>
-
-                                </div>
-                              </div>
-                            </div>
-
-
-
-                            <div class="form-group">
-                              <label class="col-sm-3 control-label"><?php echo $this->translate("Type")?></label>
-                              <div class="col-sm-6">
-                                <label class="radio-inline">
-                                  <input type="radio" name="type"  value="peer" <?php echo $this->typePeer;?>>
-                                  peer
-                                </label>
-                                <label class="radio-inline">
-                                  <input type="radio" name="type"  value="user" <?php echo $this->typeUser;?>>
-                                  user
-                                </label>
-                                <label class="radio-inline">
-                                  <input type="radio" name="type"  value="friend" <?php echo $this->typeFriend;?>>
-                                  friend
-                                </label>
-
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label class="col-sm-3 control-label"><?php echo $this->translate("DTMF Mode")?></label>
-                              <div class="col-sm-6">
-                                <label class="radio-inline">
-                                  <input type="radio" name="dtmf" id="rfc2833" value="rfc2833" <?php echo $this->dtmfrf; ?>><?php echo $this->translate("RFC-2833");?>
-                                </label>
-
-                                <label class="radio-inline">
-                                  <input type="radio" name="dtmf" id="inband" value="inband" <?php echo $this->dtmfinband; ?>><?php echo $this->translate("Inband");?>
-                                </label>
-
-                                <label class="radio-inline">
-                                  <input type="radio" name="dtmf" id="info" value="info" <?php echo $this->dtmfinfo; ?>><?php echo $this->translate("Info");?>
-                                </label>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label class="col-sm-3 control-label"><?php echo $this->translate("Codec 1");?></label>
-                              <div class="col-sm-6">
-                                <select class="form-control" name="codec" id="codec">
-                                  <?php echo $this->codec1;?>
-                                </select>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label class="col-sm-3 control-label"><?php echo $this->translate("Codec 2");?></label>
-                              <div class="col-sm-6">
-                                <select class="form-control" name="codec1" id="codec1">
-                                  <?php echo $this->codec2;?>
-                                </select>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label class="col-sm-3 control-label"><?php echo $this->translate("Codec 3");?></label>
-                              <div class="col-sm-6">
-                                <select class="form-control" name="codec2" id="codec2">
-                                  <?php echo $this->codec3;?>
-                                </select>
-                              </div>
-                            </div>
-
-                          </div>
-                          <!-- /SIPIAX -->
-
-                          <!-- Khomp -->
-                          <div id="khomp" class="invisible">
-
-                            <div class="form-group">
-                              <label class="col-sm-3 control-label"><?php echo $this->translate("Channel");?></label>
-                              <div class="col-sm-6">
-
-                                <select class="form-control" name="channel" id="channel">
-                                  <?php foreach($this->boardData as $key => $channel){
-                                    if($key == $this->khompChecked){?>
-                                      <option value="<?php echo $key?>" selected><?php echo $channel;?></option>
-                                      <?php }else ?>
-                                      <option value="<?php echo $key?>"><?php echo $channel;?></option>
-                                      <?php }?>
-                                    </select>
-                                  </div>
-                                </div>
-
-                              </div>
-                              <!-- /Khomp -->
-
-                              <!-- Virtual -->
-                              <div id="virtual" class="invisible">
-
-                                <div class="form-group">
-                                  <label class="col-sm-3 control-label"><?php echo $this->translate("Trunk");?></label>
-                                  <div class="col-sm-6">
-
-                                    <select class="form-control" name="board" id="board">
-                                      <?php foreach($this->trunks as $key => $trunk){
-                                        if($trunk['id'] == $this->trunkChecked) { ?>
-                                          <option value="<?php echo $trunk['id']?>" selected><?php echo $trunk['callerid'];?></option>
-                                          <?php }else{ ?>
-                                            <option value="<?php echo $trunk['id']?>" ><?php echo $trunk['callerid'];?></option>
-                                            <?php } ?>
-                                            <?php } ?>
-                                          </select>
-                                        </div>
-                                      </div>
-
-                                    </div>
-                                    <!-- /virtual -->
-
-                                    <!-- Manual -->
-                                    <div id="manual" class="invisible">
-
-                                      <div class="form-group">
-                                        <label class="col-sm-3 control-label"><?php echo $this->translate("Manual");?></label>
-                                        <div class="col-sm-6">
-                                          <input type="text" class="form-control" name="manual" placeholder='<?php echo $this->translate("Manual")?>' value="<?php echo $this->manual;?> "/>
-                                        </div>
-                                      </div>
-
-                                    </div>
-                                    <!-- /manual -->
-
-                                  </fieldset>
-
-                                  <fieldset>
-                                    <legend><?php echo $this->translate('Advanced');?></legend>
-
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label"><?php echo $this->translate("Voicemail");?></label>
-                                      <div class="col-sm-6">
-                                        <div class="checkbox">
-                                          <?php if($this->extension['usa_vc'] === 'yes'){?>
-                                            <label>
-                                              <input type="checkbox" name="voicemail" id="voicemail" value="voicemail" checked/> <?php echo $this->translate("Enabled");?>
-                                            </label>
-                                            <?php }else{?>
-                                              <label>
-                                                <input type="checkbox" name="voicemail" id="voicemail" value="voicemail" /> <?php echo $this->translate("Enabled");?>
-                                              </label>
-                                              <?php } ?>
-
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                          <label class="col-sm-3 control-label"><?php echo $this->translate("Email");?></label>
-                                          <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="email" id="email" placeholder='<?php echo $this->translate("Email")?>' value="<?php echo $this->extension['email']?>"/>
-                                          </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                          <label class="col-sm-3 control-label"><?php echo $this->translate("Padlock");?></label>
-                                          <div class="col-sm-6">
-                                            <div class="checkbox">
-                                              <label>
-                                                <?php if($this->extension['authenticate']){?>
-                                                  <input type="checkbox" name="authenticate" id="authenticate" value="authenticate" checked/> <?php echo $this->translate("Enabled");?>
-                                                  <?php }else{?>
-                                                    <input type="checkbox" name="authenticate" id="authenticate" value="authenticate" /> <?php echo $this->translate("Enabled");?>
-                                                    <?php }?>
-                                                  </label>
-                                                </div>
-                                              </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                              <label class="col-sm-3 control-label"><?php echo $this->translate("Password Padlock");?></label>
-                                              <div class="col-sm-6">
-                                                <?php if($this->extension['password'] != ''){?>
-                                                  <input type="password" class="form-control" name="passwordpadlock" id="passwordpadlock" placeholder='<?php echo $this->translate("Only numbers")?>' value="<?php echo $this->extension['password']?>"/>
-                                                  <?php }else{?>
-                                                    <input type="password" class="form-control" name="passwordpadlock" id="passwordpadlock" placeholder='<?php echo $this->translate("Only numbers")?>' />
-                                                    <?php } ?>
-
-                                                  </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                  <label class="col-sm-3 control-label"><?php echo $this->translate("Enable follow-me");?></label>
-                                                  <div class="col-sm-6">
-                                                    <div class="checkbox">
-                                                      <label>
-                                                        <?php if($this->extension['cancallforward'] == 'yes'){?>
-                                                          <input type="checkbox" name="cancallforward" value="cancallforward" checked/> <?php echo $this->translate("Enabled");?>
-                                                          <?php }else{ ?>
-                                                            <input type="checkbox" name="cancallforward" value="cancallforward" /> <?php echo $this->translate("Enabled");?>
-                                                            <?php } ?>
-                                                          </label>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                      <label class="col-sm-3 control-label"><?php echo $this->translate("Enable Busy Notification(BLF)");?></label>
-                                                      <div class="col-sm-6">
-                                                        <div class="checkbox">
-                                                          <label>
-                                                              <input type="checkbox" name="blf" value="yes" <?php echo $this->blf;?>/> <?php echo $this->translate("Enabled");?>
-                                                          </label>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-
-                                                    <!-- <div class="form-group">
-                                                      <label class="col-sm-3 control-label"><?php //echo $this->translate("Minute Control");?></label>
-                                                      <div class="col-sm-6">
-                                                        <div class="checkbox">
-                                                          <label>
-                                                            <?php if (!empty($this->extension["time_total"])) { ?>
-                                                              <input type="checkbox" name="minute_control" id="minute_control" value="minute_control" checked /> <?php //echo $this->translate("Enabled");?>
-                                                              <?php }else{ ?>
-                                                                <input type="checkbox" name="minute_control" value="minute_control" id="minute_control" /> <?php //echo $this->translate("Enabled");?>
-                                                                <?php }
-                                                                //echo "<i> - (" . $this->translate("Only for external calls") . ")</i>";
-                                                                ?>
-                                                              </label>
-                                                            </div>
-                                                          </div>
-                                                        </div> -->
-
-
-                                                        <!-- <div class="form-group">
-                                                          <label class="col-sm-3 control-label"><?php //echo $this->translate("Time total");?></label>
-                                                          <div class="col-sm-6">
-                                                            <input type="text" class="form-control" name="timetotal" id="timetotal" placeholder='<?php //echo $this->translate("Minutes")?>' value="<?php echo $this->timetotal;?>" />
-                                                          </div>
-                                                        </div>
-
-                                                        <div>
-                                                          <label class="col-sm-3 control-label"><?php// echo $this->translate("Control Type")?></label>
-                                                          <label class="radio-inline">
-                                                            <input type="radio" name="controltype" id="Y" value="Y" <?php //echo $this->Y;?>><?php //echo $this->translate("Anually");?>
-                                                          </label>
-
-                                                          <label class="radio-inline">
-                                                            <input type="radio" name="controltype" id="M" value="M" <?php //echo $this->M;?>><?php //echo $this->translate("Monthly");?>
-                                                          </label>
-
-                                                          <label class="radio-inline">
-                                                            <input type="radio" name="controltype" id="D" value="D" <?php //echo $this->D;?>><?php //echo $this->translate("Daily");?>
-                                                          </label>
-                                                        </div> -->
-
-
-                                                      </fieldset>
-
-
-                                                      <div class="snep-body-footer-buttons">
-                                                        <button type="submit" class="btn btn-add" name="signup" value="Sign up"><?php echo $this->translate("Save");?></button>
-                                                        &nbsp;&nbsp;&nbsp;
-                                                        <a class="btn btn-outline btn-add" href="javascript:window.history.go(-1)" role="button"><?php echo $this->translate("Cancel")?></a>
-                                                      </div>
-
-                                                    </form>
-                                                  </div>
-                                                </section>
-                                              </div>
-
-
-                                              <script type="text/javascript">
-                                              var peers_digits = "<?php echo $this->peers_digits; ?>"
-                                              jQuery.noConflict();
-                                              jQuery(document).ready(function(){
-                                                jQuery('#defaultForm').validate({
-                                                  rules: {
-                                                    "exten_group[]" : {
-                                                      required: true,
-                                                    },
-                                                    exten: {
-                                                      required: true,
-                                                      minlength: peers_digits,
-                                                      maxlength: peers_digits,
-                                                      numbersOnly: true
-                                                    },
-                                                    name: {
-                                                      required: true,
-                                                      minlength: 5,
-                                                      maxlength: 30
-                                                    },
-
-                                                    passwordpadlock: {
-                                                      required: function() {
-                                                        return jQuery("#authenticate").is(":checked");
-                                                      },
-                                                      minlength: 4,
-                                                      maxlength: 32,
-
-                                                    },
-                                                    board: {
-                                                      required: true,
-                                                    },
-                                                    channel: {
-                                                      required: true,
-                                                    },
-                                                    email: {
-                                                      required: function() {
-                                                        return jQuery("#voicemail").is(":checked");
-                                                      },
-                                                      email: true
-                                                    },
-                                                    timetotal: {
-                                                      required: function() {
-                                                        return jQuery("#minute_control").is(":checked");
-                                                      },
-                                                      numbersOnly: true
-                                                    }
-                                                  },
-                                                  messages: {
-                                                    "exten_group[]" : {
-                                                      required: "<?php echo $this->translate('The extension group is required'); ?>",
-                                                    },
-                                                    exten: {
-                                                      required: "<?php echo $this->translate('The extension is required'); ?>",
-                                                      minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>",
-                                                      maxlength: "<?php echo $this->translate('Please enter no more than {0} characters.'); ?>",
-                                                      numbersOnly: "<?php echo $this->translate('Numbers only please'); ?>"
-                                                    },
-                                                    passwordpadlock: {
-                                                      required: "<?php echo $this->translate('The password is required'); ?>",
-                                                      minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>",
-                                                      maxlength: "<?php echo $this->translate('Please enter no more than {0} characters.'); ?>",
-                                                      numbersOnly: "<?php echo $this->translate('Numbers only please'); ?>"
-                                                    },
-                                                    board: {
-                                                      required: "<?php echo $this->translate('The trunk is required'); ?>",
-                                                    },
-                                                    channel: {
-                                                      required: "<?php echo $this->translate('The channel is required'); ?>",
-                                                    },
-                                                    name: {
-                                                      required: "<?php echo $this->translate('The name is required'); ?>",
-                                                      minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>",
-                                                      maxlength: "<?php echo $this->translate('Please enter no more than {0} characters.'); ?>",
-                                                    },
-                                                    email: {
-                                                      required: "<?php echo $this->translate('The e-mail is required'); ?>",
-                                                      email: "<?php echo $this->translate('Your email address must be in the format of name@domain.com'); ?>"
-                                                    }
-
-                                                  },
-                                                  highlight: function(element) {
-                                                    jQuery(element).closest('.control-group').removeClass('success').addClass('error');
-                                                  },
-                                                  success: function(element) {
-                                                    element
-                                                    .text('OK!').addClass('valid')
-                                                    .closest('.control-group').removeClass('error').addClass('success');
-                                                  }
-                                                });
-                                              });
-
-                                              jQuery(function() {
-
-                                                jQuery('#password').password().on('show.bs.password', function(e) {
-
-                                                  jQuery('#methods').prop('checked', true);
-
-                                                }).on('hide.bs.password', function(e) {
-                                                  jQuery('#methods').prop('checked', false);
-                                                });
-                                                jQuery('#methods').click(function() {
-                                                  jQuery('#password').password('toggle');
-                                                });
-                                              });
-
-                                              jQuery(function() {
-                                                jQuery('#passwordpadlock').password().on('show.bs.password', function(e) {
-
-                                                  jQuery('#methods').prop('checked', true);
-
-                                                }).on('hide.bs.password', function(e) {
-                                                  jQuery('#methods').prop('checked', false);
-                                                });
-
-                                                jQuery('#methods').click(function() {
-                                                  jQuery('#passwordpadlock').password('toggle');
-                                                });
-                                              });
-
-
-
-                                              window.onload = function(){
-                                                var div = '<?php echo $this->techType;?>';
-                                                showDiv(div) ;
-                                              }
-
-                                              function showDiv(div){
-
-                                                document.getElementById("sipiax").className = "invisible";
-                                                document.getElementById("khomp").className = "invisible";
-                                                document.getElementById("virtual").className = "invisible";
-                                                document.getElementById("manual").className = "invisible";
-                                                document.getElementById("siponly").className = "invisible";
-
-                                                if (div) {
-                                                  if (div == 'sip') {
-                                                    document.getElementById('siponly').className = "visible";
-                                                  }
-                                                  if (div == "sip" || div == 'iax2') {
-                                                    div = "sipiax"
-                                                  }
-                                                  document.getElementById(div).className = "visible";
-                                                }
-                                              }
-
-                                              </script>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><?php echo $this->translate("Direct Media")?></label>
+              <div class="col-sm-6">
+                <label class="radio-inline"><input type="radio" name="directmedia" id="yes" value="yes" <?php echo $this->directmediayes;?>> yes</label>
+                <label class="radio-inline"><input type="radio" name="directmedia" id="no" value="no" <?php echo $this->directmedianonat;?>> no</label>
+                <label class="radio-inline"><input type="radio" name="directmedia" id="update" value="update" <?php echo $this->directmediaupdate;?>> update</label>
+                <label class="radio-inline"><input type="radio" name="directmedia" id="outgoing" value="outgoing" <?php echo $this->directmediaoutgoing;?>> outgoing</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Qualify")?></label>
+            <div class="col-sm-6">
+              <div class="checkbox">
+                <?php if($this->extension['qualify'] === 'yes'){?>
+                  <label><input type="checkbox" name="qualify" id="qualify" checked/><?php echo $this->translate("Enable delay qualification")?></label>
+                <?php }else{?>
+                  <label><input type="checkbox" name="qualify" id="qualify"/><?php echo $this->translate("Enable delay qualification")?></label>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Type")?></label>
+            <div class="col-sm-6">
+              <label class="radio-inline"><input type="radio" name="type"  value="peer" <?php echo $this->typePeer;?>> peer</label>
+              <label class="radio-inline"><input type="radio" name="type"  value="user" <?php echo $this->typeUser;?>> user</label>
+              <label class="radio-inline"><input type="radio" name="type"  value="friend" <?php echo $this->typeFriend;?>> friend</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("DTMF Mode")?></label>
+            <div class="col-sm-6">
+              <label class="radio-inline"></label><input type="radio" name="dtmf" id="rfc2833" value="rfc2833" <?php echo $this->dtmfrf; ?>><?php echo $this->translate("RFC-2833");?></label>
+              <label class="radio-inline"><input type="radio" name="dtmf" id="inband" value="inband" <?php echo $this->dtmfinband; ?>><?php echo $this->translate("Inband");?></label>
+              <label class="radio-inline"><input type="radio" name="dtmf" id="info" value="info" <?php echo $this->dtmfinfo; ?>><?php echo $this->translate("Info");?></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Codec 1");?></label>
+            <div class="col-sm-6">
+              <select class="form-control" name="codec" id="codec">
+                <?php echo $this->codec1;?>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Codec 2");?></label>
+            <div class="col-sm-6">
+              <select class="form-control" name="codec1" id="codec1">
+                <?php echo $this->codec2;?>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Codec 3");?></label>
+            <div class="col-sm-6">
+              <select class="form-control" name="codec2" id="codec2">
+                <?php echo $this->codec3;?>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- /SIPIAX -->
+
+        <!-- Khomp -->
+        <div id="khomp" class="invisible">
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Channel");?></label>
+            <div class="col-sm-6">
+              <select class="form-control" name="channel" id="channel">
+                <?php foreach($this->boardData as $key => $channel){
+                  if($key == $this->khompChecked){?>
+                    <option value="<?php echo $key?>" selected><?php echo $channel;?></option>
+                  <?php }else ?>
+                    <option value="<?php echo $key?>"><?php echo $channel;?></option>
+                <?php }?>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- /Khomp -->
+
+        <!-- Virtual -->
+        <div id="virtual" class="invisible">
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Trunk");?></label>
+            <div class="col-sm-6">
+              <select class="form-control" name="board" id="board">
+                <?php foreach($this->trunks as $key => $trunk){
+                  if($trunk['id'] == $this->trunkChecked) { ?>
+                    <option value="<?php echo $trunk['id']?>" selected><?php echo $trunk['callerid'];?></option>
+                  <?php }else{ ?>
+                    <option value="<?php echo $trunk['id']?>" ><?php echo $trunk['callerid'];?></option>
+                  <?php } ?>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- /virtual -->
+
+        <!-- Manual -->
+        <div id="manual" class="invisible">
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->translate("Manual");?></label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="manual" placeholder='<?php echo $this->translate("Manual")?>' value="<?php echo $this->manual;?> "/>
+            </div>
+          </div>
+        </div>
+        <!-- /manual -->
+      </fieldset>
+
+      <fieldset>
+        <legend><?php echo $this->translate('Advanced');?></legend>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Voicemail");?></label>
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <?php if($this->extension['usa_vc'] === 'yes'){?>
+                <label><input type="checkbox" name="voicemail" id="voicemail" value="voicemail" checked/> <?php echo $this->translate("Enabled");?></label>
+              <?php }else{?>
+                <label><input type="checkbox" name="voicemail" id="voicemail" value="voicemail" /> <?php echo $this->translate("Enabled");?></label>
+              <?php } ?>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Email");?></label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="email" id="email" placeholder='<?php echo $this->translate("Email")?>' value="<?php echo $this->extension['email']?>"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Padlock");?></label>
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <label>
+                <?php if($this->extension['authenticate']){?>
+                  <input type="checkbox" name="authenticate" id="authenticate" value="authenticate" checked/> <?php echo $this->translate("Enabled");?>
+                <?php }else{?>
+                  <input type="checkbox" name="authenticate" id="authenticate" value="authenticate" /> <?php echo $this->translate("Enabled");?>
+                <?php }?>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Password Padlock");?></label>
+          <div class="col-sm-6">
+            <?php if($this->extension['password'] != ''){?>
+              <input type="password" class="form-control" name="passwordpadlock" id="passwordpadlock" placeholder='<?php echo $this->translate("Only numbers")?>' value="<?php echo $this->extension['password']?>"/>
+            <?php }else{?>
+              <input type="password" class="form-control" name="passwordpadlock" id="passwordpadlock" placeholder='<?php echo $this->translate("Only numbers")?>' />
+            <?php } ?>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Enable follow-me");?></label>
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <label>
+                <?php if($this->extension['cancallforward'] == 'yes'){?>
+                  <input type="checkbox" name="cancallforward" value="cancallforward" checked/> <?php echo $this->translate("Enabled");?>
+                <?php }else{ ?>
+                  <input type="checkbox" name="cancallforward" value="cancallforward" /> <?php echo $this->translate("Enabled");?>
+                <?php } ?>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Enable Busy Notification(BLF)");?></label>
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <label><input type="checkbox" name="blf" value="yes" <?php echo $this->blf;?>/> <?php echo $this->translate("Enabled");?></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <label class="col-sm-3 control-label"><?php //echo $this->translate("Minute Control");?></label>
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <label>
+                <?php if (!empty($this->extension["time_total"])) { ?>
+                  <input type="checkbox" name="minute_control" id="minute_control" value="minute_control" checked /> <?php //echo $this->translate("Enabled");?>
+                <?php }else{ ?>
+                  <input type="checkbox" name="minute_control" value="minute_control" id="minute_control" /> <?php //echo $this->translate("Enabled");?>
+                <?php }
+                //echo "<i> - (" . $this->translate("Only for external calls") . ")</i>";
+                ?>
+              </label>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="form-group">
+          <label class="col-sm-3 control-label"><?php //echo $this->translate("Time total");?></label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="timetotal" id="timetotal" placeholder='<?php //echo $this->translate("Minutes")?>' value="<?php echo $this->timetotal;?>" />
+          </div>
+        </div>
+
+        <div>
+          <label class="col-sm-3 control-label"><?php// echo $this->translate("Control Type")?></label>
+          <label class="radio-inline">
+            <input type="radio" name="controltype" id="Y" value="Y" <?php //echo $this->Y;?>><?php //echo $this->translate("Anually");?>
+          </label>
+
+          <label class="radio-inline">
+            <input type="radio" name="controltype" id="M" value="M" <?php //echo $this->M;?>><?php //echo $this->translate("Monthly");?>
+          </label>
+
+          <label class="radio-inline">
+            <input type="radio" name="controltype" id="D" value="D" <?php //echo $this->D;?>><?php //echo $this->translate("Daily");?>
+          </label>
+        </div> -->
+      </fieldset>
+
+      <div class="snep-body-footer-buttons">
+        <button type="submit" class="btn btn-add" name="signup" value="Sign up"><?php echo $this->translate("Save");?></button>
+        &nbsp;&nbsp;&nbsp;
+        <a class="btn btn-outline btn-add" href="javascript:window.history.go(-1)" role="button"><?php echo $this->translate("Cancel")?></a>
+      </div>
+
+    </form>
+  </div>
+</section>
+</div>
+
+
+<script type="text/javascript">
+
+var peers_digits = "<?php echo $this->peers_digits; ?>"
+jQuery.noConflict();
+
+jQuery(document).ready(function(){
+  jQuery('#defaultForm').validate({
+    rules: {
+      "exten_group[]" : {
+        required: true,
+      },
+      exten: {
+        required: true,
+        minlength: peers_digits,
+        maxlength: peers_digits,
+        numbersOnly: true
+      },
+      name: {
+        required: true,
+        minlength: 5,
+        maxlength: 30
+      },
+
+      passwordpadlock: {
+        required: function() {
+          return jQuery("#authenticate").is(":checked");
+        },
+        minlength: 4,
+        maxlength: 32,
+
+      },
+      board: {
+        required: true,
+      },
+      channel: {
+        required: true,
+      },
+      email: {
+        required: function() {
+          return jQuery("#voicemail").is(":checked");
+        },
+        email: true
+      },
+      timetotal: {
+        required: function() {
+          return jQuery("#minute_control").is(":checked");
+        },
+        numbersOnly: true
+      }
+    },
+    messages: {
+      "exten_group[]" : {
+        required: "<?php echo $this->translate('The extension group is required'); ?>",
+      },
+      exten: {
+        required: "<?php echo $this->translate('The extension is required'); ?>",
+        minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>",
+        maxlength: "<?php echo $this->translate('Please enter no more than {0} characters.'); ?>",
+        numbersOnly: "<?php echo $this->translate('Numbers only please'); ?>"
+      },
+      passwordpadlock: {
+        required: "<?php echo $this->translate('The password is required'); ?>",
+        minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>",
+        maxlength: "<?php echo $this->translate('Please enter no more than {0} characters.'); ?>",
+        numbersOnly: "<?php echo $this->translate('Numbers only please'); ?>"
+      },
+      board: {
+        required: "<?php echo $this->translate('The trunk is required'); ?>",
+      },
+      channel: {
+        required: "<?php echo $this->translate('The channel is required'); ?>",
+      },
+      name: {
+        required: "<?php echo $this->translate('The name is required'); ?>",
+        minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>",
+        maxlength: "<?php echo $this->translate('Please enter no more than {0} characters.'); ?>",
+      },
+      email: {
+        required: "<?php echo $this->translate('The e-mail is required'); ?>",
+        email: "<?php echo $this->translate('Your email address must be in the format of name@domain.com'); ?>"
+      }
+
+    },
+    highlight: function(element) {
+      jQuery(element).closest('.control-group').removeClass('success').addClass('error');
+    },
+    success: function(element) {
+      element
+      .text('OK!').addClass('valid')
+      .closest('.control-group').removeClass('error').addClass('success');
+    }
+  });
+});
+
+jQuery(function() {
+
+  jQuery('#password').password().on('show.bs.password', function(e) {
+    jQuery('#methods').prop('checked', true);
+  }).on('hide.bs.password', function(e) {
+    jQuery('#methods').prop('checked', false);
+  });
+  jQuery('#methods').click(function() {
+    jQuery('#password').password('toggle');
+  });
+});
+
+jQuery(function() {
+  jQuery('#passwordpadlock').password().on('show.bs.password', function(e) {
+    jQuery('#methods').prop('checked', true);
+  }).on('hide.bs.password', function(e) {
+    jQuery('#methods').prop('checked', false);
+  });
+  jQuery('#methods').click(function() {
+    jQuery('#passwordpadlock').password('toggle');
+  });
+});
+
+window.onload = function(){
+  var div = '<?php echo $this->techType;?>';
+  showDiv(div) ;
+}
+
+function generatePass(){
+
+  var password = "";
+  var possible = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@?!%#";
+  for (var i = 0; i < 16; i++)
+  password += possible.charAt(Math.floor(Math.random() * possible.length));
+  jQuery('#password').val(password);
+
+}
+
+function showDiv(div){
+  
+  document.getElementById("sipiax").className = "invisible";
+  document.getElementById("khomp").className = "invisible";
+  document.getElementById("virtual").className = "invisible";
+  document.getElementById("manual").className = "invisible";
+  document.getElementById("siponly").className = "invisible";
+
+  if (div) {
+    if (div == 'sip') {
+      document.getElementById('siponly').className = "visible";
+    }
+    if (div == "sip" || div == 'iax2') {
+      div = "sipiax"
+    }
+    document.getElementById(div).className = "visible";
+  }
+}
+                                     
+//force verify password
+jQuery(function (){
+  jQuery('#password').keyup(function (e){
+    var password = jQuery(this).val();        
+    if(password == ''){
+      jQuery('#passwordBar').hide();
+    }else{
+      var fPass = passForce(password);
+      var message = "";
+      jQuery('#passForce').css('width', fPass+'%');
+      jQuery('#passForce').removeClass();
+      jQuery('#passForce').addClass('progress-bar');
+      if(fPass <= 40){
+        message = '<?php echo $this->translate("Weak");?>';
+        jQuery('#passForce').addClass('progress-bar-danger');
+      }
+      if(fPass > 40 && fPass <= 70){
+        message = '<?php echo $this->translate("Average");?>';
+      }
+      if(fPass > 70 && fPass <= 90){
+        message = '<?php echo $this->translate("Good");?>';
+        jQuery('#passForce').addClass('progress-bar-success');
+      }
+      if(fPass > 90){
+        message = '<?php echo $this->translate("Very Good");?>';
+        jQuery('#passForce').addClass('progress-bar-success');
+      }
+      jQuery('#passForce').text(message);
+      jQuery('#passwordBar').show();
+    }
+  });
+});
+    
+function passForce(password){
+    
+    var force = 0;
+    var regLetrasMa = /[A-Z]/;
+    var regLetrasMi = /[a-z]/;
+    var regNumero   = /[0-9]/;
+    var regEspecial = /[@?!%#]/;
+    var tam         = false;
+    var tamM        = false;
+    var letrasMa    = false;
+    var letrasMi    = false;
+    var numero      = false;
+    var especial    = false;
+
+    if(password.length >= 8) tam = true;
+    if(password.length >= 16) tamM = true;
+    if(regLetrasMa.exec(password)) letrasMa = true;
+    if(regLetrasMi.exec(password)) letrasMi = true;
+    if(regNumero.exec(password)) numero = true;
+    if(regEspecial.exec(password)) especial = true;
+    
+    if(tam) force += 10;
+    if(tamM) force += 10;
+    if(letrasMa) force += 10;
+    if(letrasMi) force += 10;
+    if(letrasMa && letrasMi) force += 20;
+    if(numero) force += 20;
+    if(especial) force += 20;
+            
+    return force;
+}
+</script>

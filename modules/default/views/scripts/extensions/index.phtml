@@ -46,6 +46,10 @@ $this->headScript()->appendFile('/snep/includes/javascript/scriptaculous/src/scr
                     'error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
                 } else { ?>
 
+                    <?php if ($this->alert_message) { ?>
+                        <div class="alert alert-danger"><?php echo $this->alert_message; ?></div>
+                    <?php }  ?>
+
                     <table class="table demo table-hover" data-filter="#filter" data-page-size="<?php echo $this->lineNumber?>">
 
                         <thead>

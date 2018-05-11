@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-26 11:18-0300\n"
+"POT-Creation-Date: 2018-05-11 15:35-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -188,10 +188,6 @@ msgstr ""
 msgid "A new voicemail message"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:567
-msgid "ANSWERED"
-msgstr ""
-
 #: ../modules/default/views/scripts/register/index.phtml:40
 msgid "API Key"
 msgstr ""
@@ -214,7 +210,7 @@ msgstr ""
 #: ../modules/billing/views/scripts/telcos/index.phtml:49
 #: ../modules/default/views/scripts/cost-center/index.phtml:49
 #: ../modules/default/views/scripts/queues/index.phtml:48
-#: ../modules/default/views/scripts/extensions/index.phtml:57
+#: ../modules/default/views/scripts/extensions/index.phtml:61
 #: ../modules/default/views/scripts/route/index.phtml:98
 #: ../modules/default/views/scripts/route/elements/actions.phtml:40
 #: ../modules/default/views/scripts/sound-files/index.phtml:53
@@ -268,7 +264,7 @@ msgstr ""
 #: ../modules/default/controllers/DatesAliasController.php:74
 #: ../modules/default/controllers/ContactsController.php:91
 #: ../modules/default/controllers/ExtensionsGroupsController.php:74
-#: ../modules/default/controllers/ExtensionsController.php:109
+#: ../modules/default/controllers/ExtensionsController.php:152
 #: ../modules/default/controllers/CostCenterController.php:83
 #: ../modules/default/controllers/ExpressionAliasController.php:74
 #: ../modules/default/controllers/MusicOnHoldController.php:99
@@ -326,7 +322,7 @@ msgstr ""
 msgid "Add Multiple"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:851
+#: ../modules/default/controllers/ExtensionsController.php:894
 msgid "Add Multiples Extensions"
 msgstr ""
 
@@ -439,7 +435,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:318
+#: ../modules/default/views/scripts/extensions/addedit.phtml:247
 #: ../modules/default/views/scripts/trunks/addedit.phtml:371
 msgid "Advanced"
 msgstr ""
@@ -468,7 +464,7 @@ msgstr ""
 #: ../modules/default/views/scripts/dates-alias/index.phtml:34
 #: ../modules/default/views/scripts/music-on-hold/index.phtml:52
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:30
-#: ../modules/default/controllers/CallsReportController.php:624
+#: ../modules/default/controllers/CallsReportController.php:612
 #: ../modules/default/controllers/RankingReportController.php:277
 msgid "Alert"
 msgstr ""
@@ -527,7 +523,7 @@ msgstr ""
 #: ../modules/default/views/scripts/calls-report/index.phtml:40
 #: ../modules/default/views/scripts/khomp-links/index.phtml:38
 #: ../modules/default/views/scripts/tdm-links/index.phtml:38
-#: ../modules/default/controllers/CallsReportController.php:387
+#: ../modules/default/controllers/CallsReportController.php:383
 msgid "Analytic"
 msgstr ""
 
@@ -650,8 +646,8 @@ msgstr ""
 msgid "Available extensions"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:579
-msgid "BUSY"
+#: ../modules/default/views/scripts/extensions/addedit.phtml:538
+msgid "Average"
 msgstr ""
 
 #: ../modules/loguser/views/scripts/loguser/view.phtml:53
@@ -676,10 +672,10 @@ msgstr ""
 #: ../modules/default/views/scripts/dates-alias/error.phtml:16
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:70
 #: ../modules/default/views/scripts/simulator/index.phtml:161
-#: ../modules/default/controllers/ExtensionsController.php:706
-#: ../modules/default/controllers/ExtensionsController.php:739
-#: ../modules/default/controllers/ExtensionsController.php:807
-#: ../modules/default/controllers/ExtensionsController.php:830
+#: ../modules/default/controllers/ExtensionsController.php:749
+#: ../modules/default/controllers/ExtensionsController.php:782
+#: ../modules/default/controllers/ExtensionsController.php:850
+#: ../modules/default/controllers/ExtensionsController.php:873
 msgid "Back"
 msgstr ""
 
@@ -870,7 +866,7 @@ msgstr ""
 msgid "Callback Module"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/index.phtml:54
+#: ../modules/default/views/scripts/extensions/index.phtml:58
 msgid "Caller ID"
 msgstr ""
 
@@ -892,8 +888,8 @@ msgid "Callerid"
 msgstr ""
 
 #: ../modules/default/controllers/CallsReportController.php:50
-#: ../modules/default/controllers/CallsReportController.php:387
-#: ../modules/default/controllers/CallsReportController.php:537
+#: ../modules/default/controllers/CallsReportController.php:383
+#: ../modules/default/controllers/CallsReportController.php:533
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Calls"
@@ -915,8 +911,8 @@ msgstr ""
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:51
 #: ../modules/default/views/scripts/queues/addedit.phtml:254
 #: ../modules/default/views/scripts/queues/members.phtml:26
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:203
-#: ../modules/default/views/scripts/extensions/addedit.phtml:445
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:204
+#: ../modules/default/views/scripts/extensions/addedit.phtml:361
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:22
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:49
 #: ../modules/default/views/scripts/remove/remove.phtml:26
@@ -1003,8 +999,8 @@ msgstr ""
 msgid "Changelog and Howto update"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:263
-#: ../modules/default/views/scripts/extensions/index.phtml:55
+#: ../modules/default/views/scripts/extensions/addedit.phtml:200
+#: ../modules/default/views/scripts/extensions/index.phtml:59
 #: ../modules/default/views/scripts/ip-status/index.phtml:60
 #: ../modules/default/views/scripts/khomp-links/view.phtml:53
 #: ../modules/default/controllers/ExportDataController.php:58
@@ -1130,20 +1126,20 @@ msgstr ""
 msgid "Code sent to your email"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:149
-#: ../modules/default/views/scripts/extensions/addedit.phtml:230
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:150
+#: ../modules/default/views/scripts/extensions/addedit.phtml:169
 #: ../modules/default/views/scripts/trunks/addedit.phtml:324
 msgid "Codec 1"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:158
-#: ../modules/default/views/scripts/extensions/addedit.phtml:239
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:159
+#: ../modules/default/views/scripts/extensions/addedit.phtml:178
 #: ../modules/default/views/scripts/trunks/addedit.phtml:333
 msgid "Codec 2"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:167
-#: ../modules/default/views/scripts/extensions/addedit.phtml:248
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:168
+#: ../modules/default/views/scripts/extensions/addedit.phtml:187
 #: ../modules/default/views/scripts/trunks/addedit.phtml:342
 msgid "Codec 3"
 msgstr ""
@@ -1304,8 +1300,8 @@ msgstr ""
 msgid "Cut on pipe '|'"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:738
-#: ../modules/default/controllers/ExtensionsController.php:829
+#: ../modules/default/controllers/ExtensionsController.php:781
+#: ../modules/default/controllers/ExtensionsController.php:872
 msgid "DB Delete Error: "
 msgstr ""
 
@@ -1321,8 +1317,8 @@ msgstr ""
 msgid "DND"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:131
-#: ../modules/default/views/scripts/extensions/addedit.phtml:213
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:132
+#: ../modules/default/views/scripts/extensions/addedit.phtml:160
 #: ../modules/default/views/scripts/trunks/addedit.phtml:89
 #: ../modules/default/controllers/ExportDataController.php:58
 #: ../modules/default/controllers/ExportDataController.php:61
@@ -1491,7 +1487,7 @@ msgstr ""
 #: ../modules/billing/views/scripts/telcos/index.phtml:66
 #: ../modules/default/views/scripts/cost-center/index.phtml:65
 #: ../modules/default/views/scripts/queues/index.phtml:70
-#: ../modules/default/views/scripts/extensions/index.phtml:76
+#: ../modules/default/views/scripts/extensions/index.phtml:80
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:20
 #: ../modules/default/views/scripts/remove/remove.phtml:24
 #: ../modules/default/views/scripts/route/index.phtml:127
@@ -1514,7 +1510,7 @@ msgstr ""
 #: ../modules/default/controllers/DatesAliasController.php:150
 #: ../modules/default/controllers/ContactsController.php:253
 #: ../modules/default/controllers/ExtensionsGroupsController.php:238
-#: ../modules/default/controllers/ExtensionsController.php:691
+#: ../modules/default/controllers/ExtensionsController.php:734
 #: ../modules/default/controllers/CostCenterController.php:163
 #: ../modules/default/controllers/NotificationsController.php:103
 #: ../modules/default/controllers/QueuesController.php:280
@@ -1548,7 +1544,7 @@ msgstr ""
 msgid "Delete Extension Group."
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:712
+#: ../modules/default/controllers/ExtensionsController.php:755
 msgid "Delete Extension."
 msgstr ""
 
@@ -1556,7 +1552,7 @@ msgstr ""
 msgid "Delete File"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:756
+#: ../modules/default/controllers/ExtensionsController.php:799
 msgid "Delete Multiples"
 msgstr ""
 
@@ -1748,8 +1744,8 @@ msgstr ""
 msgid "Dina Jumann [ dina.jumann@opens.com.br ] - Web designer "
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:92
-#: ../modules/default/views/scripts/extensions/addedit.phtml:150
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:93
+#: ../modules/default/views/scripts/extensions/addedit.phtml:128
 msgid "Direct Media"
 msgstr ""
 
@@ -1851,7 +1847,7 @@ msgstr ""
 #: ../modules/billing/controllers/BillingController.php:55
 #: ../modules/default/views/scripts/cost-center/index.phtml:64
 #: ../modules/default/views/scripts/queues/index.phtml:67
-#: ../modules/default/views/scripts/extensions/index.phtml:74
+#: ../modules/default/views/scripts/extensions/index.phtml:78
 #: ../modules/default/views/scripts/route/index.phtml:123
 #: ../modules/default/views/scripts/sound-files/index.phtml:97
 #: ../modules/default/views/scripts/contacts/index.phtml:66
@@ -1869,7 +1865,7 @@ msgstr ""
 #: ../modules/default/controllers/DatesAliasController.php:107
 #: ../modules/default/controllers/ContactsController.php:161
 #: ../modules/default/controllers/ExtensionsGroupsController.php:144
-#: ../modules/default/controllers/ExtensionsController.php:207
+#: ../modules/default/controllers/ExtensionsController.php:250
 #: ../modules/default/controllers/CostCenterController.php:121
 #: ../modules/default/controllers/QueuesController.php:178
 #: ../modules/default/controllers/ExpressionAliasController.php:131
@@ -1901,8 +1897,8 @@ msgstr ""
 #: ../modules/default/views/layouts/register.phtml:147
 #: ../modules/default/views/layouts/register.phtml:192
 #: ../modules/default/views/layouts/loginregister.phtml:42
-#: ../modules/default/views/scripts/extensions/addedit.phtml:339
-#: ../modules/default/views/scripts/extensions/addedit.phtml:341
+#: ../modules/default/views/scripts/extensions/addedit.phtml:262
+#: ../modules/default/views/scripts/extensions/addedit.phtml:264
 #: ../modules/default/views/scripts/contacts/addedit.phtml:23
 #: ../modules/default/views/scripts/contacts/addedit.phtml:25
 #: ../modules/default/views/scripts/register/index.phtml:12
@@ -1913,17 +1909,17 @@ msgstr ""
 msgid "Email address"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:388
+#: ../modules/default/views/scripts/extensions/addedit.phtml:310
 msgid "Enable Busy Notification(BLF)"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:122
-#: ../modules/default/views/scripts/extensions/addedit.phtml:179
-#: ../modules/default/views/scripts/extensions/addedit.phtml:183
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:123
+#: ../modules/default/views/scripts/extensions/addedit.phtml:142
+#: ../modules/default/views/scripts/extensions/addedit.phtml:144
 msgid "Enable delay qualification"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:373
+#: ../modules/default/views/scripts/extensions/addedit.phtml:295
 msgid "Enable follow-me"
 msgstr ""
 
@@ -1934,13 +1930,13 @@ msgstr ""
 #: ../modules/default/views/scripts/calls-report/index.phtml:213
 #: ../modules/default/views/scripts/calls-report/index.phtml:226
 #: ../modules/default/views/scripts/calls-report/index.phtml:239
-#: ../modules/default/views/scripts/extensions/addedit.phtml:326
-#: ../modules/default/views/scripts/extensions/addedit.phtml:330
-#: ../modules/default/views/scripts/extensions/addedit.phtml:351
-#: ../modules/default/views/scripts/extensions/addedit.phtml:353
-#: ../modules/default/views/scripts/extensions/addedit.phtml:378
-#: ../modules/default/views/scripts/extensions/addedit.phtml:380
-#: ../modules/default/views/scripts/extensions/addedit.phtml:392
+#: ../modules/default/views/scripts/extensions/addedit.phtml:253
+#: ../modules/default/views/scripts/extensions/addedit.phtml:255
+#: ../modules/default/views/scripts/extensions/addedit.phtml:274
+#: ../modules/default/views/scripts/extensions/addedit.phtml:276
+#: ../modules/default/views/scripts/extensions/addedit.phtml:300
+#: ../modules/default/views/scripts/extensions/addedit.phtml:302
+#: ../modules/default/views/scripts/extensions/addedit.phtml:313
 #: ../modules/default/views/scripts/ranking-report/index.phtml:80
 #: ../modules/default/views/scripts/trunks/addedit.phtml:197
 #: ../modules/default/views/scripts/trunks/addedit.phtml:379
@@ -2048,7 +2044,7 @@ msgstr ""
 msgid "Errors were detected in the configuration of SNEP, click "
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:11
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:12
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:39
 msgid "Ex: 1000-1050;1060;1063;1070-1100"
 msgstr ""
@@ -2150,33 +2146,33 @@ msgid "Expression Aliases"
 msgstr ""
 
 #: ../lib/PBX/Rule/ActionConfig.php:158
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:6
-#: ../modules/default/views/scripts/extensions/addedit.phtml:28
-#: ../modules/default/views/scripts/extensions/addedit.phtml:31
-#: ../modules/default/views/scripts/extensions/index.phtml:53
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:7
+#: ../modules/default/views/scripts/extensions/addedit.phtml:27
+#: ../modules/default/views/scripts/extensions/addedit.phtml:30
+#: ../modules/default/views/scripts/extensions/index.phtml:57
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:34
 #: ../modules/default/views/scripts/ip-status/index.phtml:58
 #: ../modules/default/views/scripts/route/add_edit.phtml:73
 #: ../modules/default/views/scripts/services-report/view.phtml:25
 #: ../modules/default/views/scripts/simulator/index.phtml:52
 #: ../modules/default/controllers/ExportDataController.php:58
-#: ../modules/default/controllers/ExtensionsController.php:186
-#: ../modules/default/controllers/ExtensionsController.php:457
-#: ../modules/default/controllers/ExtensionsController.php:728
-#: ../modules/default/controllers/ExtensionsController.php:802
-#: ../modules/default/controllers/ExtensionsController.php:821
-#: ../modules/default/controllers/ExtensionsController.php:898
-#: ../modules/default/controllers/ExtensionsController.php:930
+#: ../modules/default/controllers/ExtensionsController.php:229
+#: ../modules/default/controllers/ExtensionsController.php:500
+#: ../modules/default/controllers/ExtensionsController.php:771
+#: ../modules/default/controllers/ExtensionsController.php:845
+#: ../modules/default/controllers/ExtensionsController.php:864
+#: ../modules/default/controllers/ExtensionsController.php:941
+#: ../modules/default/controllers/ExtensionsController.php:973
 #: ../modules/default/controllers/RouteController.php:64
 msgid "Extension"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:890
-#: ../modules/default/controllers/ExtensionsController.php:918
+#: ../modules/default/controllers/ExtensionsController.php:933
+#: ../modules/default/controllers/ExtensionsController.php:961
 msgid "Extension "
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/index.phtml:56
+#: ../modules/default/views/scripts/extensions/index.phtml:60
 #: ../modules/default/views/scripts/route/add_edit.phtml:70
 #: ../modules/default/views/scripts/extensions-groups/migration.phtml:29
 #: ../modules/default/views/scripts/contact-groups/migration.phtml:28
@@ -2196,7 +2192,7 @@ msgstr ""
 msgid "Extension PHP"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:484
+#: ../modules/default/controllers/ExtensionsController.php:527
 msgid "Extension already taken. Please, choose another denomination."
 msgstr ""
 
@@ -2204,17 +2200,17 @@ msgstr ""
 msgid "Extension:"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:9
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:10
 #: ../modules/default/views/scripts/ip-status/index.phtml:47
 #: ../modules/default/views/scripts/services-report/index.phtml:36
 #: ../modules/default/views/scripts/services-report/index.phtml:49
 #: ../modules/default/controllers/ExportDataController.php:50
 #: ../modules/default/controllers/ExtensionsController.php:88
-#: ../modules/default/controllers/ExtensionsController.php:108
-#: ../modules/default/controllers/ExtensionsController.php:206
-#: ../modules/default/controllers/ExtensionsController.php:690
-#: ../modules/default/controllers/ExtensionsController.php:755
-#: ../modules/default/controllers/ExtensionsController.php:850
+#: ../modules/default/controllers/ExtensionsController.php:151
+#: ../modules/default/controllers/ExtensionsController.php:249
+#: ../modules/default/controllers/ExtensionsController.php:733
+#: ../modules/default/controllers/ExtensionsController.php:798
+#: ../modules/default/controllers/ExtensionsController.php:893
 #: /var/www/html/snep-3/modules/default/resources.xml
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "Extensions"
@@ -2225,8 +2221,8 @@ msgstr ""
 msgid "Extensions Actions"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:16
-#: ../modules/default/views/scripts/extensions/addedit.phtml:45
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:17
+#: ../modules/default/views/scripts/extensions/addedit.phtml:44
 #: ../modules/default/controllers/ExtensionsGroupsController.php:73
 #: ../modules/default/controllers/ExtensionsGroupsController.php:129
 #: ../modules/default/controllers/ExtensionsGroupsController.php:143
@@ -2248,10 +2244,6 @@ msgstr ""
 
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:37
 msgid "Extensions Range"
-msgstr ""
-
-#: ../modules/default/controllers/CallsReportController.php:585
-msgid "FAILED"
 msgstr ""
 
 #: ../modules/default/controllers/KhompLinksController.php:83
@@ -2369,6 +2361,10 @@ msgstr ""
 msgid "For the agent that answerd less calls (fewestcalls)"
 msgstr ""
 
+#: ../modules/default/views/scripts/extensions/addedit.phtml:98
+msgid "For your safety, create a strong password"
+msgstr ""
+
 #: ../modules/default/views/scripts/trunks/addedit.phtml:193
 msgid "Force reverse authentication"
 msgstr ""
@@ -2421,6 +2417,10 @@ msgstr ""
 msgid "General Configuration"
 msgstr ""
 
+#: ../modules/default/views/scripts/extensions/addedit.phtml:104
+msgid "Generate Password"
+msgstr ""
+
 #: ../modules/default/views/scripts/error/error.phtml:12
 msgid "Get me out of here"
 msgstr ""
@@ -2439,6 +2439,10 @@ msgstr ""
 
 #: ../modules/default/actions/GoContext.php:55
 msgid "Go to a Context"
+msgstr ""
+
+#: ../modules/default/views/scripts/extensions/addedit.phtml:541
+msgid "Good"
 msgstr ""
 
 #: /var/www/html/snep-3/configs/titleOptions.xml
@@ -2513,8 +2517,8 @@ msgstr ""
 msgid "I want to register"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:51
-#: ../modules/default/views/scripts/extensions/addedit.phtml:93
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:52
+#: ../modules/default/views/scripts/extensions/addedit.phtml:85
 #: ../modules/default/views/scripts/trunks/addedit.phtml:62
 msgid "IAX2"
 msgstr ""
@@ -2594,8 +2598,8 @@ msgstr ""
 msgid "In seconds"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:138
-#: ../modules/default/views/scripts/extensions/addedit.phtml:220
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:139
+#: ../modules/default/views/scripts/extensions/addedit.phtml:163
 #: ../modules/default/views/scripts/trunks/addedit.phtml:96
 msgid "Inband"
 msgstr ""
@@ -2621,8 +2625,8 @@ msgstr ""
 msgid "Incoming Rule Only"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:142
-#: ../modules/default/views/scripts/extensions/addedit.phtml:224
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:143
+#: ../modules/default/views/scripts/extensions/addedit.phtml:164
 #: ../modules/default/views/scripts/trunks/addedit.phtml:100
 msgid "Info"
 msgstr ""
@@ -2649,8 +2653,8 @@ msgstr ""
 msgid "Insert prefix to handling"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:44
-#: ../modules/default/views/scripts/extensions/addedit.phtml:81
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:45
+#: ../modules/default/views/scripts/extensions/addedit.phtml:75
 #: ../modules/default/views/scripts/trunks/addedit.phtml:44
 msgid "Interface Technology"
 msgstr ""
@@ -2707,7 +2711,7 @@ msgstr ""
 msgid "Kernel"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:94
+#: ../modules/default/views/scripts/extensions/addedit.phtml:86
 #: ../modules/default/views/scripts/trunks/addedit.phtml:63
 msgid "Khomp"
 msgstr ""
@@ -2895,9 +2899,9 @@ msgstr ""
 msgid "Manage"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:96
-#: ../modules/default/views/scripts/extensions/addedit.phtml:306
-#: ../modules/default/views/scripts/extensions/addedit.phtml:308
+#: ../modules/default/views/scripts/extensions/addedit.phtml:88
+#: ../modules/default/views/scripts/extensions/addedit.phtml:237
+#: ../modules/default/views/scripts/extensions/addedit.phtml:239
 msgid "Manual"
 msgstr ""
 
@@ -3061,17 +3065,13 @@ msgstr ""
 msgid "MySQL"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:61
-#: ../modules/default/views/scripts/extensions/addedit.phtml:119
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:62
+#: ../modules/default/views/scripts/extensions/addedit.phtml:116
 msgid "NAT"
 msgstr ""
 
 #: ../modules/default/views/scripts/trunks/addedit.phtml:288
 msgid "NAT Optimization"
-msgstr ""
-
-#: ../modules/default/controllers/CallsReportController.php:573
-msgid "NO ANSWER"
 msgstr ""
 
 #: ../modules/billing/views/scripts/telcos/addedit.phtml:6
@@ -3080,8 +3080,8 @@ msgstr ""
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:19
 #: ../modules/default/views/scripts/cost-center/index.phtml:46
 #: ../modules/default/views/scripts/queues/index.phtml:42
-#: ../modules/default/views/scripts/extensions/addedit.phtml:38
-#: ../modules/default/views/scripts/extensions/addedit.phtml:40
+#: ../modules/default/views/scripts/extensions/addedit.phtml:37
+#: ../modules/default/views/scripts/extensions/addedit.phtml:39
 #: ../modules/default/views/scripts/ip-status/index.phtml:107
 #: ../modules/default/views/scripts/ip-status/index.phtml:157
 #: ../modules/default/views/scripts/action-configs/index.phtml:35
@@ -3216,7 +3216,7 @@ msgstr ""
 msgid "No entries found!"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:623
+#: ../modules/default/controllers/CallsReportController.php:611
 #: ../modules/default/controllers/RankingReportController.php:276
 msgid "No entries found."
 msgstr ""
@@ -3316,8 +3316,8 @@ msgstr ""
 msgid "Number of Lines"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:510
-#: ../modules/default/views/scripts/extensions/addedit.phtml:516
+#: ../modules/default/views/scripts/extensions/addedit.phtml:428
+#: ../modules/default/views/scripts/extensions/addedit.phtml:434
 #: ../modules/default/views/scripts/contacts/addedit.phtml:243
 msgid "Numbers only please"
 msgstr ""
@@ -3348,10 +3348,10 @@ msgstr ""
 msgid "On going"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:33
-#: ../modules/default/views/scripts/extensions/addedit.phtml:114
-#: ../modules/default/views/scripts/extensions/addedit.phtml:364
-#: ../modules/default/views/scripts/extensions/addedit.phtml:366
+#: ../modules/default/views/scripts/extensions/addedit.phtml:32
+#: ../modules/default/views/scripts/extensions/addedit.phtml:111
+#: ../modules/default/views/scripts/extensions/addedit.phtml:287
+#: ../modules/default/views/scripts/extensions/addedit.phtml:289
 #: ../modules/default/views/scripts/conference-rooms/index.phtml:52
 msgid "Only numbers"
 msgstr ""
@@ -3432,7 +3432,7 @@ msgstr ""
 msgid "Outgoing Rule Only"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:346
+#: ../modules/default/views/scripts/extensions/addedit.phtml:269
 msgid "Padlock"
 msgstr ""
 
@@ -3456,7 +3456,7 @@ msgstr ""
 #: ../modules/default/views/layouts/register.phtml:200
 #: ../modules/default/views/layouts/loginregister.phtml:51
 #: ../modules/default/views/scripts/auth/login.phtml:19
-#: ../modules/default/views/scripts/extensions/addedit.phtml:105
+#: ../modules/default/views/scripts/extensions/addedit.phtml:96
 #: ../modules/default/views/scripts/users/addedit.phtml:34
 #: ../modules/default/views/scripts/parameters/index.phtml:133
 #: ../modules/default/views/scripts/parameters/index.phtml:167
@@ -3467,7 +3467,7 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:361
+#: ../modules/default/views/scripts/extensions/addedit.phtml:284
 msgid "Password Padlock"
 msgstr ""
 
@@ -3551,8 +3551,8 @@ msgstr ""
 msgid "Phone invalid"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:31
-#: ../modules/default/views/scripts/extensions/addedit.phtml:62
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:32
+#: ../modules/default/views/scripts/extensions/addedit.phtml:59
 #: ../modules/default/controllers/PickupGroupsController.php:118
 #: ../modules/default/controllers/PickupGroupsController.php:199
 #: ../modules/default/controllers/PickupGroupsController.php:215
@@ -3611,10 +3611,10 @@ msgstr ""
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:80
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:86
 #: ../modules/default/views/scripts/queues/addedit.phtml:278
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:232
-#: ../modules/default/views/scripts/extensions/addedit.phtml:508
-#: ../modules/default/views/scripts/extensions/addedit.phtml:514
-#: ../modules/default/views/scripts/extensions/addedit.phtml:526
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:233
+#: ../modules/default/views/scripts/extensions/addedit.phtml:426
+#: ../modules/default/views/scripts/extensions/addedit.phtml:432
+#: ../modules/default/views/scripts/extensions/addedit.phtml:444
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:71
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:77
 #: ../modules/default/views/scripts/contacts/addedit.phtml:232
@@ -3680,9 +3680,9 @@ msgstr ""
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:81
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:87
 #: ../modules/default/views/scripts/queues/addedit.phtml:279
-#: ../modules/default/views/scripts/extensions/addedit.phtml:509
-#: ../modules/default/views/scripts/extensions/addedit.phtml:515
-#: ../modules/default/views/scripts/extensions/addedit.phtml:527
+#: ../modules/default/views/scripts/extensions/addedit.phtml:427
+#: ../modules/default/views/scripts/extensions/addedit.phtml:433
+#: ../modules/default/views/scripts/extensions/addedit.phtml:445
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:78
 #: ../modules/default/views/scripts/contacts/addedit.phtml:233
 #: ../modules/default/views/scripts/contacts/addedit.phtml:242
@@ -3721,7 +3721,7 @@ msgstr ""
 msgid "Please enter with numbers only."
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:233
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:234
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:72
 msgid "Please enter with range valid"
 msgstr ""
@@ -3797,8 +3797,8 @@ msgstr ""
 msgid "Qualification time"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:117
-#: ../modules/default/views/scripts/extensions/addedit.phtml:174
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:118
+#: ../modules/default/views/scripts/extensions/addedit.phtml:138
 #: ../modules/default/views/scripts/parameters/index.phtml:260
 msgid "Qualify"
 msgstr ""
@@ -3857,8 +3857,8 @@ msgstr ""
 msgid "Queues Actions"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:134
-#: ../modules/default/views/scripts/extensions/addedit.phtml:216
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:135
+#: ../modules/default/views/scripts/extensions/addedit.phtml:162
 #: ../modules/default/views/scripts/trunks/addedit.phtml:92
 msgid "RFC-2833"
 msgstr ""
@@ -4036,8 +4036,8 @@ msgstr ""
 #: ../modules/default/controllers/ServicesReportController.php:53
 #: ../modules/default/controllers/ServicesReportController.php:104
 #: ../modules/default/controllers/CallsReportController.php:50
-#: ../modules/default/controllers/CallsReportController.php:387
-#: ../modules/default/controllers/CallsReportController.php:536
+#: ../modules/default/controllers/CallsReportController.php:383
+#: ../modules/default/controllers/CallsReportController.php:532
 #: ../modules/default/controllers/RankingReportController.php:95
 #: /var/www/html/snep-3/modules/default/resources.xml
 msgid "Reports"
@@ -4198,7 +4198,7 @@ msgstr ""
 msgid "Rua dos Cisnes, 541 "
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:803
+#: ../modules/default/controllers/ExtensionsController.php:846
 #: ../modules/default/controllers/RouteController.php:264
 #: ../modules/default/controllers/RouteController.php:321
 #: ../modules/default/controllers/RouteController.php:380
@@ -4232,8 +4232,8 @@ msgstr ""
 msgid "SIGAME"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:50
-#: ../modules/default/views/scripts/extensions/addedit.phtml:92
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:51
+#: ../modules/default/views/scripts/extensions/addedit.phtml:84
 #: ../modules/default/views/scripts/trunks/addedit.phtml:61
 msgid "SIP"
 msgstr ""
@@ -4275,8 +4275,8 @@ msgstr ""
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:49
 #: ../modules/default/views/scripts/queues/addedit.phtml:252
 #: ../modules/default/views/scripts/queues/members.phtml:24
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:201
-#: ../modules/default/views/scripts/extensions/addedit.phtml:443
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:202
+#: ../modules/default/views/scripts/extensions/addedit.phtml:359
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:46
 #: ../modules/default/views/scripts/action-configs/edit.phtml:41
 #: ../modules/default/views/scripts/contacts/addedit.phtml:162
@@ -4339,11 +4339,11 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:544
+#: ../modules/default/controllers/ExtensionsController.php:587
 msgid "Select a Khomp board from the list"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:547
+#: ../modules/default/controllers/ExtensionsController.php:590
 msgid "Select a Khomp channel from the list"
 msgstr ""
 
@@ -4578,7 +4578,7 @@ msgstr ""
 msgid "Simulator"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:112
+#: ../modules/default/views/scripts/extensions/addedit.phtml:109
 msgid "Simultaneous Call Limit"
 msgstr ""
 
@@ -4790,7 +4790,7 @@ msgstr ""
 #: ../modules/default/views/scripts/calls-report/index.phtml:41
 #: ../modules/default/views/scripts/khomp-links/index.phtml:42
 #: ../modules/default/views/scripts/tdm-links/index.phtml:42
-#: ../modules/default/controllers/CallsReportController.php:538
+#: ../modules/default/controllers/CallsReportController.php:534
 msgid "Synthetic"
 msgstr ""
 
@@ -4933,7 +4933,7 @@ msgstr ""
 msgid "The board is required"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:522
+#: ../modules/default/views/scripts/extensions/addedit.phtml:440
 msgid "The channel is required"
 msgstr ""
 
@@ -4980,7 +4980,7 @@ msgstr ""
 msgid "The directory name is required"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:530
+#: ../modules/default/views/scripts/extensions/addedit.phtml:448
 #: ../modules/default/views/scripts/users/addedit.phtml:121
 #: ../modules/default/views/scripts/register/index.phtml:95
 msgid "The e-mail is required"
@@ -5006,8 +5006,8 @@ msgid ""
 "back."
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:228
-#: ../modules/default/views/scripts/extensions/addedit.phtml:504
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:229
+#: ../modules/default/views/scripts/extensions/addedit.phtml:422
 msgid "The extension group is required"
 msgstr ""
 
@@ -5021,12 +5021,12 @@ msgstr ""
 msgid "The extension group will be deleted. Are you sure?."
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:231
-#: ../modules/default/views/scripts/extensions/addedit.phtml:507
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:232
+#: ../modules/default/views/scripts/extensions/addedit.phtml:425
 msgid "The extension is required"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:713
+#: ../modules/default/controllers/ExtensionsController.php:756
 msgid "The extension will be deleted. After that, you have no way get it back."
 msgstr ""
 
@@ -5057,7 +5057,7 @@ msgstr ""
 msgid "The first think you need is Add your Extensions and their Groups."
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:799
+#: ../modules/default/controllers/ExtensionsController.php:842
 msgid ""
 "The following extensions are in use in routes, modify them prior to remove "
 "this extension"
@@ -5079,7 +5079,7 @@ msgstr ""
 msgid "The following members make use of this queue, remove before deleting:"
 msgstr ""
 
-#: ../modules/default/controllers/ExtensionsController.php:701
+#: ../modules/default/controllers/ExtensionsController.php:744
 msgid ""
 "The following routes use this extension, modify them prior to remove this "
 "extension"
@@ -5123,7 +5123,7 @@ msgstr ""
 #: ../modules/billing/views/scripts/telcos/addedit.phtml:61
 #: ../modules/default/views/scripts/cost-center/addedit.phtml:85
 #: ../modules/default/views/scripts/queues/addedit.phtml:277
-#: ../modules/default/views/scripts/extensions/addedit.phtml:525
+#: ../modules/default/views/scripts/extensions/addedit.phtml:443
 #: ../modules/default/views/scripts/contacts/addedit.phtml:231
 #: ../modules/default/views/scripts/profiles/addedit.phtml:66
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:73
@@ -5152,7 +5152,7 @@ msgstr ""
 #: ../modules/default/views/layouts/register.phtml:338
 #: ../modules/default/views/layouts/register.phtml:389
 #: ../modules/default/views/layouts/loginregister.phtml:87
-#: ../modules/default/views/scripts/extensions/addedit.phtml:513
+#: ../modules/default/views/scripts/extensions/addedit.phtml:431
 #: ../modules/default/views/scripts/users/addedit.phtml:116
 #: ../modules/default/views/scripts/register/index.phtml:90
 msgid "The password is required"
@@ -5204,8 +5204,8 @@ msgstr ""
 msgid "The time range need to be in the formats: HH:MM-HH:MM"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:236
-#: ../modules/default/views/scripts/extensions/addedit.phtml:519
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:237
+#: ../modules/default/views/scripts/extensions/addedit.phtml:437
 msgid "The trunk is required"
 msgstr ""
 
@@ -5243,8 +5243,8 @@ msgid ""
 "between the keys, blanks and special characters except( # % | . - _ )"
 msgstr ""
 
-#: ../modules/default/controllers/CallsReportController.php:228
-#: ../modules/default/controllers/CallsReportController.php:246
+#: ../modules/default/controllers/CallsReportController.php:223
+#: ../modules/default/controllers/CallsReportController.php:241
 msgid "There are no extensions in the selected group"
 msgstr ""
 
@@ -5362,6 +5362,12 @@ msgid ""
 "To confirm your registration, an email was sent with the confirmation key."
 msgstr ""
 
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:5
+msgid ""
+"To ensure the security of your extensions your passwords will be created in "
+"random ways."
+msgstr ""
+
 #: ../modules/default/views/layouts/loginregister.phtml:31
 msgid "To proceed you need to log in to your account again."
 msgstr ""
@@ -5399,8 +5405,8 @@ msgid "Totals"
 msgstr ""
 
 #: ../lib/PBX/Rule/ActionConfig.php:173
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:184
-#: ../modules/default/views/scripts/extensions/addedit.phtml:284
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:185
+#: ../modules/default/views/scripts/extensions/addedit.phtml:218
 #: ../modules/default/views/scripts/route/add_edit.phtml:74
 #: ../modules/default/views/scripts/trunks/addedit.phtml:7
 #: ../modules/default/views/scripts/simulator/index.phtml:53
@@ -5440,9 +5446,9 @@ msgstr ""
 #: ../modules/billing/views/scripts/billing/addedit.phtml:26
 #: ../modules/default/views/scripts/calls-report/index.phtml:35
 #: ../modules/default/views/scripts/cost-center/index.phtml:47
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:47
-#: ../modules/default/views/scripts/extensions/addedit.phtml:84
-#: ../modules/default/views/scripts/extensions/addedit.phtml:194
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:48
+#: ../modules/default/views/scripts/extensions/addedit.phtml:77
+#: ../modules/default/views/scripts/extensions/addedit.phtml:151
 #: ../modules/default/views/scripts/ip-status/index.phtml:109
 #: ../modules/default/views/scripts/ranking-report/index.phtml:35
 #: ../modules/default/views/scripts/ranking-report/index.phtml:37
@@ -5672,6 +5678,10 @@ msgstr ""
 msgid "Verbose (only numbers)"
 msgstr ""
 
+#: ../modules/default/views/scripts/extensions/addedit.phtml:545
+msgid "Very Good"
+msgstr ""
+
 #: /var/www/html/snep-3/configs/dashboard.xml
 msgid "View"
 msgstr ""
@@ -5681,13 +5691,13 @@ msgstr ""
 msgid "View status of the channel?"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/multiadd.phtml:52
-#: ../modules/default/views/scripts/extensions/addedit.phtml:95
+#: ../modules/default/views/scripts/extensions/multiadd.phtml:53
+#: ../modules/default/views/scripts/extensions/addedit.phtml:87
 #: ../modules/default/views/scripts/trunks/addedit.phtml:64
 msgid "Virtual"
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:321
+#: ../modules/default/views/scripts/extensions/addedit.phtml:249
 msgid "Voicemail"
 msgstr ""
 
@@ -5713,6 +5723,10 @@ msgstr ""
 
 #: ../modules/default/controllers/AuthController.php:189
 msgid "We've sent an access code to the email:"
+msgstr ""
+
+#: ../modules/default/views/scripts/extensions/addedit.phtml:534
+msgid "Weak"
 msgstr ""
 
 #: ../modules/default/controllers/SimulatorController.php:201
@@ -5931,6 +5945,12 @@ msgid ""
 "permitted."
 msgstr ""
 
+#: ../modules/default/controllers/ExtensionsController.php:104
+msgid ""
+"You have extensions with weak passwords. For security measures it is "
+"important to update them."
+msgstr ""
+
 #: ../lib/Snep/Notifications.php:67
 msgid "You have no notifications"
 msgstr ""
@@ -5967,7 +5987,7 @@ msgstr ""
 msgid "Your browser does not support the audio element."
 msgstr ""
 
-#: ../modules/default/views/scripts/extensions/addedit.phtml:531
+#: ../modules/default/views/scripts/extensions/addedit.phtml:449
 #: ../modules/default/views/scripts/users/addedit.phtml:122
 #: ../modules/default/views/scripts/parameters/index.phtml:338
 #: ../modules/default/views/scripts/register/index.phtml:96

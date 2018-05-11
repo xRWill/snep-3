@@ -91,10 +91,53 @@ class ExtensionsController extends Zend_Controller_Action {
 
         if(empty($extensions)){
           $this->view->error_message = $this->view->translate("You do not have registered extensions. <br><br> Click 'Add Extensions' ou 'Multi Add Extensions' to make the first registration");
+        }else{
+          $passwordValidate = true;
+          $passwordValidateExten = null;
+          foreach($extensions as $key => $exten){
+            if(strlen($exten['password']) < 16){
+              $passwordValidate = false;
+              $passwordValidateExten .= $exten['exten']." ";
+            }
+          }
+          if(!$passwordValidate){
+            $this->view->alert_message = $this->view->translate("You have extensions with weak passwords. For security measures it is important to update them.")."(".$passwordValidateExten.")";
+          }
         }
-
+        
         $this->view->extensions = $extensions;
 
+      }
+
+      /**
+      * Generator of complex passwords
+      * @param int $size
+      * @param bolean $uppercase
+      * @param bolean $numbers
+      * @param bolean $symbols
+      * @return string
+      */
+      public function generatorPassword($size = 16, $uppercase = true, $numbers = true, $symbols = true) {
+        
+        $lmin = 'abcdefghijklmnopqrstuvwxyz';
+        $lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $num = '0123456789';
+        $simb = '@?!%#';
+        $retorno = '';
+        $caracteres = '';
+
+        $caracteres .= $lmin;
+          
+        if ($numbers) $caracteres .= $num;
+        if ($symbols) $caracteres .= $simb;
+        if ($uppercase) $caracteres .= $lmai;
+
+        $len = strlen($caracteres);
+        for ($n = 1; $n <= $size; $n++) {
+          $rand = mt_rand(1, $len);
+          $retorno .= $caracteres[$rand-1];
+        }
+        return $retorno;
       }
 
       /**
@@ -886,7 +929,7 @@ class ExtensionsController extends Zend_Controller_Action {
                       if (is_numeric($exten)) {
 
                         $data["exten"] = $exten;
-                        $data["password"] = $exten . $exten;
+                        $data["password"] = self::generatorPassword();
                         $data["name"] = $this->view->translate("Extension ") ." ".$exten . " <" . $exten.">" ;
                         $data["sip"]["password"] = $exten;
                         $data["iax"]["password"] = $exten;
@@ -914,7 +957,7 @@ class ExtensionsController extends Zend_Controller_Action {
 
                               $data["id"] = $i;
                               $data["exten"] = $i;
-                              $data["password"] = $i . $i;
+                              $data["password"] = self::generatorPassword();;
                               $data["name"] = $this->view->translate("Extension ") ." ".$i . " <" . $i.">" ;
                               $data["sip"]["password"] = $i . $i;
                               $data["iax2"]["password"] = $i . $i;

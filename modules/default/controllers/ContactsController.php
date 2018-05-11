@@ -426,7 +426,7 @@ class ContactsController extends Zend_Controller_Action {
 
                         $erro = false;
                         $contact[$cont]['phone'] = $data['phone'];
-                        $contact[$cont]['name'] = $data['name'];
+                        $contact[$cont]['name'] = utf8_encode($data['name']);
                         (isset($data['address'])) ? $contact[$cont]['address'] = $data['address']: $contact[$cont]['address'] = "";
                         (isset($data['zipcode'])) ? $contact[$cont]['zipcode'] = $data['zipcode']: $contact[$cont]['zipcode'] = "";
                         $contact[$cont]['group'] = $_POST['group'];
