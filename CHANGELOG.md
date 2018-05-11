@@ -21,6 +21,8 @@ Cada item adicionado na versão poderá ser um dos seguintes tipos:
 ## 3.07 ##
 *XX de XXXXX de 2018*
 * **`NOVO`** - Funcionalidade de auditoria.
+* **`NOVO`** - Opção de criar senhas seguras no cadastro de ramais. (Contribuicao:  Edgar Wesley Braga Mariano)
+* **`MELHORIA`** - Verificação de senha forte no cadastro de ramais .
 * **`MELHORIA`** - Melhoria no simulador.
 * **`MELHORIA`** - Adicionado novos campos na fucionalidade de exportação de dados.
 * **`CORREÇÃO`** - Ligações não atendidas com gravação.
