@@ -16,6 +16,9 @@ if($controller != 'auth'){
     $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/validate/jquery.maskedinput.js');
     $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/daterangepicker/moment.js');
     $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/daterangepicker/daterangepicker.js');
+    $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/datatables/media/js/jquery.dataTables.js');
+    $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/datatables/media/js/dataTables.bootstrap.js');
+    
 
     // Guide Help
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/introjs.css');
@@ -28,6 +31,7 @@ if($controller != 'auth'){
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/morris.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/font-awesome.min.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/timeline.css');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/includes/javascript/datatables/media/css/dataTables.bootstrap.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/sb-admin-2.css');
 
 

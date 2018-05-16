@@ -21,45 +21,48 @@ Cada item adicionado na versão poderá ser um dos seguintes tipos:
 ## 3.07 ##
 *XX de XXXXX de 2018*
 
+
+* **`NOVO`** - Configuração BLF no ramal.
+
+* **`NOVO`** - Recurso discar para ramal na ação da URA.
+
 * **`NOVO`** - Funcionalidade de auditoria.
 
 * **`NOVO`** - Opção de criar senhas seguras no cadastro de ramais. (Contribuicao:  Edgar Wesley Braga Mariano)
 
-* **`MELHORIA`** - Verificação de senha forte no cadastro de ramais .
+* **`MELHORIA`** - Verificação de senha forte no cadastro de ramais.
+
+* **`MELHORIA`** - Melhoriano layout das listagens de crud.
 
 * **`MELHORIA`** - Melhoria no simulador.
 
 * **`MELHORIA`** - Adicionado novos campos na fucionalidade de exportação de dados.
 
-* **`CORREÇÃO`** - Ligações não atendidas com gravação.
-
 * **`MELHORIA`** - Refeitos relatórios do Snep ue apresentavam erro de conexão.
 
 * **`MELHORIA`** - Ajuste em extensions.conf e features.conf.
+
+* **`MELHORIA`** - Envio de email para servidores próprios.
+
+* **`MELHORIA`** - Melhoria de volume de consulta aos serviços cloud.
 
 * **`CORREÇÃO`** - Novo formato de alias de expressão para celulares.
 
 * **`CORREÇÃO`** - Lista de codecs na edição de extensões do IAX2.
 
+* **`CORREÇÃO`** - Ligações não atendidas com gravação.
+
 * **`CORREÇÃO`** - Problema de transferência quando a extensão destino não está disponível.
 
-* **`MELHORIA`** - Envio de email para servidores próprios
+* **`CORREÇÃO`** - Visualização de placas Khomp do erro.
 
-* **`CORREÇÃO`** - Visualização de placas Khomp do erro
+* **`CORREÇÃO`** - Menus Status IP mostra latência somente do primeiro tronco.
 
-* **`CORREÇÃO`** - Menus Status IP mostra latência somente do primeiro tronco
+* **`CORREÇÃO`** - Validação de campo email no cadastro de contato.
 
-* **`NOVO`** - Configuração BLF no ramal
+* **`CORREÇÃO`** - Upload de áudios.
 
-* **`NOVO`** - Recurso discar para ramal na ação da URA
-
-* **`CORREÇÃO`** - Validação de campo email no cadastro de contato
-
-* **`CORREÇÃO`** - Upload de áudios
-
-* **`MELHORIA`** - Melhoria de volume de consulta aos serviços cloud
-
-* **`CORREÇÃO`** - Erro ao salvar callerid quando se edita o ramal 
+* **`CORREÇÃO`** - Erro ao salvar callerid quando se edita o ramal .
 
 ---
 ## 3.06 ##

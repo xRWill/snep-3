@@ -1,92 +1,65 @@
 <?php
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/footable.core.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/footable-demos.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap-glyphicons.css" );
 $this->headScript()->appendFile($this->baseUrl() .  "/includes/javascript/snep.js");
 ?>
 
-<script src="/snep/includes/javascript/footable/footable.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.sort.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.filter.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.paginate.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/bootstrap-tab.js" type="text/javascript"></script>
-
 <div class= "row">
-    <div class="tab-content">
-        <div class="tab-pane active" id="demo">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+  <div class="tab-content">
+    <div class="tab-pane active" id="demo">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="snep-body-top-buttons">
+            <a class="btn btn-add" href="<?php echo $this->url.'/addfile/section/'.$this->section;?> " role="button"><?php echo $this->translate("Add File")?></a>
+          </div>
+        </div><br>
 
-                    <div class="snep-body-top-buttons">
-                        <a class="btn btn-add" href="<?php echo $this->url.'/addfile/section/'.$this->section;?> " role="button"><?php echo $this->translate("Add File")?></a>
-                        <div class="snep-body-search">
-                            <?php echo $this->translate("Search")?> <input id="filter" type="text"/>
-                        </div>
-                    </div>
-                </div>
-
-                <?php if ($this->error_message) {
-                    echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert',
-                'error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
-                } else { ?>
-
-                    <table class="table demo table-hover" data-filter="#filter" data-page-size="<?php echo $this->lineNumber?>">
-
-                        <thead>
-                            <tr>
-                                <th> <?php echo $this->translate('Name') ?> </th>
-                                <th class="text-center"> <?php echo $this->translate('Last update') ?> </th>
-                                <th> <?php echo $this->translate('Description') ?> </th>
-                                <th class="text-center"> <?php echo $this->translate('Class') ?> </th>
-                                <th colspan="4" class="action text-center" data-sort-ignore="true"> <?php echo $this->translate('Actions') ?> </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if($this->files):
-                                foreach($this->files as $file ): ?>
-                                    <tr>
-                                        <td><?php echo $file['arquivo'] ?> </td>
-                                        <td class="text-center"> <?php echo  ( $file['data'] ?  new Zend_Date( $file['data']) : '-' );  ?> </td>
-                                        <td><?php echo $file['descricao'] ?> </td>
-                                        <td class="text-center"><?php echo $file['secao'] ?> </td>
-                                        <td align="center">
-                                            <a class="btn btn-edit btn-sm"  href="<?php echo $this->url . '/editfile/file/'. $file['arquivo'].'/class/'.$file['secao'];?>" role="button"><?php echo $this->translate('Edit')?>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm"  href="<?php echo $this->url.'/removefile/file/'.$file['arquivo'].'/class/'.$file['secao'];?>" role="button"><?php echo $this->translate('Delete')?>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach ?>
-                            <?php endif ?>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="7">
-                                    <div class="paging">
-                                        <ul class="pagination"></ul>
-                                    </div>
-                                    <form  action="<?php echo $this->url(array("controller" => "music-on-hold", "action" => "index"), null, true); ?>"  enctype="multipart/form-data">
-                                        <div class="snep-body-footer-buttons">
-                                             <button type="submit" class="btn btn-add" name="back" value="Back"><?php echo $this->translate("Back");?></button>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                <?php } ?>
-            </div>
-        </div> <!-- demo -->
-    </div> <!-- tab-content -->
-</div> <!-- /.row -->
-
+        <?php if ($this->error_message) {
+          echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert','error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
+        } else { ?>
+          <table class="table table-striped" id="listtable">
+            <thead>
+              <tr>
+                <th class="text-center"> <?php echo $this->translate('Name') ?> </th>
+                <th class="text-center"> <?php echo $this->translate('Last update') ?> </th>
+                <th> <?php echo $this->translate('Description') ?> </th>
+                <th class="text-center"> <?php echo $this->translate('Class') ?> </th>
+                <th class="text-center"> <?php echo $this->translate('Actions') ?> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php if($this->files):
+                foreach($this->files as $file ): ?>
+                  <tr>
+                    <td class="text-center"><?php echo $file['arquivo'] ?> </td>
+                    <td class="text-center"> <?php echo  ( $file['data'] ?  new Zend_Date( $file['data']) : '-' );  ?> </td>
+                    <td><?php echo $file['descricao'] ?> </td>
+                    <td class="text-center"><?php echo $file['secao'] ?> </td>
+                    <td class="text-center">
+                      <a class="btn btn-edit btn-sm"  href="<?php echo $this->url . '/editfile/file/'. $file['arquivo'].'/class/'.$file['secao'];?>" role="button"><?php echo $this->translate('Edit')?></a>
+                      <a class="btn btn-danger btn-sm"  href="<?php echo $this->url.'/removefile/file/'.$file['arquivo'].'/class/'.$file['secao'];?>" role="button"><?php echo $this->translate('Delete')?></a>
+                    </td>
+                  </tr>
+                <?php endforeach ?>
+              <?php endif ?>
+            </tbody>
+          </table>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
+
 jQuery.noConflict();
-jQuery(function () {
-    jQuery('table').footable().on('click', '.row', function(e) {
-        e.preventDefault();
-    });
+
+jQuery(document).ready(function() {
+  jQuery('#listtable').dataTable( {
+    "pageLength": <?php echo $this->lineNumber ?>,
+    "oLanguage": {
+      "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
+    },
+    "bLengthChange": false,
+  });
 });
 </script>
 

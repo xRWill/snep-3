@@ -23,137 +23,99 @@
  * @author    Opens Tecnologia <desenvolvimento@opens.com.br>
  */
 
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/footable.core.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/footable-demos.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap-glyphicons.css" );
 $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/route.css" );
 $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-toggle.min.css" );
-
 ?>
-<script src="/snep/includes/javascript/footable/footable.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.sort.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.filter.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.paginate.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/bootstrap-tab.js" type="text/javascript"></script>
+
 <script type="text/javascript" src="/snep/includes/javascript/bootstrap-toggle.min.js"></script>
 
 <div class= "row">
-    <div class="tab-content">
-        <div class="tab-pane active" id="demo">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-
-                    <div class="snep-body-top-buttons">
-
-                        <a class="btn btn-outline btn-add" style="margin-right: 5px;" href="<?php echo $this->baseUrl ?>/simulator " role="button" data-intro="<?php echo $this->translate('You can Simulate what will happen when a call are made!');?>"><?php echo $this->translate("Simulator")?></a>
-                        <a class="btn btn-add" href="<?php echo $this->url ?>/add/ " role="button"><?php echo $this->translate("Add Rule")?></a>
-
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo $this->translate("Filter by")?> <span class="caret"></span>
-                            </button>
-
-                            <ul class="dropdown-menu" >
-                                <li><a class="btn-default" href="<?php echo $this->baseUrl(); ?>/index.php/route?type=incoming"><?php echo $this->translate("Incoming Rule Only")?></a></li>
-                                <li><a class="btn-default" href="<?php echo $this->baseUrl(); ?>/index.php/route?type=outgoing"><?php echo $this->translate("Outgoing Rule Only")?></a></li>
-                                <li><a class="btn-default" href="<?php echo $this->baseUrl(); ?>/index.php/route?type=others"><?php echo $this->translate("Others Rule Only")?></a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a class="btn-default" href="<?php echo $this->baseUrl(); ?>/index.php/route"><?php echo $this->translate("All rules")?></a></li>
-                            </ul>
-                        </div>
-
-                        <?php if ($this->hide_routes === "1") {?>
-
-                                <span class=" btn hide_rules_enable">
-                                    <span class="sn-visivel fa-fw" style="font-size: 14px;"></span>
-                                    <?php echo $this->translate("Hide routes is enable")?>
-                                </span>
-
-                        <?php } ?>
-
-                        <div class="snep-body-search" >
-                            <?php if($this->key){ ?>
-                                <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard');?>" data-intro="<?php echo $this->translate('You can Add a shortcut of this screen to your Dashboard')?>">
-                                    </a>
-                                    &nbsp;|&nbsp;
-                            <?php } ?>
-                            <?php echo $this->translate("Search")?> <input id="filter" type="text"/>
-                        </div>
-                </div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="demo">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="snep-body-top-buttons">
+            <a class="btn btn-outline btn-add" style="margin-right: 5px;" href="<?php echo $this->baseUrl ?>/simulator " role="button" data-intro="<?php echo $this->translate('You can Simulate what will happen when a call are made!');?>"><?php echo $this->translate("Simulator")?></a>
+            <a class="btn btn-add" href="<?php echo $this->url ?>/add/ " role="button"><?php echo $this->translate("Add Rule")?></a>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php echo $this->translate("Filter by")?> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" >
+                <li><a class="btn-default" href="<?php echo $this->baseUrl(); ?>/index.php/route?type=incoming"><?php echo $this->translate("Incoming Rule Only")?></a></li>
+                <li><a class="btn-default" href="<?php echo $this->baseUrl(); ?>/index.php/route?type=outgoing"><?php echo $this->translate("Outgoing Rule Only")?></a></li>
+                <li><a class="btn-default" href="<?php echo $this->baseUrl(); ?>/index.php/route?type=others"><?php echo $this->translate("Others Rule Only")?></a></li>
+                <li role="separator" class="divider"></li>
+                <li><a class="btn-default" href="<?php echo $this->baseUrl(); ?>/index.php/route"><?php echo $this->translate("All rules")?></a></li>
+              </ul>
             </div>
-
-            <?php if ($this->error_message) {
-                echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert',
-                'error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
-            } else { ?>
-
-                <table class="table demo table-hover" data-filter="#filter" data-page-size="<?php echo $this->lineNumber?>">
-                    <thead>
-                        <tr>
-                            <th style="width: 5%;" class="text-center" data-type="numeric" ><?php echo $this->translate('Id');?></th>
-                            <th style="width: 6%; " class="text-center" data-type="numeric" data-sort-initial="false"><?php echo $this->translate('Prio');?></th>
-                            <th><?php echo $this->translate('Source');?></th>
-                            <th><?php echo $this->translate('Destiny');?></th>
-                            <th><?php echo $this->translate('Description');?></th>
-                            <th colspan="4" class="text-center" style="width: 20%;" data-sort-ignore="true" data-intro="<?php echo $this->translate('You can Activate or Deactive Routes')?>"><?php echo $this->translate('Actions');?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($this->routes as $route ): ?>
-                            <tr>
-                                <th class="text-center" style="vertical-align: middle !important; padding: 0px 8px 0px 8px;"> <?php echo $route['id'] ?>  </th>
-                                <td style="padding: 0px 8px 0px 8px;" class="text-center"> <?php echo $route['prio'] ?> </td>
-                                <td style="padding: 0px 8px 0px 8px;"> <?php echo $route['origem'] ?> </td>
-                                <td style="padding: 0px 8px 0px 8px;"> <?php echo $route['destino'] ?> </td>
-                                <td style="padding: 0px 8px 0px 8px;"> <?php echo $route['desc'] ?> </td>
-                                <td style="padding: 0px 8px 0px 8px;">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" data-toggle="toggle" data-size="mini" <?php echo $route['ativa'] === '1' ? 'checked' : ''; ?> id="rule_state" value="<?php echo $route['id'];?>" onchange="change_status(this.value)" >
-                                        </label>
-                                    </div>
-                                </td>
-                                 <td style="padding: 0px 8px 0px 8px;" align="center">
-                                    <a class="btn btn-default btn-sm"  href='<?php echo $this->baseUrl(); ?>/index.php/route/duplicate/<?php echo $route['id']?>' >
-                                        <?php echo $this->translate('Duplicate')?>
-                                    </a>
-                                </td>
-                                <td style="padding: 0px 8px 0px 8px;" align="center">
-                                    <a class="btn btn-edit btn-sm"  href='<?php echo $this->baseUrl(); ?>/index.php/route/edit/<?php echo $route['id'] ?>'>
-                                        <?php echo $this->translate('Edit')?>
-                                    </a>
-                                </td>
-                                <td style="padding: 0px 8px 0px 8px;" align="center">
-                                    <a class="btn btn-danger btn-sm"  href="<?php echo $this->baseUrl ?>/route/remove/id/<?php echo $route['id'] ?>" role="button"><?php echo $this->translate('Delete')?>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-
-                    </tbody>
-                    <tfoot>
-                        <tr>
-
-                            <td colspan="10">
-                                <div class="paging">
-                                    <ul class="pagination"></ul>
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+            <?php if ($this->hide_routes === "1") {?>
+              <span class=" btn hide_rules_enable">
+                <span class="sn-visivel fa-fw" style="font-size: 14px;"></span>
+                <?php echo $this->translate("Hide routes is enable")?>
+              </span>
             <?php } ?>
-        </div>
-    </div> <!-- tab-content -->
-</div> <!-- /.row -->
+
+            <div class="snep-body-search" >
+              <?php if($this->key){ ?>
+                <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard');?>" data-intro="<?php echo $this->translate('You can Add a shortcut of this screen to your Dashboard')?>"></a>
+              <?php } ?>
+            </div>
+          </div>
+        </div><br>
+
+        <?php if ($this->error_message) {
+          echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert','error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
+        } else { ?>
+
+          <table class="table table-striped" id="listtable">
+            <thead>
+              <tr>
+                <th class="text-center"><?php echo $this->translate('Id');?></th>
+                <th class="text-center"><?php echo $this->translate('Prio');?></th>
+                <th class="text-center"><?php echo $this->translate('Source');?></th>
+                <th class="text-center"><?php echo $this->translate('Destiny');?></th>
+                <th><?php echo $this->translate('Description');?></th>
+                <th class="text-center" data-intro="<?php echo $this->translate('You can Activate or Deactive Routes')?>"><?php echo $this->translate('Actions');?></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach($this->routes as $route ): ?>
+                <tr>
+                  <td class="text-center"> <?php echo $route['id'] ?>  </td>
+                  <td class="text-center"> <?php echo $route['prio'] ?> </td>
+                  <td class="text-center"> <?php echo $route['origem'] ?> </td>
+                  <td class="text-center"> <?php echo $route['destino'] ?> </td>
+                  <td> <?php echo $route['desc'] ?> </td>
+                  <td class="text-center">
+                    <div class="checkbox">
+                      <label><input type="checkbox" data-toggle="toggle" data-size="mini" <?php echo $route['ativa'] === '1' ? 'checked' : ''; ?> id="rule_state" value="<?php echo $route['id'];?>" onchange="change_status(this.value)" ></label>
+                    </div>
+                    <a class="btn btn-default btn-sm"  href='<?php echo $this->baseUrl(); ?>/index.php/route/duplicate/<?php echo $route['id']?>' ><?php echo $this->translate('Duplicate')?></a>
+                    <a class="btn btn-edit btn-sm"  href='<?php echo $this->baseUrl(); ?>/index.php/route/edit/<?php echo $route['id'] ?>'><?php echo $this->translate('Edit')?></a>
+                    <a class="btn btn-danger btn-sm"  href="<?php echo $this->baseUrl ?>/route/remove/id/<?php echo $route['id'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
+                  </td>
+                </tr>
+              <?php endforeach ?>
+            </tbody>
+          </table>
+        <?php } ?>
+      </div>
+    </div> 
+</div> 
 
 
 <script type="text/javascript">
 jQuery.noConflict();
-jQuery(function () {
-    jQuery('table').footable().on('click', '.row', function(e) {
-        e.preventDefault();
-    });
+
+jQuery(document).ready(function() {
+  jQuery('#listtable').dataTable( {
+    "pageLength": <?php echo $this->lineNumber ?>,
+    "oLanguage": {
+      "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
+    },
+    "bLengthChange": false,
+  });
 });
 
 /*

@@ -1,86 +1,58 @@
-<?php
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/footable.core.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/footable-demos.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/footable/bootstrap-glyphicons.css" );
-?>
-
-
-<script src="/snep/includes/javascript/footable/footable.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.sort.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.filter.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/footable.paginate.js" type="text/javascript"></script>
-<script src="/snep/includes/javascript/footable/bootstrap-tab.js" type="text/javascript"></script>
-
 <div class= "row">
-    <div class="tab-content">
-        <div class="tab-pane active" id="demo">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-
-                    <div class="snep-body-top-buttons">
-                        <a class="btn btn-add" href="<?php echo $this->url ?>/add/ " role="button"><?php echo $this->translate("Add Date Alias")?></a>
-
-                        <div class="snep-body-search">
-                            <?php if($this->key){ ?>
-                                <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard');?>"></a>  &nbsp;|&nbsp;
-                            <?php } ?>
-                            <?php echo $this->translate("Search")?> <input id="filter" type="text"/>
-                        </div>
-                    </div>
-                </div>
-
-                <?php if ($this->error_message) {
-                    echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert',
-                    'error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
-                } else { ?>
-                    <table class="table demo table-hover" data-filter="#filter" data-page-size="<?php echo $this->lineNumber?>">
-
-                        <thead>
-                            <tr>
-                                <th class="text-center"><?php echo $this->translate('Code');?></th>
-                                <th><?php echo $this->translate('Name');?></th>
-                                <th  class="text-center" colspan="2" data-sort-ignore="true"><?php echo $this->translate('Actions');?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <?php foreach ($this->aliases as $value) { ?>
-
-                                <tr>
-                                    <td class="text-center" style="width:10%" data-type="numeric" data-sort-initial="true"><?php echo $value['id'] ?></td>
-                                    <td><?php echo $value['name'] ?></td>
-                                    <td  class="text-center">
-                                        <a class="btn btn-edit btn-sm"  href="<?php echo $this->url ?>/edit/id/<?php echo $value['id'] ?>" role="button"><?php echo $this->translate('Edit')?>
-                                        </a>
-                                        <a class="btn btn-danger btn-sm"  href="<?php echo $this->url ?>/remove/id/<?php echo $value['id'] ?>" role="button"><?php echo $this->translate('Delete')?>
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-
-                        </tbody>
-                        <tfoot>
-                            <tr>
-
-                                <td colspan="7">
-                                    <div class="paging">
-                                        <ul class="pagination"></ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                <?php } ?>
+  <div class="tab-content">
+    <div class="tab-pane active" id="demo">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="snep-body-top-buttons">
+            <a class="btn btn-add" href="<?php echo $this->url ?>/add/ " role="button"><?php echo $this->translate("Add Date Alias")?></a>
+            <div class="snep-body-search">
+              <?php if($this->key){ ?>
+                <a class='sn-dash-add' href="<?php echo $this->baseUrl ?>/default/index/index?dashboard_add=<?php echo $this->key ?>" title="<?php echo $this->translate('Add to dashboard');?>"></a>  &nbsp;|&nbsp;
+              <?php } ?>
             </div>
-        </div> <!-- demo -->
-    </div> <!-- tab-content -->
-</div> <!-- /.row -->
+          </div>
+        </div><br>
+        <?php if ($this->error_message) {
+          echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert','error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
+        } else { ?>
+          <table class="table table-striped" id="listtable">
+            <thead>
+              <tr>
+                <th class="text-center"><?php echo $this->translate('Code');?></th>
+                <th class="text-center"><?php echo $this->translate('Name');?></th>
+                <th class="text-center"><?php echo $this->translate('Actions');?></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($this->aliases as $value) { ?>
+                <tr>
+                  <td class="text-center" style="width:10%" data-type="numeric" data-sort-initial="true"><?php echo $value['id'] ?></td>
+                  <td class="text-center"><?php echo $value['name'] ?></td>
+                  <td class="text-center">
+                    <a class="btn btn-edit btn-sm"  href="<?php echo $this->url ?>/edit/id/<?php echo $value['id'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
+                    <a class="btn btn-danger btn-sm"  href="<?php echo $this->url ?>/remove/id/<?php echo $value['id'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
+                  </td>
+                </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
-    jQuery.noConflict();
-    jQuery(function () {
-        jQuery('table').footable().on('click', '.row', function(e) {
-            e.preventDefault();
-        });
-    });
+
+jQuery.noConflict();
+
+jQuery(document).ready(function() {
+  jQuery('#listtable').dataTable( {
+    "pageLength": <?php echo $this->lineNumber ?>,
+    "oLanguage": {
+      "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
+    },
+    "bLengthChange": false,
+  });
+});
 </script>
