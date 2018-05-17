@@ -316,7 +316,7 @@ class ContactsController extends Zend_Controller_Action {
         $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
                     $this->view->translate("Contacts"),
                     $this->view->translate("Import CSV")));
-
+                
         $this->view->message = $this->view->translate("The file must be separated by commas. The columns can be associated in the next screen.");
 
         if($this->_request->getPost()){
@@ -327,19 +327,16 @@ class ContactsController extends Zend_Controller_Action {
             $csv = array();
 
             if( $handle ) {
-
                 while (($data = fgetcsv($handle, 4096, ",")) !== FALSE) {
-
                     $csv[] = $data;
                 }
-                
                 fclose($handle);
             }
             
-            
+            $validateAccent = array("/(á|à|ã|â|ä)/", "/(Á|À|Ã|Â|Ä)/", "/(é|è|ê|ë)/", "/(É|È|Ê|Ë)/", "/(í|ì|î|ï)/", "/(Í|Ì|Î|Ï)/", "/(ó|ò|õ|ô|ö)/", "/(Ó|Ò|Õ|Ô|Ö)/", "/(ú|ù|û|ü)/", "/(Ú|Ù|Û|Ü)/", "/(ñ)/", "/(Ñ)/");
             $contCol = 0;
             foreach($csv as $key => $value){
-                
+                $csv[$key] = preg_replace($validateAccent, explode(" ", "a A e E i I o O u U n N"), $value);             
                 // max number the coluns
                 if(count($value) > $contCol){
                     $contCol = count($value);
@@ -366,7 +363,7 @@ class ContactsController extends Zend_Controller_Action {
                 $this->view->error_message = $this->view->translate('There is no contacts group registered.');
                 $this->renderScript('error/sneperror.phtml');
             }
-
+            
             $_SESSION['csvData'] = $csv;           
             $this->view->contCol = $contCol;                
             $this->view->csvData = $csv;
@@ -417,13 +414,14 @@ class ContactsController extends Zend_Controller_Action {
                 }
 
                 $cont = 0;
+                                
                 foreach($contData as $ind => $data){
 
                         $erro = false;
                         $contact[$cont]['phone'] = $data['phone'];
-                        $contact[$cont]['name'] = utf8_encode($data['name']);
-                        (isset($data['address'])) ? $contact[$cont]['address'] = $data['address']: $contact[$cont]['address'] = "";
-                        (isset($data['zipcode'])) ? $contact[$cont]['zipcode'] = $data['zipcode']: $contact[$cont]['zipcode'] = "";
+                        $contact[$cont]['name']  = $data["name"];
+                        (isset($data['address'])) ? $contact[$cont]['address'] = $data['address'] : $contact[$cont]['address'] = "";
+                        (isset($data['zipcode'])) ? $contact[$cont]['zipcode'] = $data['zipcode'] : $contact[$cont]['zipcode'] = "";
                         $contact[$cont]['group'] = $_POST['group'];
                         
                         // Verifies that phone contains only numbers
