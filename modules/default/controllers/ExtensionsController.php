@@ -95,7 +95,10 @@ class ExtensionsController extends Zend_Controller_Action {
           $passwordValidate = true;
           $passwordValidateExten = null;
           foreach($extensions as $key => $exten){
-            if(strlen($exten['password']) < 16){
+            
+            $secure = self::securityPassword($exten["password"]);
+            
+            if($secure <= 40){
               $passwordValidate = false;
               $passwordValidateExten .= $exten['exten']." ";
             }
@@ -106,6 +109,21 @@ class ExtensionsController extends Zend_Controller_Action {
         }
         
         $this->view->extensions = $extensions;
+
+      }
+
+      public function securityPassword($password){
+
+        $force = 0;
+        
+        if(count(password) >= 8) $force += 10;
+        if(count(password) >= 16) $force += 10;
+        if(preg_match('/[A-Z]/', $password)) $force += 20;
+        if(preg_match('/[a-z]/', $password)) $force += 20;
+        if(preg_match('/[0-9]/', $password)) $force += 20;
+        if(preg_match('/[@?!%#]/', $password)) $force += 20;
+                
+        return $force;
 
       }
 

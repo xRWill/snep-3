@@ -496,7 +496,7 @@ function generatePass(){
   for (var i = 0; i < 16; i++)
   password += possible.charAt(Math.floor(Math.random() * possible.length));
   jQuery('#password').val(password);
-
+  passForce(password);
 }
 
 function showDiv(div){
@@ -526,60 +526,45 @@ jQuery(function (){
       jQuery('#passwordBar').hide();
     }else{
       var fPass = passForce(password);
-      var message = "";
-      jQuery('#passForce').css('width', fPass+'%');
-      jQuery('#passForce').removeClass();
-      jQuery('#passForce').addClass('progress-bar');
-      if(fPass <= 40){
-        message = '<?php echo $this->translate("Weak");?>';
-        jQuery('#passForce').addClass('progress-bar-danger');
-      }
-      if(fPass > 40 && fPass <= 70){
-        message = '<?php echo $this->translate("Average");?>';
-      }
-      if(fPass > 70 && fPass <= 90){
-        message = '<?php echo $this->translate("Good");?>';
-        jQuery('#passForce').addClass('progress-bar-success');
-      }
-      if(fPass > 90){
-        message = '<?php echo $this->translate("Very Good");?>';
-        jQuery('#passForce').addClass('progress-bar-success');
-      }
-      jQuery('#passForce').text(message);
-      jQuery('#passwordBar').show();
     }
   });
 });
     
 function passForce(password){
     
-    var force = 0;
-    var regLetrasMa = /[A-Z]/;
-    var regLetrasMi = /[a-z]/;
-    var regNumero   = /[0-9]/;
-    var regEspecial = /[@?!%#]/;
-    var tam         = false;
-    var tamM        = false;
-    var letrasMa    = false;
-    var letrasMi    = false;
-    var numero      = false;
-    var especial    = false;
+    var force        = 0;
+    var lettersUpper = /[A-Z]/;
+    var lettersLower = /[a-z]/;
+    var numbers      = /[0-9]/;
+    var special      = /[@?!%#]/;
 
-    if(password.length >= 8) tam = true;
-    if(password.length >= 16) tamM = true;
-    if(regLetrasMa.exec(password)) letrasMa = true;
-    if(regLetrasMi.exec(password)) letrasMi = true;
-    if(regNumero.exec(password)) numero = true;
-    if(regEspecial.exec(password)) especial = true;
-    
-    if(tam) force += 10;
-    if(tamM) force += 10;
-    if(letrasMa) force += 10;
-    if(letrasMi) force += 10;
-    if(letrasMa && letrasMi) force += 20;
-    if(numero) force += 20;
-    if(especial) force += 20;
-            
-    return force;
+    if(password.length >= 8) force += 10;
+    if(password.length >= 16) force += 10;
+    if(lettersUpper.exec(password)) force += 20;
+    if(lettersLower.exec(password)) force += 20;
+    if(numbers.exec(password)) force += 20;
+    if(special.exec(password)) force += 20;
+                
+    var message = "";
+    jQuery('#passForce').css('width', force+'%');
+    jQuery('#passForce').removeClass();
+    jQuery('#passForce').addClass('progress-bar');
+    if(force <= 40){
+      message = '<?php echo $this->translate("Weak");?>';
+      jQuery('#passForce').addClass('progress-bar-danger');
+    }
+    if(force > 40 && force <= 70){
+      message = '<?php echo $this->translate("Average");?>';
+    }
+    if(force > 70 && force <= 90){
+      message = '<?php echo $this->translate("Good");?>';
+      jQuery('#passForce').addClass('progress-bar-success');
+    }
+    if(force > 90){
+      message = '<?php echo $this->translate("Very Good");?>';
+      jQuery('#passForce').addClass('progress-bar-success');
+    }
+    jQuery('#passForce').text(message);
+    jQuery('#passwordBar').show();
 }
 </script>
