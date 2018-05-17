@@ -18,37 +18,33 @@
           </div>
         </div><br>
 
-        <?php if ($this->error_message) {
-          echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert','error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
-        } else { ?>
-          <table class="table table-striped" id="listtable">
-            <thead>
-              <tr>
-                <th class="text-center"><?php echo $this->translate('Code');?></th>
-                <th class="text-center"><?php echo $this->translate('Name');?></th>
-                <th class="text-center"><?php echo $this->translate('Type');?></th>
-                <th><?php echo $this->translate('Description');?></th>
-                <th class="text-center"><?php echo $this->translate('Actions');?></th>
-              </tr>
-            </thead>
-            <tbody class="table-data">
-              <?php if( $this->costcenter ) :
-                foreach($this->costcenter as $id => $costcenter ): ?>
-                  <tr>
-                    <td class="text-center"> <b> <?php echo $costcenter['codigo'] ?> </b> </td>
-                    <td class="text-center"><?php echo $costcenter['nome'] ?> </td>
-                    <td class="text-center"><?php echo $this->types[$costcenter['tipo']] ?> </td>
-                    <td><?php echo $costcenter['descricao'] ?> </td>
-                    <td align="center">
-                      <a class="btn btn-edit btn-sm" href="<?php echo $this->url ?>/edit/id/<?php echo $costcenter['codigo'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
-                      <a class="btn btn-danger btn-sm" href="<?php echo $this->url ?>/remove/id/<?php echo $costcenter['codigo'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
-                    </td>
-                  </tr>
-                <?php endforeach ?>
-              <?php endif?>
-            </tbody>
-          </table>
-        <?php } ?>
+        <table class="table table-striped" id="listtable">
+          <thead>
+            <tr>
+              <th class="text-center"><?php echo $this->translate('Code');?></th>
+              <th class="text-center"><?php echo $this->translate('Name');?></th>
+              <th class="text-center"><?php echo $this->translate('Type');?></th>
+              <th><?php echo $this->translate('Description');?></th>
+              <th class="text-center"><?php echo $this->translate('Actions');?></th>
+            </tr>
+          </thead>
+          <tbody class="table-data">
+            <?php if( $this->costcenter ) :
+              foreach($this->costcenter as $id => $costcenter ): ?>
+                <tr>
+                  <td class="text-center"> <b> <?php echo $costcenter['codigo'] ?> </b> </td>
+                  <td class="text-center"><?php echo $costcenter['nome'] ?> </td>
+                  <td class="text-center"><span class="label <?php echo $this->spanTypes[$costcenter['tipo']]?>"><?php echo $this->types[$costcenter['tipo']] ?></span></td>
+                  <td><?php echo $costcenter['descricao'] ?> </td>
+                  <td align="center">
+                    <a class="btn btn-edit btn-sm" href="<?php echo $this->url ?>/edit/id/<?php echo $costcenter['codigo'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
+                    <a class="btn btn-danger btn-sm" href="<?php echo $this->url ?>/remove/id/<?php echo $costcenter['codigo'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
+                  </td>
+                </tr>
+              <?php endforeach ?>
+            <?php endif?>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

@@ -105,10 +105,6 @@ class TrunksController extends Zend_Controller_Action {
     $datasql = $db->query($select);
     $trunks = $datasql->fetchAll();
 
-    if(empty($trunks)){
-      $this->view->error_message = $this->view->translate("You do not have registered trunks. <br><br> Click 'Add Trunk' to make the first registration");
-    }
-
     foreach ($trunks as $id => $val) {
       
       $trunks[$id]['saldo'] = null;
@@ -149,10 +145,6 @@ class TrunksController extends Zend_Controller_Action {
 
           break;
         }
-        //Zend_Debug::Dump($sale);exit;
-        
-
-        //$trunks[$id]['saldo'] = date('i:s',mktime(0,0,$sale,15,03,2013)); //Convert secons in mm:ss
 
         if($sale < 0){
           $trunks[$id]['saldo'] = 0;

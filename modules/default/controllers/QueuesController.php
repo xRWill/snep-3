@@ -74,12 +74,7 @@ class QueuesController extends Zend_Controller_Action {
 
         $stmt = $db->query($select);
         $queues = $stmt->fetchAll();
-
-        if(empty($queues)){
-            $this->view->error_message = $this->view->translate("You do not have registered queues. <br><br> Click 'Add Queue' to make the first registration
-");
-        }
-
+        
         $this->view->queues = $queues;
 
     }

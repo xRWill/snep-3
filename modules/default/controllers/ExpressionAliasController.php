@@ -53,10 +53,6 @@ class ExpressionAliasController extends Zend_Controller_Action {
         $aliases = PBX_ExpressionAliases::getInstance();
         $expressions = $aliases->getAll();
 
-        if(empty($expressions)){
-            $this->view->error_message = $this->view->translate("You do not have registered expression alias. <br><br> Click 'Add Expression Alias' to make the first registration");
-        }
-
         $this->view->aliases = $expressions;
 
     }

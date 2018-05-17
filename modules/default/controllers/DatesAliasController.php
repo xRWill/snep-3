@@ -53,10 +53,6 @@ class DatesAliasController extends Zend_Controller_Action {
         $aliases = PBX_DatesAliases::getInstance();
         $expressions = $aliases->getAll();
 
-        if(empty($expressions)){
-            $this->view->error_message = $this->view->translate("You do not have registered dates alias. <br><br> Click 'Add Dates Alias' to make the first registration");
-        }
-
         $this->view->aliases = $expressions;
 
     }

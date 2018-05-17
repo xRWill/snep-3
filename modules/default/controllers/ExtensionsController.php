@@ -88,30 +88,31 @@ class ExtensionsController extends Zend_Controller_Action {
         $this->view->translate("Extensions")));
 
         $extensions = Snep_Extensions_Manager::getAll();
-
-        if(empty($extensions)){
-          $this->view->error_message = $this->view->translate("You do not have registered extensions. <br><br> Click 'Add Extensions' ou 'Multi Add Extensions' to make the first registration");
-        }else{
-          $passwordValidate = true;
-          $passwordValidateExten = null;
-          foreach($extensions as $key => $exten){
-            
-            $secure = self::securityPassword($exten["password"]);
-            
-            if($secure <= 40){
-              $passwordValidate = false;
-              $passwordValidateExten .= $exten['exten']." ";
-            }
+        
+        // verify security password
+        $passwordValidate = true;
+        $passwordValidateExten = null;
+        foreach($extensions as $key => $exten){
+          $secure = self::securityPassword($exten["password"]);
+          
+          if($secure <= 40){
+            $passwordValidate = false;
+            $passwordValidateExten .= $exten['exten']." ";
           }
-          if(!$passwordValidate){
-            $this->view->alert_message = $this->view->translate("You have extensions with weak passwords. For security measures it is important to update them.")."(".$passwordValidateExten.")";
-          }
+        }
+        if(!$passwordValidate){
+          $this->view->alert_message = $this->view->translate("You have extensions with weak passwords. For security measures it is important to update them.")."(".$passwordValidateExten.")";
         }
         
         $this->view->extensions = $extensions;
 
       }
 
+      /**
+       * Verify security password
+       * @param int $password
+       * @return int $force
+       */
       public function securityPassword($password){
 
         $force = 0;

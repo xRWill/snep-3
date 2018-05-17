@@ -12,42 +12,38 @@
             </div>
           </div>
         </div><br>
-        <?php if ($this->error_message) {
-          echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert','error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
-        } else { ?>
-          <table class="table table-striped" id="listtable">
-            <thead>
-              <tr>
-                <th class="text-center"><?php echo $this->translate('Name');?></th>
-                <th class="text-center"><?php echo $this->translate('Audio Class');?></th>
-                <th class="text-center"><?php echo $this->translate('Strategy');?></th>
-                <th class="text-center"><?php echo $this->translate('SLA');?></th>
-                <th class="text-center"><?php echo $this->translate('Timeout');?></th>
-                <th class="text-center"><?php echo $this->translate('Static Members');?></th>
-                <th class="text-center"><?php echo $this->translate('Actions');?></th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php if ($this->queues) :
-                foreach ($this->queues as $cha => $queue): ?>
-                  <tr>
-                    <td class="text-center"><?php echo $queue['name'] ?></td>
-                    <td class="text-center"><?php echo $queue['musiconhold'] ?></td>
-                    <td class="text-center"><?php echo $queue['strategy'] ?></td>
-                    <td class="text-center"><?php echo $queue['servicelevel'] ?></td>
-                    <td class="text-center"><?php echo $queue['timeout'] ?></td>
-                    <td class="text-center"><?php echo $queue['members'] ?></td>
-                    <td class="text-center">
-                      <a class="btn btn-default btn-sm"  href="<?php echo $this->url ?>/members/id/<?php echo $queue['name'] ?>" role="button"><?php echo $this->translate('Members')?></a>
-                      <a class="btn btn-edit btn-sm"  href="<?php echo $this->url ?>/edit/id/<?php echo $queue['name'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
-                      <a class="btn btn-danger btn-sm"  href="<?php echo $this->url ?>/remove/id/<?php echo $queue['name'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
-                    </td>
-                  </tr>
-                <?php endforeach ?>
-              <?php endif ?>
-            </tbody>
-          </table>
-        <?php } ?>
+        <table class="table table-striped" id="listtable">
+          <thead>
+            <tr>
+              <th class="text-center"><?php echo $this->translate('Name');?></th>
+              <th class="text-center"><?php echo $this->translate('Audio Class');?></th>
+              <th class="text-center"><?php echo $this->translate('Strategy');?></th>
+              <th class="text-center"><?php echo $this->translate('SLA');?></th>
+              <th class="text-center"><?php echo $this->translate('Timeout');?></th>
+              <th class="text-center"><?php echo $this->translate('Static Members');?></th>
+              <th class="text-center"><?php echo $this->translate('Actions');?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if ($this->queues) :
+              foreach ($this->queues as $cha => $queue): ?>
+                <tr>
+                  <td class="text-center"><?php echo $queue['name'] ?></td>
+                  <td class="text-center"><?php echo $queue['musiconhold'] ?></td>
+                  <td class="text-center"><?php echo $queue['strategy'] ?></td>
+                  <td class="text-center"><?php echo $queue['servicelevel'] ?></td>
+                  <td class="text-center"><?php echo $queue['timeout'] ?></td>
+                  <td class="text-center"><?php echo $queue['members'] ?></td>
+                  <td class="text-center">
+                    <a class="btn btn-default btn-sm"  href="<?php echo $this->url ?>/members/id/<?php echo $queue['name'] ?>" role="button"><?php echo $this->translate('Members')?></a>
+                    <a class="btn btn-edit btn-sm"  href="<?php echo $this->url ?>/edit/id/<?php echo $queue['name'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
+                    <a class="btn btn-danger btn-sm"  href="<?php echo $this->url ?>/remove/id/<?php echo $queue['name'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
+                  </td>
+                </tr>
+              <?php endforeach ?>
+            <?php endif ?>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

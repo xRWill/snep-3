@@ -33,43 +33,39 @@ $this->headScript()->appendFile($this->baseUrl() .  "/includes/javascript/snep.j
             </div>
           </div>
         </div><br>
-        <?php if ($this->error_message) {
-          echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert','error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
-        } else { ?>
-          <table class="table table-striped" id="listtable">
-            <thead>
-              <tr>
-                <th class="text-center"><?php echo $this->translate('Name') ?> </th>
-                <th class="text-center"><?php echo $this->translate('Path') ?> </th>
-                <th class="text-center"><?php echo $this->translate('Type') ?> </th>
-                <th class="text-center"><?php echo $this->translate('Files') ?> </th>
-                <th class="text-center"><?php echo $this->translate('Actions') ?> </th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php if($this->sections):
-                foreach($this->sections as $class ):
-                  if ($class['name'] === 'default') {
-                    $disabled= "disabled";
-                  } else {
-                    $disabled = "";
-                  }?>
-                  <tr>
-                    <td class="text-center"><?php echo $class['name'] ?></td>
-                    <td class="text-center"><?php echo $class['directory'] ?></td>
-                    <td class="text-center"><?php echo $this->modes[$class['mode']] ?></td>
-                    <td class="text-center"><?php echo $class['count'] ?> </td>
-                    <td class="text-center">
-                      <a class="btn btn-default btn-sm"  href="<?php echo $this->url.'/file/section/'.$class['name'] ?>" role="button"> <?php echo $this->translate('Audios')?></a>
-                      <a class="btn btn-edit btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url.'/edit/section/'.$class['name'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
-                      <a class="btn btn-danger btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url.'/remove/section/'.$class['name'] ?>" role="button" ><?php echo $this->translate('Delete')?></a>
-                    </td>
-                  </tr>
-                <?php endforeach ?>
-              <?php endif ?>
-            </tbody>
-          </table>
-        <?php } ?>
+        <table class="table table-striped" id="listtable">
+          <thead>
+            <tr>
+              <th class="text-center"><?php echo $this->translate('Name') ?> </th>
+              <th class="text-center"><?php echo $this->translate('Path') ?> </th>
+              <th class="text-center"><?php echo $this->translate('Type') ?> </th>
+              <th class="text-center"><?php echo $this->translate('Files') ?> </th>
+              <th class="text-center"><?php echo $this->translate('Actions') ?> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if($this->sections):
+              foreach($this->sections as $class ):
+                if ($class['name'] === 'default') {
+                  $disabled= "disabled";
+                } else {
+                  $disabled = "";
+                }?>
+                <tr>
+                  <td class="text-center"><?php echo $class['name'] ?></td>
+                  <td class="text-center"><?php echo $class['directory'] ?></td>
+                  <td class="text-center"><?php echo $this->modes[$class['mode']] ?></td>
+                  <td class="text-center"><?php echo $class['count'] ?> </td>
+                  <td class="text-center">
+                    <a class="btn btn-default btn-sm"  href="<?php echo $this->url.'/file/section/'.$class['name'] ?>" role="button"> <?php echo $this->translate('Audios')?></a>
+                    <a class="btn btn-edit btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url.'/edit/section/'.$class['name'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
+                    <a class="btn btn-danger btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url.'/remove/section/'.$class['name'] ?>" role="button" ><?php echo $this->translate('Delete')?></a>
+                  </td>
+                </tr>
+              <?php endforeach ?>
+            <?php endif ?>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

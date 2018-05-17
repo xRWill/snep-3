@@ -59,12 +59,8 @@ class SoundFilesController extends Zend_Controller_Action {
 
         $stmt = $db->query($select);
         $files = $stmt->fetchAll();
-
-        if(empty($files)){
-            $this->view->error_message = $this->view->translate("You do not have registered sound files. <br><br> Click 'Add Sound File' to make the first registration
-");
-        } else {
-
+        
+        if(!empty($files)){
             // Mount file list and verify if exists file in directory
             foreach ($files as $id => $file) {
                 $info = Snep_SoundFiles_Manager::verifySoundFiles($file['arquivo']);

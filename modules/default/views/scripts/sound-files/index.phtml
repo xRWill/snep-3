@@ -18,62 +18,58 @@ $this->headScript()->appendFile($this->baseUrl() .  "/includes/javascript/snep.j
             </div>
           </div>
         </div><br>
-        <?php if ($this->error_message) {
-          echo $this->action( 'sneperror', 'error', null, array( 'error_type' => 'alert','error_title' => $this->translate('Alert'), 'error_message' => $this->error_message, 'error_buttons' => False) );
-        } else { ?>
-          <table class="table table-striped" id="listtable">
-            <thead>
-              <tr>
-                <th class="text-center"><?php echo $this->translate('Filename') ?> </th>
-                <th class="text-center"><?php echo $this->translate('Description') ?> </th>
-                <th class="text-center"><?php echo $this->translate('File') ?> </th>
-                <th class="text-center"><?php echo $this->translate('Backup') ?> </th>
-                <th class="text-center"><?php echo $this->translate('Actions') ?> </th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php if ($this->files):
-                foreach ($this->files as $file): ?>
-                  <tr>
-                    <td class="text-center"><?php echo $file['arquivo'] ?></td>
-                    <td class="text-center"><?php echo $file['descricao'] ?> </td>
-                    <td class="text-center sound-file-player" >
-                      <?php $fullpath = ( isset($file['fullpath']) ? $file['fullpath'] : false );
-                      if ($fullpath != '') : ?>
-                        <audio  class="player" src='<?php echo $fullpath;?>' type="audio/mpeg"  title="<?php echo $this->translate('Listen');?>" preload="none">
+        <table class="table table-striped" id="listtable">
+          <thead>
+            <tr>
+              <th class="text-center"><?php echo $this->translate('Filename') ?> </th>
+              <th class="text-center"><?php echo $this->translate('Description') ?> </th>
+              <th class="text-center"><?php echo $this->translate('File') ?> </th>
+              <th class="text-center"><?php echo $this->translate('Backup') ?> </th>
+              <th class="text-center"><?php echo $this->translate('Actions') ?> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if ($this->files):
+              foreach ($this->files as $file): ?>
+                <tr>
+                  <td class="text-center"><?php echo $file['arquivo'] ?></td>
+                  <td class="text-center"><?php echo $file['descricao'] ?> </td>
+                  <td class="text-center sound-file-player" >
+                    <?php $fullpath = ( isset($file['fullpath']) ? $file['fullpath'] : false );
+                    if ($fullpath != '') : ?>
+                      <audio  class="player" src='<?php echo $fullpath;?>' type="audio/mpeg"  title="<?php echo $this->translate('Listen');?>" preload="none">
+                        <?php echo $this->translate('Your browser does not support the audio element.') ?>
+                      </audio>
+                    <?php else : ?>
+                      <span class="sn-sound-off snep-list-sounds"></span>
+                    <?php endif ?>
+                  </td>
+                  <td class="text-center sound-file-player">
+                    <?php $backuppath = ( isset($file['backuppath']) ? $file['backuppath'] : false );
+                      if ($backuppath != '') : ?>
+                        <audio class="player" src='<?php echo $backuppath;?>' type="audio/mpeg"  title="<?php echo $this->translate('Listen');?>">
                           <?php echo $this->translate('Your browser does not support the audio element.') ?>
                         </audio>
                       <?php else : ?>
-                        <span class="sn-sound-off snep-list-sounds"></span>
+                        <span class="sn-sound-off snep-list-sounds" title="<?php echo $this->translate('Backp not available');?>"></span>
                       <?php endif ?>
                     </td>
-                    <td class="text-center sound-file-player">
-                      <?php $backuppath = ( isset($file['backuppath']) ? $file['backuppath'] : false );
-                        if ($backuppath != '') : ?>
-                          <audio class="player" src='<?php echo $backuppath;?>' type="audio/mpeg"  title="<?php echo $this->translate('Listen');?>">
-                            <?php echo $this->translate('Your browser does not support the audio element.') ?>
-                          </audio>
-                        <?php else : ?>
-                          <span class="sn-sound-off snep-list-sounds" title="<?php echo $this->translate('Backp not available');?>"></span>
-                        <?php endif ?>
-                      </td>
-                      <td align="center">
-                        <?php if (isset($file['backuppath'])) : ?>
-                          <a class="btn btn-success btn-sm" href="<?php echo $this->url ?>/restore/arquivo/<?php echo $file['arquivo'] ?>" role="button" title="<?php echo $this->translate('Restore backup sound file');?>" >
-                            <?php echo $this->translate('Restore')?>
-                          </a>
-                        <?php else : ?>
-                          <span class="sn-no-backup snep-list-sounds" title="<?php echo $this->translate('No files to restore');?>"></span>
-                        <?php endif ?>
-                        <a class="btn btn-edit btn-sm"  href="<?php echo $this->url ?>/edit/arquivo/<?php echo $file['arquivo'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
-                        <a class="btn btn-danger btn-sm"  role="button" href="<?php echo $this->url ?>/remove/arquivo/<?php echo $file['arquivo'] ?>"><?php echo $this->translate('Delete') ?></a>
-                      </td>
-                    </tr>
-                  <?php endforeach ?>
-                <?php endif ?>
-              </tbody>
-            </table>
-          <?php }?>
+                    <td align="center">
+                      <?php if (isset($file['backuppath'])) : ?>
+                        <a class="btn btn-success btn-sm" href="<?php echo $this->url ?>/restore/arquivo/<?php echo $file['arquivo'] ?>" role="button" title="<?php echo $this->translate('Restore backup sound file');?>" >
+                          <?php echo $this->translate('Restore')?>
+                        </a>
+                      <?php else : ?>
+                        <span class="sn-no-backup snep-list-sounds" title="<?php echo $this->translate('No files to restore');?>"></span>
+                      <?php endif ?>
+                      <a class="btn btn-edit btn-sm"  href="<?php echo $this->url ?>/edit/arquivo/<?php echo $file['arquivo'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
+                      <a class="btn btn-danger btn-sm"  role="button" href="<?php echo $this->url ?>/remove/arquivo/<?php echo $file['arquivo'] ?>"><?php echo $this->translate('Delete') ?></a>
+                    </td>
+                  </tr>
+                <?php endforeach ?>
+              <?php endif ?>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

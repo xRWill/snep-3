@@ -49,7 +49,6 @@ class CostCenterController extends Zend_Controller_Action {
         $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
                     $this->view->translate("Tag")));
 
-
         $db = Zend_Registry::get('db');
         $select = $db->select()
                 ->from("ccustos", array("codigo", "tipo", "nome", "descricao"))
@@ -58,16 +57,15 @@ class CostCenterController extends Zend_Controller_Action {
         $stmt = $db->query($select);
         $data = $stmt->fetchAll();
 
-        if(empty($data)){
-            $this->view->error_message = $this->view->translate("You do not have registered cost centers. <br><br> Click 'Add cost center' to make the first registration
-");
-
-        }
-
         $this->view->types = array(
             'E' => $this->view->translate('Incoming'),
             'S' => $this->view->translate('Outgoing'),
             'O' => $this->view->translate('Other'));
+
+        $this->view->spanTypes = array(
+            'E' => "label-success",
+            'S' => "label-danger",
+            'O' => "label-info");
 
         $this->view->costcenter = $data;
 

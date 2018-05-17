@@ -70,11 +70,6 @@ class ContactsController extends Zend_Controller_Action {
         $stmt = $db->query($select);
         $contacts = $stmt->fetchAll();        
 
-        if(empty($contacts)){
-            $this->view->error_message = $this->view->translate("You do not have registered contacts. <br><br> Click 'Add Contact' to make the first registration
-");
-        } 
-
         $formatter = new Formata();
         
         $this->view->formatter = $formatter;
