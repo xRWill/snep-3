@@ -64,6 +64,22 @@ class PBX_DatesAliases {
     }
 
     /**
+     * getAllList - List expression Aliases
+     * @return <array> $aliases
+     */
+    public function getAllList() {
+        
+        $db = Zend_Registry::get('db');
+        $select = $db->select()
+                ->from(array("date_alias_list"));
+
+        $stmt = $db->query($select);
+        $dates = $stmt->fetchAll();
+
+        return $dates;
+    }
+
+    /**
      * get
      * @param <int> $id
      * @return <array>

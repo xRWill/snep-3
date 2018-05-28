@@ -52,7 +52,16 @@ class DatesAliasController extends Zend_Controller_Action {
 
         $aliases = PBX_DatesAliases::getInstance();
         $expressions = $aliases->getAll();
-
+        $expressionsList = $aliases->getAllList();
+        
+        foreach ($expressions as $key => $expression) {
+            $expressions[$key]['cont'] = 0;
+            foreach ($expressionsList as $x => $date) {
+                if($expression['id'] == $date['dateid']){
+                    $expressions[$key]['cont']++;
+                }
+            }
+        }
         $this->view->aliases = $expressions;
 
     }
