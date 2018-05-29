@@ -66,6 +66,7 @@ body {
 .navbar-top-links li a {
 	padding: 15px;
 	min-height: 50px;
+	background-color: transparent;
 }
 
 .navbar-top-links .dropdown-menu li {
