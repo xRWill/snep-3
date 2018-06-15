@@ -16,6 +16,7 @@
  *  along with SNEP.  If not, see <http://www.gnu.org/licenses/>.
  */
 $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-toggle.min.css" );
+$this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/password.js");
 ?>
 <style>
     .toggle.btn-xs {
@@ -27,7 +28,7 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-toggle.m
     }
 </style>
 <script type="text/javascript" src="/snep/includes/javascript/bootstrap-toggle.min.js"></script>
-<script src="/snep/includes/javascript/password.js"></script>
+<!-- <script src="/snep/includes/javascript/password.js"></script> -->
 <div class="row">
     <div class="tab-content">
         <div class="tab-pane active" id="demo">

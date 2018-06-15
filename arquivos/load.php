@@ -1,7 +1,7 @@
 <?php
 /**
  *  This file is part of SNEP.
- *  Para território Brasileiro leia LICENCA_BR.txt
+ *  Para territï¿½rio Brasileiro leia LICENCA_BR.txt
  *  All other countries read the following disclaimer
  *
  *  SNEP is free software: you can redistribute it and/or modify
@@ -29,6 +29,12 @@ if(!isset($id) && !isset($file)){
 	$exp_data = $data[1];
 	$pattern = '/(20[12][0-9])([0-9][0-9])([0-9][0-9])/';
 	$replacement = '$1-$2-$3';
+
+	//clicktocall
+	if($data == ""){
+		$data = substr($id,0,4) . "-".substr($id,4,2)."-".substr($id,6,2);
+	}
+
 	$data = preg_replace($pattern,$replacement,$exp_data);
 	if(file_exists("$id.WAV")){
 		header("Location: $id.WAV");
@@ -55,6 +61,12 @@ if(!isset($id) && !isset($file)){
 	$exp_data = $data[1];
 	$pattern = '/(20[12][0-9])([0-9][0-9])([0-9][0-9])/';
 	$replacement = '$1-$2-$3';
+
+	//clicktocall
+	if($data == ""){
+		$data = substr($id,0,4) . "-".substr($id,4,2)."-".substr($id,6,2);
+	}
+	
 	$data = preg_replace($pattern,$replacement,$exp_data);
 	if(file_exists("$file")){
 		header("Location: $file");

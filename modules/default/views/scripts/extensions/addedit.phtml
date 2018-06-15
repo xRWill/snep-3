@@ -16,8 +16,9 @@
 *  You should have received a copy of the GNU General Public License
 *  along with SNEP.  If not, see <http://www.gnu.org/licenses/>.
 */
+$this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/password.js");
 ?>
-<script src="/snep/includes/javascript/password.js"></script>
+<!-- <script src="/snep/includes/javascript/password.js"></script> -->
 <div class="row">
   <section>
   <div class="col-sm-12">
@@ -500,7 +501,7 @@ function generatePass(){
 }
 
 function showDiv(div){
-  
+
   document.getElementById("sipiax").className = "invisible";
   document.getElementById("khomp").className = "invisible";
   document.getElementById("virtual").className = "invisible";
@@ -517,11 +518,11 @@ function showDiv(div){
     document.getElementById(div).className = "visible";
   }
 }
-                                     
+
 //force verify password
 jQuery(function (){
   jQuery('#password').keyup(function (e){
-    var password = jQuery(this).val();        
+    var password = jQuery(this).val();
     if(password == ''){
       jQuery('#passwordBar').hide();
     }else{
@@ -529,9 +530,9 @@ jQuery(function (){
     }
   });
 });
-    
+
 function passForce(password){
-    
+
     var force        = 0;
     var lettersUpper = /[A-Z]/;
     var lettersLower = /[a-z]/;
@@ -544,7 +545,7 @@ function passForce(password){
     if(lettersLower.exec(password)) force += 20;
     if(numbers.exec(password)) force += 20;
     if(special.exec(password)) force += 20;
-                
+
     var message = "";
     jQuery('#passForce').css('width', force+'%');
     jQuery('#passForce').removeClass();

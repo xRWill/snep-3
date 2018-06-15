@@ -1,4 +1,7 @@
-<script src="/snep/includes/javascript/password.js"></script>
+<?php
+$this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/password.js");
+?>
+<!-- <script src="/snep/includes/javascript/password.js"></script> -->
 
 <div class="row">
   <form id="defaultForm" method="post" class="form-horizontal" style="margin-top: 20px;" action="<?php echo $this->url(array("controller" => "trunks", "action" => $this->action), null, false); ?>" METHOD="post">

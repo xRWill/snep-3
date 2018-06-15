@@ -17,12 +17,13 @@
  *  along with SNEP.  If not, see <http://www.gnu.org/licenses/>.
  */
 $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-select.css" );
+$this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/password.js");
 ?>
-<script src="/snep/includes/javascript/password.js"></script> 
+<script src="/snep/includes/javascript/password.js"></script>
 <script src="/snep/includes/javascript/bootstrap-select.js"></script>
-<div class="row">           
+<div class="row">
     <form id="defaultForm" method="post" class="form-horizontal" action="<?php echo $this->url(array("controller" => "users", "action" => $this->action), null, false); ?>" autocomplete="off">
-        
+
         <div class="form-group">
             <label class="col-sm-2 control-label"><?php echo $this->translate("Username");?></label>
             <div class="col-sm-4">
@@ -108,13 +109,13 @@ jQuery(document).ready(function(){
         messages: {
             name: {
                 required: "<?php echo $this->translate('The username is required'); ?>",
-                minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>", 
+                minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>",
                 maxlength: "<?php echo $this->translate('Please enter no more than {0} characters.'); ?>",
-                lettersOnly: "<?php echo $this->translate('Letters only please'); ?>" 
+                lettersOnly: "<?php echo $this->translate('Letters only please'); ?>"
             },
             password: {
                 required: "<?php echo $this->translate('The password is required'); ?>",
-                minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>", 
+                minlength: "<?php echo $this->translate('Please enter at least {0} characters.'); ?>",
                 maxlength: "<?php echo $this->translate('Please enter no more than {0} characters.'); ?>"
             },
             email: {
@@ -137,7 +138,7 @@ jQuery(document).ready(function(){
         jQuery(function() {
 
             jQuery('#password').password().on('show.bs.password', function(e) {
-            
+
                 jQuery('#methods').prop('checked', true);
 
                 }).on('hide.bs.password', function(e) {
@@ -149,7 +150,3 @@ jQuery(document).ready(function(){
             });
     <?php }?>
 </script>
-
-
-
-
