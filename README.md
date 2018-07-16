@@ -1,4 +1,4 @@
-[![N|Solid](/images/img-snep-off.png)](https://snep.com.br)
+[![N|Solid](https://opens-images.s3.amazonaws.com/opens/docs/img-snep-off.png)](https://snep.com.br)
 
 # O que é #
 
@@ -29,21 +29,21 @@ Para uma instalação manual a partir dos fontes, use esta documentação:
 ---
 # Como colaborar #
 
-Para colaborar com o Projeto, seja bem vindo! 
+Seja bem vindo para colaborar com o Projeto, 
 
-Existem diferentes formas, traduzindo, reportando, corrigindo e implementando.
+Existem diferentes formas de colaborar com o projeto **SNEP**, seja traduzindo, reportando erros, corrigindo e/ou desenvolvendo.
 
 Veja aqui detalhes de como fazer isso:
 [Como enviar suas contribuições](http://wiki.opens.com.br/pages/viewpage.action?pageId=15041384)
 
 ### Tradução
  
-O Snep é utilizado em todo o mundo e hoje ele já é nativo nas linguagens português, inglês e espanhol. Você pode contribuir com o desenvolvimento do Snep ajudando a traduzi-lo para outras linguas. Visite essa [documentação](/bin/TRANSLATION.md) para ler sobre como traduzir.
+O Snep é utilizado em todo o mundo e hoje ele por padrão vai com as linguagens português, inglês e espanhol. Você pode contribuir com o desenvolvimento do Snep ajudando a traduzi-lo para outras linguas. Visite essa [documentação](/docs/TRANSLATION.md) para ler sobre como traduzi-lo.
 
 ---
 # Changelog #
 
-Para saber quais funcionalidades foram implementadas em cada versão acesse o [changelog](CHANGELOG.md) do Snep.
+Para saber quais funcionalidades foram implementadas em cada versão acesse o [changelog](/docs/CHANGELOG.md) do Snep.
 
 ---
 ## [Licença](LICENSE.md) ##
