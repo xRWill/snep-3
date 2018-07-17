@@ -48,7 +48,7 @@ A cada atualização do seu produto, seu manual será também atualizado de form
 
 # 2. Download dos fontes
 
-Veja o documento:  [Como usar o repositório do SNEP 3](http://wiki.opens.com.br/pages/viewpage.action?pageId=15041384)
+Veja o documento:  [Como usar o repositório do SNEP 3](/docs/REPOSITORY_SNEP_GUIDE.md)
 
 # 3. Procedimentos de instalação
 
