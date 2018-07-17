@@ -93,7 +93,7 @@ if($controller != 'auth'){
         </div>
 
         <ul class="nav navbar-top-links navbar-right">
-          <?php echo Zend_Registry::get('config')->ambiente->emp_nome; ?>
+          <span class="badge badge-danger"><?php echo Zend_Registry::get('config')->ambiente->emp_nome; ?></span>
           <li id="version_div" class="dropdown hidden">
               <a id="version" class="dropdown-toggle"  href="<?php echo $this->baseUrl()."/index.php/newversion";?>"><?php echo $this->new_version; ?>
               <i class="fa fa-fw"></i>
