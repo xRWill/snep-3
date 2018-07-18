@@ -35,8 +35,8 @@
                   <td class="text-center"><?php echo $user['name'] ?> </td>
                   <?php ($user['ide'] == "1")? $disabled= "disabled": $disabled= ""; ?>
                   <td class="text-center">
-                    <a class="btn btn-default btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url ?>/permission/id/<?php echo $user['ide'] ?>" role="button"><?php echo $this->translate('Permission')?></a>
-                    <a class="btn btn-default btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url ?>/bond/id/<?php echo $user['ide'] ?>" role="button"><?php echo $this->translate('Bond')?></a>
+                    <a class="btn btn-primary btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url ?>/permission/id/<?php echo $user['ide'] ?>" role="button"><?php echo $this->translate('Permission')?></a>
+                    <a class="btn btn-info btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url ?>/bond/id/<?php echo $user['ide'] ?>" role="button"><?php echo $this->translate('Bond')?></a>
                     <a class="btn btn-edit btn-sm" href="<?php echo $this->url ?>/edit/id/<?php echo $user['ide'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
                     <a class="btn btn-danger btn-sm <?php echo $disabled ?>" href="<?php echo $this->url ?>/remove/id/<?php echo $user['ide'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
                   </td>

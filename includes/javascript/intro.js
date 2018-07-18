@@ -31,13 +31,13 @@
 
     this._options = {
       /* Next button label in tooltip box */
-      nextLabel: 'Next &rarr;',
+      nextLabel: 'Próximo &rarr;',
       /* Previous button label in tooltip box */
-      prevLabel: '&larr; Back',
+      prevLabel: '&larr; Anterior',
       /* Skip button label in tooltip box */
-      skipLabel: 'Skip',
+      skipLabel: 'Pular',
       /* Done button label in tooltip box */
-      doneLabel: 'Done',
+      doneLabel: 'Sair',
       /* Hide previous button in the first step? Otherwise, it will be disabled button. */
       hidePrev: false,
       /* Hide next button in the last step? Otherwise, it will be disabled button. */
