@@ -22,6 +22,8 @@ Cada item adicionado na versão poderá ser um dos seguintes tipos:
 *XX de XXXXX de 2018*
 
 
+* **`NOVO`** - Nova ação de grupo de captura para regras de fila.
+
 * **`NOVO`** - Configuração BLF no ramal.
 
 * **`NOVO`** - Recurso discar para ramal na ação da URA.

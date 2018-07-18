@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snep-3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-18 11:57-0300\n"
+"POT-Creation-Date: 2018-07-18 13:58-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Douglas Conrad <douglas.conrad@opens.com.br>\n"
 "Language-Team: \n"
@@ -3495,7 +3495,6 @@ msgstr "Telefone"
 msgid "Phone invalid"
 msgstr "Telefone inválido"
 
-#: ../lib/PBX/Rule/ActionConfig.php:176
 #: ../modules/default/controllers/PickupGroupsController.php:118
 #: ../modules/default/controllers/PickupGroupsController.php:199
 #: ../modules/default/controllers/PickupGroupsController.php:214
@@ -3516,6 +3515,10 @@ msgstr "Ações de Grupo de Captura"
 #: /home/tiago/Development/Opens/snep-3/modules/default/resources.xml
 msgid "Pickup Groups"
 msgstr "Grupos de Captura"
+
+#: ../lib/PBX/Rule/ActionConfig.php:176
+msgid "PickupGroup"
+msgstr "Grupo de Captura"
 
 #: ../modules/default/actions/Playback.php:52
 msgid "Play Audio"
@@ -7653,9 +7656,6 @@ msgstr ""
 
 #~ msgid "Period from:"
 #~ msgstr "PerÃ­odo de:"
-
-#~ msgid "PickupGroup"
-#~ msgstr "Grupos de Captura"
 
 #~ msgid "Please Wait..."
 #~ msgstr "Por Favor, Aguarde..."

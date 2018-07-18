@@ -173,7 +173,7 @@ class PBX_Rule_ActionConfig {
         $i18n = Zend_Registry::get('i18n');
 
         $form_element = new Zend_Form_Element_Select((string) $element->id);
-        $form_element->setLabel((string) $i18n->translate("Pickup Group"));
+        $form_element->setLabel((string) $i18n->translate("PickupGroup"));
 
         foreach (Snep_PickupGroups_Manager::getAll() as $id => $pickupgroup) {
             $form_element->addMultiOption($id, (string)$pickupgroup);
