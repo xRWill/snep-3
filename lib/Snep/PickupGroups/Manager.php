@@ -136,6 +136,21 @@ class Snep_PickupGroups_Manager {
     }
 
     /**
+     * getValidation - checks if the pickupgroup is used in the rule
+     * @param <int> $id
+     * @return <array>
+     */
+    public function getValidation($id) {
+
+        $db = Zend_Registry::get('db');
+
+        $rules_query = "SELECT rule.id, rule.desc FROM regras_negocio as rule, regras_negocio_actions_config as rconf WHERE (rconf.regra_id = rule.id AND rconf.value = '$id' AND (rconf.key = 'pickupgroup'))";
+        $regras = $db->query($rules_query)->fetchAll();
+
+        return $regras;
+    }
+
+    /**
      * @param <array> $pickupGroup
      */
     public static function add($pickupGroup) {

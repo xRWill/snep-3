@@ -77,6 +77,9 @@ class PBX_Rule_ActionConfig {
                 case 'tronco':
                     $parsed_element = $this->parseTronco($element);
                     break;
+                case 'pickupgroup':
+                    $parsed_element = $this->parsePickupGroup($element);
+                    break;
                 case 'radio':
                     $parsed_element = $this->parseRadio($element);
                     break;
@@ -163,6 +166,26 @@ class PBX_Rule_ActionConfig {
     }
 
     /**
+     * parsePickupGroup - Faz o parse de um campo <pickupgroup>
+     * @param SimpleXMLElement $element
+     */
+    protected function parsePickupGroup($element) {
+        $i18n = Zend_Registry::get('i18n');
+
+        $form_element = new Zend_Form_Element_Select((string) $element->id);
+        $form_element->setLabel((string) $i18n->translate("Pickup Group"));
+
+        foreach (Snep_PickupGroups_Manager::getAll() as $id => $pickupgroup) {
+            $form_element->addMultiOption($id, (string)$pickupgroup);
+            if (isset($element->value) && $id == $id) {
+                $form_element->setValue($element->value);
+            }
+        }
+
+        return $form_element;
+    }
+
+    /**
      * parseTronco - Faz o parse de um campo <tronco>
      * @param SimpleXMLElement $element
      */
@@ -181,6 +204,8 @@ class PBX_Rule_ActionConfig {
 
         return $form_element;
     }
+
+    
 
     /**
      * parseAudio - Faz o parse de um campo <audio>
