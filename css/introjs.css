@@ -222,11 +222,11 @@ tr.introjs-showElement > th {
   overflow: visible;
   display: inline-block;
   padding: 0.3em 0.8em;
-  border: 1px solid #d4d4d4;
+  border: 2px solid #d4d4d4;
   margin: 0;
   text-decoration: none;
   text-shadow: 1px 1px 0 #fff;
-  font: 11px/normal sans-serif;
+  font: 13px/normal sans-serif;
   color: #333;
   white-space: nowrap;
   cursor: pointer;
@@ -246,7 +246,7 @@ tr.introjs-showElement > th {
   /* IE hacks */
   zoom: 1;
   *display: inline;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .introjs-button:hover {

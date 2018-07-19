@@ -52,31 +52,25 @@
                 <div id="collapseOne" class="panel-collapse collapse in ip-status"  style="background-color: #fff !important">
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
+                            <table class="table table-striped" id="listExtension">
                                 <thead>
                                     <tr>
-                                        <th><?php echo $this->translate("Extension") ?></th>
-                                        <th><?php echo $this->translate("Callerid") ?></th>
-                                        <th><?php echo $this->translate("Channel") ?></th>
-                                        <th><?php echo $this->translate("IP") ?></th>
-                                        <th><?php echo $this->translate("Latency") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Extension") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Callerid") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Channel") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("IP") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Latency") ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($this->peers) {
-                                        foreach ($this->peers as $key => $value) { ?>
-                                            <tr>
-                                                <td><?php echo $value['name'] ?></td>
-                                                <td><?php echo $value['callerid'] ?></td>
-                                                <td><?php echo $value['canal'] ?></td>
-                                                <td id="<?php echo 'ip_'.$value['id'] ?>"> N.D. </td>
-                                                <td id="<?php echo 'peer_latency_'.$value['id'] ?>"> N.D. </td>
-                                            </tr>
-                                        <?php }
-                                    } else { ?>
+                                    foreach ($this->peers as $key => $value) { ?>
                                         <tr>
-                                            <td colspan="6"><?php echo $this->translate("no extensions available") ?></td>
+                                            <td class="text-center"><?php echo $value['name'] ?></td>
+                                            <td class="text-center"><?php echo $value['callerid'] ?></td>
+                                            <td class="text-center"><?php echo $value['canal'] ?></td>
+                                            <td class="text-center" id="<?php echo 'ip_'.$value['id'] ?>"> N.D. </td>
+                                            <td class="text-center" id="<?php echo 'peer_latency_'.$value['id'] ?>"> N.D. </td>
                                         </tr>
                                     <?php } ?>  
                                 </tbody>
@@ -101,31 +95,25 @@
                 <div id="collapseTwo" class="panel-collapse collapse ip-status"  style="background-color: #fff !important">
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
+                            <table class="table table-striped" id="listTrunk">
                                 <thead>
                                     <tr>
-                                        <th><?php echo $this->translate("Name") ?></th>
-                                        <th><?php echo $this->translate("IP") ?></th>
-                                        <th><?php echo $this->translate("Type") ?></th>
-                                        <th><?php echo $this->translate("Registry") ?></th>
-                                        <th><?php echo $this->translate("Latency") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Name") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("IP") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Type") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Registry") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Latency") ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($this->trunks) {
-                                        foreach ($this->trunks as $key => $value) { ?>
-                                            <tr>
-                                                <td><?php echo $value['callerid'] ?></td>
-                                                <td id="<?php echo 'host'.$value['id'] ?>"><?php echo $value['host'] ?></td>
-                                                <td><?php echo $value['type'] ?></td>
-                                                <td id="<?php echo 'status_'.$value['id'] ?>"> N.D. </td>
-                                                <td id="<?php echo 'trunk_latency_'.$value['id'] ?>"> N.D. </td>
-                                            </tr>
-                                        <?php }
-                                    } else { ?>
+                                    foreach ($this->trunks as $key => $value) { ?>
                                         <tr>
-                                            <td colspan="6"><?php echo $this->translate("no trunk available") ?></td>
+                                            <td class="text-center"><?php echo $value['callerid'] ?></td>
+                                            <td class="text-center" id="<?php echo 'host'.$value['id'] ?>"><?php echo $value['host'] ?></td>
+                                            <td class="text-center"><?php echo $value['type'] ?></td>
+                                            <td class="text-center" id="<?php echo 'status_'.$value['id'] ?>"> N.D. </td>
+                                            <td class="text-center" id="<?php echo 'trunk_latency_'.$value['id'] ?>"> N.D. </td>
                                         </tr>
                                     <?php } ?>  
                                 </tbody>
@@ -151,11 +139,11 @@
                 <div id="collapseThree" class="panel-collapse collapse ip-status"  style="background-color: #fff !important">
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
+                            <table class="table table-striped" id="listQueue">
                                 <thead>
                                     <tr>
-                                        <th><?php echo $this->translate("Name") ?></th>
-                                        <th><?php echo $this->translate("Strategy") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Name") ?></th>
+                                        <th class="text-center"><?php echo $this->translate("Strategy") ?></th>
                                         <th class="text-center"><?php echo $this->translate("Members") ?></th>
                                         <th class="text-center"><?php echo $this->translate("Calls completed") ?></th>
                                         <th class="text-center"><?php echo $this->translate("Calls Abandoned") ?></th>
@@ -163,21 +151,15 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($this->queues) {
-                                        foreach ($this->queues as $key => $value) { ?>
-                                            <tr>
-                                                <td><?php echo $value['name'] ?></td>
-                                                <td id="<?php echo 'strategy_'.$value['name'] ?>"></td>
-                                                <td class="text-center" id="<?php echo 'members_'.$value['name'] ?>"></td>
-                                                <td  class="text-center"id="<?php echo 'completed_'.$value['name'] ?>"></td>
-                                                <td class="text-center" id="<?php echo 'abandoned_'.$value['name'] ?>"></td>
-                                            </tr>
-                                        <?php }
-                                    } else { ?>
+                                    foreach ($this->queues as $key => $value) { ?>
                                         <tr>
-                                            <td colspan="6"><?php echo $this->translate("No queues available") ?></td>
+                                            <td class="text-center"><?php echo $value['name'] ?></td>
+                                            <td class="text-center" id="<?php echo 'strategy_'.$value['name'] ?>"></td>
+                                            <td class="text-center" id="<?php echo 'members_'.$value['name'] ?>"></td>
+                                            <td class="text-center" id="<?php echo 'completed_'.$value['name'] ?>"></td>
+                                            <td class="text-center" id="<?php echo 'abandoned_'.$value['name'] ?>"></td>
                                         </tr>
-                                    <?php } ?>  
+                                    <?php } ?>
                                 </tbody>
                             </table>
                             
@@ -188,7 +170,7 @@
             <!-- /Queues -->
         </div>  
     </div>  
-</div> <!-- /.row -->   
+</div>
 
 <script type="text/javascript">
 
@@ -201,7 +183,11 @@
                 success: function(data) {
                     for(i=0; i < data.length; i++){
                         jQuery("#status_"+data[i].id).html(data[i].status) ;
-                        jQuery("#trunk_latency_"+data[i].id).html(data[i].latencia) ;
+                        var lb = "label-danger";
+                        if(data[i].latencia.toUpperCase().indexOf('OK') > -1){
+                            lb = "label-success"
+                        }
+                        jQuery("#trunk_latency_"+data[i].id).html('<label class="label '+lb+'">'+data[i].latencia+'</label>') ;
                         if (data[i].type == 'VIRTUAL') {
                             jQuery("#host"+data[i].id).html(data[i].host) ;   
                         }
@@ -213,8 +199,12 @@
                 dataType:'json',
                 success: function(data) {
                     for(i=0; i < data.length; i++){
-                        jQuery("#ip_"+data[i].id).html(data[i].ip) ;
-                        jQuery("#peer_latency_"+data[i].id).html(data[i].latencia) ;
+                        jQuery("#ip_"+data[i].id).html('<label class="badge badge-default">'+data[i].ip+'</label>') ;
+                        var lb = "label-danger";
+                        if(data[i].latencia.toUpperCase().indexOf('OK') > -1){
+                            lb = "label-success"
+                        }
+                        jQuery("#peer_latency_"+data[i].id).html('<label class="label '+lb+'">'+data[i].latencia+'</label>') ;
                     }
                 }
             });
@@ -224,7 +214,7 @@
                 success: function(data) {
                     for(i=0; i < data.length; i++){
                         jQuery("#strategy_"+data[i].id).html(data[i].strategy) ;
-                        jQuery("#members_"+data[i].id).html(data[i].members) ;
+                        jQuery("#members_"+data[i].id).html('<label class="label label-info">'+data[i].members+'</label>') ;
                         jQuery("#completed_"+data[i].id).html(data[i].completed) ;
                         jQuery("#abandoned_"+data[i].id).html(data[i].abandoned) ;
                     }
@@ -263,6 +253,14 @@
                     }
                 } 
             });
+        });
+
+        jQuery('#listExtension,#listTrunk,#listQueue').dataTable( {
+            "pageLength": 100,
+            "oLanguage": {
+            "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
+            },
+            "bLengthChange": false
         });
     });
 

@@ -28,7 +28,7 @@
                 <tr>
                   <td class="text-center"> <?php echo $pickupGroup['cod_grupo'] ?> </td>
                   <td class="text-center"> <?php echo $pickupGroup['nome'] ?> </td>
-                  <td class="text-center"> <?php echo $pickupGroup['members'] ?> </td>
+                  <td class="text-center"><label class="label label-info"><?php echo $pickupGroup['members'] ?></label></td>
                   <?php ($pickupGroup['cod_grupo'] == 1) ? $disabled= "disabled" : $disabled = ""; ?>
                   <td class="text-center">
                     <a class="btn btn-edit btn-sm <?php echo $disabled ?>"  href="<?php echo $this->url ?>/edit/id/<?php echo $pickupGroup['cod_grupo'] ?>" role="button"><?php echo $this->translate('Edit')?></a>

@@ -25,6 +25,7 @@ if($controller != 'auth'){
     $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/intro.js');
 
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/bootstrap.css');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/bootstrap-toggle.min.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/metisMenu.min.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/includes/javascript/daterangepicker/daterangepicker.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/snep.css');
@@ -253,7 +254,7 @@ if($controller != 'auth'){
 
   var steps = [
     {
-      element: '#snep-logo',
+      element: '.navbar-header',
       intro: "<?php echo $this->translate('Welcome to SNEP. <br>\
       Your IP Telephony Plataform.<br>Click Next to understand the basic steps to use SNEP.');?>"
     },
@@ -348,7 +349,7 @@ if($controller != 'auth'){
         });
     }
     intro.onbeforechange(function(element) {
-        console.log('Current Step:', this._currentStep);
+        
         if (this._currentStep === 3) {
             jQuery("#default_manage").addClass("active");
             jQuery("#sub-default_manage").addClass("in");

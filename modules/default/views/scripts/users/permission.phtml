@@ -17,25 +17,15 @@
  *  along with SNEP.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-toggle.min.css" );
 $enabled = '<img src="/snep/images/button_ok.png" align="center" width="22" height="22" title="Habilitado";">';
 $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title="Desabilitado";">';
-
 ?>
-<style>
-    .toggle.btn-xs {
-        min-width: 50px;
-    }
-    .checkbox label .toggle {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-</style>
+
 <script type="text/javascript" src="/snep/includes/javascript/bootstrap-toggle.min.js"></script>
 <div class="row">
     <form  action="<?php echo $this->url(array("controller" => "users", "action" => "permission"), null, true); ?>" METHOD="post">
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
+            <table class="table table-striped" id="listtable">
                 <thead>
                     <tr>
                         <th><?php echo $this->translate("Routine") ?></th>
@@ -49,7 +39,6 @@ $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title
 
                     if ($this->modules) {
                         foreach ($this->modules as $item => $module) { ?>
-
                             <tr>
                                 <td> <?php echo $module['name'] ?> </td>
                                 <?php if (isset($module['group'])) { ?>
@@ -62,41 +51,36 @@ $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title
                                     <?php if (isset($module['group'])) { ?>
                                         <td class="text-center"> <?php echo $enabled ?> </td>
                                         <td class="text-center">
-                                            <input name=<?php echo $module['id_permission'] ?> type="checkbox" value="no" checked>
-                                            &nbsp;<?php echo $this->translate('Allow') ?>
+                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } else { ?>
                                         <td class="text-center"> <?php echo $disabled ?> </td>
                                         <td class="text-center">
-                                            <input name=<?php echo $module['id_permission'] ?> type="checkbox" value="yes" >
-                                            &nbsp;<?php echo $this->translate('Allow') ?>
+                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } ?>
                                 <?php } else { ?>
                                     <?php if (isset($module['user']) === true && $module['allow'] == true) { ?>
                                         <td class="text-center"> <?php echo $enabled ?> </td>
                                         <td class="text-center">
-                                            <input name=<?php echo $module['id_permission'] ?> type="checkbox" value="yes" checked>
-                                            &nbsp;<?php echo $this->translate('Allow') ?>
+                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } else if (isset($module['group']) == true && isset($module['user']) == false) { ?>
                                         <td class="text-center"> <?php echo $enabled ?> </td>
                                         <td class="text-center">
-                                            <input name=<?php echo $module['id_permission'] ?> type="checkbox" value="yes" checked>
-                                            &nbsp;<?php echo $this->translate('Allow') ?>
+                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } else { ?>
                                         <td class="text-center"> <?php echo $disabled ?> </td>
                                         <td class="text-center">
-                                            <input name=<?php echo $module['id_permission'] ?> type="checkbox" value="yes">
-                                            &nbsp;<?php echo $this->translate('Allow') ?>
+                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } ?>
                                 <?php } ?>
                             </tr>
                             <input type="hidden" name="user" value=<?php echo $this->id ?>>
-                        <?php } // end foreach ?>
-                    <?php } //end if this->modules  ?>
+                        <?php } ?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -108,4 +92,20 @@ $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title
         </div>
 
     </form>
-</div>    <!-- /.row
+</div>
+
+<script type="text/javascript">
+
+jQuery.noConflict();
+
+jQuery(document).ready(function() {
+  jQuery('#listtable').dataTable( {
+    "pageLength": 100,
+    "oLanguage": {
+      "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
+    },
+    "bLengthChange": false,
+    "ordering": false
+  });
+});
+</script>

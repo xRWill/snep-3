@@ -29,7 +29,7 @@
                 <tr>
                   <td class="text-center"><?php echo $group['id'] ?></td>
                   <td class="text-center"><?php echo $group['name'] ?></td>
-                  <td class="text-center"><?php echo $group['qt_peers'] ?></td>
+                  <td class="text-center"><label class="label label-info"><?php echo $group['qt_peers'] ?></label></td>
                   <td class="text-center">
                     <a class="btn btn-edit btn-sm" href="<?php echo $this->url ?>/edit/id/<?php echo $group['id'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
                     <a class="btn btn-danger btn-sm <?php echo $disabled ?>" href="<?php echo $this->url ?>/remove/id/<?php echo $group['id'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
