@@ -21,7 +21,6 @@ $enabled = '<img src="/snep/images/button_ok.png" align="center" width="22" heig
 $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title="Desabilitado";">';
 ?>
 
-<script type="text/javascript" src="/snep/includes/javascript/bootstrap-toggle.min.js"></script>
 <div class="row">
     <form  action="<?php echo $this->url(array("controller" => "users", "action" => "permission"), null, true); ?>" METHOD="post">
         <div class="table-responsive">
@@ -51,29 +50,29 @@ $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title
                                     <?php if (isset($module['group'])) { ?>
                                         <td class="text-center"> <?php echo $enabled ?> </td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
+                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } else { ?>
                                         <td class="text-center"> <?php echo $disabled ?> </td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> name=<?php echo $module['id_permission'] ?>>
+                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } ?>
                                 <?php } else { ?>
                                     <?php if (isset($module['user']) === true && $module['allow'] == true) { ?>
                                         <td class="text-center"> <?php echo $enabled ?> </td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
+                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } else if (isset($module['group']) == true && isset($module['user']) == false) { ?>
                                         <td class="text-center"> <?php echo $enabled ?> </td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
+                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } else { ?>
                                         <td class="text-center"> <?php echo $disabled ?> </td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> name=<?php echo $module['id_permission'] ?>>
+                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> name=<?php echo $module['id_permission'] ?>>
                                         </td>
                                     <?php } ?>
                                 <?php } ?>

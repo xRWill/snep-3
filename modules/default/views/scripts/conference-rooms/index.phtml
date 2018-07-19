@@ -15,19 +15,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with SNEP.  If not, see <http://www.gnu.org/licenses/>.
  */
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-toggle.min.css" );
+
 $this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/password.js");
 ?>
-<style>
-    .toggle.btn-xs {
-        min-width: 50px;
-    }
-    .checkbox label .toggle {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-</style>
-<script type="text/javascript" src="/snep/includes/javascript/bootstrap-toggle.min.js"></script>
+
 <!-- <script src="/snep/includes/javascript/password.js"></script> -->
 <div class="row">
     <div class="tab-content">
@@ -70,7 +61,7 @@ $this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/passwor
                                     <td class="action text-center">
                                         <?php ( $conferenceRooms['rec'] ? $chek = 'checked' : $chek = '') ?>
 
-                                        <input type="checkbox" class="newcheck" <?php echo $chek ?> value="<?php $conferenceRooms['rec'] ?>"  name="rec[<?php echo $conferenceRooms['id'] ?>]">
+                                        <input type="checkbox" data-toggle="toggle" data-size="mini" <?php echo $chek ?> value="<?php $conferenceRooms['rec'] ?>"  name="rec[<?php echo $conferenceRooms['id'] ?>]">
                                     </td>
                                     <td class="password text-center" >
                                         <div>
@@ -93,7 +84,7 @@ $this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/passwor
                                     <td align="center">
                                         <div class="checkbox" >
                                             <label>
-                                                <input type="checkbox" data-toggle="toggle"  <?php echo $conferenceRooms['status'] === 1 ? 'checked' : ''; ?> name="activate[<?php echo $conferenceRooms['id'] ?>]" value="<?php $conferenceRooms['status'] ?>" data-size="mini">
+                                                <input type="checkbox" data-toggle="toggle" data-size="mini" <?php echo $conferenceRooms['status'] === 1 ? 'checked' : ''; ?> name="activate[<?php echo $conferenceRooms['id'] ?>]" value="<?php $conferenceRooms['status'] ?>" data-size="mini">
                                             </label>
                                         </div>
                                     </td>

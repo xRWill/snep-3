@@ -32,9 +32,9 @@
                     <div class="checkbox">
                     	<label>
                     		<?php if($this->hide_routes){?>
-                    			<input type="checkbox" name="hide_routes" id="hide_routes" checked/>
+                                <input type="checkbox" data-toggle="toggle" data-size="mini"  checked name="hide_routes" id="hide_routes" >
                     		<?php }else{?>
-                    			<input type="checkbox" name="hide_routes" id="hide_routes"/>
+                                <input type="checkbox" data-toggle="toggle" data-size="mini" name="hide_routes" id="hide_routes" >
                     		<?php } ?>
                             <?php echo $this->translate("Show / Hide deactivated routes")?>
                         </label>
@@ -47,9 +47,9 @@
                     <div class="checkbox">
                         <label>
                             <?php if($this->debug){?>
-                                <input type="checkbox" name="debug" id="debug" checked/>
+                                <input type="checkbox" data-toggle="toggle" data-size="mini" name="debug" id="debug" checked/>
                             <?php }else{?>
-                                <input type="checkbox" name="debug" id="debug"/>
+                                <input type="checkbox" data-toggle="toggle" data-size="mini" name="debug" id="debug"/>
                             <?php } ?>
                             <?php echo $this->translate("Show error message events if activated")?>
                         </label>
@@ -62,9 +62,9 @@
                     <div class="checkbox">
                         <label>
                             <?php if($this->show_help){?>
-                                <input type="checkbox" name="show_help" id="show_help" checked/>
+                                <input type="checkbox" data-toggle="toggle" data-size="mini" name="show_help" id="show_help" checked/>
                             <?php }else{?>
-                                <input type="checkbox" name="show_help" id="show_help"/>
+                                <input type="checkbox" data-toggle="toggle" data-size="mini" name="show_help" id="show_help"/>
                             <?php } ?>
                             <?php echo $this->translate("Automatic show Contextualized Help on Pages with it defined.")?>
                         </label>
@@ -82,7 +82,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label"><?php echo $this->translate("Number of Lines");?></label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" name="linelimit"  value='<?php echo $this->config->ambiente->linelimit;?>'/>
+                    <input type="number" class="form-control" name="linelimit"  value='<?php echo $this->config->ambiente->linelimit;?>'/>
                 </div>
                 <div class="col-sm-5" style="padding-top: 8px;">
                     <small><?php echo $this->translate("Defines how many lines you want per page of report")?></small>
@@ -92,7 +92,7 @@
              <div class="form-group">
                 <label class="col-sm-3 control-label"><?php echo $this->translate("Peers - number of digits");?></label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" name="peers_digits"  value='<?php echo $this->config->canais->peers_digits  ;?>'/>
+                    <input type="number" class="form-control" name="peers_digits"  value='<?php echo $this->config->canais->peers_digits  ;?>'/>
                 </div>
                 <div class="col-sm-5" style="padding-top: 8px;">
                     <small ><?php echo $this->translate("Defines the number of digits in the configuration of an extension")?></small>
@@ -259,7 +259,7 @@
     		<div class="form-group">
                 <label class="col-sm-3 control-label"><?php echo $this->translate("Qualify");?></label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="valor_controle_qualidade" value='<?php echo $this->config->ambiente->valor_controle_qualidade;?>' placeholder='<?php echo $this->translate("Default value for Qualify")?>' />
+                    <input type="number" class="form-control" name="valor_controle_qualidade" value='<?php echo $this->config->ambiente->valor_controle_qualidade;?>' placeholder='<?php echo $this->translate("Default value for Qualify")?>' />
                 </div>
             </div>
 

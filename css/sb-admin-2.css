@@ -291,7 +291,6 @@ padding-left: 37px;
 		display: table;
 		padding-top: 8px;
 	}
-
 }
 
 
@@ -299,7 +298,7 @@ padding-left: 37px;
 	.sidebar {
 		z-index: 999;
 		width: 200px;
-		height: 100% !important;
+		height: 100%;
 		background-color: #313032;
 		position: absolute;
 	}

@@ -1,0 +1,12 @@
+    <form id="defaultForm" method="post" class="form-horizontal" action="<?php echo $this->url(array("controller" => "docs", "action" => "index"), null, false); ?>" autocomplete="off">
+ 
+        <button type="submit" class="btn btn-lg btn-add" name="changelog" value="changelog">Changelog</button>
+        <button type="submit" class="btn btn-lg btn-warning" name="practical_guide" value="practical_guide">Guia Prático</button>
+        <button type="submit" class="btn btn-lg btn-success" name="realtime_disable" value="realtime_disable">Desabilitando Realtime</button>
+        <button type="submit" class="btn btn-lg btn-info" name="install_guide" value="install_guide">Manual de Instalação sem ISO</button>
+        <button type="submit" class="btn btn-lg btn-danger" name="repository_snep_guide" value="repository_snep_guide">Colaborando com o Snep</button>
+        <button type="submit" class="btn btn-lg btn-primary" name="translation" value="translation">Colaborando com a tradução do Snep</button>
+    
+    </form><br><hr>
+
+	<?php echo $this->doc; ?>		
