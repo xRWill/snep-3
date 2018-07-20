@@ -415,7 +415,7 @@ class CallsReportController extends Zend_Controller_Action
                 $contacts[$value['name']] = $value['callerid'];
             }
         }
-
+        
         foreach ($row as $key => $value) {
             
             //if (!$result_data[$value['uniqueid']]['disposition']) {
@@ -507,6 +507,7 @@ class CallsReportController extends Zend_Controller_Action
             $result_data[$value['uniqueid']]["uniqueid"] = $value["uniqueid"];
             $result_data[$value['uniqueid']]["calldate"] = $value["calldate"];
             $result_data[$value['uniqueid']]["dstchannel"] = $value["dstchannel"];
+
         }
 
         $this->view->bill = false;
@@ -514,6 +515,27 @@ class CallsReportController extends Zend_Controller_Action
             $this->view->bill = true;
         }
         
+        //totals
+        $totals = array('totals' => 0, 'answered' => 0, 'noanswer' => 0, 'busy' => 0, 'failed' => 0);
+        $totals['totals'] = count($result_data);
+        foreach ($result_data as $key => $value) {
+            switch ($value['disposition']) {
+                case 'ANSWERED':
+                    $totals['answered']++;
+                    break;
+                case 'NO ANSWER':
+                    $totals['noanswer']++;
+                    break;
+                case 'BUSY':
+                    $totals['busy']++;
+                    break;
+                default:
+                    $totals['failed']++;
+                    break;
+            }
+        }
+
+        $this->view->totals = $totals;
         $this->view->call_list = $result_data;
         $this->view->format = $format;
         $this->view->locale = $locale_call;
@@ -538,9 +560,46 @@ class CallsReportController extends Zend_Controller_Action
 
         $row = $this->getSelect($filter);
 
+        foreach ($row as $key => $value) {
+            
+            
+            $result_data[$value['uniqueid']]["disposition"] = $value["disposition"];  
+            
+            if ($result_data[$value['uniqueid']]['dia'] == null) {
+                $result_data[$value['uniqueid']]['dia'] = $value["dia"];
+            }
+            if ($result_data[$value['uniqueid']]['billsec'] === null) {
+                $result_data[$value['uniqueid']]['billsec'] = 0;
+            }
+
+            if($value['lastapp'] == 'Queue'){
+                $result_data[$value['uniqueid']]["wasQueue"] = true;
+            }
+
+            switch ($value['disposition']) {
+                case 'ANSWERED':
+                    $result_data[$value['uniqueid']]['billsec'] = $result_data[$value['uniqueid']]['billsec'] + $value['billsec'];
+                    $result_data[$value['uniqueid']]["disposition"] = $value["disposition"];
+                    $result_data[$value['uniqueid']]["wasAttended"] = true;
+                    break;
+            }
+
+            // treatment when no answer on first
+            if($result_data[$value['uniqueid']]["wasAttended"]){
+                $result_data[$value['uniqueid']]["disposition"] = 'ANSWERED';
+            }
+
+            $result_data[$value['uniqueid']]["codigo"] = $value['codigo'];
+            $result_data[$value['uniqueid']]["tipo"] = $value["tipo"];
+            $result_data[$value['uniqueid']]["key_dia"] = $value["key_dia"];
+            $result_data[$value['uniqueid']]["accountcode"] = $value["accountcode"];
+            
+        }
+                
         $totals = array('answer' => 0, 'noanswer' => 0, 'busy' => 0, 'failed' => 0, 'totals' => 0);
         $typeCall = array('incoming' => 0, 'outgoing' => 0, 'other' => 0);
-        foreach ($row as $key => $value) {
+        foreach ($result_data as $key => $value) {
+            
             if (isset($ccustos[$value['accountcode']])) {
                 $ccustos[$value['accountcode']]['cont']++;
             } else {

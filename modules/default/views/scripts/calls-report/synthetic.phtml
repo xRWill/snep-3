@@ -37,20 +37,20 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
         <table class="table table-striped">
           <thead>
             <tr>
-              <th data-sort-ignore="true" class="text-center" ><?php echo $this->translate("Answered") ?></th>
-              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Not Answered") ?></th>
-              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Busy") ?></th>
-              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Failed") ?></th>
-              <th data-sort-ignore="true" class="text-center"><?php echo $this->translate("Totals") ?></th>
+              <th class="text-center"><?php echo $this->translate("Totals") ?></th>
+              <th class="text-center" ><?php echo $this->translate("Answered") ?></th>
+              <th class="text-center"><?php echo $this->translate("Not Answered") ?></th>
+              <th class="text-center"><?php echo $this->translate("Busy") ?></th>
+              <th class="text-center"><?php echo $this->translate("Failed") ?></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="text-center"><?php echo $this->totals['answer']; ?></td>
-              <td class="text-center"><?php echo $this->totals['noanswer']; ?></td>
-              <td class="text-center"><?php echo $this->totals['busy']; ?></td>
-              <td class="text-center"><?php echo $this->totals['failed']; ?></td>
-              <td class="text-center"><?php echo $this->totals['totals']; ?></td>
+              <td class="text-center"><label class="label label-info"><?php echo $this->totals['totals']; ?></label></td>
+              <td class="text-center"><label class="label label-success"><?php echo $this->totals['answer']; ?></label></td>
+              <td class="text-center"><label class="label label-danger"><?php echo $this->totals['noanswer']; ?></label></td>
+              <td class="text-center"><label class="label label-warning"><?php echo $this->totals['busy']; ?></label></td>
+              <td class="text-center"><label class="label label-default"><?php echo $this->totals['failed']; ?></label></td>
             </tr>
           </tbody>
         </table>
@@ -72,9 +72,9 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
           </thead>
           <tbody>
             <tr>
-              <td class="text-center"><?php echo $this->typeCall['incoming']; ?></td>
-              <td class="text-center"><?php echo $this->typeCall['outgoing']; ?></td>
-              <td class="text-center"><?php echo $this->typeCall['other']; ?></td>
+              <td class="text-center"><label class="label label-info"><?php echo $this->typeCall['incoming']; ?></label></td>
+              <td class="text-center"><label class="label label-success"><?php echo $this->typeCall['outgoing']; ?></label></td>
+              <td class="text-center"><label class="label label-danger"><?php echo $this->typeCall['other']; ?></label></td>
             </tr>
           </tbody>
         </table>
@@ -85,7 +85,7 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
   <div class="col-sm-8">
     <fieldset>
       <legend><?php echo $this->translate("Status by Period") ?></legend>
-      <div class="panel panel-default"><br>
+      <div class="panel panel-default col-sm-12"><br>
         <table class="table table-striped" id="statusbyperiod">
           <thead>
             <tr>
@@ -117,7 +117,7 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
   <div class="col-sm-4">
     <fieldset>
       <legend><?php echo $this->translate("Tag") ?></legend>
-      <div class="panel panel-default"><br>
+      <div class="panel panel-default col-sm-12"><br>
         <table class="table table-striped" id="tag">
           <thead>
             <tr>
