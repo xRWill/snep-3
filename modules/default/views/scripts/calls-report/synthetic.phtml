@@ -42,6 +42,9 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
               <th class="text-center"><?php echo $this->translate("Not Answered") ?></th>
               <th class="text-center"><?php echo $this->translate("Busy") ?></th>
               <th class="text-center"><?php echo $this->translate("Failed") ?></th>
+              <?php if ($this->bill) {?>
+                <th class="text-center"><?php echo $this->translate("Billing") ?></th>
+              <?php }?>
             </tr>
           </thead>
           <tbody>
@@ -51,6 +54,9 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
               <td class="text-center"><label class="label label-danger"><?php echo $this->totals['noanswer']; ?></label></td>
               <td class="text-center"><label class="label label-warning"><?php echo $this->totals['busy']; ?></label></td>
               <td class="text-center"><label class="label label-default"><?php echo $this->totals['failed']; ?></label></td>
+              <?php if ($this->bill) {?>
+                <td class="text-center"><label class="label label-primary"><?php echo $this->totals['bill']; ?></label></td>
+              <?php }?>
             </tr>
           </tbody>
         </table>

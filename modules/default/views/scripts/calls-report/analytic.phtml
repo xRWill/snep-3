@@ -101,6 +101,9 @@ $this->headScript()->appendFile($this->baseUrl() . '/includes/javascript/removeI
           <td><?php echo $this->translate("Not Answered"); ?>: <?php echo $this->totals['noanswer'];?></td>
           <td><?php echo $this->translate("Busy");?>: <?php echo $this->totals['busy'];?></td>
           <td><?php echo $this->translate("Failed");?>: <?php echo $this->totals['failed'];?></td>
+          <?php if ($this->bill) {?>
+            <td><?php echo $this->translate("Billing");?>: <?php echo $this->totals['bill'];?></td>
+          <?php }?>
         </tr>
       </table>
     </div>

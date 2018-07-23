@@ -340,7 +340,7 @@ class CallsReportController extends Zend_Controller_Action
         $select .= "cdr.src, cdr.dst, cdr.disposition, cdr.duration, cdr.billsec, cdr.lastapp, cdr.accountcode,";
         $select .= "cdr.userfield, cdr.dcontext, cdr.amaflags, cdr.uniqueid, cdr.calldate, cdr.dstchannel";
         $select .= ",ccustos.codigo,ccustos.tipo,ccustos.nome";
-        if ($filter['rate']) {
+        if (class_exists("Billing_Manager")) {
             $select .= ", bc.price FROM cdr ";
             $select .= " LEFT JOIN rated_calls bc ON bc.userfield = cdr.userfield ";
         } else {
@@ -362,6 +362,7 @@ class CallsReportController extends Zend_Controller_Action
         $select .= $where_prefix;
         //$select .= " GROUP BY userfield ORDER BY calldate, userfield ";
         $select .= " ORDER BY calldate, userfield ";
+        
         
         $stmt = $db->query($select);
         $cont = count($stmt);
@@ -516,9 +517,13 @@ class CallsReportController extends Zend_Controller_Action
         }
         
         //totals
-        $totals = array('totals' => 0, 'answered' => 0, 'noanswer' => 0, 'busy' => 0, 'failed' => 0);
+        $totals = array('totals' => 0, 'answered' => 0, 'noanswer' => 0, 'busy' => 0, 'failed' => 0, 'bill' => 0);
         $totals['totals'] = count($result_data);
         foreach ($result_data as $key => $value) {
+            if($value['price']){
+                $totals['bill'] += str_replace(',', '.', $value['price']);
+            }
+        
             switch ($value['disposition']) {
                 case 'ANSWERED':
                     $totals['answered']++;
@@ -534,7 +539,7 @@ class CallsReportController extends Zend_Controller_Action
                     break;
             }
         }
-
+        
         $this->view->totals = $totals;
         $this->view->call_list = $result_data;
         $this->view->format = $format;
@@ -555,6 +560,11 @@ class CallsReportController extends Zend_Controller_Action
             $this->view->translate("Calls"),
             $this->view->translate("Synthetic"),
             $dateForm[0] . ' - ' . $dateForm[1]));
+
+        $this->view->bill = false;
+        if (class_exists("Billing_Manager")) {
+            $this->view->bill = true;
+        }
 
         $this->view->exportName = $dateForm[0] . '_' . $dateForm[1];
 
@@ -584,6 +594,11 @@ class CallsReportController extends Zend_Controller_Action
                     break;
             }
 
+            if ($value['price'] !== "") {
+                //$bill = money_format('%.2n', $value["price"]);
+                $result_data[$value['uniqueid']]["price"] = $value["price"];
+            }
+
             // treatment when no answer on first
             if($result_data[$value['uniqueid']]["wasAttended"]){
                 $result_data[$value['uniqueid']]["disposition"] = 'ANSWERED';
@@ -596,8 +611,9 @@ class CallsReportController extends Zend_Controller_Action
             
         }
                 
-        $totals = array('answer' => 0, 'noanswer' => 0, 'busy' => 0, 'failed' => 0, 'totals' => 0);
+        $totals = array('answer' => 0, 'noanswer' => 0, 'busy' => 0, 'failed' => 0, 'totals' => 0, 'bill' => 0);
         $typeCall = array('incoming' => 0, 'outgoing' => 0, 'other' => 0);
+        
         foreach ($result_data as $key => $value) {
             
             if (isset($ccustos[$value['accountcode']])) {
@@ -615,6 +631,10 @@ class CallsReportController extends Zend_Controller_Action
             }
             $calldate[$value['key_dia']]['totals']++;
 
+            if($value['price']){
+                $totals['bill'] += str_replace(',', '.', $value['price']);
+            }
+            
             switch ($value["disposition"]) {
                 case 'ANSWERED':
                     $totals["answer"]++;
@@ -660,7 +680,7 @@ class CallsReportController extends Zend_Controller_Action
                 }
             }
         }
-
+        
         $this->view->totals = $totals;
         $this->view->typeCall = $typeCall;
         $this->view->calldate = $calldate;

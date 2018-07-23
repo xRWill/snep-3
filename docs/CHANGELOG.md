@@ -22,6 +22,8 @@ Cada item adicionado na versão poderá ser um dos seguintes tipos:
 *XX de XXXXX de 2018*
 
 
+* **`NOVO`** - Adicionado total de tarifação em chamadas do período.
+
 * **`NOVO`** - Nova ação de grupo de captura para regras de fila.
 
 * **`NOVO`** - Configuração BLF no ramal.
