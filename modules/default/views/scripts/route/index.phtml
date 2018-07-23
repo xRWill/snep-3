@@ -24,10 +24,7 @@
  */
 
 $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/route.css" );
-$this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-toggle.min.css" );
 ?>
-
-<script type="text/javascript" src="/snep/includes/javascript/bootstrap-toggle.min.js"></script>
 
 <div class= "row">
   <div class="tab-content">
@@ -89,7 +86,7 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/bootstrap-toggle.m
                   <td> <?php echo $route['desc'] ?> </td>
                   <td class="text-center">
                     <div class="checkbox">
-                      <label><input type="checkbox" data-toggle="toggle" data-size="mini" <?php echo $route['ativa'] === '1' ? 'checked' : ''; ?> id="rule_state" value="<?php echo $route['id'];?>" onchange="change_status(this.value)" ></label>
+                      <label><input type="checkbox" data-toggle="toggle" data-size="small" <?php echo $route['ativa'] === '1' ? 'checked' : ''; ?> id="rule_state" value="<?php echo $route['id'];?>" onchange="change_status(this.value)" ></label>
                     </div>
                     <a class="btn btn-default btn-sm"  href='<?php echo $this->baseUrl(); ?>/index.php/route/duplicate/<?php echo $route['id']?>' ><?php echo $this->translate('Duplicate')?></a>
                     <a class="btn btn-edit btn-sm"  href='<?php echo $this->baseUrl(); ?>/index.php/route/edit/<?php echo $route['id'] ?>'><?php echo $this->translate('Edit')?></a>
