@@ -105,7 +105,7 @@ class QueuesController extends Zend_Controller_Action {
 
         }
         $this->view->strategy = $strategy;
-        $this->view->ringinuseTrue = "checked";
+        $this->view->ringinuseFalse = "checked";
 
         //Define the action and others and load form
         $this->view->action = "add" ;
