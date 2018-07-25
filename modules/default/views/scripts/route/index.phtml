@@ -108,6 +108,7 @@ jQuery.noConflict();
 jQuery(document).ready(function() {
   jQuery('#listtable').dataTable( {
     "pageLength": <?php echo $this->lineNumber ?>,
+    "order": [[ 1, "desc" ]],
     "oLanguage": {
       "sUrl": "/snep/includes/javascript/datatables/media/language/pt-BR.json"
     },
