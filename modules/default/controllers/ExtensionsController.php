@@ -952,6 +952,7 @@ class ExtensionsController extends Zend_Controller_Action {
                         $data["name"] = $this->view->translate("Extension ") ." ".$exten . " <" . $exten.">" ;
                         $data["sip"]["password"] = $exten;
                         $data["iax"]["password"] = $exten;
+                        $data["calllimit"] = '1';
                         $data['type'] = 'friend' ;
 
                         $ret = $this->execAdd($data);
@@ -980,6 +981,7 @@ class ExtensionsController extends Zend_Controller_Action {
                               $data["name"] = $this->view->translate("Extension ") ." ".$i . " <" . $i.">" ;
                               $data["sip"]["password"] = $i . $i;
                               $data["iax2"]["password"] = $i . $i;
+                              $data["calllimit"] = '1';
                               $data['type'] = 'friend' ;
 
                               $ret = $this->execAdd($data);
