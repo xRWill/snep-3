@@ -266,7 +266,7 @@ if(!endDate){
 jQuery('#daterange-btn').daterangepicker(
     {
       ranges: {
-        '<?php echo $this->translate("Today"); ?>': [moment(), moment()],
+        '<?php echo $this->translate("Today"); ?>': [moment({hour: 00}), moment()],
         '<?php echo $this->translate("Yesterday"); ?>': [moment().subtract(1, 'days').format('DD/MM/YYYY 00:00'), moment().subtract(1, 'days').format('DD/MM/YYYY 23:59')],
         '<?php echo $this->translate("Last 7 Days"); ?>': [moment().subtract(6, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
         '<?php echo $this->translate("Last 15 Days"); ?>': [moment().subtract(14, 'days').format('DD/MM/YYYY 00:00'), moment().format('DD/MM/YYYY 23:59')],
