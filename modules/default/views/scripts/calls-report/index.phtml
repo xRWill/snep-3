@@ -46,7 +46,7 @@
 
   <fieldset>
     <legend><?php echo $this->translate("Source"); ?></legend>
-    <?php if (count($this->contact_groups)>0) {?>
+    <?php if (count($this->contact_groups)>0 && count($this->contacts)>1) {?>
       <div class="form-group">
         <label class="col-sm-3 control-label"><?php echo $this->translate("Contact Groups"); ?></label>
           <div class="col-sm-3">
@@ -107,7 +107,7 @@
 
   <fieldset>
     <legend><?php echo $this->translate("Destination"); ?></legend>
-      <?php if (count($this->contact_groups)>0) {?>
+      <?php if (count($this->contact_groups)>0 && count($this->contacts)>1) {?>
         <div class="form-group">
           <label class="col-sm-3 control-label"><?php echo $this->translate("Contact Groups"); ?></label>
           <div class="col-sm-3">

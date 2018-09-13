@@ -142,7 +142,7 @@ class CallsReportController extends Zend_Controller_Action
                 $where_binds .= $value . ",";
             }
             $where_binds = substr($where_binds, 0, -1);
-           
+
             // Not permission
             if ($filter['clausule'] == 'nobound') {
                 if (count($exceptions) >0) {
@@ -183,7 +183,8 @@ class CallsReportController extends Zend_Controller_Action
             unset($where_options[3]);
         }
 
-        if ($filter['selectContactGroupSrc'] != "0") {
+        
+        if (isset($filter['selectContactGroupSrc']) && $filter['selectContactGroupSrc'] != "0") {
             $where_contactGroupSrc = " AND src IN (";
             $where_contactGroupSrc .= " SELECT phone FROM contacts_names cn ";
             $where_contactGroupSrc .= " INNER JOIN contacts_phone cp ON cp.contact_id = cn.id ";
@@ -191,14 +192,14 @@ class CallsReportController extends Zend_Controller_Action
             $where_contactGroupSrc .= " WHERE cn.group = " . $filter['selectContactGroupSrc'];
             $where_contactGroupSrc .= ") ";
         }
-        if ($filter['selectContactSrc'] != "0") {
+        if (isset($filter['selectContactSrc']) && $filter['selectContactSrc'] != "0") {
             $where_contactSrc = " AND src IN ( ";
             $where_contactSrc .= " SELECT phone FROM contacts_names cn ";
             $where_contactSrc .= " INNER JOIN contacts_phone cp ON cp.contact_id = cn.id ";
             $where_contactSrc .= " WHERE cn.id = " . $filter['selectContactSrc'];
             $where_contactSrc .= ") ";
         }
-        if ($filter['selectContactGroupDst'] != "0") {
+        if (isset($filter['selectContactGroupDst']) && $filter['selectContactGroupDst'] != "0") {
             $where_contactGroupDst = " AND dst IN (";
             $where_contactGroupDst .= " SELECT phone FROM contacts_names cn ";
             $where_contactGroupDst .= " INNER JOIN contacts_phone cp ON cp.contact_id = cn.id ";
@@ -206,14 +207,14 @@ class CallsReportController extends Zend_Controller_Action
             $where_contactGroupDst .= " WHERE cn.group = " . $filter['selectContactGroupDst'];
             $where_contactGroupDst .= ") ";
         }
-        if ($filter['selectContactDst'] != "0") {
+        if (isset($filter['selectContactDst']) && $filter['selectContactDst'] != "0") {
             $where_contactDst = " AND dst IN ( ";
             $where_contactDst .= " SELECT phone FROM contacts_names cn ";
             $where_contactDst .= " INNER JOIN contacts_phone cp ON cp.contact_id = cn.id ";
             $where_contactDst .= " WHERE cn.id = " . $filter['selectContactDst'];
             $where_contactDst .= ") ";
         }
-
+        
         // Searches for extensions belonging to the selected source extension group
         $ramaissrc = $ramaisdst = "";
         if ($filter['selectSrc'] != "0") {
