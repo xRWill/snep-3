@@ -98,7 +98,7 @@ class TrunksController extends Zend_Controller_Action {
     $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array($this->view->translate("Trunks")));
 
     $db = Zend_Registry::get('db');
-    $select = "SELECT t.id, t.callerid, t.name, t.technology, t.trunktype, t.time_chargeby, t.time_total,
+    $select = "SELECT t.id, t.callerid, t.name, t.technology, t.trunktype, t.time_chargeby, t.time_total,t.disabled,
     (SELECT th.used FROM time_history AS th WHERE th.owner = t.id AND th.owner_type='T' ORDER BY th.changed DESC limit 1) as used,
     (SELECT th.changed FROM time_history AS th WHERE th.owner = t.id AND th.owner_type='T' ORDER BY th.changed DESC limit 1) as changed FROM trunks as t ";
 
@@ -228,6 +228,9 @@ class TrunksController extends Zend_Controller_Action {
 
         // Mount array whith trunk data
         $trunk_data = $this->preparePost();
+        if(isset($_POST['trunk_disabled'])){
+          $trunk_data['trunk']["disabled"] = true;
+        }
 
         $db = Snep_Db::getInstance();
         $db->beginTransaction();
@@ -250,11 +253,40 @@ class TrunksController extends Zend_Controller_Action {
         // audit
         Snep_Audit_Manager::SaveLog("Added", 'trunks', $id, $this->view->translate("Trunk") . " {$id} ". $_POST['callerid']);
         
-        Snep_InterfaceConf::loadConfFromDb();
+        if(!isset($_POST['trunk_disabled'])){
+          Snep_InterfaceConf::loadConfFromDb();
+        }
+        
         $this->_redirect("trunks");
       }
     }
 
+  }
+
+  /**
+  * enableAction - Enable trunk
+  * @return type
+  * @throws ErrorException
+  */
+  public function enableAction() {
+
+    $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array($this->view->translate("Trunks"),$this->view->translate("Enable")));
+
+    $exten = $this->_request->getParam("id");
+
+    $this->view->id = $exten;
+    $this->view->remove_title = $this->view->translate('Enabled Trunk.');
+    $this->view->remove_message = $this->view->translate('Are you sure you want to activate the trunk?');
+    $this->view->remove_form = 'trunks';
+    $this->renderScript('remove/enable.phtml');
+
+    if ($this->_request->getPost()) {
+
+      Snep_Audit_Manager::SaveLog("Enabled", 'trunks', $exten, $this->view->translate("Trunk") ." ". $exten);
+      Snep_Trunks_Manager::enable($exten);
+      Snep_InterfaceConf::loadConfFromDb();
+      $this->_redirect("trunks");
+    }
   }
 
   /**
@@ -364,6 +396,10 @@ class TrunksController extends Zend_Controller_Action {
         }
       }
 
+      if($trunk['disabled']){
+        $this->view->trunk_disabled = "checked";
+      }
+
       $this->view->boards = $boards;
       $this->view->trunk = $trunk;
 
@@ -405,7 +441,10 @@ class TrunksController extends Zend_Controller_Action {
           //audit
           Snep_Audit_Manager::SaveLog("Updated", 'trunks', $idTrunk, $this->view->translate("Trunk") . " {$idTrunk} ". $_POST['callerid']);
           
-          Snep_InterfaceConf::loadConfFromDb();
+          if(!isset($_POST['trunk_disabled'])){
+            Snep_InterfaceConf::loadConfFromDb();
+          }
+          
           $this->_redirect("trunks");
         }
       }

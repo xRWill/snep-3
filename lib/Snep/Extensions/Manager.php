@@ -133,7 +133,7 @@ class Snep_Extensions_Manager {
         $db = Zend_Registry::get('db');
 
         $select = $db->select()
-            ->from('peers', array('id' => 'id','name' => 'callerid' ,'exten' => 'name', 'channel' => 'canal', 'password' => 'secret'))
+            ->from('peers', array('id' => 'id','name' => 'callerid' ,'exten' => 'name', 'channel' => 'canal', 'password' => 'secret', 'disabled' => 'disabled'))
             ->joinInner('core_peer_groups','core_peer_groups.peer_id = peers.id',array('group_id'=>'group_id','peer_id','peer_id') )
             ->joinInner('core_groups','core_groups.id = core_peer_groups.group_id',array('group_name' => 'name'))
             ->where("peer_type = 'R'");
@@ -160,6 +160,32 @@ class Snep_Extensions_Manager {
 
 
         return $extensions;
+    }
+
+    /**
+     * disable - disable peer
+     * @param <int> $id
+     */
+    public function disable($id) {
+
+        $db = Zend_Registry::get('db');
+
+        $update_data = array('disabled' => true );
+        $db->update("peers", $update_data, "name = '$id'");
+
+    }
+
+    /**
+     * enable - enable peer
+     * @param <int> $id
+     */
+    public function enable($id) {
+
+        $db = Zend_Registry::get('db');
+
+        $update_data = array('disabled' => false );
+        $db->update("peers", $update_data, "name = '$id'");
+
     }
 
 }

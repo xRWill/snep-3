@@ -34,7 +34,7 @@ try {
 
 
 // Get Extensions Sip from database - table: peers
-$data = $conn->query("SELECT id,canal,callerid,name,peer_type from peers where peer_type = 'R'");
+$data = $conn->query("SELECT id,canal,callerid,name,peer_type,disabled from peers where peer_type = 'R'");
 
 // Popula peers com itens faltantes do array
 $peers = array();

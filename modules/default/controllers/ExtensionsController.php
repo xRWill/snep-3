@@ -807,6 +807,87 @@ class ExtensionsController extends Zend_Controller_Action {
               }
             }
 
+          /**
+          * disableAction - Disable exetension
+          * @return type
+          * @throws ErrorException
+          */
+          public function disableAction() {
+
+            $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
+              $this->view->translate("Extensions"),
+              $this->view->translate("Disable")));
+
+              $exten = $this->_request->getParam("id");
+
+              //checks if the exten is used in the rule
+              $rules = Snep_Extensions_Manager::getValidation($exten);
+              $rulesQuery = Snep_Extensions_Manager::getValidationRules($exten);
+              $rules = array_merge($rules, $rulesQuery);
+
+              if (count($rules) > 0) {
+                $errMsg = $this->view->translate('The following routes use this extension, modify them prior to remove this extension') . ":<br />\n";
+                foreach ($rules as $regra) {
+                  $errMsg .= $regra['id'] . " - " . $regra['desc'] . "<br />\n";
+                }
+                $this->view->error_message = $errMsg;
+                $this->view->back = $this->view->translate("Back");
+                $this->renderScript('error/sneperror.phtml');
+
+              } else {
+
+                $this->view->id = $exten;
+                $this->view->remove_title = $this->view->translate('Disabled Extension.');
+                $this->view->remove_message = $this->view->translate('Are you sure you want to deactivate the extension? You can turn it on again later.');
+                $this->view->remove_form = 'extensions';
+                $this->renderScript('remove/disable.phtml');
+
+                if ($this->_request->getPost()) {
+
+                  try {
+                    //audit
+                    Snep_Audit_Manager::SaveLog("Disabled", 'peers', $exten, $this->view->translate("Extension") . " {$result['name']} ". $exten);
+                    
+                    Snep_Extensions_Manager::disable($exten);
+                    Snep_InterfaceConf::loadConfFromDb();
+
+                  } catch (PDOException $e) {
+                    $db->rollBack();
+                    $this->view->error_message = $this->view->translate("DB Delete Error: ") . $e->getMessage();
+                    $this->view->back = $this->view->translate("Back");
+                    $this->renderScript('error/sneperror.phtml');;
+                  }
+
+                  $this->_redirect("default/extensions");
+                }
+              }
+            }
+
+            /**
+            * enableAction - Enable exetension
+            * @return type
+            * @throws ErrorException
+            */
+            public function enableAction() {
+
+              $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array($this->view->translate("Extensions"),$this->view->translate("Enable")));
+
+              $exten = $this->_request->getParam("id");
+
+              $this->view->id = $exten;
+              $this->view->remove_title = $this->view->translate('Enabled Extension.');
+              $this->view->remove_message = $this->view->translate('Are you sure you want to activate the extension?');
+              $this->view->remove_form = 'extensions';
+              $this->renderScript('remove/enable.phtml');
+
+              if ($this->_request->getPost()) {
+
+                Snep_Audit_Manager::SaveLog("Enabled", 'peers', $exten, $this->view->translate("Extension") . " {$result['name']} ". $exten);
+                Snep_Extensions_Manager::enable($exten);
+                Snep_InterfaceConf::loadConfFromDb();
+                $this->_redirect("default/extensions");
+              }
+            }
 
             /**
             * multiremoveAction - Delete Extensions

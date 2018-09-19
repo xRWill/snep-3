@@ -20,6 +20,7 @@
               <th class="text-center"><?php echo $this->translate('Type');?></th>
               <th class="text-center"><?php echo $this->translate('Interface Type');?></th>
               <th class="text-center"><?php echo $this->translate('Time Credit (minutes)');?></th>
+
               <th class="text-center"><?php echo $this->translate('Actions');?></th>
             </tr>
           </thead>
@@ -42,6 +43,9 @@
                 <td class="text-center">
                   <a class="btn btn-edit btn-sm"  href="<?php echo $this->url ."/edit/trunk/".  $trunk['id'] ?>" role="button"><?php echo $this->translate('Edit')?></a>
                   <a class="btn btn-danger btn-sm" href="<?php echo $this->url ."/remove/id/".  $trunk['id'] . "/name/" . $trunk['name'] ?>" role="button"><?php echo $this->translate('Delete')?></a>
+                  <?php if($trunk['disabled']){ ?>
+                    <a class="btn btn-primary btn-sm" href="<?php echo $this->url ."/enable/id/".  $trunk['id'] . "/name/" . $trunk['name'] ?>" role="button"><?php echo $this->translate('Enable')?></a>
+                  <?php } ?>
                 </td>
               </tr>
             <?php endforeach ?>

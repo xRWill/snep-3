@@ -373,6 +373,25 @@ $this->headScript()->appendFile($this->baseUrl() . "/includes/javascript/passwor
     <fieldset>
       <legend><?php echo $this->translate('Advanced');?></legend>
 
+      <div id="disabled">
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo $this->translate("Trunk Disabled");?></label>
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <label>
+                <?php if($this->action == 'add'){ ?>
+                  <input type="checkbox" name="trunk_disabled" id="trunk_disabled" value="trunk_disabled" <?php echo $this->trunk_disabled;?>/>
+                <?php }else{ ?>
+                  <input type="checkbox" disabled name="trunk_disabled" id="trunk_disabled" value="trunk_disabled" <?php echo $this->trunk_disabled;?>/>
+                <?php } ?>
+                
+                <?php echo $this->translate("Disabled");?>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group">
         <label class="col-sm-3 control-label"><?php echo $this->translate("Extension Mapping");?></label>
         <div class="col-sm-6">
@@ -490,6 +509,7 @@ function showDiv(div){
   document.getElementById("khomp").className = "invisible";
   document.getElementById("virtual").className = "invisible";
   document.getElementById("snepiax2").className = "invisible";
+  document.getElementById("disabled").className = "invisible";
 
   if(div != 'iax2'){
     document.getElementById("iax2").className = "invisible";
@@ -504,6 +524,8 @@ function showDiv(div){
     document.getElementById("codecs").className = "visible";
     div = 'ip';
 
+    document.getElementById("disabled").className = "visible";
+
   }else if(div == 'khomp' || div == 'virtual'){
     document.getElementById("dtmfmode").className = "invisible";
     document.getElementById("host").className = "invisible";
@@ -515,12 +537,14 @@ function showDiv(div){
     document.getElementById("host").className = "visible";
     document.getElementById("codecs").className = "visible";
     document.getElementById(div).className = "visible";
+    document.getElementById("disabled").className = "visible";
   }else if(div == 'snepiax2'){
     document.getElementById("dtmfmode").className = "visible";
     document.getElementById("host").className = "visible";
     document.getElementById("nat").className = "visible";
     document.getElementById("codecs").className = "visible";
     document.getElementById(div).className = "visible";
+    document.getElementById("disabled").className = "visible";
   }else{
     document.getElementById(div).className = "visible";
   }

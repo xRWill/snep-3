@@ -215,4 +215,17 @@ class Snep_Trunks_Manager {
         return $trunk;
     }
 
+    /**
+     * enable - enable trunk
+     * @param <int> $id
+     */
+    public function enable($id) {
+
+        $db = Zend_Registry::get('db');
+
+        $update_data = array('disabled' => false );
+        $db->update("trunks", $update_data, "id = '$id'");
+
+    }
+
 }

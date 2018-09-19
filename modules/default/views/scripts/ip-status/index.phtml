@@ -65,6 +65,7 @@
                                 <tbody>
                                     <?php
                                     foreach ($this->peers as $key => $value) { ?>
+                                    
                                         <tr>
                                             <td class="text-center"><?php echo $value['name'] ?></td>
                                             <td class="text-center"><?php echo $value['callerid'] ?></td>
@@ -191,6 +192,9 @@
                         if (data[i].type == 'VIRTUAL') {
                             jQuery("#host"+data[i].id).html(data[i].host) ;   
                         }
+                        if(data[i].disabled == true){
+                            jQuery("#trunk_latency_"+data[i].id).html('<label class="label label-info"><?php echo $this->translate("Disabled") ?></label>') ;
+                        }
                     }
                 }
             });
@@ -205,6 +209,10 @@
                             lb = "label-success"
                         }
                         jQuery("#peer_latency_"+data[i].id).html('<label class="label '+lb+'">'+data[i].latencia+'</label>') ;
+                        if(data[i].disabled == true){
+                            jQuery("#peer_latency_"+data[i].id).html('<label class="label label-info"><?php echo $this->translate("Disabled") ?></label>') ;
+                        }
+                        
                     }
                 }
             });

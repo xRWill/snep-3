@@ -10,7 +10,7 @@
 
 1) É necessário a instalação do gettext no ambiente.
 ```sh
-$ apt-get instal gettext
+$ apt-get install gettext
 ```
 
 2) Acesse o diretório bin da instalação do Snep;

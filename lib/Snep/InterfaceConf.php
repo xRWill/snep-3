@@ -58,11 +58,11 @@ class Snep_InterfaceConf {
 
             /* Register header on output string of the file */
             $todayDate = date("d/m/Y H:m:s");
-            $header = ";-----------------------------------------------------------------------------------\n";
+            $header = ";------------------------------------------------------------------------------------\n";
             $header .= "; Arquivo: snep-$tech.conf - Cadastro de ramais e Troncos                           \n";
             $header .= ";                                                                                   \n";
             $header .= "; Atualizado em: $todayDate                                                         \n";
-            $header .= "; Copyright(c) 2008-2014 Opens Tecnologia                                           \n";
+            $header .= "; Copyright(c) 2008-".date("Y")." Opens Tecnologia                                  \n";
             $header .= ";-----------------------------------------------------------------------------------\n";
             $header .= "; Os registros a Seguir sao gerados pelo Software SNEP.                             \n";
             $header .= "; Este Arquivo NAO DEVE ser editado Manualmente sob riscos de                       \n";
@@ -70,7 +70,7 @@ class Snep_InterfaceConf {
             $header .= ";-----------------------------------------------------------------------------------\n";
 
             /* query that gets information of the peers on the DB */
-            $sql = "SELECT * FROM peers WHERE name != 'admin' AND canal like '" . strtoupper($tech) . "%'";
+            $sql = "SELECT * FROM peers WHERE name != 'admin' AND disabled != true AND canal like '" . strtoupper($tech) . "%'";
             $peer_data = $db->query($sql)->fetchAll();
 
             $peers = "\n";

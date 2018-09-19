@@ -35,7 +35,7 @@ try {
 
 // Get Trunks Sip from database - table: trunks
 $like = 'SIP%';
-$data = $conn->query("SELECT id,channel,callerid,host,username,type from trunks where channel LIKE '".$like."'");
+$data = $conn->query("SELECT id,channel,callerid,host,username,type, disabled from trunks where channel LIKE '".$like."'");
 
 // Popula troncos com itens faltantes do array
 $troncos = array();

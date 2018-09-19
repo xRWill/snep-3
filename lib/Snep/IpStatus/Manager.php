@@ -58,7 +58,7 @@ class Snep_IpStatus_Manager {
         $db = Zend_registry::get('db');
 
         $select = $db->select()
-                ->from('trunks', array('id','channel', 'callerid', 'host', 'username', 'type'))
+                ->from('trunks', array('id','channel', 'callerid', 'host', 'username', 'type', 'disabled'))
                 ->where('trunks.channel LIKE ?', $like);
 
         $stmt = $db->query($select);

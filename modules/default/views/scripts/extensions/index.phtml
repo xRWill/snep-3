@@ -30,7 +30,7 @@
                 <th class="text-center"><?php echo $this->translate('Extension Group');?></th>
                 <th class="text-center"><?php echo $this->translate('Actions');?></th>
               </tr>
-            </thead>
+            </thead>  
             <tbody>
               <?php foreach($this->extensions as $cha => $val ): ?>
                 <tr>
@@ -45,6 +45,11 @@
                   <td class="text-center">
                     <a class="btn btn-edit btn-sm" href='<?php echo $this->url ?>/edit/id/<?php echo $val['exten'] ?>' role="button"><?php echo $this->translate('Edit')?></a>
                     <a class="btn btn-danger btn-sm"  href='<?php echo $this->url ?>/remove/id/<?php echo $val['exten'] ?>'><?php echo $this->translate('Delete')?></a>
+                    <?php if ($val['disabled'] == false) { ?>
+                      <a class="btn btn-info btn-sm"  href='<?php echo $this->url ?>/disable/id/<?php echo $val['exten'] ?>'><?php echo $this->translate('Disable')?></a>
+                    <?php }else{ ?>
+                      <a class="btn btn-primary btn-sm"  href='<?php echo $this->url ?>/enable/id/<?php echo $val['exten'] ?>'><?php echo $this->translate('Enable')?></a>
+                    <?php } ?>
                   </td>
                 </tr>
               <?php endforeach ?>

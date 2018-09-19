@@ -12,3 +12,6 @@ CREATE TABLE IF NOT EXISTS `logs_users` (
   `registerid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `peers` ADD COLUMN `disabled` BOOLEAN DEFAULT false;
+ALTER TABLE `trunks` ADD COLUMN `disabled` BOOLEAN DEFAULT false;

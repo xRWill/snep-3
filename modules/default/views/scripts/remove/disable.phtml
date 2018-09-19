@@ -1,0 +1,24 @@
+<div class="row">
+    
+	<form id="defaultForm" method="post" class="form-horizontal" action="<?php echo $this->url(array("controller" => $this->remove_form, "action" => 'disable'), null, true); ?>" METHOD="post">
+        <?php
+        
+        echo $this->action( 'sneperror', 'error', null, array('error_message' => $this->remove_message, 'error_type' => 'alert', 'error_title' => $this->remove_title, 'error_buttons' => False) );
+        ?>
+
+        <input type="hidden" name="id" value="<?php echo $this->id; ?>">
+
+        <?php if(isset($this->name)){?>
+            <input type="hidden" name="name" value="<?php echo $this->name; ?>">
+        <?php } ?>
+
+        <br>
+        <div class="snep-body-footer-buttons">
+            <button type="submit" class="btn btn-add" name="disable" value="Disable"><?php echo $this->translate("Disable");?></button>
+            &nbsp;&nbsp;&nbsp;
+        	<a class="btn btn-outline btn-add" href="javascript:window.history.go(-1)" role="button"><?php echo $this->translate("Cancel")?></a>
+        </div>   
+       
+    	<br>
+	</form>
+</div>
