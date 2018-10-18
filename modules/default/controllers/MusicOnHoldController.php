@@ -266,6 +266,11 @@ class MusicOnHoldController extends Zend_Controller_Action {
         if ($this->_request->getPost()) {
 
             $dados = $this->_request->getParams();
+            $data = $_FILES["inputFile"];
+
+            // Converter megabytes em bytes
+            $size_in_mega = ini_get('upload_max_filesize');
+            $size_in_bytes = Snep_SoundFiles_Manager::converter($size_in_mega);
             
             // Information about section/class
             $class = Snep_SoundFiles_Manager::getClasse($dados['section']);
@@ -274,7 +279,20 @@ class MusicOnHoldController extends Zend_Controller_Action {
             $invalid = array('â', 'ã', 'á', 'à', 'ẽ', 'é', 'è', 'ê', 'í', 'ì', 'ó', 'õ', 'ò', 'ú', 'ù', 'ç', " ", '@', '!');
             $valid = array('a', 'a', 'a', 'a', 'e', 'e', 'e', 'e', 'i', 'i', 'o', 'o', 'o', 'u', 'u', 'c', "_", '_', '_');
 
+            if ($data["size"] > $size_in_bytes) {
+                $this->view->error_message = $this->view->translate("File larger than $size_in_mega");
+                $this->renderScript('error/sneperror.phtml');
+            }
+
+            if ($data["type"] != "audio/wav" && $data["type"] != "audio/mp3") {
+                $message = "Tamanho ou formato inválido";
+                $this->_helper->redirector('sneperror','error',null,array('error_message'=>$message));
+            }
+
             $originalName = str_replace($invalid, $valid, $_FILES['inputFile']['name']);
+            $clean_name = strstr($originalName, '.', true);
+            $validname = $clean_name . '.wav';
+
             $files = Snep_SoundFiles_Manager::get($originalName);
 
             if ($files) {
@@ -286,7 +304,7 @@ class MusicOnHoldController extends Zend_Controller_Action {
             if ($form_isValid) {
 
 
-                $uploadName = $_FILES['inputFile']['tmp_name'];
+                $uploadName = $data['tmp_name'];
                 $arq_tmp = $class['directory'] . "/tmp/" . $originalName;
                 $arq_dst = $class['directory'] . "/" . $originalName;
 

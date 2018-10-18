@@ -634,4 +634,14 @@ class Snep_SoundFiles_Manager {
         return str_replace($invalid, $valid, $name);
     }
 
+    /**
+     * Converter megabytes in bytes
+     * @param <string> $size
+     */
+    function converter($size) {
+        $bytes = "1048576";
+        $result = $bytes * $size;
+        return $result;
+    }
+
 }

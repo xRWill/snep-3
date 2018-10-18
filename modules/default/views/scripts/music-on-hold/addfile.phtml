@@ -21,10 +21,15 @@
     <form id="defaultForm" method="post" class="form-horizontal" action="<?php echo $this->url(array("controller" => "music-on-hold", "action" => "addfile"), null, true); ?>" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-2">
+            <div class="alert alert-danger"><?php echo $this->translate("Warning: Maximum upload file size") . ' : '.ini_get('upload_max_filesize');?></div>
+        </div>
+        </div>
+        <div class="form-group">
 			<label class="col-sm-2 control-label" for="inputFile"><?php echo $this->translate("Sound File");?></label>
             <div class="col-sm-6">
 				<input type="file" name="inputFile" id="inputFile" placeholder="xxxx">
-                <small><?php echo $this->translate("Warning: Maximum upload file size") . ' : '.ini_get('upload_max_filesize');?></small>
+                
             </div>
 		</div>
 
