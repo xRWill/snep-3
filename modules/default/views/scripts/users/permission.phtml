@@ -16,13 +16,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with SNEP.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-$enabled = '<img src="/snep/images/button_ok.png" align="center" width="22" height="22" title="Habilitado";">';
-$disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title="Desabilitado";">';
 ?>
 
 <div class="row">
-    <form  action="<?php echo $this->url(array("controller" => "users", "action" => "permission"), null, true); ?>" METHOD="post">
+    <form id="defaultForm" method="post" class="form-horizontal" action="<?php echo $this->url(array("controller" => "users", "action" => "permission"), null, false); ?>">
+        <input type="hidden" name="user" value=<?php echo $this->id ?>>
         <div class="table-responsive">
             <table class="table table-striped" id="listtable">
                 <thead>
@@ -30,7 +28,12 @@ $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title
                         <th><?php echo $this->translate("Routine") ?></th>
                         <th class="text-center"><?php echo $this->translate("Group permission") ?></th>
                         <th class="text-center"><?php echo $this->translate("User permission") ?></th>
-                        <th class="text-center"><?php echo $this->translate("User permission") ?></th>
+                        <th class="text-center"><?php echo $this->translate("User permission") ?>
+                        <label class="container-check" title="<?php echo $this->translate('Check All') ?>">
+                            <input type="checkbox" id="checkAll">
+                            <span class="checkmark"></span>
+                        </label>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,43 +44,57 @@ $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title
                             <tr>
                                 <td> <?php echo $module['name'] ?> </td>
                                 <?php if (isset($module['group'])) { ?>
-                                    <td class="text-center"> <?php echo $enabled ?> </td>
+                                    <td class="text-center"><label class="label label-success"><?php echo $this->translate("Allowed") ?></label></td>
                                 <?php } else { ?>
-                                    <td class="text-center"> <?php echo $disabled ?> </td>
+                                    <td class="text-center"><label class="label label-danger"><?php echo $this->translate("Not allowed") ?></label></td>
                                 <?php } ?>
 
                                 <?php if ($this->user == false) { ?>
                                     <?php if (isset($module['group'])) { ?>
-                                        <td class="text-center"> <?php echo $enabled ?> </td>
+                                        <td class="text-center"><label class="label label-success"><?php echo $this->translate("Allowed") ?></label></td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
+                                            <label class="container-check">
+                                                <input type="checkbox" checked name=<?php echo $module['id_permission'] ?>>
+                                                <span class="checkmark"></span>
+                                            </label>
                                         </td>
                                     <?php } else { ?>
-                                        <td class="text-center"> <?php echo $disabled ?> </td>
+                                        <td class="text-center"><label class="label label-danger"><?php echo $this->translate("Not allowed") ?></label></td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> name=<?php echo $module['id_permission'] ?>>
+                                            <label class="container-check">
+                                                <input type="checkbox" name=<?php echo $module['id_permission'] ?>>
+                                                <span class="checkmark"></span>
+                                            </label>
                                         </td>
                                     <?php } ?>
                                 <?php } else { ?>
                                     <?php if (isset($module['user']) === true && $module['allow'] == true) { ?>
-                                        <td class="text-center"> <?php echo $enabled ?> </td>
+                                        <td class="text-center"><label class="label label-success"><?php echo $this->translate("Allowed") ?></label></td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
+                                            <label class="container-check">
+                                                <input type="checkbox" checked name=<?php echo $module['id_permission'] ?>>
+                                                <span class="checkmark"></span>
+                                            </label>
                                         </td>
                                     <?php } else if (isset($module['group']) == true && isset($module['user']) == false) { ?>
-                                        <td class="text-center"> <?php echo $enabled ?> </td>
+                                        <td class="text-center"><label class="label label-success"><?php echo $this->translate("Allowed") ?></label></td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> checked name=<?php echo $module['id_permission'] ?>>
+                                            <label class="container-check">
+                                                <input type="checkbox" checked name=<?php echo $module['id_permission'] ?>>
+                                                <span class="checkmark"></span>
+                                            </label>
                                         </td>
                                     <?php } else { ?>
-                                        <td class="text-center"> <?php echo $disabled ?> </td>
+                                        <td class="text-center"><label class="label label-danger"><?php echo $this->translate("Not allowed") ?></label></td>
                                         <td class="text-center">
-                                            <input type="checkbox" data-toggle="toggle" data-size="mini" data-on=<?php echo $this->translate("Yes") ?> data-off=<?php echo $this->translate("No") ?> name=<?php echo $module['id_permission'] ?>>
+                                            <label class="container-check">
+                                                <input type="checkbox" name=<?php echo $module['id_permission'] ?>>
+                                                <span class="checkmark"></span>
+                                            </label>
                                         </td>
                                     <?php } ?>
                                 <?php } ?>
                             </tr>
-                            <input type="hidden" name="user" value=<?php echo $this->id ?>>
                         <?php } ?>
                     <?php } ?>
                 </tbody>
@@ -98,6 +115,9 @@ $disabled = '<img src="/snep/images/button_off.png" width="22" height="22" title
 jQuery.noConflict();
 
 jQuery(document).ready(function() {
+  jQuery('#checkAll').click(function () {    
+    jQuery('input:checkbox').prop('checked', this.checked);    
+  });
   jQuery('#listtable').dataTable( {
     "pageLength": 100,
     "oLanguage": {

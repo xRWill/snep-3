@@ -73,6 +73,7 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/route.css" );
                 <th class="text-center"><?php echo $this->translate('Source');?></th>
                 <th class="text-center"><?php echo $this->translate('Destiny');?></th>
                 <th><?php echo $this->translate('Description');?></th>
+                <th class="text-center"><?php echo $this->translate('Record');?></th>
                 <th class="text-center" data-intro="<?php echo $this->translate('You can Activate or Deactive Routes')?>"><?php echo $this->translate('Actions');?></th>
               </tr>
             </thead>
@@ -84,6 +85,13 @@ $this->headLink()->appendStylesheet( $this->baseUrl() . "/css/route.css" );
                   <td class="text-center"> <?php echo $route['origem'] ?> </td>
                   <td class="text-center"> <?php echo $route['destino'] ?> </td>
                   <td> <?php echo $route['desc'] ?> </td>
+                  <td class="text-center"> 
+                    <?php if(intval($route['record'])){ ?> 
+                      <label class="label label-success"><?php echo $this->translate("Yes") ?></label>
+                    <?php }else{ ?> 
+                      <label class="label label-danger"><?php echo $this->translate("No") ?></label>
+                    <?php } ?> 
+                  </td>
                   <td class="text-center">
                     <div class="checkbox">
                       <label><input type="checkbox" data-toggle="toggle" data-size="small" <?php echo $route['ativa'] === '1' ? 'checked' : ''; ?> id="rule_state" value="<?php echo $route['id'];?>" onchange="change_status(this.value)" ></label>

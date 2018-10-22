@@ -222,7 +222,7 @@ class UsersController extends Zend_Controller_Action {
      *  Edit permission
      */
     public function permissionAction() {
-
+        
         $this->view->breadcrumb = Snep_Breadcrumb::renderPath(array(
                     $this->view->translate("Users"),
                     $this->view->translate("Permission")));
@@ -277,6 +277,7 @@ class UsersController extends Zend_Controller_Action {
                 }
             }
         }
+        
 
         $permissionsGroup = array_intersect_key($currentResourcesGroup, $resources);
 
@@ -329,7 +330,7 @@ class UsersController extends Zend_Controller_Action {
         $this->view->id = $id;
 
         if ($this->_request->isPost()) {
-
+            
             $dados = array();
             $dados['id'] = $_POST['user'];
 

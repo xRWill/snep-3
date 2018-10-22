@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 16:21-0300\n"
+"POT-Creation-Date: 2018-10-22 16:57-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,10 +122,6 @@ msgstr ""
 msgid "1"
 msgstr ""
 
-#: /var/www/html/snep/modules/billing/info.xml
-msgid "1.0"
-msgstr ""
-
 #: /var/www/html/snep/modules/portability/info.xml
 msgid "1.1"
 msgstr ""
@@ -222,8 +218,6 @@ msgstr ""
 #: ../modules/default/views/scripts/contact-groups/index.phtml:20
 #: ../modules/default/views/scripts/profiles/index.phtml:23
 #: ../modules/default/views/scripts/extensions-groups/index.phtml:22
-#: ../modules/billing/views/scripts/telcos/index.phtml:49
-#: ../modules/billing/views/scripts/billing/index.phtml:47
 msgid "Actions"
 msgstr ""
 
@@ -268,8 +262,6 @@ msgstr ""
 #: ../modules/default/controllers/TrunksController.php:169
 #: ../modules/default/controllers/ProfilesController.php:72
 #: ../modules/default/controllers/CostCenterController.php:81
-#: ../modules/billing/controllers/TelcosController.php:47
-#: ../modules/billing/controllers/BillingController.php:25
 #: /var/www/html/snep/configs/titleOptions.xml
 #: /var/www/html/snep/configs/dashboard.xml
 msgid "Add"
@@ -277,11 +269,6 @@ msgstr ""
 
 #: ../modules/default/views/scripts/route/elements/actions.phtml:22
 msgid "Add Action"
-msgstr ""
-
-#: ../modules/billing/views/scripts/telcos/index.phtml:21
-#: ../modules/billing/views/scripts/billing/index.phtml:20
-msgid "Add Bill"
 msgstr ""
 
 #: ../modules/default/views/scripts/contacts/index.phtml:7
@@ -358,11 +345,6 @@ msgstr ""
 msgid "Add Tag"
 msgstr ""
 
-#: ../modules/billing/views/scripts/telcos/index.phtml:20
-#: ../modules/billing/views/scripts/billing/index.phtml:21
-msgid "Add Telco"
-msgstr ""
-
 #: ../modules/default/views/scripts/trunks/index.phtml:7
 msgid "Add Trunk"
 msgstr ""
@@ -410,8 +392,6 @@ msgstr ""
 #: ../modules/default/views/scripts/ip-status/index.phtml:32
 #: ../modules/default/views/scripts/services-report/index.phtml:9
 #: ../modules/default/views/scripts/simulator/index.phtml:36
-#: ../modules/billing/views/scripts/telcos/index.phtml:25
-#: ../modules/billing/views/scripts/billing/index.phtml:25
 msgid "Add to dashboard"
 msgstr ""
 
@@ -450,8 +430,6 @@ msgstr ""
 #: ../modules/default/views/scripts/extensions-groups/migration.phtml:7
 #: ../modules/default/controllers/CallsReportController.php:692
 #: ../modules/default/controllers/RankingReportController.php:277
-#: ../modules/billing/views/scripts/telcos/index.phtml:36
-#: ../modules/billing/views/scripts/billing/index.phtml:36
 msgid "Alert"
 msgstr ""
 
@@ -495,6 +473,13 @@ msgstr ""
 
 #: ../modules/default/actions/DiscarRamal.php:184
 msgid "Allow voicemail"
+msgstr ""
+
+#: ../modules/default/views/scripts/users/permission.phtml:47
+#: ../modules/default/views/scripts/users/permission.phtml:54
+#: ../modules/default/views/scripts/users/permission.phtml:72
+#: ../modules/default/views/scripts/users/permission.phtml:80
+msgid "Allowed"
 msgstr ""
 
 #: ../modules/default/views/scripts/calls-report/index.phtml:40
@@ -546,10 +531,6 @@ msgstr ""
 msgid ""
 "Are you sure you want to deactivate the extension? You can turn it on again "
 "later."
-msgstr ""
-
-#: ../modules/billing/views/scripts/billing/addedit.phtml:49
-msgid "Area Code"
 msgstr ""
 
 #: ../modules/default/views/scripts/systemstatus/index.phtml:103
@@ -667,7 +648,6 @@ msgstr ""
 #: ../modules/default/controllers/ExtensionsController.php:857
 #: ../modules/default/controllers/ExtensionsController.php:950
 #: ../modules/default/controllers/ExtensionsController.php:973
-#: ../modules/billing/views/scripts/error/sneperror.phtml:42
 msgid "Back"
 msgstr ""
 
@@ -683,31 +663,10 @@ msgstr ""
 msgid "Backup Files Path"
 msgstr ""
 
-#: ../modules/billing/views/scripts/billing/index.phtml:45
-#: ../modules/billing/views/scripts/billing/addedit.phtml:29
-msgid "Bill Type"
-msgstr ""
-
 #: ../modules/default/views/scripts/calls-report/analytic.phtml:46
 #: ../modules/default/views/scripts/calls-report/analytic.phtml:105
 #: ../modules/default/views/scripts/calls-report/synthetic.phtml:46
-#: ../modules/billing/controllers/BillingController.php:24
-#: ../modules/billing/controllers/BillingController.php:54
-#: ../modules/billing/controllers/BillingController.php:87
-#: /var/www/html/snep/modules/billing/resources.xml
 msgid "Billing"
-msgstr ""
-
-#: ../modules/billing/controllers/BillingController.php:12
-msgid "Billing >> Billing"
-msgstr ""
-
-#: ../modules/billing/controllers/TelcosController.php:33
-msgid "Billing >> Telcos"
-msgstr ""
-
-#: /var/www/html/snep/modules/billing/info.xml
-msgid "Billing Module for SNEP"
 msgstr ""
 
 #: ../modules/default/actions/Cadeado.php:85
@@ -731,7 +690,7 @@ msgstr ""
 
 #: ../modules/default/views/scripts/users/index.phtml:39
 #: ../modules/default/views/scripts/users/bond.phtml:16
-#: ../modules/default/controllers/UsersController.php:375
+#: ../modules/default/controllers/UsersController.php:376
 msgid "Bond"
 msgstr ""
 
@@ -915,13 +874,13 @@ msgstr ""
 #: ../modules/default/views/scripts/action-configs/edit.phtml:42
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:74
 #: ../modules/default/views/scripts/users/bond.phtml:60
-#: ../modules/default/views/scripts/users/permission.phtml:90
+#: ../modules/default/views/scripts/users/permission.phtml:107
 #: ../modules/default/views/scripts/users/addedit.phtml:83
 #: ../modules/default/views/scripts/khomp-links/index.phtml:66
 #: ../modules/default/views/scripts/index/add.phtml:45
 #: ../modules/default/views/scripts/music-on-hold/removefile.phtml:15
 #: ../modules/default/views/scripts/music-on-hold/remove.phtml:42
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:62
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:67
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:49
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:57
 #: ../modules/default/views/scripts/module-settings/index.phtml:188
@@ -944,9 +903,6 @@ msgstr ""
 #: ../modules/default/views/scripts/remove/remove.phtml:26
 #: ../modules/default/views/scripts/remove/enable.phtml:19
 #: ../modules/default/views/scripts/remove/disable.phtml:19
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:38
-#: ../modules/billing/views/scripts/billing/addedit.phtml:64
-#: ../modules/billing/views/scripts/remove/remove.phtml:19
 msgid "Cancel"
 msgstr ""
 
@@ -1038,6 +994,10 @@ msgstr ""
 msgid "Channel Technology"
 msgstr ""
 
+#: ../modules/default/views/scripts/users/permission.phtml:32
+msgid "Check All"
+msgstr ""
+
 #: ../modules/default/views/scripts/services-report/index.phtml:59
 msgid "Choose the services"
 msgstr ""
@@ -1101,12 +1061,7 @@ msgstr ""
 #: ../modules/default/controllers/ExportDataController.php:59
 #: ../modules/default/controllers/ExportDataController.php:60
 #: ../modules/default/controllers/ExportDataController.php:61
-#: ../modules/billing/views/scripts/telcos/index.phtml:43
 msgid "Code"
-msgstr ""
-
-#: ../modules/billing/views/scripts/billing/index.phtml:43
-msgid "Code Area"
 msgstr ""
 
 #: ../modules/default/controllers/ContactsController.php:117
@@ -1434,16 +1389,6 @@ msgstr ""
 msgid "Default E-mail"
 msgstr ""
 
-#: ../modules/billing/views/scripts/telcos/index.phtml:46
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:18
-msgid "Default Land Line Price"
-msgstr ""
-
-#: ../modules/billing/views/scripts/telcos/index.phtml:45
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:12
-msgid "Default Mobile Price"
-msgstr ""
-
 #: /var/www/html/snep/configs/dashboard.xml
 msgid "Default Settings"
 msgstr ""
@@ -1525,9 +1470,6 @@ msgstr ""
 #: ../modules/default/controllers/ProfilesController.php:220
 #: ../modules/default/controllers/CostCenterController.php:161
 #: ../modules/default/controllers/NotificationsController.php:103
-#: ../modules/billing/views/scripts/telcos/index.phtml:66
-#: ../modules/billing/views/scripts/billing/index.phtml:62
-#: ../modules/billing/views/scripts/remove/remove.phtml:17
 msgid "Delete"
 msgstr ""
 
@@ -1555,7 +1497,7 @@ msgstr ""
 msgid "Delete Extension."
 msgstr ""
 
-#: ../modules/default/controllers/MusicOnHoldController.php:354
+#: ../modules/default/controllers/MusicOnHoldController.php:372
 msgid "Delete File"
 msgstr ""
 
@@ -1607,15 +1549,7 @@ msgstr ""
 msgid "Delete User."
 msgstr ""
 
-#: ../modules/billing/controllers/BillingController.php:95
-msgid "Delete a Bill"
-msgstr ""
-
-#: ../modules/billing/controllers/TelcosController.php:112
-msgid "Delete a Telco"
-msgstr ""
-
-#: ../modules/default/controllers/MusicOnHoldController.php:360
+#: ../modules/default/controllers/MusicOnHoldController.php:378
 msgid "Delete music on hold file: "
 msgstr ""
 
@@ -1628,8 +1562,8 @@ msgstr ""
 #: ../modules/default/views/scripts/route/index.phtml:75
 #: ../modules/default/views/scripts/action-configs/index.phtml:18
 #: ../modules/default/views/scripts/music-on-hold/file.phtml:23
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:39
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:41
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:44
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:46
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:26
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:28
 #: ../modules/default/views/scripts/audit/view.phtml:32
@@ -1678,10 +1612,6 @@ msgstr ""
 #: ../modules/default/views/scripts/simulator/index.phtml:132
 #, php-format
 msgid "Destiny: %s"
-msgstr ""
-
-#: ../modules/billing/views/scripts/billing/addedit.phtml:47
-msgid "Details"
 msgstr ""
 
 #: ../modules/default/actions/DiscarRamal.php:124
@@ -1897,10 +1827,6 @@ msgstr ""
 #: ../modules/default/controllers/ProfilesController.php:140
 #: ../modules/default/controllers/CostCenterController.php:119
 #: ../modules/default/controllers/ActionConfigsController.php:107
-#: ../modules/billing/views/scripts/telcos/index.phtml:64
-#: ../modules/billing/views/scripts/billing/index.phtml:60
-#: ../modules/billing/controllers/TelcosController.php:75
-#: ../modules/billing/controllers/BillingController.php:55
 #: /var/www/html/snep/configs/titleOptions.xml
 #: /var/www/html/snep/configs/dashboard.xml
 msgid "Edit"
@@ -1910,7 +1836,7 @@ msgstr ""
 msgid "Edit Dashboard"
 msgstr ""
 
-#: ../modules/default/controllers/MusicOnHoldController.php:332
+#: ../modules/default/controllers/MusicOnHoldController.php:350
 msgid "Edit File"
 msgstr ""
 
@@ -2028,7 +1954,6 @@ msgstr ""
 #: ../modules/default/views/scripts/error/sneperror.phtml:16
 #: ../modules/default/controllers/ServicesReportController.php:198
 #: ../modules/default/controllers/ErrorController.php:57
-#: ../modules/billing/views/scripts/error/sneperror.phtml:16
 msgid "Error"
 msgstr ""
 
@@ -2322,7 +2247,7 @@ msgstr ""
 msgid "File Permissions"
 msgstr ""
 
-#: ../modules/default/controllers/MusicOnHoldController.php:281
+#: ../modules/default/controllers/MusicOnHoldController.php:299
 msgid "File already exists"
 msgstr ""
 
@@ -2344,8 +2269,8 @@ msgid "File not found."
 msgstr ""
 
 #: ../modules/default/views/scripts/sound-files/index.phtml:24
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:32
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:34
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:37
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:39
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:5
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:7
 #: ../modules/default/views/scripts/contacts/import.phtml:10
@@ -2413,10 +2338,6 @@ msgstr ""
 
 #: ../modules/default/views/scripts/parameters/index.phtml:243
 msgid "Format for the recorded files (wav, wav49)"
-msgstr ""
-
-#: ../modules/billing/views/scripts/telcos/index.phtml:48
-msgid "Fractionation"
 msgstr ""
 
 #: ../modules/default/views/scripts/systemstatus/index.phtml:160
@@ -2501,7 +2422,7 @@ msgstr ""
 msgid "Group contacts "
 msgstr ""
 
-#: ../modules/default/views/scripts/users/permission.phtml:31
+#: ../modules/default/views/scripts/users/permission.phtml:29
 msgid "Group permission"
 msgstr ""
 
@@ -3066,8 +2987,8 @@ msgstr ""
 #: ../modules/default/controllers/MusicOnHoldController.php:204
 #: ../modules/default/controllers/MusicOnHoldController.php:238
 #: ../modules/default/controllers/MusicOnHoldController.php:261
-#: ../modules/default/controllers/MusicOnHoldController.php:331
-#: ../modules/default/controllers/MusicOnHoldController.php:353
+#: ../modules/default/controllers/MusicOnHoldController.php:349
+#: ../modules/default/controllers/MusicOnHoldController.php:371
 #: /var/www/html/snep/configs/titleOptions.xml
 msgid "Music on Hold Sessions"
 msgstr ""
@@ -3146,8 +3067,6 @@ msgstr ""
 #: ../modules/default/controllers/ExportDataController.php:59
 #: ../modules/default/controllers/ExportDataController.php:60
 #: ../modules/default/controllers/ExportDataController.php:61
-#: ../modules/billing/views/scripts/telcos/index.phtml:44
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:6
 msgid "Name"
 msgstr ""
 
@@ -3188,11 +3107,6 @@ msgstr ""
 #: ../modules/default/views/scripts/queues/addedit.phtml:218
 #: ../modules/default/views/scripts/queues/addedit.phtml:231
 #: ../modules/default/views/scripts/tdm-links/index.phtml:56
-#: ../modules/default/views/scripts/users/permission.phtml:53
-#: ../modules/default/views/scripts/users/permission.phtml:58
-#: ../modules/default/views/scripts/users/permission.phtml:65
-#: ../modules/default/views/scripts/users/permission.phtml:70
-#: ../modules/default/views/scripts/users/permission.phtml:75
 #: ../modules/default/views/scripts/khomp-links/index.phtml:56
 #: ../modules/default/views/scripts/trunks/addedit.phtml:162
 #: ../modules/default/views/scripts/trunks/addedit.phtml:244
@@ -3319,6 +3233,12 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
+#: ../modules/default/views/scripts/users/permission.phtml:49
+#: ../modules/default/views/scripts/users/permission.phtml:62
+#: ../modules/default/views/scripts/users/permission.phtml:88
+msgid "Not allowed"
+msgstr ""
+
 #: ../modules/default/views/scripts/trunks/index.phtml:40
 msgid "Not configured"
 msgstr ""
@@ -3397,7 +3317,6 @@ msgstr ""
 msgid "Opens Tecnologia "
 msgstr ""
 
-#: /var/www/html/snep/modules/billing/info.xml
 #: /var/www/html/snep/modules/callback/info.xml
 msgid "Opens Tecnology"
 msgstr ""
@@ -3648,8 +3567,8 @@ msgstr ""
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:102
 #: ../modules/default/views/scripts/users/addedit.phtml:112
 #: ../modules/default/views/scripts/users/addedit.phtml:118
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:88
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:94
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:93
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:99
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:69
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:89
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:95
@@ -3666,15 +3585,13 @@ msgstr ""
 #: ../modules/default/views/layouts/register.phtml:416
 #: ../modules/default/views/layouts/loginregister.phtml:84
 #: ../modules/default/views/layouts/loginregister.phtml:88
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:62
-#: ../modules/billing/views/scripts/billing/addedit.phtml:88
 msgid "Please enter at least {0} characters."
 msgstr ""
 
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:79
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:104
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:90
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:96
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:95
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:101
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:71
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:91
 #: ../modules/default/views/scripts/dates-alias/addedit.phtml:135
@@ -3685,8 +3602,6 @@ msgstr ""
 #: ../modules/default/views/scripts/pickup-groups/addedit.phtml:62
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:60
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:76
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:64
-#: ../modules/billing/views/scripts/billing/addedit.phtml:90
 msgid "Please enter letters and numbers only."
 msgstr ""
 
@@ -3715,8 +3630,8 @@ msgstr ""
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:103
 #: ../modules/default/views/scripts/users/addedit.phtml:113
 #: ../modules/default/views/scripts/users/addedit.phtml:119
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:89
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:95
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:94
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:100
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:70
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:90
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:96
@@ -3733,8 +3648,6 @@ msgstr ""
 #: ../modules/default/views/layouts/register.phtml:391
 #: ../modules/default/views/layouts/register.phtml:417
 #: ../modules/default/views/layouts/loginregister.phtml:89
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:63
-#: ../modules/billing/views/scripts/billing/addedit.phtml:89
 msgid "Please enter no more than {0} characters."
 msgstr ""
 
@@ -3781,11 +3694,6 @@ msgstr ""
 
 #: ../modules/portability/actions/PortabilityAction.php:70
 msgid "Prefix to handling invalid numbers"
-msgstr ""
-
-#: ../modules/billing/views/scripts/billing/index.phtml:46
-#: ../modules/billing/views/scripts/billing/addedit.phtml:55
-msgid "Price"
 msgstr ""
 
 #: ../modules/default/views/scripts/route/index.phtml:72
@@ -3905,10 +3813,6 @@ msgstr ""
 msgid "Ranking Options"
 msgstr ""
 
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:30
-msgid "Rate Fractionation (in seconds)"
-msgstr ""
-
 #: ../lib/Snep/Notifications.php:60
 msgid "Read All Messages"
 msgstr ""
@@ -4003,8 +3907,6 @@ msgstr ""
 #: ../modules/default/views/scripts/extensions/multiremove.phtml:47
 #: ../modules/default/views/scripts/contacts/select-multi-remove.phtml:53
 #: ../modules/default/controllers/MusicOnHoldController.php:205
-#: ../modules/billing/controllers/TelcosController.php:105
-#: ../modules/billing/controllers/BillingController.php:88
 msgid "Remove"
 msgstr ""
 
@@ -4211,7 +4113,7 @@ msgstr ""
 msgid "Routes Actions"
 msgstr ""
 
-#: ../modules/default/views/scripts/users/permission.phtml:30
+#: ../modules/default/views/scripts/users/permission.phtml:28
 msgid "Routine"
 msgstr ""
 
@@ -4310,10 +4212,10 @@ msgstr ""
 #: ../modules/default/views/scripts/action-configs/edit.phtml:41
 #: ../modules/default/views/scripts/expression-alias/addedit.phtml:72
 #: ../modules/default/views/scripts/users/bond.phtml:58
-#: ../modules/default/views/scripts/users/permission.phtml:88
+#: ../modules/default/views/scripts/users/permission.phtml:105
 #: ../modules/default/views/scripts/users/addedit.phtml:81
 #: ../modules/default/views/scripts/index/add.phtml:43
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:60
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:65
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:47
 #: ../modules/default/views/scripts/music-on-hold/addedit.phtml:55
 #: ../modules/default/views/scripts/module-settings/index.phtml:186
@@ -4329,14 +4231,7 @@ msgstr ""
 #: ../modules/default/views/scripts/profiles/addedit.phtml:33
 #: ../modules/default/views/scripts/extensions-groups/migration.phtml:48
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:49
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:36
-#: ../modules/billing/views/scripts/billing/addedit.phtml:62
 msgid "Save"
-msgstr ""
-
-#: ../modules/billing/views/scripts/telcos/index.phtml:29
-#: ../modules/billing/views/scripts/billing/index.phtml:29
-msgid "Search"
 msgstr ""
 
 #: ../modules/default/controllers/QueuesController.php:50
@@ -4640,7 +4535,7 @@ msgstr ""
 msgid "Sound"
 msgstr ""
 
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:24
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:29
 msgid "Sound File"
 msgstr ""
 
@@ -4711,14 +4606,6 @@ msgstr ""
 #: ../modules/default/views/scripts/pagination.phtml:4
 #: ../modules/default/views/scripts/pagination.phtml:6
 msgid "Start"
-msgstr ""
-
-#: ../modules/billing/views/scripts/telcos/index.phtml:47
-msgid "Start Time"
-msgstr ""
-
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:24
-msgid "Start Time Rate (in seconds)"
 msgstr ""
 
 #: ../modules/default/views/scripts/contacts/addedit.phtml:55
@@ -4884,21 +4771,11 @@ msgid "Team"
 msgstr ""
 
 #: ../modules/default/views/scripts/trunks/addedit.phtml:26
-#: ../modules/billing/views/scripts/billing/index.phtml:44
-#: ../modules/billing/views/scripts/billing/addedit.phtml:6
-#: ../modules/billing/views/scripts/billing/addedit.phtml:9
 msgid "Telco"
 msgstr ""
 
 #: ../modules/default/views/scripts/trunks/addedit.phtml:23
 msgid "Telco (used for rate the calls)"
-msgstr ""
-
-#: ../modules/billing/controllers/TelcosController.php:46
-#: ../modules/billing/controllers/TelcosController.php:74
-#: ../modules/billing/controllers/TelcosController.php:104
-#: /var/www/html/snep/modules/billing/resources.xml
-msgid "Telcos"
 msgstr ""
 
 #: ../modules/default/controllers/LogsController.php:84
@@ -4921,10 +4798,6 @@ msgstr ""
 msgid "The 'sox' package is not installed!"
 msgstr ""
 
-#: ../modules/billing/controllers/BillingController.php:96
-msgid "The Bill will be deleted. After that, you have no way get it back."
-msgstr ""
-
 #: ../modules/default/controllers/ParametersController.php:60
 msgid "The File includes/setup.conf does not have permission to be modified."
 msgstr ""
@@ -4937,10 +4810,6 @@ msgstr ""
 msgid ""
 "The SNEP work if Routes to determine what to do with any call. <br>\\\n"
 "      Here you can manager this routes."
-msgstr ""
-
-#: ../modules/billing/controllers/TelcosController.php:113
-msgid "The Telco will be deleted. After that, you have no way get it back."
 msgstr ""
 
 #: ../modules/default/views/scripts/trunks/addedit.phtml:614
@@ -4985,7 +4854,7 @@ msgid "The date need to be in the formats: YYYY-MM-DD or MM-DD"
 msgstr ""
 
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:76
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:93
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:98
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:68
 msgid "The description is required"
 msgstr ""
@@ -5059,7 +4928,7 @@ msgid ""
 "next screen."
 msgstr ""
 
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:87
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:92
 msgid "The filename is required"
 msgstr ""
 
@@ -5124,7 +4993,7 @@ msgstr ""
 msgid "The log file cannot be open!"
 msgstr ""
 
-#: ../modules/default/controllers/MusicOnHoldController.php:361
+#: ../modules/default/controllers/MusicOnHoldController.php:379
 msgid ""
 "The music on hold files will be deleted. After that, you have no way get it "
 "back."
@@ -5146,8 +5015,6 @@ msgstr ""
 #: ../modules/default/views/scripts/contact-groups/addedit.phtml:57
 #: ../modules/default/views/scripts/profiles/addedit.phtml:66
 #: ../modules/default/views/scripts/extensions-groups/addedit.phtml:73
-#: ../modules/billing/views/scripts/telcos/addedit.phtml:61
-#: ../modules/billing/views/scripts/billing/addedit.phtml:87
 msgid "The name is required"
 msgstr ""
 
@@ -5267,7 +5134,7 @@ msgstr ""
 msgid "There is no contacts group registered."
 msgstr ""
 
-#: ../modules/default/controllers/MusicOnHoldController.php:311
+#: ../modules/default/controllers/MusicOnHoldController.php:329
 msgid ""
 "There were problems uploading the file. Please, contact your system "
 "administrator."
@@ -5294,11 +5161,6 @@ msgstr ""
 msgid ""
 "This is your Dashboard. <br>\\\n"
 "      You can customize it as you want, adding, moving or removing elements."
-msgstr ""
-
-#: /var/www/html/snep/modules/billing/info.xml
-msgid ""
-"This module make the billing of calls putting price based on trunks and time."
 msgstr ""
 
 #: ../modules/default/actions/DiscarTronco.php:81
@@ -5479,7 +5341,6 @@ msgstr ""
 #: ../modules/default/views/scripts/systemstatus/index.phtml:158
 #: ../modules/default/controllers/ExportDataController.php:59
 #: ../modules/default/controllers/ExportDataController.php:61
-#: ../modules/billing/views/scripts/billing/addedit.phtml:26
 #: /var/www/html/snep/modules/default/forms/route.xml
 msgid "Type"
 msgstr ""
@@ -5627,8 +5488,8 @@ msgstr ""
 msgid "User or password invalid"
 msgstr ""
 
-#: ../modules/default/views/scripts/users/permission.phtml:32
-#: ../modules/default/views/scripts/users/permission.phtml:33
+#: ../modules/default/views/scripts/users/permission.phtml:30
+#: ../modules/default/views/scripts/users/permission.phtml:31
 msgid "User permission"
 msgstr ""
 
@@ -5654,7 +5515,7 @@ msgstr ""
 #: ../modules/default/controllers/UsersController.php:123
 #: ../modules/default/controllers/UsersController.php:195
 #: ../modules/default/controllers/UsersController.php:227
-#: ../modules/default/controllers/UsersController.php:374
+#: ../modules/default/controllers/UsersController.php:375
 #: /var/www/html/snep/configs/dashboard.xml
 #: /var/www/html/snep/modules/default/resources.xml
 msgid "Users"
@@ -5720,7 +5581,7 @@ msgstr ""
 msgid "Warn agent the time that call waited in queue"
 msgstr ""
 
-#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:27
+#: ../modules/default/views/scripts/music-on-hold/addfile.phtml:25
 msgid "Warning: Maximum upload file size"
 msgstr ""
 
@@ -5808,11 +5669,6 @@ msgstr ""
 #: ../modules/default/views/scripts/queues/addedit.phtml:227
 #: ../modules/default/views/scripts/sound-files/addedit.phtml:33
 #: ../modules/default/views/scripts/tdm-links/index.phtml:52
-#: ../modules/default/views/scripts/users/permission.phtml:53
-#: ../modules/default/views/scripts/users/permission.phtml:58
-#: ../modules/default/views/scripts/users/permission.phtml:65
-#: ../modules/default/views/scripts/users/permission.phtml:70
-#: ../modules/default/views/scripts/users/permission.phtml:75
 #: ../modules/default/views/scripts/khomp-links/index.phtml:52
 #: ../modules/default/views/scripts/music-on-hold/editfile.phtml:37
 #: ../modules/default/views/scripts/trunks/addedit.phtml:158
@@ -6365,10 +6221,6 @@ msgstr ""
 #: ../modules/default/controllers/ProfilesController.php:301
 #: ../modules/default/controllers/ProfilesController.php:321
 msgid "write"
-msgstr ""
-
-#: /var/www/html/snep/modules/billing/info.xml
-msgid "www.opens.com.br"
 msgstr ""
 
 #: /var/www/html/snep/modules/default/info.xml

@@ -231,6 +231,7 @@ CREATE TABLE IF NOT EXISTS `peers` (
   `callbackextension` VARCHAR(250) default NULL,
   `useragent` VARCHAR(250) default NULL,
   `blf` VARCHAR(3) default NULL,
+  `disabled` BOOLEAN DEFAULT false,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `name_2` (`name`),
@@ -394,6 +395,7 @@ CREATE TABLE IF NOT EXISTS `trunks` (
   `domain` VARCHAR( 250 ) NOT NULL,
   `technology` VARCHAR( 20 ) NOT NULL,
   `telco` INT(10) DEFAULT NULL,
+  `disabled` BOOLEAN DEFAULT false,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
