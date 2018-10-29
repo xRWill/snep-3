@@ -420,7 +420,7 @@ class RankingReportController extends Zend_Controller_Action
             }
 
             $replace = false;
-            if (isset($_GET['replace'])) {
+            if (isset($filter['replace'])) {
                 $replace = true;
             }
 
