@@ -1,4 +1,4 @@
-[![N|Solid](https://opens-images.s3.amazonaws.com/opens/docs/img-snep-off.png)](https://snep.com.br)
+[![N|Solid](https://imgs.opens.com.br/docs/opens/img-snep-off.png)](https://snep.com.br)
 
 
 A partir da versão 3 do SNEP, as configurações de ramais no Asterisk foram migradas para o Realtime, o que quer dizer que o asterisk não busca mais as configurações de ramais no arquivo **/etc/asterisk/snep/snep-sip.conf** e sim diretamente no banco.

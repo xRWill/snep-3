@@ -1,4 +1,4 @@
-[![N|Solid](https://opens-images.s3.amazonaws.com/opens/docs/img-snep-off.png)](https://snep.com.br)
+[![N|Solid](https://imgs.opens.com.br/docs/opens/img-snep-off.png)](https://snep.com.br)
 
 # Changelog Snep #
 
@@ -19,8 +19,7 @@ Cada item adicionado na versão poderá ser um dos seguintes tipos:
 # Versões #
 
 ## 3.07 ##
-*XX de XXXXX de 2018*
-
+*21 de Novembro de 2018*
 
 * **`NOVO`** - Opção de ativar desativar ramal.
 

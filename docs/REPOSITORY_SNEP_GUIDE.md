@@ -1,4 +1,4 @@
-[![N|Solid](https://opens-images.s3.amazonaws.com/opens/docs/img-snep-off.png)](https://snep.com.br)
+[![N|Solid](https://imgs.opens.com.br/docs/opens/img-snep-off.png)](https://snep.com.br)
 
 <!-- TOC -->
 
