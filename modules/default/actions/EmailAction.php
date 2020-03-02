@@ -106,7 +106,7 @@ XML;
 
         $view->content = $this->config['message'];
         $view->call = array(
-          'source' => $request->getOriginalCallerid(),
+          'source' => $request->getOriginalCallerid() . ' ( ' . $request->getOriginalCallerid() . ' )',
           'destination' => $request->destino,
           'calldate' => date('Y-m-d H:i:s')
         );

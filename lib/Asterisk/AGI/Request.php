@@ -86,6 +86,15 @@ class Asterisk_AGI_Request {
     }
 
     /**
+     * Retorna o calleridname original da chamada.
+     *
+     * @return string originalCalleridname
+     */
+    public function getOriginalCalleridname() {
+        return $this->agi_request['agi_calleridname'];
+    }
+
+    /**
      * Retorna o número original da chamada.
      *
      * @return strig orignialExtension
